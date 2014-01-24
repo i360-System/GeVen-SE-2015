@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8B2BD378-8C15-43FA-902F-77828BE181E2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>GeVen_SE_2015.My.MyApplication</StartupObject>
+    <RootNamespace>GeVen_SE_2015</RootNamespace>
+    <AssemblyName>GeVen SE 2015</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>GeVen SE 2015.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>GeVen SE 2015.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\MySQL\Connector NET 6.7.4\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Explorer1.Designer.vb">
+      <DependentUpon>Explorer1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Explorer1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Help\AboutBox1.Designer.vb">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Help\AboutBox1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\AgentiRappresentanti.Designer.vb">
+      <DependentUpon>AgentiRappresentanti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\AgentiRappresentanti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Anagrafica.Designer.vb">
+      <DependentUpon>Anagrafica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Anagrafica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\CambioValuta.Designer.vb">
+      <DependentUpon>CambioValuta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\CambioValuta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\CategorieClienti.Designer.vb">
+      <DependentUpon>CategorieClienti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\CategorieClienti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Corrieri.Designer.vb">
+      <DependentUpon>Corrieri.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Corrieri.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\DatiAziende.Designer.vb">
+      <DependentUpon>DatiAziende.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\DatiAziende.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\DestinazioneMerce.Designer.vb">
+      <DependentUpon>DestinazioneMerce.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\DestinazioneMerce.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\GestioniAnnuali.Designer.vb">
+      <DependentUpon>GestioniAnnuali.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\GestioniAnnuali.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Iva.Designer.vb">
+      <DependentUpon>Iva.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Iva.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Sconti.Designer.vb">
+      <DependentUpon>Sconti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Sconti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\TipiDocumento.Designer.vb">
+      <DependentUpon>TipiDocumento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\TipiDocumento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Documenti\GestioneFattureDocumenti.Designer.vb">
+      <DependentUpon>GestioneFattureDocumenti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Documenti\GestioneFattureDocumenti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Help\AboutBox2.Designer.vb">
+      <DependentUpon>AboutBox2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Help\AboutBox2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Articoli.Designer.vb">
+      <DependentUpon>Articoli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Articoli.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Fornitori.Designer.vb">
+      <DependentUpon>Fornitori.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Fornitori.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\GenerazioneInventario.Designer.vb">
+      <DependentUpon>GenerazioneInventario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\GenerazioneInventario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Magazzini.Designer.vb">
+      <DependentUpon>Magazzini.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Magazzini.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Movimenti.Designer.vb">
+      <DependentUpon>Movimenti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\Movimenti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\PrezziAcquisto.Designer.vb">
+      <DependentUpon>PrezziAcquisto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\PrezziAcquisto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\TrasferimentoFattureCommercialista.Designer.vb">
+      <DependentUpon>TrasferimentoFattureCommercialista.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\TrasferimentoFattureCommercialista.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\LoginForm1.Designer.vb">
+      <DependentUpon>LoginForm1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\LoginForm1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\MDIParent1.Designer.vb">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\MDIParent1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\ModalitaPagamento.Designer.vb">
+      <DependentUpon>ModalitaPagamento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\ModalitaPagamento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Documenti\GestioneDocumenti.Designer.vb">
+      <DependentUpon>GestioneDocumenti.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Documenti\GestioneDocumenti.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Spedizionieri.Designer.vb">
+      <DependentUpon>Spedizionieri.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\Spedizionieri.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\ZoneGeografiche.Designer.vb">
+      <DependentUpon>ZoneGeografiche.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Anagrafiche\ZoneGeografiche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="FE\SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\Opzioni.Designer.vb">
+      <DependentUpon>Opzioni.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\Opzioni.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UC\Navigatore.Designer.vb">
+      <DependentUpon>Navigatore.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UC\Navigatore.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Explorer1.resx">
+      <DependentUpon>Explorer1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\AgentiRappresentanti.resx">
+      <DependentUpon>AgentiRappresentanti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\CambioValuta.resx">
+      <DependentUpon>CambioValuta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\CategorieClienti.resx">
+      <DependentUpon>CategorieClienti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\Spedizionieri.resx">
+      <DependentUpon>Spedizionieri.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Documenti\GestioneFattureDocumenti.resx">
+      <DependentUpon>GestioneFattureDocumenti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Help\AboutBox1.resx">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Help\AboutBox2.resx">
+      <DependentUpon>AboutBox2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\LoginForm1.resx">
+      <DependentUpon>LoginForm1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\MDIParent1.resx">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\ModalitaPagamento.resx">
+      <DependentUpon>ModalitaPagamento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Documenti\GestioneDocumenti.resx">
+      <DependentUpon>GestioneDocumenti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Strumenti\Opzioni.resx">
+      <DependentUpon>Opzioni.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\Navigatore.resx">
+      <DependentUpon>Navigatore.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

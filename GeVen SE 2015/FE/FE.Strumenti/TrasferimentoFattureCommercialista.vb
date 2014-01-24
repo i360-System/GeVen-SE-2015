@@ -1,0 +1,3 @@
+﻿Public Class TrasferimentoFattureCommercialista
+
+End Class
