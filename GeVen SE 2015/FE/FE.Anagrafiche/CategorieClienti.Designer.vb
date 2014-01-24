@@ -22,74 +22,47 @@ Partial Class CategorieClienti
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.LabelCodiceCategoria = New System.Windows.Forms.Label()
-        Me.LabelDenominazione = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.categoria = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.denominazione = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GroupBox1
+        'DataGridView1
         '
-        Me.GroupBox1.Controls.Add(Me.LabelDenominazione)
-        Me.GroupBox1.Controls.Add(Me.LabelCodiceCategoria)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 53)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(792, 83)
-        Me.GroupBox1.TabIndex = 0
-        Me.GroupBox1.TabStop = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.categoria, Me.denominazione})
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 57)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(791, 90)
+        Me.DataGridView1.TabIndex = 0
         '
-        'TextBox1
+        'categoria
         '
-        Me.TextBox1.Location = New System.Drawing.Point(7, 38)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.categoria.HeaderText = "Categoria"
+        Me.categoria.Name = "categoria"
+        Me.categoria.Width = 77
         '
-        'TextBox2
+        'denominazione
         '
-        Me.TextBox2.Location = New System.Drawing.Point(128, 38)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(318, 20)
-        Me.TextBox2.TabIndex = 1
-        '
-        'LabelCodiceCategoria
-        '
-        Me.LabelCodiceCategoria.AutoSize = True
-        Me.LabelCodiceCategoria.Location = New System.Drawing.Point(7, 20)
-        Me.LabelCodiceCategoria.Name = "LabelCodiceCategoria"
-        Me.LabelCodiceCategoria.Size = New System.Drawing.Size(88, 13)
-        Me.LabelCodiceCategoria.TabIndex = 2
-        Me.LabelCodiceCategoria.Text = "Codice Categoria"
-        '
-        'LabelDenominazione
-        '
-        Me.LabelDenominazione.AutoSize = True
-        Me.LabelDenominazione.Location = New System.Drawing.Point(125, 20)
-        Me.LabelDenominazione.Name = "LabelDenominazione"
-        Me.LabelDenominazione.Size = New System.Drawing.Size(80, 13)
-        Me.LabelDenominazione.TabIndex = 3
-        Me.LabelDenominazione.Text = "Denominazione"
+        Me.denominazione.HeaderText = "Denominazione"
+        Me.denominazione.Name = "denominazione"
+        Me.denominazione.Width = 105
         '
         'CategorieClienti
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(816, 151)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.ClientSize = New System.Drawing.Size(816, 159)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Name = "CategorieClienti"
         Me.Text = "Categorie di Clienti"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents LabelDenominazione As System.Windows.Forms.Label
-    Friend WithEvents LabelCodiceCategoria As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents categoria As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents denominazione As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -30,6 +30,7 @@ Public Class MDIParent1
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
+
     Private Sub TerminaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TerminaToolStripMenuItem.Click
         If MsgBox("Vuoi terminare il programma? Tutti i form aperti verranno chiusi.", MsgBoxStyle.YesNo, "Confermare uscita?") = MsgBoxResult.Yes Then
             For Each chdForm As Form In Me.MdiChildren
@@ -53,10 +54,129 @@ Public Class MDIParent1
         NewMDIChild.Show()
     End Sub
 
+
+    Private Sub GenerazioneFattureDaDcoumentiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerazioneFattureDaDcoumentiToolStripMenuItem.Click
+        Dim NewMDIChild As GestioneFattureDocumenti
+        NewMDIChild = GestioneFattureDocumenti.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+
 #End Region
 
 #Region "Anagrafiche"
 
+    ''' <summary>
+    ''' Apre Categoria Clienti
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub CategorieClientiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CategorieClientiToolStripMenuItem.Click
+
+        Dim NewMDIChild As CategorieClienti
+        NewMDIChild = CategorieClienti.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+
+    End Sub
+
+    ''' <summary>
+    ''' Apre ZoneGeografiche
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub ZoneGeograficheToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ZoneGeograficheToolStripMenuItem.Click
+        Dim NewMDIChild As ZoneGeografiche
+        NewMDIChild = ZoneGeografiche.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre GestioniAnnuali
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub GestioniAnnualiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GestioniAnnualiToolStripMenuItem.Click
+        Dim NewMDIChild As GestioniAnnuali
+        NewMDIChild = GestioniAnnuali.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre AgentiRappresentanti
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub AgentiRappresentantiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AgentiRappresentantiToolStripMenuItem.Click
+
+        Dim NewMDIChild As AgentiRappresentanti
+        NewMDIChild = AgentiRappresentanti.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+
+    End Sub
+
+    ''' <summary>
+    ''' Apre DatiAzienda
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub DatiAziendeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DatiAziendeToolStripMenuItem.Click
+        Dim NewMDIChild As DatiAziende
+        NewMDIChild = DatiAziende.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre Cambio Valuta
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub CambioValutaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CambioValutaToolStripMenuItem.Click
+        Dim NewMDIChild As CambioValuta
+        NewMDIChild = CambioValuta.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    '''Apre Spedizionieri e Corrieri 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub SpedizionieriToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SpedizionieriToolStripMenuItem.Click
+        Dim NewMDIChild As Spedizionieri
+        NewMDIChild = Spedizionieri.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
 
     ''' <summary>
     ''' Apre il form Modalita di Pagamento
@@ -75,7 +195,80 @@ Public Class MDIParent1
 
     End Sub
 
+    ''' <summary>
+    ''' Apre Iva
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub IvaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles IvaToolStripMenuItem.Click
+        Dim NewMDIChild As Iva
+        NewMDIChild = Iva.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
 
+    ''' <summary>
+    ''' Apre tipidocumento
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub TipiDocumentoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TipiDocumentoToolStripMenuItem.Click
+        Dim NewMDIChild As TipiDocumento
+        NewMDIChild = TipiDocumento.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre Anagrafica clienti
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub AnagraficaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnagraficaToolStripMenuItem.Click
+        Dim NewMDIChild As Anagrafica
+        NewMDIChild = Anagrafica.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre sconti.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub ScontiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ScontiToolStripMenuItem.Click
+        Dim NewMDIChild As Sconti
+        NewMDIChild = Sconti.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre Destinazione della Merce
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub DestinazioneMerceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DestinazioneMerceToolStripMenuItem.Click
+        Dim NewMDIChild As DestinazioneMerce
+        NewMDIChild = DestinazioneMerce.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
 
 #End Region
 
@@ -84,6 +277,21 @@ Public Class MDIParent1
 #End Region
 
 #Region "Strumenti"
+
+    ''' <summary>
+    ''' Apre Opzioni
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub OpzioniToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OpzioniToolStripMenuItem1.Click
+        Dim NewMDIChild As Opzioni
+        NewMDIChild = Opzioni.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
 
 #End Region
 

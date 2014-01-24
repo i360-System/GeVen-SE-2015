@@ -8,4 +8,14 @@
         Ist.BringToFront()
         Return Ist
     End Function
+
+    Private Sub New()
+
+        MyBase.New()
+        ' Chiamata richiesta dalla finestra di progettazione.
+        InitializeComponent()
+
+        ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+
+    End Sub
 End Class

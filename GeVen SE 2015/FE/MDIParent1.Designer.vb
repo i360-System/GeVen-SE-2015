@@ -35,7 +35,6 @@ Partial Class MDIParent1
         Me.CategorieClientiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ZoneGeograficheToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SpedizionieriToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CorrieriToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AgentiRappresentantiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TabelleDocumentiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnagraficheToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -108,7 +107,7 @@ Partial Class MDIParent1
         'TerminaToolStripMenuItem
         '
         Me.TerminaToolStripMenuItem.Name = "TerminaToolStripMenuItem"
-        Me.TerminaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TerminaToolStripMenuItem.Size = New System.Drawing.Size(94, 22)
         Me.TerminaToolStripMenuItem.Text = "Esci"
         '
         'ToolStripMenuItem1
@@ -139,7 +138,7 @@ Partial Class MDIParent1
         '
         'TabelleAnagraficheToolStripMenuItem
         '
-        Me.TabelleAnagraficheToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CategorieClientiToolStripMenuItem, Me.ZoneGeograficheToolStripMenuItem, Me.SpedizionieriToolStripMenuItem, Me.CorrieriToolStripMenuItem, Me.AgentiRappresentantiToolStripMenuItem})
+        Me.TabelleAnagraficheToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CategorieClientiToolStripMenuItem, Me.ZoneGeograficheToolStripMenuItem, Me.SpedizionieriToolStripMenuItem, Me.AgentiRappresentantiToolStripMenuItem})
         Me.TabelleAnagraficheToolStripMenuItem.Name = "TabelleAnagraficheToolStripMenuItem"
         Me.TabelleAnagraficheToolStripMenuItem.Size = New System.Drawing.Size(261, 22)
         Me.TabelleAnagraficheToolStripMenuItem.Text = "Integrazione Anagrafiche Cliente"
@@ -160,13 +159,7 @@ Partial Class MDIParent1
         '
         Me.SpedizionieriToolStripMenuItem.Name = "SpedizionieriToolStripMenuItem"
         Me.SpedizionieriToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
-        Me.SpedizionieriToolStripMenuItem.Text = "Spedizionieri"
-        '
-        'CorrieriToolStripMenuItem
-        '
-        Me.CorrieriToolStripMenuItem.Name = "CorrieriToolStripMenuItem"
-        Me.CorrieriToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
-        Me.CorrieriToolStripMenuItem.Text = "Corrieri"
+        Me.SpedizionieriToolStripMenuItem.Text = "Spedizionieri & Corrieri"
         '
         'AgentiRappresentantiToolStripMenuItem
         '
@@ -498,7 +491,6 @@ Partial Class MDIParent1
     Friend WithEvents CategorieClientiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ZoneGeograficheToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SpedizionieriToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CorrieriToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AgentiRappresentantiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TabelleDocumentiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AnagraficheToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

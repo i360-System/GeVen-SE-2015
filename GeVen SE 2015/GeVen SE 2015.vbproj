@@ -126,12 +126,6 @@
     <Compile Include="FE\FE.Anagrafiche\CategorieClienti.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FE\FE.Anagrafiche\Corrieri.Designer.vb">
-      <DependentUpon>Corrieri.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FE\FE.Anagrafiche\Corrieri.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FE\FE.Anagrafiche\DatiAziende.Designer.vb">
       <DependentUpon>DatiAziende.vb</DependentUpon>
     </Compile>
@@ -299,14 +293,38 @@
     <EmbeddedResource Include="FE\FE.Anagrafiche\AgentiRappresentanti.resx">
       <DependentUpon>AgentiRappresentanti.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\Anagrafica.resx">
+      <DependentUpon>Anagrafica.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Anagrafiche\CambioValuta.resx">
       <DependentUpon>CambioValuta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Anagrafiche\CategorieClienti.resx">
       <DependentUpon>CategorieClienti.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\DatiAziende.resx">
+      <DependentUpon>DatiAziende.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\DestinazioneMerce.resx">
+      <DependentUpon>DestinazioneMerce.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\GestioniAnnuali.resx">
+      <DependentUpon>GestioniAnnuali.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\Iva.resx">
+      <DependentUpon>Iva.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\Sconti.resx">
+      <DependentUpon>Sconti.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Anagrafiche\Spedizionieri.resx">
       <DependentUpon>Spedizionieri.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\TipiDocumento.resx">
+      <DependentUpon>TipiDocumento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Anagrafiche\ZoneGeografiche.resx">
+      <DependentUpon>ZoneGeografiche.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Documenti\GestioneFattureDocumenti.resx">
       <DependentUpon>GestioneFattureDocumenti.vb</DependentUpon>
