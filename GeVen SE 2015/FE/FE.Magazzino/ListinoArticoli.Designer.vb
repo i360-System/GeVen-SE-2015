@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class PrezziAcquisto
+Partial Class ListinoArticoli
     Inherits System.Windows.Forms.Form
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
@@ -26,9 +26,9 @@ Partial Class PrezziAcquisto
         Me.azienda = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.esercizio = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.articolo = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.settore = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.unitamisura = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.anagraficafornitore = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.prezzoacquisto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.prezzo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ultimadata = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -39,10 +39,10 @@ Partial Class PrezziAcquisto
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.azienda, Me.esercizio, Me.articolo, Me.unitamisura, Me.anagraficafornitore, Me.prezzoacquisto, Me.ultimadata})
-        Me.DataGridView1.Location = New System.Drawing.Point(13, 58)
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.azienda, Me.esercizio, Me.articolo, Me.settore, Me.unitamisura, Me.prezzo, Me.ultimadata})
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 59)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(753, 278)
+        Me.DataGridView1.Size = New System.Drawing.Size(874, 329)
         Me.DataGridView1.TabIndex = 0
         '
         'azienda
@@ -63,38 +63,38 @@ Partial Class PrezziAcquisto
         Me.articolo.Name = "articolo"
         Me.articolo.Width = 48
         '
+        'settore
+        '
+        Me.settore.HeaderText = "Settore"
+        Me.settore.Name = "settore"
+        Me.settore.Width = 66
+        '
         'unitamisura
         '
-        Me.unitamisura.HeaderText = "Unita di Misurà"
+        Me.unitamisura.HeaderText = "Unità di Misura"
         Me.unitamisura.Name = "unitamisura"
         Me.unitamisura.Width = 102
         '
-        'anagraficafornitore
+        'prezzo
         '
-        Me.anagraficafornitore.HeaderText = "Anagrafica Fornitore"
-        Me.anagraficafornitore.Name = "anagraficafornitore"
-        Me.anagraficafornitore.Width = 97
-        '
-        'prezzoacquisto
-        '
-        Me.prezzoacquisto.HeaderText = "Prezzo di Acquisto"
-        Me.prezzoacquisto.Name = "prezzoacquisto"
-        Me.prezzoacquisto.Width = 109
+        Me.prezzo.HeaderText = "Prezzo"
+        Me.prezzo.Name = "prezzo"
+        Me.prezzo.Width = 64
         '
         'ultimadata
         '
         Me.ultimadata.HeaderText = "Ultima Data"
         Me.ultimadata.Name = "ultimadata"
-        Me.ultimadata.Width = 80
+        Me.ultimadata.Width = 87
         '
-        'PrezziAcquisto
+        'ListinoArticoli
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(778, 348)
+        Me.ClientSize = New System.Drawing.Size(899, 402)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Name = "PrezziAcquisto"
-        Me.Text = "Prezzi di Acquisto"
+        Me.Name = "ListinoArticoli"
+        Me.Text = "Listino degli Articoli"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -103,8 +103,8 @@ Partial Class PrezziAcquisto
     Friend WithEvents azienda As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents esercizio As System.Windows.Forms.DataGridViewComboBoxColumn
     Friend WithEvents articolo As System.Windows.Forms.DataGridViewComboBoxColumn
+    Friend WithEvents settore As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents unitamisura As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents anagraficafornitore As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents prezzoacquisto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents prezzo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ultimadata As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

@@ -602,7 +602,7 @@
 </value>
   </data>
   <data name="TextBoxDescription.Text" xml:space="preserve">
-    <value>Descrizione:
+    <value>Descrizione Licenza:
 
 (In fase di esecuzione il testo dell'etichetta verrà sostituito con le informazioni sull'assembly dell'applicazione.
 Personalizzare le informazioni sull'assembly dell'applicazione nel riquadro Applicazione di Progettazione progetti.)</value>

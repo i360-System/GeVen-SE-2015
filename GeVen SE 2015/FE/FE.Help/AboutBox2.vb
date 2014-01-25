@@ -1,5 +1,6 @@
 ﻿Public NotInheritable Class AboutBox2
 
+
     Private Sub AboutBox2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ' Imposta il titolo del form.
         Dim ApplicationTitle As String
@@ -22,5 +23,23 @@
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click
         Me.Close()
     End Sub
+
+    Private Sub New()
+
+        MyBase.New()
+        ' Chiamata richiesta dalla finestra di progettazione.
+        InitializeComponent()
+
+        ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+
+    End Sub
+    Private Shared Ist As AboutBox2 = Nothing
+    Public Shared Function Istanza() As AboutBox2
+        If Ist Is Nothing OrElse Ist.IsDisposed = True Then
+            Ist = New AboutBox2
+        End If
+        Ist.BringToFront()
+        Return Ist
+    End Function
 
 End Class

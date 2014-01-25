@@ -61,9 +61,12 @@ Partial Class MDIParent1
         Me.ArticoliToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ScontiFornitoreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrezziAcquistoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClassiArticoloToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpzioniToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpzioniToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TrasferimentoFattureAlCommercialistaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EsportazioneAnagraficheToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EsportazioneFattureToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WindowsMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.CascadeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TileVerticalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -75,7 +78,7 @@ Partial Class MDIParent1
         Me.ManualeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.connectButtonTCPIP = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
@@ -93,7 +96,7 @@ Partial Class MDIParent1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
-        Me.MenuStrip1.Size = New System.Drawing.Size(95, 730)
+        Me.MenuStrip1.Size = New System.Drawing.Size(86, 826)
         Me.MenuStrip1.TabIndex = 9
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -101,7 +104,7 @@ Partial Class MDIParent1
         '
         Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TerminaToolStripMenuItem})
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(88, 19)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(79, 19)
         Me.ToolStripMenuItem2.Text = "File"
         '
         'TerminaToolStripMenuItem
@@ -114,7 +117,7 @@ Partial Class MDIParent1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivioDocumentiToolStripMenuItem, Me.GenerazioneFattureDaDcoumentiToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(88, 19)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(79, 19)
         Me.ToolStripMenuItem1.Text = "Documenti"
         '
         'ArchivioDocumentiToolStripMenuItem
@@ -133,7 +136,7 @@ Partial Class MDIParent1
         '
         Me.AnagraficheToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TabelleAnagraficheToolStripMenuItem, Me.TabelleDocumentiToolStripMenuItem, Me.AnagraficaClientiToolStripMenuItem})
         Me.AnagraficheToolStripMenuItem1.Name = "AnagraficheToolStripMenuItem1"
-        Me.AnagraficheToolStripMenuItem1.Size = New System.Drawing.Size(88, 19)
+        Me.AnagraficheToolStripMenuItem1.Size = New System.Drawing.Size(79, 19)
         Me.AnagraficheToolStripMenuItem1.Text = "Anagrafiche"
         '
         'TabelleAnagraficheToolStripMenuItem
@@ -282,9 +285,9 @@ Partial Class MDIParent1
         '
         'ToolStripMenuItem3
         '
-        Me.ToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MovimentiToolStripMenuItem, Me.GenerazioneInventarioToolStripMenuItem, Me.TabelleToolStripMenuItem, Me.ArticoliToolStripMenuItem, Me.ScontiFornitoreToolStripMenuItem, Me.PrezziAcquistoToolStripMenuItem})
+        Me.ToolStripMenuItem3.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MovimentiToolStripMenuItem, Me.GenerazioneInventarioToolStripMenuItem, Me.TabelleToolStripMenuItem, Me.ArticoliToolStripMenuItem, Me.ScontiFornitoreToolStripMenuItem, Me.PrezziAcquistoToolStripMenuItem, Me.ClassiArticoloToolStripMenuItem})
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(88, 19)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(79, 19)
         Me.ToolStripMenuItem3.Text = "Magazzino"
         '
         'MovimentiToolStripMenuItem
@@ -315,7 +318,7 @@ Partial Class MDIParent1
         '
         Me.ScontiFornitoreToolStripMenuItem.Name = "ScontiFornitoreToolStripMenuItem"
         Me.ScontiFornitoreToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
-        Me.ScontiFornitoreToolStripMenuItem.Text = "Fornitori"
+        Me.ScontiFornitoreToolStripMenuItem.Text = "Listino Articoli"
         '
         'PrezziAcquistoToolStripMenuItem
         '
@@ -323,11 +326,17 @@ Partial Class MDIParent1
         Me.PrezziAcquistoToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.PrezziAcquistoToolStripMenuItem.Text = "Prezzi Acquisto"
         '
+        'ClassiArticoloToolStripMenuItem
+        '
+        Me.ClassiArticoloToolStripMenuItem.Name = "ClassiArticoloToolStripMenuItem"
+        Me.ClassiArticoloToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
+        Me.ClassiArticoloToolStripMenuItem.Text = "Classi Articolo"
+        '
         'OpzioniToolStripMenuItem
         '
         Me.OpzioniToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpzioniToolStripMenuItem1, Me.TrasferimentoFattureAlCommercialistaToolStripMenuItem})
         Me.OpzioniToolStripMenuItem.Name = "OpzioniToolStripMenuItem"
-        Me.OpzioniToolStripMenuItem.Size = New System.Drawing.Size(88, 19)
+        Me.OpzioniToolStripMenuItem.Size = New System.Drawing.Size(79, 19)
         Me.OpzioniToolStripMenuItem.Text = "Strumenti"
         '
         'OpzioniToolStripMenuItem1
@@ -338,15 +347,28 @@ Partial Class MDIParent1
         '
         'TrasferimentoFattureAlCommercialistaToolStripMenuItem
         '
+        Me.TrasferimentoFattureAlCommercialistaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EsportazioneAnagraficheToolStripMenuItem, Me.EsportazioneFattureToolStripMenuItem})
         Me.TrasferimentoFattureAlCommercialistaToolStripMenuItem.Name = "TrasferimentoFattureAlCommercialistaToolStripMenuItem"
         Me.TrasferimentoFattureAlCommercialistaToolStripMenuItem.Size = New System.Drawing.Size(286, 22)
         Me.TrasferimentoFattureAlCommercialistaToolStripMenuItem.Text = "Trasferimento Fatture al Commercialista"
+        '
+        'EsportazioneAnagraficheToolStripMenuItem
+        '
+        Me.EsportazioneAnagraficheToolStripMenuItem.Name = "EsportazioneAnagraficheToolStripMenuItem"
+        Me.EsportazioneAnagraficheToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.EsportazioneAnagraficheToolStripMenuItem.Text = "Esportazione Anagrafiche"
+        '
+        'EsportazioneFattureToolStripMenuItem
+        '
+        Me.EsportazioneFattureToolStripMenuItem.Name = "EsportazioneFattureToolStripMenuItem"
+        Me.EsportazioneFattureToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.EsportazioneFattureToolStripMenuItem.Text = "Esportazione Fatture"
         '
         'WindowsMenu
         '
         Me.WindowsMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CascadeToolStripMenuItem, Me.TileVerticalToolStripMenuItem, Me.TileHorizontalToolStripMenuItem, Me.CloseAllToolStripMenuItem})
         Me.WindowsMenu.Name = "WindowsMenu"
-        Me.WindowsMenu.Size = New System.Drawing.Size(88, 19)
+        Me.WindowsMenu.Size = New System.Drawing.Size(79, 19)
         Me.WindowsMenu.Text = "&Finestre"
         '
         'CascadeToolStripMenuItem
@@ -377,7 +399,7 @@ Partial Class MDIParent1
         '
         Me.ToolStripMenuItem5.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InformazioniSulSoftwareToolStripMenuItem, Me.InformazioniSullaLicenzaToolStripMenuItem, Me.ManualeToolStripMenuItem})
         Me.ToolStripMenuItem5.Name = "ToolStripMenuItem5"
-        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(88, 19)
+        Me.ToolStripMenuItem5.Size = New System.Drawing.Size(79, 19)
         Me.ToolStripMenuItem5.Text = "?"
         '
         'InformazioniSulSoftwareToolStripMenuItem
@@ -401,10 +423,10 @@ Partial Class MDIParent1
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripButton3, Me.ToolStripButton4})
-        Me.ToolStrip1.Location = New System.Drawing.Point(95, 705)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.connectButtonTCPIP, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripButton3, Me.ToolStripButton4})
+        Me.ToolStrip1.Location = New System.Drawing.Point(86, 801)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(913, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1050, 25)
         Me.ToolStrip1.TabIndex = 11
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -415,14 +437,15 @@ Partial Class MDIParent1
         Me.ToolStripLabel1.Size = New System.Drawing.Size(217, 22)
         Me.ToolStripLabel1.Text = "Connection Server TCP/IP Control Bar"
         '
-        'ToolStripButton1
+        'connectButtonTCPIP
         '
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(72, 22)
-        Me.ToolStripButton1.Text = "Connect"
-        Me.ToolStripButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.connectButtonTCPIP.CheckOnClick = True
+        Me.connectButtonTCPIP.Image = CType(resources.GetObject("connectButtonTCPIP.Image"), System.Drawing.Image)
+        Me.connectButtonTCPIP.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.connectButtonTCPIP.Name = "connectButtonTCPIP"
+        Me.connectButtonTCPIP.Size = New System.Drawing.Size(72, 22)
+        Me.connectButtonTCPIP.Text = "Connect"
+        Me.connectButtonTCPIP.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
         'ToolStripButton2
         '
@@ -466,12 +489,12 @@ Partial Class MDIParent1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1008, 730)
+        Me.ClientSize = New System.Drawing.Size(1136, 826)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
         Me.Name = "MDIParent1"
-        Me.Text = "MDIParent1"
+        Me.Text = "GeVen 2015 Standard Edition main menù"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
@@ -531,11 +554,14 @@ Partial Class MDIParent1
     Friend WithEvents ManualeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents connectButtonTCPIP As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ClassiArticoloToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EsportazioneAnagraficheToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EsportazioneFattureToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

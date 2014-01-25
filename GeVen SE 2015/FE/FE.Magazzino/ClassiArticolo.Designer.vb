@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Magazzini
+Partial Class ClassiArticolo
     Inherits System.Windows.Forms.Form
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
@@ -23,8 +23,7 @@ Partial Class Magazzini
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.azienda = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.magazzino = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.classe = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.denominazione = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -35,23 +34,17 @@ Partial Class Magazzini
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.azienda, Me.magazzino, Me.denominazione})
-        Me.DataGridView1.Location = New System.Drawing.Point(13, 64)
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.classe, Me.denominazione})
+        Me.DataGridView1.Location = New System.Drawing.Point(13, 55)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(587, 174)
+        Me.DataGridView1.Size = New System.Drawing.Size(659, 150)
         Me.DataGridView1.TabIndex = 0
         '
-        'azienda
+        'classe
         '
-        Me.azienda.HeaderText = "Azienda"
-        Me.azienda.Name = "azienda"
-        Me.azienda.Width = 51
-        '
-        'magazzino
-        '
-        Me.magazzino.HeaderText = "Magazzino"
-        Me.magazzino.Name = "magazzino"
-        Me.magazzino.Width = 83
+        Me.classe.HeaderText = "Classe"
+        Me.classe.Name = "classe"
+        Me.classe.Width = 63
         '
         'denominazione
         '
@@ -59,20 +52,19 @@ Partial Class Magazzini
         Me.denominazione.Name = "denominazione"
         Me.denominazione.Width = 105
         '
-        'Magazzini
+        'ClassiArticolo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(612, 251)
+        Me.ClientSize = New System.Drawing.Size(684, 226)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Name = "Magazzini"
-        Me.Text = "Magazzini"
+        Me.Name = "ClassiArticolo"
+        Me.Text = "Classi Articolo"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents azienda As System.Windows.Forms.DataGridViewComboBoxColumn
-    Friend WithEvents magazzino As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents classe As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents denominazione As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

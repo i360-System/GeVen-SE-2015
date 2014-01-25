@@ -9,13 +9,13 @@ Imports System.Runtime.InteropServices
 ' Controllare i valori degli attributi dell'assembly
 
 <Assembly: AssemblyTitle("GeVen SE 2015")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyDescription("GeVen Standard Edition 2015")> 
+<Assembly: AssemblyCompany("I360-sYSTEM")> 
 <Assembly: AssemblyProduct("GeVen SE 2015")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
 <Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'Se il progetto viene esposto a COM, il GUID seguente verrà utilizzato come ID della libreria dei tipi
 <Assembly: Guid("b467b912-d963-4543-aaa9-9b6cad182e19")> 

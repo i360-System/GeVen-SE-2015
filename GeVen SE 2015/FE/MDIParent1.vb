@@ -1,24 +1,19 @@
 ﻿Imports System.Windows.Forms
+Imports System.Net.Sockets
+Imports System.Net
 
 Public Class MDIParent1
 
-    Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
-        ' Crea una nuova istanza del form figlio.
-        Dim ChildForm As New System.Windows.Forms.Form
-        ' Imposta il form come figlio di questo form MDI prima di visualizzarlo.
-        ChildForm.MdiParent = Me
 
-        m_ChildFormNumber += 1
-        ChildForm.Text = "Finestra " & m_ChildFormNumber
+    Private _Connection As ConnectionInfo
+    Private _ServerAddress As IPAddress
 
-        ChildForm.Show()
-    End Sub
 
     Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.LayoutMdi(MdiLayout.ArrangeIcons)
     End Sub
 
-    Private m_ChildFormNumber As Integer
+
 
 #Region "menù"
 
@@ -274,6 +269,111 @@ Public Class MDIParent1
 
 #Region "Magazzino"
 
+    ''' <summary>
+    ''' Apre Movimenti.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub MovimentiToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MovimentiToolStripMenuItem.Click
+        Dim NewMDIChild As Movimenti
+        NewMDIChild = Movimenti.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre generazioneinventario.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub GenerazioneInventarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerazioneInventarioToolStripMenuItem.Click
+        Dim NewMDIChild As GenerazioneInventario
+        NewMDIChild = GenerazioneInventario.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre Magazzini
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub TabelleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TabelleToolStripMenuItem.Click
+        Dim NewMDIChild As Magazzini
+        NewMDIChild = Magazzini.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre articoli
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub ArticoliToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArticoliToolStripMenuItem.Click
+        Dim NewMDIChild As Articoli
+        NewMDIChild = Articoli.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre listinoArticoli.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub ScontiFornitoreToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ScontiFornitoreToolStripMenuItem.Click
+        Dim NewMDIChild As ListinoArticoli
+        NewMDIChild = ListinoArticoli.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre PrezziAcquisto.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub PrezziAcquistoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrezziAcquistoToolStripMenuItem.Click
+        Dim NewMDIChild As PrezziAcquisto
+        NewMDIChild = PrezziAcquisto.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre ClassiArticolo
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub ClassiArticoloToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClassiArticoloToolStripMenuItem.Click
+        Dim NewMDIChild As ClassiArticolo
+        NewMDIChild = ClassiArticolo.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
 #End Region
 
 #Region "Strumenti"
@@ -287,6 +387,36 @@ Public Class MDIParent1
     Private Sub OpzioniToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles OpzioniToolStripMenuItem1.Click
         Dim NewMDIChild As Opzioni
         NewMDIChild = Opzioni.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre EsportazioneAnagrafiche.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub EsportazioneAnagraficheToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EsportazioneAnagraficheToolStripMenuItem.Click
+        Dim NewMDIChild As EsportazioneAnagrafiche
+        NewMDIChild = EsportazioneAnagrafiche.Istanza
+        'Set the Parent Form of the Child window.
+        NewMDIChild.MdiParent = Me
+        'Display the new form.
+        NewMDIChild.Show()
+    End Sub
+
+    ''' <summary>
+    ''' Apre EsportazioneFatture.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub EsportazioneFattureToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EsportazioneFattureToolStripMenuItem.Click
+        Dim NewMDIChild As EsportazioneFatture
+        NewMDIChild = EsportazioneFatture.Istanza
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -338,9 +468,148 @@ Public Class MDIParent1
 
 #End Region
 
+#Region "Menù di connessione"
+
+    Dim porta As String = "0" ' da cambiare
+    Private Sub ConnectButtonTCPIP_CheckedChanged(sender As Object, e As System.EventArgs) Handles connectButtonTCPIP.CheckedChanged
+        If connectButtonTCPIP.Checked Then
+            If _ServerAddress IsNot Nothing Then
+                connectButtonTCPIP.Text = "Disconnect"
+                'ConnectButtonTCPIP.Image = My.Resources.Disconnect
+                Try
+                    _Connection = New ConnectionInfo(_ServerAddress, CInt(porta), AddressOf InvokeAppendOutput)
+                    _Connection.AwaitData()
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Error Connecting to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    connectButtonTCPIP.Checked = False
+                End Try
+            Else
+                MessageBox.Show("Invalid server name or address.", "Cannot Connect to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                connectButtonTCPIP.Checked = False
+            End If
+        Else
+            connectButtonTCPIP.Text = "Connect"
+            'ConnectButtonTCPIP.Image = My.Resources.Connect
+            If _Connection IsNot Nothing Then _Connection.Close()
+            _Connection = Nothing
+        End If
+    End Sub
+
+    'The InvokeAppendOutput method could easily be replaced with a lambda method passed 
+    'to the ConnectionInfo contstructor in the ConnectButton_CheckChanged event handler 
+    Private Sub InvokeAppendOutput(message As String)
+        Dim doAppendOutput As New Action(Of String)(AddressOf AppendOutput)
+        Me.Invoke(doAppendOutput, message)
+    End Sub
+
+    'Private Sub PortTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles PortTextBox.Validating
+    '    Dim deltaPort As Integer
+    '    If Not Integer.TryParse(porta, deltaPort) OrElse deltaPort < 1 OrElse deltaPort > 65535 Then
+    '        MessageBox.Show("Port number must be an integer between 1 and 65535.", "Invalid Port Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+    '        'porta.SelectAll()
+    '        e.Cancel = True
+    '    End If
+    'End Sub
+
+    Private Sub AppendOutput(message As String)
+        'If RichTextBox1.TextLength > 0 Then
+        '    RichTextBox1.AppendText(ControlChars.NewLine)
+        'End If
+        'RichTextBox1.AppendText(message)
+        'RichTextBox1.ScrollToCaret()
+    End Sub
+
+#End Region
+
+End Class
+
+
+
+
+
+
+'Encapuslates the client connection and provides a state object for async read operations 
+Public Class ConnectionInfo
+    Private _AppendMethod As Action(Of String)
+    Public ReadOnly Property AppendMethod As Action(Of String)
+        Get
+            Return _AppendMethod
+        End Get
+    End Property
+
+    Private _Client As TcpClient
+    Public ReadOnly Property Client As TcpClient
+        Get
+            Return _Client
+        End Get
+    End Property
+
+    Private _Stream As NetworkStream
+    Public ReadOnly Property Stream As NetworkStream
+        Get
+            Return _Stream
+        End Get
+    End Property
+
+    Private _LastReadLength As Integer
+    Public ReadOnly Property LastReadLength As Integer
+        Get
+            Return _LastReadLength
+        End Get
+    End Property
+
+    Private _Buffer(63) As Byte
+
+    Public Sub New(address As IPAddress, port As Integer, append As Action(Of String))
+        _AppendMethod = append
+        _Client = New TcpClient
+        _Client.Connect(address, port)
+        _Stream = _Client.GetStream
+    End Sub
+
+    Public Sub AwaitData()
+        _Stream.BeginRead(_Buffer, 0, _Buffer.Length, AddressOf DoReadData, Me)
+    End Sub
+
+    Public Sub Close()
+        If _Client IsNot Nothing Then _Client.Close()
+        _Client = Nothing
+        _Stream = Nothing
+    End Sub
+
+    Private Sub DoReadData(result As IAsyncResult)
+        Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
+        Try
+            If info._Stream IsNot Nothing AndAlso info._Stream.CanRead Then
+                info._LastReadLength = info._Stream.EndRead(result)
+                If info._LastReadLength > 0 Then
+                    Dim message As String = System.Text.Encoding.ASCII.GetString(info._Buffer)
+                    info._AppendMethod(message)
+                End If
+                info.AwaitData()
+            End If
+        Catch ex As Exception
+            info._LastReadLength = -1
+            info._AppendMethod(ex.Message)
+        End Try
+    End Sub
 End Class
 
 #Region "codice commentato"
+
+'Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
+'    ' Crea una nuova istanza del form figlio.
+'    Dim ChildForm As New System.Windows.Forms.Form
+'    ' Imposta il form come figlio di questo form MDI prima di visualizzarlo.
+'    ChildForm.MdiParent = Me
+
+'    m_ChildFormNumber += 1
+'    ChildForm.Text = "Finestra " & m_ChildFormNumber
+
+'    ChildForm.Show()
+'End Sub
+'Private m_ChildFormNumber As Integer
+
 'Private Sub OpenFile(ByVal sender As Object, ByVal e As EventArgs)
 '    Dim OpenFileDialog As New OpenFileDialog
 '    OpenFileDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments

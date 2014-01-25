@@ -13,6 +13,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -61,11 +61,10 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\MySQL\Connector NET 6.7.4\Assemblies\v4.5\MySql.Data.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -90,12 +89,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Explorer1.Designer.vb">
-      <DependentUpon>Explorer1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Explorer1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FE\FE.Help\AboutBox1.Designer.vb">
       <DependentUpon>AboutBox1.vb</DependentUpon>
     </Compile>
@@ -180,10 +173,16 @@
     <Compile Include="FE\FE.Magazzino\Articoli.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FE\FE.Magazzino\Fornitori.Designer.vb">
-      <DependentUpon>Fornitori.vb</DependentUpon>
+    <Compile Include="FE\FE.Magazzino\ClassiArticolo.Designer.vb">
+      <DependentUpon>ClassiArticolo.vb</DependentUpon>
     </Compile>
-    <Compile Include="FE\FE.Magazzino\Fornitori.vb">
+    <Compile Include="FE\FE.Magazzino\ClassiArticolo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\ListinoArticoli.Designer.vb">
+      <DependentUpon>ListinoArticoli.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Magazzino\ListinoArticoli.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FE\FE.Magazzino\GenerazioneInventario.Designer.vb">
@@ -210,10 +209,16 @@
     <Compile Include="FE\FE.Magazzino\PrezziAcquisto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FE\FE.Strumenti\TrasferimentoFattureCommercialista.Designer.vb">
-      <DependentUpon>TrasferimentoFattureCommercialista.vb</DependentUpon>
+    <Compile Include="FE\FE.Strumenti\EsportazioneAnagrafiche.Designer.vb">
+      <DependentUpon>EsportazioneAnagrafiche.vb</DependentUpon>
     </Compile>
-    <Compile Include="FE\FE.Strumenti\TrasferimentoFattureCommercialista.vb">
+    <Compile Include="FE\FE.Strumenti\EsportazioneAnagrafiche.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\EsportazioneFatture.Designer.vb">
+      <DependentUpon>EsportazioneFatture.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\EsportazioneFatture.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FE\LoginForm1.Designer.vb">
@@ -287,9 +292,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Explorer1.resx">
-      <DependentUpon>Explorer1.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Anagrafiche\AgentiRappresentanti.resx">
       <DependentUpon>AgentiRappresentanti.vb</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +337,33 @@
     <EmbeddedResource Include="FE\FE.Help\AboutBox2.resx">
       <DependentUpon>AboutBox2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\Articoli.resx">
+      <DependentUpon>Articoli.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\ClassiArticolo.resx">
+      <DependentUpon>ClassiArticolo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\GenerazioneInventario.resx">
+      <DependentUpon>GenerazioneInventario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\ListinoArticoli.resx">
+      <DependentUpon>ListinoArticoli.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\Magazzini.resx">
+      <DependentUpon>Magazzini.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\Movimenti.resx">
+      <DependentUpon>Movimenti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Magazzino\PrezziAcquisto.resx">
+      <DependentUpon>PrezziAcquisto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Strumenti\EsportazioneAnagrafiche.resx">
+      <DependentUpon>EsportazioneAnagrafiche.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Strumenti\EsportazioneFatture.resx">
+      <DependentUpon>EsportazioneFatture.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FE\LoginForm1.resx">
       <DependentUpon>LoginForm1.vb</DependentUpon>
     </EmbeddedResource>
@@ -364,6 +393,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

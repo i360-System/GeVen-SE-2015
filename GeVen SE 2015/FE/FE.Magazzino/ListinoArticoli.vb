@@ -1,4 +1,4 @@
-﻿Public Class Articoli
+﻿Public Class ListinoArticoli
 
     Private Sub New()
 
@@ -10,10 +10,10 @@
 
     End Sub
 
-    Private Shared Ist As Articoli = Nothing
-    Public Shared Function Istanza() As Articoli
+    Private Shared Ist As ListinoArticoli = Nothing
+    Public Shared Function Istanza() As ListinoArticoli
         If Ist Is Nothing OrElse Ist.IsDisposed = True Then
-            Ist = New Articoli
+            Ist = New ListinoArticoli
         End If
         Ist.BringToFront()
         Return Ist

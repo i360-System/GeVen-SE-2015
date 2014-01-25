@@ -1,4 +1,4 @@
-﻿Public Class Articoli
+﻿Public Class EsportazioneFatture
 
     Private Sub New()
 
@@ -10,10 +10,10 @@
 
     End Sub
 
-    Private Shared Ist As Articoli = Nothing
-    Public Shared Function Istanza() As Articoli
+    Private Shared Ist As EsportazioneFatture = Nothing
+    Public Shared Function Istanza() As EsportazioneFatture
         If Ist Is Nothing OrElse Ist.IsDisposed = True Then
-            Ist = New Articoli
+            Ist = New EsportazioneFatture
         End If
         Ist.BringToFront()
         Return Ist
