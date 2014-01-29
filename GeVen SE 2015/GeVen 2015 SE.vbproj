@@ -284,6 +284,8 @@
     <Compile Include="FE\FE.Strumenti\Opzioni.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="serializzatore.vb" />
+    <Compile Include="Services.vb" />
     <Compile Include="UC\Navigatore.Designer.vb">
       <DependentUpon>Navigatore.vb</DependentUpon>
     </Compile>

@@ -39,15 +39,16 @@ Partial Class Navigatore
         Me.conferma = New System.Windows.Forms.ToolStripButton()
         Me.esci = New System.Windows.Forms.ToolStripButton()
         Me.stampa = New System.Windows.Forms.ToolStripButton()
+        Me.modifica = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.inserisci, Me.ricerca, Me.cancella, Me.cancellatutto, Me.ToolStripSeparator1, Me.indietro, Me.avanti, Me.primo, Me.ultimo, Me.ToolStripSeparator2, Me.annulla, Me.ToolStripSeparator3, Me.conferma, Me.esci, Me.stampa})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.inserisci, Me.ricerca, Me.modifica, Me.cancella, Me.cancellatutto, Me.ToolStripSeparator1, Me.indietro, Me.avanti, Me.primo, Me.ultimo, Me.ToolStripSeparator2, Me.annulla, Me.ToolStripSeparator3, Me.conferma, Me.esci, Me.stampa})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(728, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(752, 25)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -75,6 +76,7 @@ Partial Class Navigatore
         '
         'cancella
         '
+        Me.cancella.Enabled = False
         Me.cancella.Image = CType(resources.GetObject("cancella.Image"), System.Drawing.Image)
         Me.cancella.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cancella.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -86,6 +88,7 @@ Partial Class Navigatore
         '
         'cancellatutto
         '
+        Me.cancellatutto.Enabled = False
         Me.cancellatutto.Image = CType(resources.GetObject("cancellatutto.Image"), System.Drawing.Image)
         Me.cancellatutto.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.cancellatutto.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -102,6 +105,7 @@ Partial Class Navigatore
         '
         'indietro
         '
+        Me.indietro.Enabled = False
         Me.indietro.Image = CType(resources.GetObject("indietro.Image"), System.Drawing.Image)
         Me.indietro.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.indietro.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -113,6 +117,7 @@ Partial Class Navigatore
         '
         'avanti
         '
+        Me.avanti.Enabled = False
         Me.avanti.Image = CType(resources.GetObject("avanti.Image"), System.Drawing.Image)
         Me.avanti.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.avanti.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -124,6 +129,7 @@ Partial Class Navigatore
         '
         'primo
         '
+        Me.primo.Enabled = False
         Me.primo.Image = CType(resources.GetObject("primo.Image"), System.Drawing.Image)
         Me.primo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.primo.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -135,6 +141,7 @@ Partial Class Navigatore
         '
         'ultimo
         '
+        Me.ultimo.Enabled = False
         Me.ultimo.Image = CType(resources.GetObject("ultimo.Image"), System.Drawing.Image)
         Me.ultimo.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ultimo.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -151,6 +158,7 @@ Partial Class Navigatore
         '
         'annulla
         '
+        Me.annulla.Enabled = False
         Me.annulla.Image = CType(resources.GetObject("annulla.Image"), System.Drawing.Image)
         Me.annulla.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.annulla.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -167,6 +175,7 @@ Partial Class Navigatore
         '
         'conferma
         '
+        Me.conferma.Enabled = False
         Me.conferma.Image = CType(resources.GetObject("conferma.Image"), System.Drawing.Image)
         Me.conferma.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.conferma.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -189,6 +198,7 @@ Partial Class Navigatore
         '
         'stampa
         '
+        Me.stampa.Enabled = False
         Me.stampa.Image = CType(resources.GetObject("stampa.Image"), System.Drawing.Image)
         Me.stampa.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.stampa.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -198,13 +208,23 @@ Partial Class Navigatore
         Me.stampa.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.stampa.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
         '
+        'modifica
+        '
+        Me.modifica.Enabled = False
+        Me.modifica.Image = CType(resources.GetObject("modifica.Image"), System.Drawing.Image)
+        Me.modifica.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.modifica.Name = "modifica"
+        Me.modifica.Size = New System.Drawing.Size(74, 22)
+        Me.modifica.Text = "&Modifica"
+        '
         'Navigatore
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Transparent
         Me.Controls.Add(Me.ToolStrip1)
         Me.Name = "Navigatore"
-        Me.Size = New System.Drawing.Size(728, 51)
+        Me.Size = New System.Drawing.Size(752, 46)
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -227,5 +247,6 @@ Partial Class Navigatore
     Friend WithEvents conferma As System.Windows.Forms.ToolStripButton
     Friend WithEvents esci As System.Windows.Forms.ToolStripButton
     Friend WithEvents stampa As System.Windows.Forms.ToolStripButton
+    Friend WithEvents modifica As System.Windows.Forms.ToolStripButton
 
 End Class

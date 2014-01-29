@@ -470,7 +470,7 @@ Public Class MDIParent1
 
 #Region "Menù di connessione"
 
-    Dim porta As String = "0" ' da cambiare
+    Dim porta As String = "22490" ' da cambiare
     Private Sub ConnectButtonTCPIP_CheckedChanged(sender As Object, e As System.EventArgs) Handles connectButtonTCPIP.CheckedChanged
         If connectButtonTCPIP.Checked Then
             If _ServerAddress IsNot Nothing Then
@@ -479,6 +479,7 @@ Public Class MDIParent1
                 Try
                     _Connection = New ConnectionInfo(_ServerAddress, CInt(porta), AddressOf InvokeAppendOutput)
                     _Connection.AwaitData()
+                    Timer1.Enabled = True
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, "Error Connecting to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     connectButtonTCPIP.Checked = False
@@ -519,7 +520,48 @@ Public Class MDIParent1
         'RichTextBox1.ScrollToCaret()
     End Sub
 
+
+    Private Sub ServerTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ServerTextBox.Validating
+        _ServerAddress = Nothing
+        Dim remoteHost As IPHostEntry = Dns.GetHostEntry(ServerTextBox.Text)
+        If remoteHost IsNot Nothing AndAlso remoteHost.AddressList.Length > 0 Then
+            For Each deltaAddress As IPAddress In remoteHost.AddressList
+                If deltaAddress.AddressFamily = AddressFamily.InterNetwork Then
+                    _ServerAddress = deltaAddress
+                    Exit For
+                End If
+            Next
+        End If
+        If _ServerAddress Is Nothing Then
+            MessageBox.Show("Cannot resolve server address.", "Invalid Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            'ServerTextBox.SelectAll()
+            e.Cancel = True
+        End If
+    End Sub
+
+
+    'Private Sub SendButton_Click(sender As System.Object, e As System.EventArgs) Handles SendButton.Click
+    '    If _Connection IsNot Nothing AndAlso _Connection.Client.Connected AndAlso _Connection.Stream IsNot Nothing Then
+    '        Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("ciao") 'InputTextBox.Text con ciao
+    '        _Connection.Stream.Write(buffer, 0, buffer.Length)
+    '    End If
+    'End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If _Connection Is Nothing Or _Connection.Client.Connected = False Or _Connection.Stream Is Nothing Or _Connection.Stream.CanWrite = False Then
+
+            'image
+            Timer1.Enabled = False
+            connectButtonTCPIP.Checked = True
+            connectButtonTCPIP.Text = "Connect"
+            MsgBox("Connessione persa con il server, riconnettersi.")
+        Else
+            Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryconnect-->") 'InputTextBox.Text con ciao
+            _Connection.Stream.Write(buffer, 0, buffer.Length)
+        End If
+    End Sub
 #End Region
+
 
 End Class
 

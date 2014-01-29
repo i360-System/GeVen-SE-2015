@@ -23,6 +23,7 @@ Partial Class MDIParent1
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MDIParent1))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -78,12 +79,14 @@ Partial Class MDIParent1
         Me.ManualeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.ServerTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.connectButtonTCPIP = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -423,7 +426,7 @@ Partial Class MDIParent1
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.connectButtonTCPIP, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripButton3, Me.ToolStripButton4})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ServerTextBox, Me.connectButtonTCPIP, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripButton3, Me.ToolStripButton4})
         Me.ToolStrip1.Location = New System.Drawing.Point(86, 801)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1050, 25)
@@ -436,6 +439,11 @@ Partial Class MDIParent1
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
         Me.ToolStripLabel1.Size = New System.Drawing.Size(217, 22)
         Me.ToolStripLabel1.Text = "Connection Server TCP/IP Control Bar"
+        '
+        'ServerTextBox
+        '
+        Me.ServerTextBox.Name = "ServerTextBox"
+        Me.ServerTextBox.Size = New System.Drawing.Size(100, 25)
         '
         'connectButtonTCPIP
         '
@@ -484,6 +492,10 @@ Partial Class MDIParent1
         Me.ToolStripButton4.Name = "ToolStripButton4"
         Me.ToolStripButton4.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton4.Text = "ToolStripButton4"
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 5000
         '
         'MDIParent1
         '
@@ -563,5 +575,7 @@ Partial Class MDIParent1
     Friend WithEvents ClassiArticoloToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EsportazioneAnagraficheToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EsportazioneFattureToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ServerTextBox As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 
 End Class

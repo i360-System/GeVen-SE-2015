@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeVen 2015 SE", "GeVen 2015 SE.vbproj", "{8B2BD378-8C15-43FA-902F-77828BE181E2}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeVen 2015 SE Server", "..\GeVen SE 2015 Server\GeVen 2015 SE Server.vbproj", "{7D154663-748E-44FF-B597-1FE5E6392213}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeVen 2015 SE Server", "GeVen 2015 SE Server.vbproj", "{7D154663-748E-44FF-B597-1FE5E6392213}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8B2BD378-8C15-43FA-902F-77828BE181E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B2BD378-8C15-43FA-902F-77828BE181E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B2BD378-8C15-43FA-902F-77828BE181E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B2BD378-8C15-43FA-902F-77828BE181E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D154663-748E-44FF-B597-1FE5E6392213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D154663-748E-44FF-B597-1FE5E6392213}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D154663-748E-44FF-B597-1FE5E6392213}.Release|Any CPU.ActiveCfg = Release|Any CPU

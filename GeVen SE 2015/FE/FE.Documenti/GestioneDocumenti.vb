@@ -18,4 +18,68 @@
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
 
     End Sub
+
+    Public Function clickMenu(ByVal valoreClick As Integer) As Boolean
+
+
+        Select Case valoreClick
+            Case 0 'inserisci
+                serializzatore.azzeraTuttiCampi(Me)
+            Case 1 'ricerca
+                'raccolgo i valori che ho scritto nei campi 
+                Dim listaCampiValoriSelect As New List(Of List(Of String))
+                listaCampiValoriSelect = serializzatore.raccogliValori(Me)
+                'chiamo il server e gli passo i valori della query
+                Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, Me.Name.ToString)
+                'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
+
+                'altrimenti restituisco false e informo l'utente che la ricerca n on è andata bene
+            Case 2 To 12
+                Return True
+        End Select
+
+    End Function
+
+
+    ''' <summary>
+    ''' autocompletamento su combo/text
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub autoCompletamento()
+        Dim arrSource As New AutoCompleteStringCollection
+
+        '-2 perchè l'ultima riga è quella vuota
+        For i As Integer = 0 To DataGridView1.RowCount - 2
+            arrSource.Add(DataGridView1(0, i).Value.ToString)
+            ComboBoxAzienda.Items.Add(DataGridView1(0, i).Value.ToString)
+        Next
+
+        'aggiungo agli items e ricevo anche il suggerimento
+        'se non devo ordinare gli items posso impostare il DataSource
+        'ComboBox1.DataSource=arrSource
+        ComboBoxAzienda.Sorted = True
+        ComboBoxAzienda.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        ComboBoxAzienda.AutoCompleteSource = AutoCompleteSource.ListItems
+        ComboBoxAzienda.SelectedIndex = -1
+
+        'ho solo il suggerimento
+        ComboBoxEsercizio.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        ComboBoxEsercizio.AutoCompleteSource = AutoCompleteSource.CustomSource
+        ComboBoxEsercizio.AutoCompleteCustomSource = arrSource
+
+        'textbox
+        TextBoxNumeroDocumento.AutoCompleteMode = AutoCompleteMode.SuggestAppend
+        TextBoxNumeroDocumento.AutoCompleteSource = AutoCompleteSource.CustomSource
+        TextBoxNumeroDocumento.AutoCompleteCustomSource = arrSource
+    End Sub
+
+    Private Sub Navigatore1_Load(sender As Object, e As EventArgs)
+
+    End Sub
+End Class
+
+Public Class prov
+
+
+
 End Class
