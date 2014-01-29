@@ -236,6 +236,7 @@ Public Class ConnectionInfo
                     info._DataQueue.Enqueue(info._Buffer(index))
                 Next
 
+
                 'The example responds to all data reception with the number of bytes received; 
                 'you would likely change this behavior when implementing your own protocol. 
                 'info.SendMessage("Received " & info._LastReadLength & " Bytes")
