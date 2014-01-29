@@ -81,7 +81,11 @@
 
 #End Region
 
-
+    ''' <summary>
+    ''' Aggiorna lo stato dei bottoni del menu user control
+    ''' </summary>
+    ''' <param name="valClick"></param>
+    ''' <remarks></remarks>
     Private Sub aggiornaUserControl(ByVal valClick As Byte)
 
         Select Case valClick

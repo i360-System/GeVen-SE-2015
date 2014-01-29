@@ -21,22 +21,44 @@
 
     Public Function clickMenu(ByVal valoreClick As Integer) As Boolean
 
+        Dim res As Boolean = False
 
         Select Case valoreClick
+
             Case 0 'inserisci
+
                 serializzatore.azzeraTuttiCampi(Me)
+
             Case 1 'ricerca
+
                 'raccolgo i valori che ho scritto nei campi 
                 Dim listaCampiValoriSelect As New List(Of List(Of String))
                 listaCampiValoriSelect = serializzatore.raccogliValori(Me)
+
                 'chiamo il server e gli passo i valori della query
-                Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, Me.Name.ToString)
-                'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
+                Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "|" & Me.Name.ToString & "|")
+                Dim obj As Object = Me.ParentForm.FindForm()
+                If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
+                    serializzatore.comunica = True
+                    obj.IstruzioneDBServer(preselect)
+                    If serializzatore.comunica Then
+                        'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
+
+                    End If
+
+                Else
+                    serializzatore.comunica = False
+                    MsgBox("Non è stato possibile comunicare con il server. Provare a ricconnettersi")
+                End If
 
                 'altrimenti restituisco false e informo l'utente che la ricerca n on è andata bene
+
             Case 2 To 12
                 Return True
         End Select
+
+        res = serializzatore.comunica
+        Return res
 
     End Function
 

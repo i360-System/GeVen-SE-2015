@@ -470,14 +470,14 @@ Public Class MDIParent1
 
 #Region "Menù di connessione"
 
-    Dim porta As String = "22490" ' da cambiare
+    'Dim porta As String = "22490" ' da cambiare
     Private Sub ConnectButtonTCPIP_CheckedChanged(sender As Object, e As System.EventArgs) Handles connectButtonTCPIP.CheckedChanged
         If connectButtonTCPIP.Checked Then
             If _ServerAddress IsNot Nothing Then
                 connectButtonTCPIP.Text = "Disconnect"
                 'ConnectButtonTCPIP.Image = My.Resources.Disconnect
                 Try
-                    _Connection = New ConnectionInfo(_ServerAddress, CInt(porta), AddressOf InvokeAppendOutput)
+                    _Connection = New ConnectionInfo(_ServerAddress, CInt(My.Settings.porta), AddressOf InvokeAppendOutput)
                     _Connection.AwaitData()
                     Timer1.Enabled = True
                 Catch ex As Exception
@@ -528,6 +528,8 @@ Public Class MDIParent1
             For Each deltaAddress As IPAddress In remoteHost.AddressList
                 If deltaAddress.AddressFamily = AddressFamily.InterNetwork Then
                     _ServerAddress = deltaAddress
+                    My.Settings.ServerIP = Trim(ServerTextBox.Text)
+                    My.Settings.Save()
                     Exit For
                 End If
             Next
@@ -540,24 +542,30 @@ Public Class MDIParent1
     End Sub
 
 
+
     'Private Sub SendButton_Click(sender As System.Object, e As System.EventArgs) Handles SendButton.Click
-    '    If _Connection IsNot Nothing AndAlso _Connection.Client.Connected AndAlso _Connection.Stream IsNot Nothing Then
-    '        Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("ciao") 'InputTextBox.Text con ciao
-    '        _Connection.Stream.Write(buffer, 0, buffer.Length)
-    '    End If
-    'End Sub
+    Public Sub IstruzioneDBServer(ByVal istruzione As String)
+        If _Connection IsNot Nothing AndAlso _Connection.Client.Connected AndAlso _Connection.Stream IsNot Nothing Then
+            Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes(istruzione)
+            _Connection.Stream.Write(buffer, 0, buffer.Length)
+        Else
+            serializzatore.comunica = False
+            MsgBox("Non è stato possibile comunicare con il server. Provare a riconnettersi.")
+        End If
+    End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If _Connection Is Nothing Or _Connection.Client.Connected = False Or _Connection.Stream Is Nothing Or _Connection.Stream.CanWrite = False Then
 
             'image
             Timer1.Enabled = False
-            connectButtonTCPIP.Checked = True
+            connectButtonTCPIP.Checked = False
             connectButtonTCPIP.Text = "Connect"
             MsgBox("Connessione persa con il server, riconnettersi.")
         Else
-            Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryconnect-->") 'InputTextBox.Text con ciao
-            _Connection.Stream.Write(buffer, 0, buffer.Length)
+            IstruzioneDBServer("<--tryconnect-->")
+            'Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryconnect-->")
+            '_Connection.Stream.Write(buffer, 0, buffer.Length)
         End If
     End Sub
 #End Region
@@ -625,8 +633,12 @@ Public Class ConnectionInfo
             If info._Stream IsNot Nothing AndAlso info._Stream.CanRead Then
                 info._LastReadLength = info._Stream.EndRead(result)
                 If info._LastReadLength > 0 Then
+                    'otteniamo il dataset
+                    Dim p As New DataSet
+                    p= 
                     Dim message As String = System.Text.Encoding.ASCII.GetString(info._Buffer)
                     info._AppendMethod(message)
+
                 End If
                 info.AwaitData()
             End If

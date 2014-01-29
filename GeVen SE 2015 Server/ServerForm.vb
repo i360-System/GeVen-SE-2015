@@ -67,7 +67,7 @@ Public Class ServerForm
         Dim monitorInfo As MonitorInfo = CType(_ConnectionMontior.AsyncState, MonitorInfo)
 
         'Report progress 
-        Me.Invoke(doAppendOutput, "Monitor Started.")
+        Me.Invoke(doAppendOutput, "Monitor Started at " & Date.Today)
 
         'Implement client connection processing loop 
         Do
@@ -85,7 +85,7 @@ Public Class ServerForm
                         'Without a protocol we cannot know what constitutes a complete message, so 
                         'with multiple active clients we could see part of client1's first message, 
                         'then part of a message from client2, followed by the rest of client1's 
-                        'first message (assuming client1 sent more than 64 bytes). 
+                        'first message (assuming client1 sent more than 64 bytes). po
                         Dim messageBytes As New List(Of Byte)
                         While info.DataQueue.Count > 0
                             Dim value As Byte
@@ -127,6 +127,11 @@ Public Class ServerForm
         End If
         RichTextBox1.AppendText(message)
         RichTextBox1.ScrollToCaret()
+    End Sub
+
+    Private Sub StreamDataSet(ByVal objDataSet As Object, ByRef socket As Object, ByRef var As NetworkStream)
+
+
     End Sub
 
     Private Sub UpdateConnectionCountLabel()
@@ -233,13 +238,19 @@ Public Class ConnectionInfo
 
                 'The example responds to all data reception with the number of bytes received; 
                 'you would likely change this behavior when implementing your own protocol. 
-                info.SendMessage("Received " & info._LastReadLength & " Bytes")
+                'info.SendMessage("Received " & info._LastReadLength & " Bytes")
 
-                For Each otherInfo As ConnectionInfo In info.Monitor.Connections
-                    If Not otherInfo Is info Then
-                        otherInfo.SendMessage(System.Text.Encoding.ASCII.GetString(info._Buffer))
-                    End If
-                Next
+
+                ' a seconda del risultato della query mandaeremo o un xml ricostruibile o una istruzione stringa che i client interpretera
+                'info.SendDataSet()
+
+                ' ''''''manda a tutti il messaggio
+                'For Each otherInfo As ConnectionInfo In info.Monitor.Connections
+                '    If Not otherInfo Is info Then
+                '        otherInfo.SendMessage(System.Text.Encoding.ASCII.GetString(info._Buffer))
+                '    End If
+                'Next
+                ' '''''''''''''''''
 
                 info.AwaitData()
             Else
@@ -252,6 +263,33 @@ Public Class ConnectionInfo
             info._LastReadLength = -1
         End Try
     End Sub
+
+    Private Sub SendDataSet(ByRef var As NetworkStream, ByRef objDataset As DataSet)
+
+        If _Stream IsNot Nothing Then
+            'var = New NetworkStream(Socket)
+            Try
+                objDataset.WriteXml(_Stream)
+
+                'Dim messageData() As Byte = System.Text.Encoding.ASCII.GetBytes(Message)
+                'Stream.Write(messageData, 0, messageData.Length)
+                'Try
+                '    Using var
+
+                '        objDataset.WriteXml(var)
+
+                '    End Using
+            Catch ex As Exception
+
+            End Try
+        Else
+            MsgBox("Impossibile inviare i risultati della query.")
+        End If
+
+    End Sub
+
+
+
 
     Private Sub SendMessage(message As String)
         If _Stream IsNot Nothing Then

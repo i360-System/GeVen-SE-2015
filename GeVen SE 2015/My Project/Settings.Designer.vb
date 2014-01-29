@@ -53,6 +53,42 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("60")>  _
+        Public Property controlloSecondi() As Integer
+            Get
+                Return CType(Me("controlloSecondi"),Integer)
+            End Get
+            Set
+                Me("controlloSecondi") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property ServerIP() As String
+            Get
+                Return CType(Me("ServerIP"),String)
+            End Get
+            Set
+                Me("ServerIP") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property porta() As String
+            Get
+                Return CType(Me("porta"),String)
+            End Get
+            Set
+                Me("porta") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

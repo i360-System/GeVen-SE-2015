@@ -1,5 +1,7 @@
 ﻿Module serializzatore
 
+    Public comunica As Boolean = False
+
     ''' <summary>
     ''' Struttura con relative Query
     ''' </summary>
@@ -75,7 +77,7 @@
                                 listaRitorno.Add(listaCampoValore)
                             End If
                         Next
-                        
+
                     End If
 
                 Next
@@ -101,10 +103,10 @@
         Dim queryPreSelect As String = Nothing
 
         queryPreSelect = comandiInvioClient.sel & comandiInvioClient.sep
-        queryPreSelect = queryPreSelect & nomeTabella & comandiInvioClient.sep
+        queryPreSelect &= nomeTabella & comandiInvioClient.sep
 
         For Each lista As List(Of String) In CampiValori
-            queryPreSelect = queryPreSelect & "{"
+            queryPreSelect &= "{"
             For Each valore As String In lista
                 queryPreSelect &= valore & comandiInvioClient.sep
             Next
