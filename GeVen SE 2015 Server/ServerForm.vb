@@ -13,30 +13,29 @@ Public Class ServerForm
     ' Private _porta As String = ""
 
     Private Sub StartStopButton_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles StartStopButton.CheckedChanged
-        If StartStopButton.Checked Then
-            StartStopButton.Text = "Stop"
-            'StartStopButton.Image = My.Resources.Resources.StopServer
-            _Listener = New TcpListener(IPAddress.Any, CInt(PortTextBox.Text))
-            _Listener.Start()
-            Dim monitor As New MonitorInfo(_Listener, _Connections)
-            ListenForClient(monitor)
-            _ConnectionMontior = Task.Factory.StartNew(AddressOf DoMonitorConnections, monitor, TaskCreationOptions.LongRunning)
+        If validazionePorta() Then
+            If StartStopButton.Checked Then
+                StartStopButton.Text = "Stop"
+                'StartStopButton.Image = My.Resources.Resources.StopServer
+                _Listener = New TcpListener(IPAddress.Any, CInt(PortTextBox.Text))
+                _Listener.Start()
+                Dim monitor As New MonitorInfo(_Listener, _Connections)
+                ListenForClient(monitor)
+                _ConnectionMontior = Task.Factory.StartNew(AddressOf DoMonitorConnections, monitor, TaskCreationOptions.LongRunning)
+            Else
+                StartStopButton.Text = "Start"
+                'StartStopButton.Image = My.Resources.Resources.StartServer
+                CType(_ConnectionMontior.AsyncState, MonitorInfo).Cancel = True
+                _Listener.Stop()
+                _Listener = Nothing
+            End If
         Else
-            StartStopButton.Text = "Start"
-            'StartStopButton.Image = My.Resources.Resources.StartServer
-            CType(_ConnectionMontior.AsyncState, MonitorInfo).Cancel = True
-            _Listener.Stop()
-            _Listener = Nothing
+            MsgBox("Non è stata inserita una porta valida nelle opzioni.")
         End If
     End Sub
 
     Private Sub PortTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles PortTextBox.Validating
-        Dim deltaPort As Integer
-        If Not Integer.TryParse(PortTextBox.Text, deltaPort) OrElse deltaPort < 1 OrElse deltaPort > 65535 Then
-            MessageBox.Show("Port number must be an integer between 1 and 65535.", "Invalid Port Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            'PortTextBox.SelectAll()
-            e.Cancel = True
-        End If
+        
     End Sub
 
     Private Sub ListenForClient(monitor As MonitorInfo)
@@ -57,6 +56,20 @@ Public Class ServerForm
         End If
     End Sub
 
+    Private Function validazionePorta() As Boolean
+        Dim res As Boolean = True
+
+        Dim deltaPort As Integer
+        If Not Integer.TryParse(PortTextBox.Text, deltaPort) OrElse deltaPort < 1 OrElse deltaPort > 65535 Then
+            MessageBox.Show("Port number must be an integer between 1 and 65535.", "Invalid Port Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            'PortTextBox.SelectAll()
+            'e.Cancel = True
+            res = False
+        End If
+        Return res
+    End Function
+
+
     Private Sub DoMonitorConnections()
         'Create delegate for updating output display 
         Dim doAppendOutput As New Action(Of String)(AddressOf AppendOutput)
@@ -67,16 +80,18 @@ Public Class ServerForm
         Dim monitorInfo As MonitorInfo = CType(_ConnectionMontior.AsyncState, MonitorInfo)
 
         'Report progress 
-        Me.Invoke(doAppendOutput, "Monitor Started at " & Date.Today)
+        Me.Invoke(doAppendOutput, "Monitor Started at " & Date.Today) 'Avvio del server e scrittura nella text
 
+
+        'Qui continua a cilcare il server per aspettare le connesioni in ingresso, finche non si stoppa, lui cicla
         'Implement client connection processing loop 
         Do
             'Create temporary list for recording closed connections 
             Dim lostCount As Integer = 0
             'Examine each connection for processing 
             For index As Integer = monitorInfo.Connections.Count - 1 To 0 Step -1
-                Dim info As ConnectionInfo = monitorInfo.Connections(index)
-                If info.Client.Connected Then
+                Dim info As ConnectionInfo = monitorInfo.Connections(index) ' Da qui arriva la connesione del client
+                If info.Client.Connected Then ' se il client è connesso 
                     'Process connected client 
                     If info.DataQueue.Count > 0 Then
                         'The code in this If-Block should be modified to build 'message' objects 
@@ -121,7 +136,7 @@ Public Class ServerForm
     End Sub
 
     Private Sub AppendOutput(message As String)
-        If message = "<--tryconnect-->" Then Exit Sub
+        If Not InStr(message, "<--tryconnect-->") = 0 Then Exit Sub
         If RichTextBox1.TextLength > 0 Then
             RichTextBox1.AppendText(ControlChars.NewLine)
         End If
@@ -135,7 +150,7 @@ Public Class ServerForm
     End Sub
 
     Private Sub UpdateConnectionCountLabel()
-        'ConnectionCountLabel.Text = String.Format("{0} Connections", _Connections.Count)
+        ConnectionCountLabel.Text = String.Format("{0} Connections", _Connections.Count)
     End Sub
 
 End Class

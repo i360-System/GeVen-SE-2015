@@ -33,6 +33,7 @@ Partial Class ServerForm
         Me.StartStopButton = New System.Windows.Forms.ToolStripButton()
         Me.PortTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.ConnectionCountLabel = New System.Windows.Forms.ToolStripLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -81,7 +82,7 @@ Partial Class ServerForm
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StartStopButton, Me.PortTextBox})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StartStopButton, Me.PortTextBox, Me.ConnectionCountLabel})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 548)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -111,6 +112,11 @@ Partial Class ServerForm
         Me.RichTextBox1.TabIndex = 2
         Me.RichTextBox1.Text = ""
         '
+        'ConnectionCountLabel
+        '
+        Me.ConnectionCountLabel.Name = "ConnectionCountLabel"
+        Me.ConnectionCountLabel.Size = New System.Drawing.Size(0, 22)
+        '
         'ServerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -139,5 +145,6 @@ Partial Class ServerForm
     Friend WithEvents StartStopButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents PortTextBox As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
+    Friend WithEvents ConnectionCountLabel As System.Windows.Forms.ToolStripLabel
 
 End Class
