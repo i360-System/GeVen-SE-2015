@@ -36,7 +36,7 @@
                 listaCampiValoriSelect = serializzatore.raccogliValori(Me)
 
                 'chiamo il server e gli passo i valori della query
-                Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "|" & Me.Name.ToString & "|")
+                Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "«" & Me.Name.ToString & "»")
                 Dim obj As Object = Me.ParentForm.FindForm()
                 If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
                     serializzatore.comunica = True

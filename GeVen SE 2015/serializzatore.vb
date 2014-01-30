@@ -103,15 +103,18 @@
         Dim queryPreSelect As String = Nothing
 
         queryPreSelect = comandiInvioClient.sel & comandiInvioClient.sep
+
         queryPreSelect &= nomeTabella & comandiInvioClient.sep
 
+
+
         For Each lista As List(Of String) In CampiValori
-            queryPreSelect &= "{"
+            queryPreSelect &= "|"
             For Each valore As String In lista
                 queryPreSelect &= valore & comandiInvioClient.sep
             Next
             queryPreSelect = Left(queryPreSelect, queryPreSelect.Length - 1)
-            queryPreSelect &= "}"
+            queryPreSelect &= "|"
         Next
 
         Return queryPreSelect
