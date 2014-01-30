@@ -634,8 +634,8 @@ Public Class ConnectionInfo
                 info._LastReadLength = info._Stream.EndRead(result)
                 If info._LastReadLength > 0 Then
                     'otteniamo il dataset
-                    Dim p As New DataSet
-                    p= 
+                    'Dim p As New DataSet
+                    'p= 
                     Dim message As String = System.Text.Encoding.ASCII.GetString(info._Buffer)
                     info._AppendMethod(message)
 

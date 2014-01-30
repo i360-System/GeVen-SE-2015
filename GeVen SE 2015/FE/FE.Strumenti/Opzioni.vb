@@ -7,7 +7,7 @@
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
-
+        InizializzaValoriOpzioni()
     End Sub
 
     Private Shared Ist As Opzioni = Nothing
@@ -67,13 +67,21 @@
     ''' <remarks></remarks>
     Private Sub salva()
         With My.Settings
-            .controlloSecondi = Trim(TextBox1.Text)
+            .controlloSecondi = Trim(TextBoxControlloSecondi.Text)
             .ServerIP = Trim(TextBox2.Text)
             .porta = Trim(TextBox3.Text)
             .Save()
         End With
         MsgBox("Impostazioni salvate con successo")
 
+    End Sub
+
+    ''' <summary>
+    ''' Inizializza i valori delle opzioni caricando i dati salvati nei rispettivi text/combo, ogni volta che viene istanziato o tentato di istanziare il form opzioni
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub InizializzaValoriOpzioni()
+        TextBoxControlloSecondi.Text = My.Settings.controlloSecondi
     End Sub
 
 #End Region
