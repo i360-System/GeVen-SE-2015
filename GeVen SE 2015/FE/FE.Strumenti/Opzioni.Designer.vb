@@ -27,11 +27,11 @@ Partial Class Opzioni
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBoxPorta = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBoxServerIP = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -82,11 +82,11 @@ Partial Class Opzioni
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.TextBox3)
+        Me.GroupBox2.Controls.Add(Me.TextBoxPorta)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
+        Me.GroupBox2.Controls.Add(Me.TextBoxServerIP)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label2)
@@ -108,12 +108,12 @@ Partial Class Opzioni
         Me.Label8.TabIndex = 10
         Me.Label8.Text = "Porta"
         '
-        'TextBox3
+        'TextBoxPorta
         '
-        Me.TextBox3.Location = New System.Drawing.Point(84, 156)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(178, 20)
-        Me.TextBox3.TabIndex = 9
+        Me.TextBoxPorta.Location = New System.Drawing.Point(84, 156)
+        Me.TextBoxPorta.Name = "TextBoxPorta"
+        Me.TextBoxPorta.Size = New System.Drawing.Size(178, 20)
+        Me.TextBoxPorta.TabIndex = 9
         '
         'Label7
         '
@@ -145,12 +145,12 @@ Partial Class Opzioni
         Me.Label5.Text = "Inserire nella casella seguente, l'indirizzo ip del server o il nome host della m" & _
     "acchina sul quale è hostato il server."
         '
-        'TextBox2
+        'TextBoxServerIP
         '
-        Me.TextBox2.Location = New System.Drawing.Point(84, 101)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(178, 20)
-        Me.TextBox2.TabIndex = 5
+        Me.TextBoxServerIP.Location = New System.Drawing.Point(84, 101)
+        Me.TextBoxServerIP.Name = "TextBoxServerIP"
+        Me.TextBoxServerIP.Size = New System.Drawing.Size(178, 20)
+        Me.TextBoxServerIP.TabIndex = 5
         '
         'Label4
         '
@@ -276,10 +276,10 @@ Partial Class Opzioni
     Friend WithEvents TextBoxControlloSecondi As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxServerIP As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBoxPorta As System.Windows.Forms.TextBox
 End Class

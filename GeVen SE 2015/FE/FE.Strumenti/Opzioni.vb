@@ -30,7 +30,7 @@
     ''' <remarks></remarks>
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
-        If MsgBox("Si desidera uscire?") = vbYes Then
+        If MsgBox("Si desidera uscire?", vbYesNo) = vbYes Then
             Me.Dispose()
         End If
 
@@ -67,9 +67,9 @@
     ''' <remarks></remarks>
     Private Sub salva()
         With My.Settings
-            .controlloSecondi = Trim(TextBoxControlloSecondi.Text)
-            .ServerIP = Trim(TextBox2.Text)
-            .porta = Trim(TextBox3.Text)
+            .controlloSecondi = Trim(TextBoxControlloSecondi.Text) * 1000
+            .ServerIP = Trim(TextBoxServerIP.Text)
+            .porta = Trim(TextBoxPorta.Text)
             .Save()
         End With
         MsgBox("Impostazioni salvate con successo")
@@ -81,7 +81,9 @@
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub InizializzaValoriOpzioni()
-        TextBoxControlloSecondi.Text = My.Settings.controlloSecondi
+        TextBoxControlloSecondi.Text = My.Settings.controlloSecondi / 1000
+        TextBoxServerIP.Text = My.Settings.ServerIP
+        TextBoxPorta.Text = My.Settings.porta
     End Sub
 
 #End Region

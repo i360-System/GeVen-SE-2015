@@ -473,12 +473,14 @@ Public Class MDIParent1
     'Dim porta As String = "22490" ' da cambiare
     Private Sub ConnectButtonTCPIP_CheckedChanged(sender As Object, e As System.EventArgs) Handles connectButtonTCPIP.CheckedChanged
         If connectButtonTCPIP.Checked Then
+            ValidazioneIP()
             If _ServerAddress IsNot Nothing Then
                 connectButtonTCPIP.Text = "Disconnect"
                 'ConnectButtonTCPIP.Image = My.Resources.Disconnect
                 Try
                     _Connection = New ConnectionInfo(_ServerAddress, CInt(My.Settings.porta), AddressOf InvokeAppendOutput)
                     _Connection.AwaitData()
+                    Timer1.Interval = My.Settings.controlloSecondi
                     Timer1.Enabled = True
                 Catch ex As Exception
                     MessageBox.Show(ex.Message, "Error Connecting to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -521,24 +523,46 @@ Public Class MDIParent1
     End Sub
 
 
-    Private Sub ServerTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ServerTextBox.Validating
+    Private Sub ValidazioneIP()
+
         _ServerAddress = Nothing
-        Dim remoteHost As IPHostEntry = Dns.GetHostEntry(ServerTextBox.Text)
+        If My.Settings.ServerIP = "" Then Exit Sub
+        Dim remoteHost As IPHostEntry = Dns.GetHostEntry(My.Settings.ServerIP)
         If remoteHost IsNot Nothing AndAlso remoteHost.AddressList.Length > 0 Then
             For Each deltaAddress As IPAddress In remoteHost.AddressList
                 If deltaAddress.AddressFamily = AddressFamily.InterNetwork Then
                     _ServerAddress = deltaAddress
-                    My.Settings.ServerIP = Trim(ServerTextBox.Text)
-                    My.Settings.Save()
+                    'My.Settings.ServerIP = Trim(ServerTextBox.Text)
+                    'My.Settings.Save()
                     Exit For
                 End If
             Next
         End If
-        If _ServerAddress Is Nothing Then
-            MessageBox.Show("Cannot resolve server address.", "Invalid Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            'ServerTextBox.SelectAll()
-            e.Cancel = True
-        End If
+
+    End Sub
+
+    Private Sub ServerTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles ServerTextBox.Validating
+        '    ' If Not My.Settings.ServerIP = "" Then
+        '    _ServerAddress = Nothing
+        '    Dim remoteHost As IPHostEntry = Dns.GetHostEntry(ServerTextBox.Text)
+        '    If remoteHost IsNot Nothing AndAlso remoteHost.AddressList.Length > 0 Then
+        '        For Each deltaAddress As IPAddress In remoteHost.AddressList
+        '            If deltaAddress.AddressFamily = AddressFamily.InterNetwork Then
+        '                '                 _ServerAddress = deltaAddress
+        '                My.Settings.ServerIP = Trim(ServerTextBox.Text)
+        '                My.Settings.Save()
+        '                Exit For
+        '            End If
+        '        Next
+        '    End If
+
+        '    If _ServerAddress Is Nothing Then
+
+        '        MessageBox.Show("Cannot resolve server address.", "Invalid Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        '        'ServerTextBox.SelectAll()
+        '        e.Cancel = True
+        '    End If
+
     End Sub
 
 
