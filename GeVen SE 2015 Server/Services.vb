@@ -1,5 +1,11 @@
 ﻿Public Class Services
 
+    ''' <summary>
+    '''Costruisce la Query e la restituisce 
+    ''' </summary>
+    ''' <param name="preQuery"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function CostruttoreQuery(ByVal preQuery As String) As String
 
         Dim query As String = Nothing
@@ -18,11 +24,11 @@
 
         lunghezza = InStr(preQuery, ",")
         totalelunghezzaperCampiValori += lunghezza
-        istruzioni = Mid(preQuery, 1, lunghezza) ' recupero il tipo di query select, insert ect
-        stringaAppoggio = Mid(preQuery, lunghezza)
+        istruzioni = Mid(preQuery, 1, lunghezza - 1) ' recupero il tipo di query select, insert ect
+        stringaAppoggio = Mid(preQuery, lunghezza + 1)
         lunghezza = InStr(stringaAppoggio, ",")
         totalelunghezzaperCampiValori += lunghezza
-        preTabelle = Mid(stringaAppoggio, 1, lunghezza)
+        preTabelle = Mid(stringaAppoggio, 1, lunghezza - 1)
         numeroOccorrenze = numOccorrenze(preTabelle, "»", False)
         stringaAppoggio = Nothing
         stringaAppoggio = Mid(preQuery, totalelunghezzaperCampiValori)
@@ -30,81 +36,239 @@
         For i = 1 To numeroOccorrenze 'recupero le tabelle
 
             lunghezza = InStr(preTabelle, "»")
-            tabella = Mid(preTabelle, 2, lunghezza)
+            tabella = Mid(preTabelle, 2, (lunghezza - 2))
             tabelle.Add(tabella)
             If numeroOccorrenze - i = 0 Then Exit For
             preTabelle = Mid(preTabelle, lunghezza)
 
         Next
 
-        'recuper i campi e i valori
+        'recupero i campi e i valori
         numeroOccorrenze = numOccorrenze(stringaAppoggio, "►")
         lunghezza = InStr(stringaAppoggio, "►")
+        Dim lunghezzaIniziale = lunghezza
+        Dim taglia As Integer = 0
+        taglia = lunghezza
         For i = 1 To numeroOccorrenze
             Dim campiValoriPuliti As String = Nothing
 
-            campiValoriPuliti = Mid(stringaAppoggio, 2, lunghezza)
-            lunghezza = InStr(campiValoriPuliti, "↨")
-            Dim campo = Mid(campiValoriPuliti, 1, lunghezza)
-            campoValore.Add(campo) ' aggiungo il campo
-            valori = Mid(campiValoriPuliti, lunghezza)
-            numeroOccorrenze = numOccorrenze(valori, "↨")
+            If i = 1 Then
+                campiValoriPuliti = Mid(stringaAppoggio, 2, lunghezzaIniziale - 1)
+            Else
+                lunghezza = InStr(stringaAppoggio, "►")
+                taglia = lunghezza
+                campiValoriPuliti = Mid(stringaAppoggio, 1, lunghezza)
+            End If
 
+            lunghezza = InStr(campiValoriPuliti, "↨")
+            Dim campo = Mid(campiValoriPuliti, 2, lunghezza - 2)
+            campoValore.Add(campo) ' aggiungo il campo
+            valori = Mid(campiValoriPuliti, lunghezza + 1)
+            numeroOccorrenze = numOccorrenze(valori, "↨")
 
             For q = 0 To numeroOccorrenze
                 If q = numeroOccorrenze Then
-                    valore = valori
+                    valore = Left(valori, valori.Length - 1)
+                    'lunghezza = valori.Length
                 Else
                     lunghezza = InStr(valori, "↨")
                     valore = Mid(valori, 1, lunghezza)
                 End If
-
+                'taglia += lunghezza
                 campoValore.Add(valore)
-                valori = Mid(valori, lunghezza)
+                'valori = Mid(valori, lunghezza)
             Next
-
+            campiValori.Add(campoValore)
+            stringaAppoggio = Mid(stringaAppoggio, taglia + 1)
+            taglia = 0
         Next
         ''''''''''''''''''''''''''''''''''''''''''''''''''''raccolto i valori costruisco la query''''''''''
+        
+        Select Case istruzioni.ToLower
+
+            Case "«select»"
+
+                Select Case tabella.ToLower
+
+                    Case "gestionedocumenti"
+
+                        query = serializzatore.Query.selectGestioneDocumenti
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "agentirappresentati"
+
+                        query = serializzatore.Query.selectAgentiRappresentanti
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectanagrafica"
+
+                        query = serializzatore.Query.selectAnagrafica
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectcambiovaluta"
+
+                        query = serializzatore.Query.selectCambioValuta
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectcategorieclienti"
+
+                        query = serializzatore.Query.selectCategorieClienti
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectdatiaziende"
+
+                        query = serializzatore.Query.selectDatiAziende
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectdestinazionemerce"
+
+                        query = serializzatore.Query.selectDestinazioneMerce
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectgestioneannuali"
+
+                        query = serializzatore.Query.selectGestioneAnnuali
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectiva"
+
+                        query = serializzatore.Query.selectIva
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectmodalitapagamento"
+
+                        query = serializzatore.Query.selectModalitaPagamento
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectsconti"
+
+                        query = serializzatore.Query.selectSconti
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectspedizionieri"
+
+                        query = serializzatore.Query.selectSpedizionieri
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selecttipidocumento"
+
+                        query = serializzatore.Query.selectTipiDocumento
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectzonegeografiche"
+
+                        query = serializzatore.Query.selectZoneGeografiche
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectgestionefatturedocumenti"
+
+                        query = serializzatore.Query.selectGestioneFattureDocumenti
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectarticoli"
+
+                        query = serializzatore.Query.selectArticoli
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectclassiarticolo"
+
+                        query = serializzatore.Query.selectClassiArticolo
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectgenerazioneinventario"
+
+                        query = serializzatore.Query.selectGenerazioneInventario
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectlistinoarticoli"
+
+                        query = serializzatore.Query.selectListinoArticoli
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectmagazzini"
+
+                        query = serializzatore.Query.selectMagazzini
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectmovimenti"
+
+                        query = serializzatore.Query.selectMovimenti
+                        query &= WhereConditionSelect(campiValori)
+
+                    Case "selectprezziacquisto"
+
+                        query = serializzatore.Query.selectPrezziAcquisto
+                        query &= WhereConditionSelect(campiValori)
+
+                End Select
 
 
-        '''' | con ◄►
-        '''' , con ↨
+            Case "«insert»"
 
+                Select Case tabella.ToLower
 
+                End Select
+
+            Case "«update»"
+
+                Select Case tabella.ToLower
+
+                End Select
+
+            Case "«delete»"
+
+                Select Case tabella.ToLower
+
+                End Select
+
+            Case "«print»"
+
+                'todo
+
+        End Select
+
+        Return query
 
     End Function
 
-
-
+    ''' <summary>
+    ''' Calcola le occorrenze di un carattere dentro ad una stringa
+    ''' </summary>
+    ''' <param name="myStr"></param>
+    ''' <param name="myWord"></param>
+    ''' <param name="isCaseSensitive"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function numOccorrenze(ByVal myStr As String, ByVal myWord As String, Optional ByVal isCaseSensitive As Boolean = False) As Integer
-        '***********************************************************
-        ' Func: numOccorrenze
-        ' Desc: 
-        ' Par : myStr                   Sringa da verificare
-        '         myWord                Stringa da recuperare
-        '        [isCaseSensitive]    Boolean indicante se voglio il confronto Case Sensitive
-        ' Ret :                             Numero di occorrenze di myWord in myStr
-        ' Note: mySimbol             E' una stringa contenente l'elenco dei caratteri
-        '                                     da ignorare nel confronto, tipo la virgola a fine
-        '                                     parola o il punto ecc.
-        '***********************************************************
-        Dim myArray() As String = myStr.Split
-        Dim mySimbol As String = "" '",';.: !?"
-
         numOccorrenze = 0
-        For x As Integer = 0 To UBound(myArray)
-            'Pulisco l'array dai segni di punteggiatura
-            'For y As Integer = 0 To mySimbol.Length - 1
-            '    myArray(x) = myArray(x).Replace(mySimbol.Substring(y, 1), "")
-            'Next
-            'Confronto la stringa
-            If isCaseSensitive Then
-                If myArray(x).CompareTo(myWord) = 0 Then numOccorrenze += 1
-            Else
-                If myArray(x).ToUpper.CompareTo(myWord.ToUpper) = 0 Then numOccorrenze += 1
-            End If
+        For i = 0 To myStr.Length - 1
+
+            If myStr(i).CompareTo(myWord(0)) = 0 Then numOccorrenze += 1
+
         Next
+
         Return numOccorrenze
+    End Function
+
+    ''' <summary>
+    ''' Restituisce la where condition della select
+    ''' </summary>
+    ''' <param name="valore"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function WhereConditionSelect(ByVal valore As List(Of List(Of String)))
+        Dim res As String = Nothing
+        If valore.Count > 0 Then 'gestiamo l'eventuale where condition
+            res &= "where "
+            Dim qp As Integer = 0
+            For Each campoevalore In valore
+                qp += 1
+                res &= campoevalore(0).ToString & " = " & campoevalore(1).ToString
+                If valore.Count = qp Then Exit For
+                res &= " and "
+            Next
+        End If
+        Return res
     End Function
 
 End Class
