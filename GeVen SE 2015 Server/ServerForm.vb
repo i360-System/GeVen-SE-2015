@@ -43,11 +43,11 @@ Public Class ServerForm
         _Listener.BeginAcceptTcpClient(AddressOf DoAcceptClient, info)
     End Sub
 
-    Private Sub DoAcceptClient(result As IAsyncResult)
+    Private Sub DoAcceptClient(result As IAsyncResult) 'qui accetto il client
         Dim monitorInfo As MonitorInfo = CType(_ConnectionMontior.AsyncState, MonitorInfo)
         If monitorInfo.Listener IsNot Nothing AndAlso Not monitorInfo.Cancel Then
             Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
-            monitorInfo.Connections.Add(info)
+            monitorInfo.Connections.Add(info) ' qui aggiunge la connessione
             info.AcceptClient(result)
             ListenForClient(monitorInfo)
             info.AwaitData()
@@ -91,8 +91,10 @@ Public Class ServerForm
             'Examine each connection for processing 
             For index As Integer = monitorInfo.Connections.Count - 1 To 0 Step -1
                 Dim info As ConnectionInfo = monitorInfo.Connections(index) ' Da qui arriva la connesione del client
+                'If info
                 If info.Client.Connected Then ' se il client è connesso 
                     'Process connected client 
+
                     If info.DataQueue.Count > 0 Then
                         'The code in this If-Block should be modified to build 'message' objects 
                         'according to the protocol you defined for your data transmissions. 
@@ -101,7 +103,7 @@ Public Class ServerForm
                         'with multiple active clients we could see part of client1's first message, 
                         'then part of a message from client2, followed by the rest of client1's 
                         'first message (assuming client1 sent more than 64 bytes). po
-                        Dim messageBytes As New List(Of Byte)
+                        Dim messageBytes As New List(Of Byte)         'qui ricevo istruzioni dal client
                         While info.DataQueue.Count > 0
                             Dim value As Byte
                             If info.DataQueue.TryDequeue(value) Then
@@ -136,13 +138,20 @@ Public Class ServerForm
     End Sub
 
     Private Sub AppendOutput(message As String)
-        If Not InStr(message, "<--tryconnect-->") = 0 Then Exit Sub
+        If Not InStr(message, "<--try-->") = 0 Then Exit Sub
+        If message(0) = "«" And (message(message.Count) = "►" Or message(message.Count) = ",") Then
+
+        End If
         If RichTextBox1.TextLength > 0 Then
             RichTextBox1.AppendText(ControlChars.NewLine)
         End If
         RichTextBox1.AppendText(message)
         RichTextBox1.ScrollToCaret()
     End Sub
+
+
+
+
 
     Private Sub StreamDataSet(ByVal objDataSet As Object, ByRef socket As Object, ByRef var As NetworkStream)
 
@@ -217,6 +226,7 @@ Public Class ConnectionInfo
         End Get
     End Property
 
+
     'The buffer size is an arbitrary value which should be selected based on the 
     'amount of data you need to transmit, the rate of transmissions, and the 
     'anticipalted number of clients. These are the considerations for designing 
@@ -280,7 +290,7 @@ Public Class ConnectionInfo
         End Try
     End Sub
 
-    Private Sub SendDataSet(ByRef var As NetworkStream, ByRef objDataset As DataSet)
+    Private Sub SendDataSet(ByRef objDataset As DataSet)
 
         If _Stream IsNot Nothing Then
             'var = New NetworkStream(Socket)
@@ -306,10 +316,9 @@ Public Class ConnectionInfo
 
 
 
-
-    Private Sub SendMessage(message As String)
+    Private Sub SendMessage(message As String) ' qui si potrebbe inviare
         If _Stream IsNot Nothing Then
-            Dim messageData() As Byte = System.Text.Encoding.ASCII.GetBytes(message)
+            Dim messageData() As Byte = System.Text.Encoding.ASCII.GetBytes(message) ' qui gli diamo la query
             Stream.Write(messageData, 0, messageData.Length)
         End If
     End Sub

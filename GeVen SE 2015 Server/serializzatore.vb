@@ -98,9 +98,53 @@ Module serializzatore
 
 #Region "update"
 
+        'Shared selectAgentiRappresentanti = ""
+        'Shared selectAnagrafica = ""
+        'Shared selectCambioValuta = ""
+        'Shared selectCategorieClienti = ""
+        'Shared selectDatiAziende = ""
+        'Shared selectDestinazioneMerce = ""
+        'Shared selectGestioneAnnuali = ""
+        'Shared selectIva = ""
+        'Shared selectModalitaPagamento = ""
+        'Shared selectSconti = ""
+        'Shared selectSpedizionieri = ""
+        'Shared selectTipiDocumento = ""
+        'Shared selectZoneGeografiche = ""
+        'Shared selectGestioneFattureDocumenti = ""
+        'Shared selectArticoli = ""
+        'Shared selectClassiArticolo = ""
+        'Shared selectGenerazioneInventario = ""
+        'Shared selectListinoArticoli = ""
+        'Shared selectMagazzini = ""
+        'Shared selectMovimenti = ""
+        'Shared selectPrezziAcquisto = ""
+
 #End Region
 
 #Region "delete"
+
+        'Shared selectAgentiRappresentanti = ""
+        'Shared selectAnagrafica = ""
+        'Shared selectCambioValuta = ""
+        'Shared selectCategorieClienti = ""
+        'Shared selectDatiAziende = ""
+        'Shared selectDestinazioneMerce = ""
+        'Shared selectGestioneAnnuali = ""
+        'Shared selectIva = ""
+        'Shared selectModalitaPagamento = ""
+        'Shared selectSconti = ""
+        'Shared selectSpedizionieri = ""
+        'Shared selectTipiDocumento = ""
+        'Shared selectZoneGeografiche = ""
+        'Shared selectGestioneFattureDocumenti = ""
+        'Shared selectArticoli = ""
+        'Shared selectClassiArticolo = ""
+        'Shared selectGenerazioneInventario = ""
+        'Shared selectListinoArticoli = ""
+        'Shared selectMagazzini = ""
+        'Shared selectMovimenti = ""
+        'Shared selectPrezziAcquisto = ""
 
 #End Region
 
