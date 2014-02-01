@@ -414,6 +414,12 @@ Public Class ServerForm
                 'ListBox1.Items.Add(client.name) 'add the client to the listbox to display the new user
                 'TextBox1.AppendText("Connected " & client.name & vbCrLf) 'inform system console
                 TextBox1.Invoke(New ConnessioneSystemConsole(AddressOf ConSystemConsole), client.name)
+            Case "QUERY"
+                Dim servizio As New Services
+                Dim query As String = servizio.CostruttoreQuery(message(1))
+                servizio.EseguiQuery(query)
+                'dataset
+
         End Select
 
     End Sub
@@ -527,7 +533,7 @@ Public Class ServerForm
 
             TextBox1.AppendText("Monitor started at " & Date.Today & " " & TimeOfDay & "." & vbCrLf)
         Else
-            MsgBox("Inserire una porta corretta.")
+
         End If
     End Sub
 

@@ -25,19 +25,41 @@ Public Class MDIParent1
             If t.Connected Then 'if connected, start the reading procedure
                 t.GetStream.BeginRead(New Byte() {0}, 0, 0, AddressOf doread, Nothing)
                 login() 'send our details to the server
+                connectButtonTCPIP.Enabled = False
             End If
         Catch ex As Exception
-            System.Threading.Thread.Sleep(10000) 'if an error occurs sleep for 10 seconds
-            connect(ip, port) 'try to reconnect
+            If MsgBox(ex.ToString & vbCrLf & "Tentare la riconnessione?", vbYesNo) = vbYes Then
+                System.Threading.Thread.Sleep(5000) 'if an error occurs sleep for 8 seconds
+                connect(ip, port) 'try to reconnect
+            Else
+
+            End If
         End Try
     End Sub
+
+
+
+
     Sub login()
         senddata("LOGIN|") 'log in to the chatserver
     End Sub
     Sub senddata(ByVal message As String)
-        Dim sw As New StreamWriter(t.GetStream) 'declare a new streamwriter
-        sw.WriteLine(message) 'write the message
-        sw.Flush()
+
+        Dim sw As StreamWriter = Nothing 'declare a new streamwriter
+
+        Try
+            sw = New StreamWriter(t.GetStream)
+            sw.WriteLine(message) 'write the message
+
+        Catch ex As Exception
+
+            MsgBox(ex.ToString)
+
+        Finally
+
+            sw.Flush()
+
+        End Try
 
     End Sub
     Sub messagerecieved(ByVal message As String)
@@ -57,7 +79,7 @@ Public Class MDIParent1
             t.GetStream.BeginRead(New Byte() {0}, 0, 0, AddressOf doread, Nothing) 'continue to read
 
         Catch ex As Exception
-            System.Threading.Thread.Sleep(10000) 'if an error occurs, wait for 10 seconds
+            System.Threading.Thread.Sleep(8000) 'if an error occurs, wait for 8 seconds
             connect(My.Settings.ServerIP, My.Settings.porta) 'try to reconnect
         End Try
     End Sub
@@ -80,7 +102,9 @@ Public Class MDIParent1
     ''' <remarks></remarks>
     Private Sub connectButtonTCPIP_Click(sender As Object, e As EventArgs) Handles connectButtonTCPIP.Click
         If True Then
+            Cursor.Current = Cursors.WaitCursor
             connect(My.Settings.ServerIP, My.Settings.porta) 'connect textbox1 as ip and textbox2 as port
+            Cursor.Current = Cursors.Default
         End If
     End Sub
 

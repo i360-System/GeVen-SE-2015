@@ -38,20 +38,16 @@
                 'chiamo il server e gli passo i valori della query
                 Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "«" & Me.Name.ToString & "»")
                 Dim obj As Object = Me.ParentForm.FindForm()
-                If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
-                    serializzatore.comunica = True
-                    obj.IstruzioneDBServer(preselect)
-                    If serializzatore.comunica Then
-                        'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
 
-                    End If
 
-                Else
-                    serializzatore.comunica = False
-                    MsgBox("Non è stato possibile comunicare con il server. Provare a ricconnettersi")
+                obj.senddata(preselect)
+                'If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
+                '    serializzatore.comunica = True
+                '    obj.IstruzioneDBServer(preselect)
+                If serializzatore.comunica Then
+                    'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
+
                 End If
-
-                'altrimenti restituisco false e informo l'utente che la ricerca n on è andata bene
 
             Case 2 To 12
                 Return True
