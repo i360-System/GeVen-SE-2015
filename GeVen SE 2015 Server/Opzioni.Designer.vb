@@ -37,14 +37,17 @@ Partial Class Opzioni
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TextBoxNomeDB = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBoxPorta = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
         '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Location = New System.Drawing.Point(12, 12)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -103,12 +106,14 @@ Partial Class Opzioni
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label5)
+        Me.TabPage2.Controls.Add(Me.TextBoxPorta)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(677, 267)
+        Me.TabPage2.Size = New System.Drawing.Size(740, 317)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.Text = "GeVen Server"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'CheckBoxCredenziali
@@ -185,6 +190,22 @@ Partial Class Opzioni
         Me.Label4.TabIndex = 9
         Me.Label4.Text = "Nome Database"
         '
+        'TextBoxPorta
+        '
+        Me.TextBoxPorta.Location = New System.Drawing.Point(105, 33)
+        Me.TextBoxPorta.Name = "TextBoxPorta"
+        Me.TextBoxPorta.Size = New System.Drawing.Size(100, 20)
+        Me.TextBoxPorta.TabIndex = 0
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(19, 36)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(80, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Porta di ascolto"
+        '
         'Opzioni
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -199,6 +220,8 @@ Partial Class Opzioni
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -217,4 +240,6 @@ Partial Class Opzioni
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents TextBoxNomeDB As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents TextBoxPorta As System.Windows.Forms.TextBox
 End Class

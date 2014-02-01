@@ -33,9 +33,16 @@ Partial Class ServerForm
         Me.StartStopButton = New System.Windows.Forms.ToolStripButton()
         Me.PortTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.ConnectionCountLabel = New System.Windows.Forms.ToolStripLabel()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.StopToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -49,7 +56,7 @@ Partial Class ServerForm
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EsciToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StopToolStripMenuItem, Me.EsciToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -109,20 +116,67 @@ Partial Class ServerForm
         Me.ConnectionCountLabel.Name = "ConnectionCountLabel"
         Me.ConnectionCountLabel.Size = New System.Drawing.Size(0, 22)
         '
-        'RichTextBox1
+        'GroupBox1
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(496, 185)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(385, 347)
-        Me.RichTextBox1.TabIndex = 2
-        Me.RichTextBox1.Text = ""
+        Me.GroupBox1.Controls.Add(Me.ListBox1)
+        Me.GroupBox1.Location = New System.Drawing.Point(555, 27)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(316, 477)
+        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Client List"
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(6, 19)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None
+        Me.ListBox1.Size = New System.Drawing.Size(304, 446)
+        Me.ListBox1.TabIndex = 0
+        '
+        'StopToolStripMenuItem
+        '
+        Me.StopToolStripMenuItem.Name = "StopToolStripMenuItem"
+        Me.StopToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.StopToolStripMenuItem.Text = "Stop"
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Location = New System.Drawing.Point(265, 27)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(284, 477)
+        Me.GroupBox2.TabIndex = 3
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "System Console"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(7, 20)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(271, 445)
+        Me.TextBox1.TabIndex = 0
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(272, 510)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(54, 23)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Clean"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ServerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(893, 573)
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Name = "ServerForm"
@@ -131,6 +185,9 @@ Partial Class ServerForm
         Me.MenuStrip1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -144,7 +201,12 @@ Partial Class ServerForm
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents StartStopButton As System.Windows.Forms.ToolStripButton
     Friend WithEvents PortTextBox As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents ConnectionCountLabel As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents StopToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

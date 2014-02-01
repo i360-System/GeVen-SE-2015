@@ -27,6 +27,7 @@
         My.Settings.user = Trim(TextBoxUser.Text.ToString)
         My.Settings.password = Trim(TextBoxPassword.Text.ToString)
         My.Settings.nomeDB = Trim(TextBoxNomeDB.Text.ToString)
+        My.Settings.porta = Trim(TextBoxPorta.Text.ToString)
         My.Settings.Save()
 
     End Sub
@@ -43,8 +44,9 @@
     End Sub
 #End Region
 
-    Public Sub New()
+    Private Sub New()
 
+        MyBase.New()
         ' Chiamata richiesta dalla finestra di progettazione.
         InitializeComponent()
 
@@ -62,9 +64,21 @@
         TextBoxPassword.Text = My.Settings.password
         CheckBoxCredenziali.Checked = My.Settings.credenziali
         TextBoxNomeDB.Text = My.Settings.nomeDB
+        TextBoxPorta.Text = My.Settings.porta
         If CheckBoxCredenziali.Checked = False Then
             TextBoxUser.Enabled = False
             TextBoxPassword.Enabled = Enabled
         End If
     End Sub
+
+    Private Shared Ist As Opzioni = Nothing
+
+    Public Shared Function Istanza() As Opzioni
+        If Ist Is Nothing OrElse Ist.IsDisposed = True Then
+            Ist = New Opzioni
+        End If
+        Ist.BringToFront()
+        Return Ist
+    End Function
+
 End Class

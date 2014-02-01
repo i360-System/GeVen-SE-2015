@@ -113,6 +113,18 @@ Namespace My
                 Me("nomeDB") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property porta() As String
+            Get
+                Return CType(Me("porta"),String)
+            End Get
+            Set
+                Me("porta") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

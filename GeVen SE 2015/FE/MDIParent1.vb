@@ -1,17 +1,91 @@
 ﻿Imports System.Windows.Forms
 Imports System.Net.Sockets
 Imports System.Net
+Imports System.IO
 
 Public Class MDIParent1
 
 
-    Private _Connection As ConnectionInfo
-    Private _ServerAddress As IPAddress
+
 
 
     Private Sub ArrangeIconsToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.LayoutMdi(MdiLayout.ArrangeIcons)
     End Sub
+
+
+#Region "new client"
+
+    Dim t As New TcpClient
+
+    Sub connect(ByVal ip As String, ByVal port As Integer)
+
+        Try
+            t.Connect(ip, port) 'tries to connect
+            If t.Connected Then 'if connected, start the reading procedure
+                t.GetStream.BeginRead(New Byte() {0}, 0, 0, AddressOf doread, Nothing)
+                login() 'send our details to the server
+            End If
+        Catch ex As Exception
+            System.Threading.Thread.Sleep(10000) 'if an error occurs sleep for 10 seconds
+            connect(ip, port) 'try to reconnect
+        End Try
+    End Sub
+    Sub login()
+        senddata("LOGIN|") 'log in to the chatserver
+    End Sub
+    Sub senddata(ByVal message As String)
+        Dim sw As New StreamWriter(t.GetStream) 'declare a new streamwriter
+        sw.WriteLine(message) 'write the message
+        sw.Flush()
+
+    End Sub
+    Sub messagerecieved(ByVal message As String)
+        Dim msg() As String = message.Split("|") ' if a message is recieved, split it to process it
+        Select Case msg(0) 'process it by the first element in the split array
+
+            Case "CHAT"
+                'TextBox4.Text &= "Server: " & " " & msg(1) & vbNewLine
+        End Select
+
+    End Sub
+    Sub doread(ByVal ar As IAsyncResult)
+        Try
+            Dim sr As New StreamReader(t.GetStream) 'declare a new streamreader to read fromt eh network stream
+            Dim msg As String = sr.ReadLine() 'the msg is what is bing read
+            messagerecieved(msg) 'start processing the message
+            t.GetStream.BeginRead(New Byte() {0}, 0, 0, AddressOf doread, Nothing) 'continue to read
+
+        Catch ex As Exception
+            System.Threading.Thread.Sleep(10000) 'if an error occurs, wait for 10 seconds
+            connect(My.Settings.ServerIP, My.Settings.porta) 'try to reconnect
+        End Try
+    End Sub
+   
+
+    'Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    '    senddata("CHAT|" & TextBox3.Text) 'send the data with CHAT| as header
+    '    TextBox4.Text &= "You: " & " " & TextBox3.Text.Split("|")(0) & vbNewLine
+    'End Sub
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    ''' <summary>
+    ''' connette al server.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub connectButtonTCPIP_Click(sender As Object, e As EventArgs) Handles connectButtonTCPIP.Click
+        If True Then
+            connect(My.Settings.ServerIP, My.Settings.porta) 'connect textbox1 as ip and textbox2 as port
+        End If
+    End Sub
+
+#End Region
+
 
 
 
@@ -470,41 +544,6 @@ Public Class MDIParent1
 
 #Region "Menù di connessione"
 
-    'Dim porta As String = "22490" ' da cambiare
-    Private Sub ConnectButtonTCPIP_CheckedChanged(sender As Object, e As System.EventArgs) Handles connectButtonTCPIP.CheckedChanged
-        If connectButtonTCPIP.Checked Then
-            ValidazioneIP()
-            If _ServerAddress IsNot Nothing Then
-                connectButtonTCPIP.Text = "Disconnect"
-                'ConnectButtonTCPIP.Image = My.Resources.Disconnect
-                Try
-                    _Connection = New ConnectionInfo(_ServerAddress, CInt(My.Settings.porta), AddressOf InvokeAppendOutput)
-                    _Connection.AwaitData()
-                    Timer1.Interval = My.Settings.controlloSecondi
-                    Timer1.Enabled = True
-                Catch ex As Exception
-                    MessageBox.Show(ex.Message, "Error Connecting to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    connectButtonTCPIP.Checked = False
-                End Try
-            Else
-                MessageBox.Show("Invalid server name or address.", "Cannot Connect to Server", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                connectButtonTCPIP.Checked = False
-            End If
-        Else
-            connectButtonTCPIP.Text = "Connect"
-            'ConnectButtonTCPIP.Image = My.Resources.Connect
-            If _Connection IsNot Nothing Then _Connection.Close()
-            _Connection = Nothing
-        End If
-    End Sub
-
-    'The InvokeAppendOutput method could easily be replaced with a lambda method passed 
-    'to the ConnectionInfo contstructor in the ConnectButton_CheckChanged event handler 
-    Private Sub InvokeAppendOutput(message As String)
-        Dim doAppendOutput As New Action(Of String)(AddressOf AppendOutput)
-        Me.Invoke(doAppendOutput, message)
-    End Sub
-
     'Private Sub PortTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles PortTextBox.Validating
     '    Dim deltaPort As Integer
     '    If Not Integer.TryParse(porta, deltaPort) OrElse deltaPort < 1 OrElse deltaPort > 65535 Then
@@ -514,18 +553,11 @@ Public Class MDIParent1
     '    End If
     'End Sub
 
-    Private Sub AppendOutput(message As String)
-        'If RichTextBox1.TextLength > 0 Then
-        '    RichTextBox1.AppendText(ControlChars.NewLine)
-        'End If
-        'RichTextBox1.AppendText(message)
-        'RichTextBox1.ScrollToCaret()
-    End Sub
 
 
     Private Sub ValidazioneIP()
 
-        _ServerAddress = Nothing
+        Dim _ServerAddress = Nothing
         If My.Settings.ServerIP = "" Then Exit Sub
         Dim remoteHost As IPHostEntry = Dns.GetHostEntry(My.Settings.ServerIP)
         If remoteHost IsNot Nothing AndAlso remoteHost.AddressList.Length > 0 Then
@@ -567,31 +599,31 @@ Public Class MDIParent1
 
 
 
-    'Private Sub SendButton_Click(sender As System.Object, e As System.EventArgs) Handles SendButton.Click
-    Public Sub IstruzioneDBServer(ByVal istruzione As String)
-        If _Connection IsNot Nothing AndAlso _Connection.Client.Connected AndAlso _Connection.Stream IsNot Nothing Then
-            Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes(istruzione)
-            _Connection.Stream.Write(buffer, 0, buffer.Length)
-        Else
-            serializzatore.comunica = False
-            MsgBox("Non è stato possibile comunicare con il server. Provare a riconnettersi.")
-        End If
-    End Sub
+    ''Private Sub SendButton_Click(sender As System.Object, e As System.EventArgs) Handles SendButton.Click
+    'Public Sub IstruzioneDBServer(ByVal istruzione As String)
+    '    If _Connection IsNot Nothing AndAlso _Connection.Client.Connected AndAlso _Connection.Stream IsNot Nothing Then
+    '        Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes(istruzione)
+    '        _Connection.Stream.Write(buffer, 0, buffer.Length)
+    '    Else
+    '        serializzatore.comunica = False
+    '        MsgBox("Non è stato possibile comunicare con il server. Provare a riconnettersi.")
+    '    End If
+    'End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If _Connection Is Nothing Or _Connection.Client.Connected = False Or _Connection.Stream Is Nothing Or _Connection.Stream.CanWrite = False Then
+    'Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    '    If _Connection Is Nothing Or _Connection.Client.Connected = False Or _Connection.Stream Is Nothing Or _Connection.Stream.CanWrite = False Then
 
-            'image
-            Timer1.Enabled = False
-            connectButtonTCPIP.Checked = False
-            connectButtonTCPIP.Text = "Connect"
-            MsgBox("Connessione persa con il server, riconnettersi.")
-        Else
-            IstruzioneDBServer("<--tryconnect-->")
-            'Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryconnect-->")
-            '_Connection.Stream.Write(buffer, 0, buffer.Length)
-        End If
-    End Sub
+    '        'image
+    '        Timer1.Enabled = False
+    '        connectButtonTCPIP.Checked = False
+    '        connectButtonTCPIP.Text = "Connect"
+    '        MsgBox("Connessione persa con il server, riconnettersi.")
+    '    Else
+    '        IstruzioneDBServer("<--tryconnect-->")
+    '        'Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryconnect-->")
+    '        '_Connection.Stream.Write(buffer, 0, buffer.Length)
+    '    End If
+    'End Sub
 #End Region
 
 
@@ -600,80 +632,82 @@ End Class
 
 
 
-
-
-'Encapuslates the client connection and provides a state object for async read operations 
-Public Class ConnectionInfo
-    Private _AppendMethod As Action(Of String)
-    Public ReadOnly Property AppendMethod As Action(Of String)
-        Get
-            Return _AppendMethod
-        End Get
-    End Property
-
-    Private _Client As TcpClient
-    Public ReadOnly Property Client As TcpClient
-        Get
-            Return _Client
-        End Get
-    End Property
-
-    Private _Stream As NetworkStream
-    Public ReadOnly Property Stream As NetworkStream
-        Get
-            Return _Stream
-        End Get
-    End Property
-
-    Private _LastReadLength As Integer
-    Public ReadOnly Property LastReadLength As Integer
-        Get
-            Return _LastReadLength
-        End Get
-    End Property
-
-    Private _Buffer(63) As Byte
-
-    Public Sub New(address As IPAddress, port As Integer, append As Action(Of String))
-        _AppendMethod = append
-        _Client = New TcpClient
-        _Client.Connect(address, port)
-        _Stream = _Client.GetStream
-    End Sub
-
-    Public Sub AwaitData()
-        _Stream.BeginRead(_Buffer, 0, _Buffer.Length, AddressOf DoReadData, Me)
-    End Sub
-
-    Public Sub Close()
-        If _Client IsNot Nothing Then _Client.Close()
-        _Client = Nothing
-        _Stream = Nothing
-    End Sub
-
-    Private Sub DoReadData(result As IAsyncResult)
-        Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
-        Try
-            If info._Stream IsNot Nothing AndAlso info._Stream.CanRead Then
-                info._LastReadLength = info._Stream.EndRead(result)
-                If info._LastReadLength > 0 Then
-                    'otteniamo il dataset
-                    'Dim p As New DataSet
-                    'p= 
-                    Dim message As String = System.Text.Encoding.ASCII.GetString(info._Buffer)
-                    info._AppendMethod(message)
-
-                End If
-                info.AwaitData()
-            End If
-        Catch ex As Exception
-            info._LastReadLength = -1
-            info._AppendMethod(ex.Message)
-        End Try
-    End Sub
-End Class
-
 #Region "codice commentato"
+
+
+'Private _Connection As ConnectionInfo
+'Private _ServerAddress As IPAddress
+
+''Encapuslates the client connection and provides a state object for async read operations 
+'Public Class ConnectionInfo
+'    Private _AppendMethod As Action(Of String)
+'    Public ReadOnly Property AppendMethod As Action(Of String)
+'        Get
+'            Return _AppendMethod
+'        End Get
+'    End Property
+
+'    Private _Client As TcpClient
+'    Public ReadOnly Property Client As TcpClient
+'        Get
+'            Return _Client
+'        End Get
+'    End Property
+
+'    Private _Stream As NetworkStream
+'    Public ReadOnly Property Stream As NetworkStream
+'        Get
+'            Return _Stream
+'        End Get
+'    End Property
+
+'    Private _LastReadLength As Integer
+'    Public ReadOnly Property LastReadLength As Integer
+'        Get
+'            Return _LastReadLength
+'        End Get
+'    End Property
+
+'    Private _Buffer(63) As Byte
+
+'    Public Sub New(address As IPAddress, port As Integer, append As Action(Of String))
+'        _AppendMethod = append
+'        _Client = New TcpClient
+'        _Client.Connect(address, port)
+'        _Stream = _Client.GetStream
+'    End Sub
+
+'    Public Sub AwaitData()
+'        _Stream.BeginRead(_Buffer, 0, _Buffer.Length, AddressOf DoReadData, Me)
+'    End Sub
+
+'    Public Sub Close()
+'        If _Client IsNot Nothing Then _Client.Close()
+'        _Client = Nothing
+'        _Stream = Nothing
+'    End Sub
+
+'    Private Sub DoReadData(result As IAsyncResult)
+'        Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
+'        Try
+'            If info._Stream IsNot Nothing AndAlso info._Stream.CanRead Then
+'                info._LastReadLength = info._Stream.EndRead(result)
+'                If info._LastReadLength > 0 Then
+'                    'otteniamo il dataset
+'                    'Dim p As New DataSet
+'                    'p= 
+'                    Dim message As String = System.Text.Encoding.ASCII.GetString(info._Buffer)
+'                    info._AppendMethod(message)
+
+'                End If
+'                info.AwaitData()
+'            End If
+'        Catch ex As Exception
+'            info._LastReadLength = -1
+'            info._AppendMethod(ex.Message)
+'        End Try
+'    End Sub
+'End Class
 
 'Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
 '    ' Crea una nuova istanza del form figlio.
