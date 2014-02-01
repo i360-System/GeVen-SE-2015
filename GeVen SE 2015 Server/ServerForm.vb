@@ -6,6 +6,8 @@ Imports System.Net.Sockets
 Imports System.Threading
 Imports System.Threading.Tasks
 
+Imports MySql.Data.MySqlClient
+
 Public Class ServerForm
     Private _Listener As TcpListener
     Private _Connections As New List(Of ConnectionInfo)
@@ -13,29 +15,39 @@ Public Class ServerForm
     ' Private _porta As String = ""
 
     Private Sub StartStopButton_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles StartStopButton.CheckedChanged
-        If validazionePorta() Then
-            If StartStopButton.Checked Then
-                StartStopButton.Text = "Stop"
-                'StartStopButton.Image = My.Resources.Resources.StopServer
-                _Listener = New TcpListener(IPAddress.Any, CInt(PortTextBox.Text))
-                _Listener.Start()
-                Dim monitor As New MonitorInfo(_Listener, _Connections)
-                ListenForClient(monitor)
-                _ConnectionMontior = Task.Factory.StartNew(AddressOf DoMonitorConnections, monitor, TaskCreationOptions.LongRunning)
-            Else
-                StartStopButton.Text = "Start"
-                'StartStopButton.Image = My.Resources.Resources.StartServer
-                CType(_ConnectionMontior.AsyncState, MonitorInfo).Cancel = True
-                _Listener.Stop()
-                _Listener = Nothing
-            End If
+
+        If StartStopButton.Checked Then
+            StartStopButton.Text = "Stop"
+            'StartStopButton.Image = My.Resources.Resources.StopServer
+            _Listener = New TcpListener(IPAddress.Any, CInt(PortTextBox.Text))
+            _Listener.Start()
+            Dim monitor As New MonitorInfo(_Listener, _Connections)
+            ListenForClient(monitor)
+            _ConnectionMontior = Task.Factory.StartNew(AddressOf DoMonitorConnections, monitor, TaskCreationOptions.LongRunning)
         Else
-            MsgBox("Non è stata inserita una porta valida nelle opzioni.")
+            StartStopButton.Text = "Start"
+            'StartStopButton.Image = My.Resources.Resources.StartServer
+            CType(_ConnectionMontior.AsyncState, MonitorInfo).Cancel = True
+            _Listener.Stop()
+            _Listener = Nothing
         End If
+
     End Sub
+
+
 
     Private Sub PortTextBox_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles PortTextBox.Validating
         
+        Dim deltaPort As Integer
+        If Not Integer.TryParse(PortTextBox.Text, deltaPort) OrElse deltaPort < 1 OrElse deltaPort > 65535 Then
+            MessageBox.Show("Port number must be an integer between 1 and 65535.", "Invalid Port Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            PortTextBox.SelectAll()
+            e.Cancel = True
+            StartStopButton.Enabled = False
+        Else
+            StartStopButton.Enabled = True
+        End If
+
     End Sub
 
     Private Sub ListenForClient(monitor As MonitorInfo)
@@ -55,19 +67,6 @@ Public Class ServerForm
             Invoke(doUpdateConnectionCountLabel)
         End If
     End Sub
-
-    Private Function validazionePorta() As Boolean
-        Dim res As Boolean = True
-
-        Dim deltaPort As Integer
-        If Not Integer.TryParse(PortTextBox.Text, deltaPort) OrElse deltaPort < 1 OrElse deltaPort > 65535 Then
-            MessageBox.Show("Port number must be an integer between 1 and 65535.", "Invalid Port Number", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            'PortTextBox.SelectAll()
-            'e.Cancel = True
-            res = False
-        End If
-        Return res
-    End Function
 
 
     Private Sub DoMonitorConnections()
@@ -139,8 +138,8 @@ Public Class ServerForm
 
     Private Sub AppendOutput(message As String)
         If Not InStr(message, "<--try-->") = 0 Then Exit Sub
-        If message(0) = "«" And (message(message.Count) = "►" Or message(message.Count) = ",") Then
-
+        If message(0) = "«" And (message(message.Length - 1) = "►" Or message(message.Length - 1) = ",") Then
+            ExecuteQuery(message)
         End If
         If RichTextBox1.TextLength > 0 Then
             RichTextBox1.AppendText(ControlChars.NewLine)
@@ -149,7 +148,62 @@ Public Class ServerForm
         RichTextBox1.ScrollToCaret()
     End Sub
 
+    Private Function ExecuteQuery(ByVal queryDaEsedguire As String) As DataSet
 
+        Dim DatasetDaRestituire As New DataSet
+        'Dim conn As MySql.Data.MySqlClient.MySqlConnection
+        ''mi connetto al DB
+        'conn = New MySql.Data.MySqlClient.MySqlConnection()
+        'conn.ConnectionString = "server=localhost; user id=root; password=TUAPSW; database=TUODB"
+
+        'Try
+        '    conn.Open()
+        'Catch myerror As MySql.Data.MySqlClient.MySqlException
+        '    MsgBox("Errore nella connessione al database!")
+        'End Try
+        ''sql query
+        'Dim myAdapter As New MySql.Data.MySqlClient.MySqlDataAdapter
+
+        'Dim sqlquery = (queryDaEsedguire)
+
+        'Dim myCommand As New MySql.Data.MySqlClient.MySqlCommand()
+        'myCommand.Connection = conn
+        'myCommand.CommandText = sqlquery
+        ''Faccio partire la query
+        'myAdapter.SelectCommand = myCommand
+        'Dim myData As MySql.Data.MySqlClient.MySqlDataReader
+        'myData = myCommand.ExecuteReader()
+        'If myData.HasRows = 0 Then
+        '    MsgBox("Query eseguita correttamente")
+        'Else
+        '    MsgBox("Query eseguita correttamente")
+        'End If
+        Dim ServerDB As String = My.Settings.serverDB
+        Dim user As String = My.Settings.user
+        Dim password As String = My.Settings.password
+        Dim DB As String = My.Settings.NomeDB
+
+        Dim connectionstring As String = "Server=" & ServerDB & ";User Id=" & user & ";Password=" & password & ";Database=data"
+        Dim commandtext As String
+        Dim adapter As MySqlDataAdapter
+        Dim table As DataTable
+        commandtext = queryDaEsedguire '"select * from account where user=admin"
+        Try
+            adapter = New MySqlDataAdapter(commandtext, connectionstring)
+            table = New DataTable
+            adapter.Fill(table)
+
+            'incollo dataset
+            adapter.Fill(DatasetDaRestituire)
+
+            'DataGridView1.DataSource = table '##########(but instead of datagrid put the data in a textbox Put the id in the textbox )#######
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return DatasetDaRestituire
+
+    End Function
 
 
 
@@ -162,6 +216,14 @@ Public Class ServerForm
         ConnectionCountLabel.Text = String.Format("{0} Connections", _Connections.Count)
     End Sub
 
+    Public Sub New()
+
+        ' Chiamata richiesta dalla finestra di progettazione.
+        InitializeComponent()
+
+        ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+        StartStopButton.Enabled = False
+    End Sub
 End Class
 
 'Provides a simple container object to be used for the state object passed to the connection monitoring thread 
@@ -233,7 +295,7 @@ Public Class ConnectionInfo
     'the communicaition protocol for data transmissions, and the size of the read 
     'buffer must be based upon the needs of the protocol. 
     Private _Buffer(63) As Byte
-
+    'implementiamo qui la dimensione del nostro buffer
     Public Sub New(monitor As MonitorInfo)
         _Monitor = monitor
         _DataQueue = New System.Collections.Concurrent.ConcurrentQueue(Of Byte)
@@ -250,7 +312,7 @@ Public Class ConnectionInfo
         _Stream.BeginRead(_Buffer, 0, _Buffer.Length, AddressOf DoReadData, Me)
     End Sub
 
-    Private Sub DoReadData(result As IAsyncResult)
+    Private Sub DoReadData(result As IAsyncResult) '1
         Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
         Try
             'If the stream is valid for reading, get the current data and then 
@@ -267,6 +329,11 @@ Public Class ConnectionInfo
                 'info.SendMessage("Received " & info._LastReadLength & " Bytes")
 
 
+                'qio posso esquire il costruttore query
+                'Dim serv As New Services
+
+                'serv.CostruttoreQuery(System.Text.Encoding.ASCII.GetString(info._Buffer))
+
                 ' a seconda del risultato della query mandaeremo o un xml ricostruibile o una istruzione stringa che i client interpretera
                 'info.SendDataSet()
 
@@ -277,7 +344,7 @@ Public Class ConnectionInfo
                 '    End If
                 'Next
                 ' '''''''''''''''''
-
+                'info._Buffer = Nothing
                 info.AwaitData()
             Else
                 'If we cannot read from the stream, the example assumes the connection is 

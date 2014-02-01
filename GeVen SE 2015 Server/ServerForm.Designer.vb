@@ -32,8 +32,8 @@ Partial Class ServerForm
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.StartStopButton = New System.Windows.Forms.ToolStripButton()
         Me.PortTextBox = New System.Windows.Forms.ToolStripTextBox()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.ConnectionCountLabel = New System.Windows.Forms.ToolStripLabel()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -70,7 +70,7 @@ Partial Class ServerForm
         'OpzioniToolStripMenuItem
         '
         Me.OpzioniToolStripMenuItem.Name = "OpzioniToolStripMenuItem"
-        Me.OpzioniToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.OpzioniToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.OpzioniToolStripMenuItem.Text = "Opzioni"
         '
         'ToolStripMenuItem1
@@ -104,18 +104,18 @@ Partial Class ServerForm
         Me.PortTextBox.Name = "PortTextBox"
         Me.PortTextBox.Size = New System.Drawing.Size(100, 25)
         '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.Location = New System.Drawing.Point(467, 170)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(385, 347)
-        Me.RichTextBox1.TabIndex = 2
-        Me.RichTextBox1.Text = ""
-        '
         'ConnectionCountLabel
         '
         Me.ConnectionCountLabel.Name = "ConnectionCountLabel"
         Me.ConnectionCountLabel.Size = New System.Drawing.Size(0, 22)
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(496, 185)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.Size = New System.Drawing.Size(385, 347)
+        Me.RichTextBox1.TabIndex = 2
+        Me.RichTextBox1.Text = ""
         '
         'ServerForm
         '

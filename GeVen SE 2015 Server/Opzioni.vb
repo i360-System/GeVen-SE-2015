@@ -1,0 +1,70 @@
+﻿Public Class Opzioni
+
+#Region "Bottoni"
+    ''' <summary>
+    ''' Esci
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Me.Dispose()
+    End Sub
+
+    ''' <summary>
+    ''' Salva
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        SalvaOpzioni()
+    End Sub
+
+    Private Sub SalvaOpzioni()
+
+        My.Settings.serverDB = Trim(TextBoxServerDB.Text.ToString)
+        My.Settings.user = Trim(TextBoxUser.Text.ToString)
+        My.Settings.password = Trim(TextBoxPassword.Text.ToString)
+        My.Settings.nomeDB = Trim(TextBoxNomeDB.Text.ToString)
+        My.Settings.Save()
+
+    End Sub
+
+    ''' <summary>
+    ''' Salva & Esci
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        SalvaOpzioni()
+        Me.Dispose()
+    End Sub
+#End Region
+
+    Public Sub New()
+
+        ' Chiamata richiesta dalla finestra di progettazione.
+        InitializeComponent()
+
+        ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+
+
+        caricaOpzioni()
+
+
+    End Sub
+
+    Private Sub caricaOpzioni()
+        TextBoxServerDB.Text = My.Settings.serverDB
+        TextBoxUser.Text = My.Settings.user
+        TextBoxPassword.Text = My.Settings.password
+        CheckBoxCredenziali.Checked = My.Settings.credenziali
+        TextBoxNomeDB.Text = My.Settings.nomeDB
+        If CheckBoxCredenziali.Checked = False Then
+            TextBoxUser.Enabled = False
+            TextBoxPassword.Enabled = Enabled
+        End If
+    End Sub
+End Class

@@ -94,6 +94,7 @@
 
                         query = serializzatore.Query.selectGestioneDocumenti
                         query &= WhereConditionSelect(campiValori)
+                        'eseguo query
 
                     Case "agentirappresentati"
 

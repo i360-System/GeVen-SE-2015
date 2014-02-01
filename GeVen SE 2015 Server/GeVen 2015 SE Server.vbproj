@@ -46,6 +46,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.7.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\MySQL\Connector NET 6.7.4\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -71,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InfoClient.vb" />
+    <Compile Include="Opzioni.Designer.vb">
+      <DependentUpon>Opzioni.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Opzioni.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="serializzatore.vb" />
     <Compile Include="ServerForm.vb">
       <SubType>Form</SubType>
@@ -102,6 +112,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Opzioni.resx">
+      <DependentUpon>Opzioni.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServerForm.resx">
       <DependentUpon>ServerForm.vb</DependentUpon>
