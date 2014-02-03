@@ -583,13 +583,15 @@ Public Class MDIParent1
 
             'image
             Timer1.Enabled = False
+            Timer1.Interval = My.Settings.controlloSecondi
             connectButtonTCPIP.Checked = False
             connectButtonTCPIP.Text = "Connect"
             MsgBox("Connessione persa con il server, riconnettersi.")
         Else
-            IstruzioneDBServer("<--tryconnect-->")
-            'Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryconnect-->")
-            '_Connection.Stream.Write(buffer, 0, buffer.Length)
+            Timer1.Interval = My.Settings.controlloSecondi
+            'IstruzioneDBServer("<--try-->")
+            Dim buffer() As Byte = System.Text.Encoding.ASCII.GetBytes("<--tryco-->")
+            _Connection.Stream.Write(Buffer, 0, Buffer.Length)
         End If
     End Sub
 #End Region
@@ -650,6 +652,7 @@ Public Class ConnectionInfo
         _Client = Nothing
         _Stream = Nothing
     End Sub
+
 
     Private Sub DoReadData(result As IAsyncResult)
         Dim info As ConnectionInfo = CType(result.AsyncState, ConnectionInfo)
