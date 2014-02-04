@@ -40,24 +40,17 @@
                 Dim obj As Object = Me.ParentForm
 
 
-                serializzatore.comunica = True
-                Try
-                    obj.IstruzioneDBServer(preselect)
-                Catch ex As Exception
-                    serializzatore.comunica = False
+                obj.senddata(preselect)
+                'If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
+                '    serializzatore.comunica = True
+                '    obj.IstruzioneDBServer(preselect)
+                serializzatore.comunica = False
                 End Try
 
                 If serializzatore.comunica Then
                     'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
 
-                
-
-                Else
-                serializzatore.comunica = False
-                MsgBox("Non è stato possibile comunicare con il server. Provare a ricconnettersi")
                 End If
-
-                'altrimenti restituisco false e informo l'utente che la ricerca n on è andata bene
 
             Case 2 To 12
                 Return True

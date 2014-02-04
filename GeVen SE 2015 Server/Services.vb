@@ -1,5 +1,6 @@
-﻿Public Class Services
-
+﻿Imports MySql.Data.MySqlClient
+Public Class Services
+    Dim mydb As New mySqlDB
     ''' <summary>
     '''Costruisce la Query e la restituisce 
     ''' </summary>
@@ -83,7 +84,7 @@
             taglia = 0
         Next
         ''''''''''''''''''''''''''''''''''''''''''''''''''''raccolto i valori costruisco la query''''''''''
-        
+
         Select Case istruzioni.ToLower
 
             Case "«select»"
@@ -270,6 +271,38 @@
             Next
         End If
         Return res
+    End Function
+
+    Public Function EseguiQuery(ByVal quer As String) As DataSet
+        Dim DatasetDaRestituire As New DataSet
+        Try
+            Dim ServerDB As String = My.Settings.serverDB
+            Dim user As String = My.Settings.user
+            Dim password As String = My.Settings.password
+            Dim DB As String = My.Settings.nomeDB
+
+            Dim connectionstring As String = "Server=" & ServerDB & ";User Id=" & user & ";Password=" & password & ";Database=data"
+            Dim commandtext As String
+            Dim adapter As MySqlDataAdapter
+            Dim table As DataTable
+            commandtext = quer '"select * from account where user=admin"
+            Try
+                adapter = New MySqlDataAdapter(commandtext, connectionstring)
+                table = New DataTable
+                adapter.Fill(table)
+
+                'incollo dataset
+                adapter.Fill(DatasetDaRestituire)
+
+                'DataGridView1.DataSource = table '##########(but instead of datagrid put the data in a textbox Put the id in the textbox )#######
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+
+        Catch ex As Exception
+
+        End Try
+
     End Function
 
 End Class
