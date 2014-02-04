@@ -102,7 +102,7 @@
 
         Dim queryPreSelect As String = "QUERY|"
 
-        queryPreSelect = comandiInvioClient.sel & comandiInvioClient.sep
+        queryPreSelect &= comandiInvioClient.sel & comandiInvioClient.sep
 
         queryPreSelect &= nomeTabella & comandiInvioClient.sep
 
