@@ -45,7 +45,7 @@
                 '    serializzatore.comunica = True
                 '    obj.IstruzioneDBServer(preselect)
                 serializzatore.comunica = False
-                End Try
+                'End Try
 
                 If serializzatore.comunica Then
                     'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo

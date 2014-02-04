@@ -13,7 +13,7 @@
         Shared inser As String = "«insert»"
         Shared del As String = "«delete»"
         Shared upd As String = "«update»"
-        Shared sep As String = "↨"
+        Shared sep As String = ","
 #End Region
 
     End Structure
