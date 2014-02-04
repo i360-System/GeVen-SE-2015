@@ -16,6 +16,7 @@
         If Ist Is Nothing OrElse Ist.IsDisposed = True Then
             Ist = New Opzioni
         End If
+
         Ist.BringToFront()
         Return Ist
     End Function
@@ -72,6 +73,7 @@
             .porta = Trim(TextBoxPorta.Text)
             .Save()
         End With
+
         MsgBox("Impostazioni salvate con successo")
 
     End Sub

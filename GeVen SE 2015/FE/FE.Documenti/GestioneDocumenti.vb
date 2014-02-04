@@ -37,13 +37,16 @@
 
                 'chiamo il server e gli passo i valori della query
                 Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "«" & Me.Name.ToString & "»")
-                Dim obj As Object = Me.ParentForm.FindForm()
+                Dim obj As Object = Me.ParentForm
 
 
                 obj.senddata(preselect)
                 'If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
                 '    serializzatore.comunica = True
                 '    obj.IstruzioneDBServer(preselect)
+                serializzatore.comunica = False
+                End Try
+
                 If serializzatore.comunica Then
                     'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
 

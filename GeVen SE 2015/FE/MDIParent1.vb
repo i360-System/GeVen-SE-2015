@@ -83,7 +83,7 @@ Public Class MDIParent1
             connect(My.Settings.ServerIP, My.Settings.porta) 'try to reconnect
         End Try
     End Sub
-   
+
 
     'Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
     '    senddata("CHAT|" & TextBox3.Text) 'send the data with CHAT| as header
@@ -704,6 +704,7 @@ End Class
 '    Public Sub AwaitData()
 '        _Stream.BeginRead(_Buffer, 0, _Buffer.Length, AddressOf DoReadData, Me)
 '    End Sub
+
 
 '    Public Sub Close()
 '        If _Client IsNot Nothing Then _Client.Close()
