@@ -15,7 +15,7 @@ Public Class Services
         Dim tabella As String = Nothing
         Dim tabelle As New List(Of String)
         Dim campiValori As New List(Of List(Of String))
-        Dim campoValore As New List(Of String)
+
         Dim valori As String = Nothing
         Dim valore As String = Nothing
         Dim stringaAppoggio As String = Nothing
@@ -51,6 +51,7 @@ Public Class Services
         Dim taglia As Integer = 0
         taglia = lunghezza
         For i = 1 To numeroOccorrenze
+            Dim campoValore As New List(Of String)
             Dim campiValoriPuliti As String = Nothing
 
             If i = 1 Then
@@ -79,7 +80,10 @@ Public Class Services
                 campoValore.Add(valore)
                 'valori = Mid(valori, lunghezza)
             Next
+
             campiValori.Add(campoValore)
+            valore = Nothing
+
             stringaAppoggio = Mid(stringaAppoggio, taglia + 1)
             taglia = 0
         Next

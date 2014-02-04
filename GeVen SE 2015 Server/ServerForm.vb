@@ -475,6 +475,7 @@ Public Class ServerForm
 
         ' ListBox1.Items.Remove(client.name) 'remove it from our listbox
         ListBox1.Invoke(New RemoveListBox(AddressOf remo), client.name)
+
         TextBox1.Invoke(New Disconnessione(AddressOf disc), client)
     End Sub
 
