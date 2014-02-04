@@ -1,6 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Services
-    Dim mydb As New mySqlDB
+    'Dim mydb As New MySqlDbType
     ''' <summary>
     '''Costruisce la Query e la restituisce 
     ''' </summary>

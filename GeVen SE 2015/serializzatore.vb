@@ -13,7 +13,7 @@
         Shared inser As String = "«insert»"
         Shared del As String = "«delete»"
         Shared upd As String = "«update»"
-        Shared sep As String = ","
+        Shared sep As String = "↨"
 #End Region
 
     End Structure
@@ -100,7 +100,7 @@
     ''' <remarks></remarks>
     Public Function costruttoreDiPreSelect(ByVal CampiValori As List(Of List(Of String)), ByVal nomeTabella As String) As String
 
-        Dim queryPreSelect As String = Nothing
+        Dim queryPreSelect As String = "QUERY|"
 
         queryPreSelect = comandiInvioClient.sel & comandiInvioClient.sep
 
@@ -109,12 +109,12 @@
 
 
         For Each lista As List(Of String) In CampiValori
-            queryPreSelect &= "|"
+            queryPreSelect &= "◄"
             For Each valore As String In lista
                 queryPreSelect &= valore & comandiInvioClient.sep
             Next
             queryPreSelect = Left(queryPreSelect, queryPreSelect.Length - 1)
-            queryPreSelect &= "|"
+            queryPreSelect &= "►"
         Next
 
         Return queryPreSelect
