@@ -111,7 +111,7 @@
         For Each lista As List(Of String) In CampiValori
             queryPreSelect &= "◄"
             For Each valore As String In lista
-                queryPreSelect &= valore & comandiInvioClient.sep
+                queryPreSelect &= valore & "↨"
             Next
             queryPreSelect = Left(queryPreSelect, queryPreSelect.Length - 1)
             queryPreSelect &= "►"
