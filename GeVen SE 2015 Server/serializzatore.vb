@@ -163,33 +163,33 @@ Module serializzatore
 
 #Region "Insert"
 
-        Shared insertGestioneDocumenti1 = "Insert into documentitestata "
+        Shared insertGestioneDocumenti1 = "Insert into documentitestata " '
         Shared insertGestioneDocumenti2 = "Insert into documentidettaglio "
-        Shared insertAgentiRappresentanti1 = "Insert into agenti "
+        Shared insertAgentiRappresentanti1 = "Insert into agenti " '
         Shared insertAgentiRappresentanti2 = "Insert into agentiproviggioni "
         Shared insertAnagrafica = "Insert into anagrafica "
         Shared insertCambioValuta = "Insert into divise "
-        Shared insertCategorieClienti = "Insert into"
-        Shared insertDatiAziende = "Insert into"
-        Shared insertDestinazioneMerce = "Insert into"
-        Shared insertGestioneAnnuali = "Insert into"
-        Shared insertIva = "Insert into"
+        Shared insertCategorieClienti = "Insert into categorie "
+        Shared insertDatiAziende = "Insert into aziende "
+        Shared insertDestinazioneMerce = "Insert into anagraficadestinazione "
+        Shared insertGestioneAnnuali = "Insert into esercizicontabili "
+        Shared insertIva = "Insert into parametriiva "
         Shared insertModalitaPagamento1 = "Insert into pagamentitestata "
         Shared insertModalitaPagamento2 = "Insert into pagamentidettaglio "
-        Shared insertSconti = "Insert into"
-        Shared insertSpedizionieri = "Insert into"
-        Shared insertTipiDocumento = "Insert into"
-        Shared insertZoneGeografiche = "Insert into"
+        Shared insertSconti = "Insert into sconti "
+        Shared insertSpedizionieri = "Insert into vettori "
+        Shared insertTipiDocumento = "Insert into tipidocumento "
+        Shared insertZoneGeografiche = "Insert into zone "
         'Shared insertGestioneFattureDocumenti = "Insert into"
-        Shared insertArticoli1 = "Insert into articoli "
+        Shared insertArticoli1 = "Insert into articoli " '
         Shared insertArticoli2 = "Insert into articolimisure "
-        Shared insertClassiArticolo = "Insert into"
+        Shared insertClassiArticolo = "Insert into classiarticolo "
         'Shared insertGenerazioneInventario = "Insert into"
-        Shared insertListinoArticoli = "Insert into"
-        Shared insertMagazzini = "Insert into"
-        Shared insertMovimentiMagazzino1 = "Insert into magazzinomovimentitestata "
+        Shared insertListinoArticoli = "Insert into articolilistino "
+        Shared insertMagazzini = "Insert into magazzinodenominazione "
+        Shared insertMovimentiMagazzino1 = "Insert into magazzinomovimentitestata " '
         Shared insertMovimentiMagazzino2 = "Insert into magazzinomovimentidettaglio "
-        Shared insertPrezziAcquisto = "Insert into"
+        Shared insertPrezziAcquisto = "Insert into articoliprezziacquisto "
 
 #End Region
 
@@ -227,8 +227,8 @@ Module serializzatore
 
 #Region "delete"
 
-        Shared deleteDocumentiTestata1 = "Delete from documentitestata "
-        Shared deleteDocumentiTestata2 = "Delete from documentidettaglio "
+        Shared deleteGestioneDocumenti1 = "Delete from documentitestata "
+        Shared deleteGestioneDocumenti2 = "Delete from documentidettaglio "
         Shared deleteAgentiRappresentanti1 = "Delete from agenti "
         Shared deleteAgentiRappresentanti2 = "Delete from agentiprovvigioni "
         Shared deleteAnagrafica = "Delete from anagrafiche "
