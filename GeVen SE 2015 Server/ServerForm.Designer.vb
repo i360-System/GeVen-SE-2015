@@ -25,6 +25,7 @@ Partial Class ServerForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ServerForm))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StopToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EsciToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StrumentiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpzioniToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,14 +36,15 @@ Partial Class ServerForm
         Me.ConnectionCountLabel = New System.Windows.Forms.ToolStripLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.StopToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -61,10 +63,16 @@ Partial Class ServerForm
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
+        'StopToolStripMenuItem
+        '
+        Me.StopToolStripMenuItem.Name = "StopToolStripMenuItem"
+        Me.StopToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
+        Me.StopToolStripMenuItem.Text = "Stop"
+        '
         'EsciToolStripMenuItem
         '
         Me.EsciToolStripMenuItem.Name = "EsciToolStripMenuItem"
-        Me.EsciToolStripMenuItem.Size = New System.Drawing.Size(94, 22)
+        Me.EsciToolStripMenuItem.Size = New System.Drawing.Size(98, 22)
         Me.EsciToolStripMenuItem.Text = "Esci"
         '
         'StrumentiToolStripMenuItem
@@ -77,7 +85,7 @@ Partial Class ServerForm
         'OpzioniToolStripMenuItem
         '
         Me.OpzioniToolStripMenuItem.Name = "OpzioniToolStripMenuItem"
-        Me.OpzioniToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpzioniToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.OpzioniToolStripMenuItem.Text = "Opzioni"
         '
         'ToolStripMenuItem1
@@ -135,12 +143,6 @@ Partial Class ServerForm
         Me.ListBox1.Size = New System.Drawing.Size(304, 446)
         Me.ListBox1.TabIndex = 0
         '
-        'StopToolStripMenuItem
-        '
-        Me.StopToolStripMenuItem.Name = "StopToolStripMenuItem"
-        Me.StopToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.StopToolStripMenuItem.Text = "Stop"
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.TextBox1)
@@ -169,11 +171,20 @@ Partial Class ServerForm
         Me.Button1.Text = "Clean"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 198)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(240, 311)
+        Me.DataGridView1.TabIndex = 5
+        '
         'ServerForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(893, 573)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -188,6 +199,7 @@ Partial Class ServerForm
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -208,5 +220,6 @@ Partial Class ServerForm
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
 
 End Class

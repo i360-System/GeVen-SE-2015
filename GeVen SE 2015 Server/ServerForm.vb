@@ -417,8 +417,13 @@ Public Class ServerForm
             Case "QUERY"
                 Dim servizio As New Services
                 Dim query As String = servizio.CostruttoreQuery(message(1))
-                servizio.EseguiQuery(query)
-                'dataset
+                Dim dataset = servizio.EseguiQuery(query)
+                DataGridView1.DataSource = dataset
+                DataGridView1.DataMember = dataset.Tables.ToString
+                DataGridView1.Refresh()
+                
+
+                'sendsingle(dataset, "")
 
         End Select
 
@@ -459,6 +464,21 @@ Public Class ServerForm
         End Try
 
     End Sub
+
+    Sub sendsingleClient(ByVal message As Object, ByVal clientname As String)
+        Dim entry As DictionaryEntry 'declare a variable of type dictionary entry
+        Try
+            For Each entry In clients 'for each dictionary entry in the hashtable with all clients (clients)
+                If entry.Value = clientname Then 'if the entry is belongs to the client specified
+                    Dim cli As ConnectedClient = CType(entry.Key, ConnectedClient) ' cast the hashtable entry to a connection class
+                    cli.senddata(message) 'send the message to it
+                End If
+            Next
+        Catch
+        End Try
+
+    End Sub
+
     Sub senddata(ByVal message As String) 'this sends a message to all connected clients
         Dim entry As DictionaryEntry 'declare a variable of type dictionary entry
         Try

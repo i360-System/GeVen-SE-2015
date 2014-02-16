@@ -39,18 +39,23 @@
                 Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "«" & Me.Name.ToString & "»")
                 Dim obj As Object = Me.ParentForm
 
+                Try
+                    obj.senddata(preselect)
+                    'If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
+                    '    serializzatore.comunica = True
+                    '    obj.IstruzioneDBServer(preselect)
+                    serializzatore.comunica = False
+                    'End Try
 
-                obj.senddata(preselect)
-                'If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
-                '    serializzatore.comunica = True
-                '    obj.IstruzioneDBServer(preselect)
-                serializzatore.comunica = False
-                'End Try
+                    If serializzatore.comunica Then
+                        'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
 
-                If serializzatore.comunica Then
-                    'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
+                    End If
 
-                End If
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                    res = False
+                End Try
 
             Case 2 To 12
                 Return True
