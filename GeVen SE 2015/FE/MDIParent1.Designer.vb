@@ -78,11 +78,6 @@ Partial Class MDIParent1
         Me.InformazioniSullaLicenzaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ManualeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.ServerTextBox = New System.Windows.Forms.ToolStripTextBox()
-        Me.connectButtonTCPIP = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
@@ -426,56 +421,20 @@ Partial Class MDIParent1
         'ToolStrip1
         '
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.ServerTextBox, Me.connectButtonTCPIP, Me.ToolStripButton2, Me.ToolStripSeparator1, Me.ToolStripLabel2, Me.ToolStripButton3, Me.ToolStripButton4})
+        Me.ToolStrip1.Enabled = False
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.ToolStripButton3, Me.ToolStripButton4})
         Me.ToolStrip1.Location = New System.Drawing.Point(86, 726)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1050, 25)
         Me.ToolStrip1.TabIndex = 11
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripLabel1
-        '
-        Me.ToolStripLabel1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(217, 22)
-        Me.ToolStripLabel1.Text = "Connection Server TCP/IP Control Bar"
-        '
-        'ServerTextBox
-        '
-        Me.ServerTextBox.Name = "ServerTextBox"
-        Me.ServerTextBox.ReadOnly = True
-        Me.ServerTextBox.Size = New System.Drawing.Size(100, 25)
-        '
-        'connectButtonTCPIP
-        '
-        Me.connectButtonTCPIP.CheckOnClick = True
-        Me.connectButtonTCPIP.Image = CType(resources.GetObject("connectButtonTCPIP.Image"), System.Drawing.Image)
-        Me.connectButtonTCPIP.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.connectButtonTCPIP.Name = "connectButtonTCPIP"
-        Me.connectButtonTCPIP.Size = New System.Drawing.Size(72, 22)
-        Me.connectButtonTCPIP.Text = "Connect"
-        Me.connectButtonTCPIP.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(251, 22)
-        Me.ToolStripLabel2.Text = "Connection Server Web Service Control Bar"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(121, 22)
+        Me.ToolStripLabel2.Text = "Web Service InfoDB"
         '
         'ToolStripButton3
         '
@@ -566,17 +525,12 @@ Partial Class MDIParent1
     Friend WithEvents InformazioniSullaLicenzaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ManualeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents connectButtonTCPIP As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ClassiArticoloToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EsportazioneAnagraficheToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EsportazioneFattureToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ServerTextBox As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
 
 End Class

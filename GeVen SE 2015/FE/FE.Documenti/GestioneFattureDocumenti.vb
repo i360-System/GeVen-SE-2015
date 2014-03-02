@@ -21,3 +21,22 @@
     End Function
 
 End Class
+
+Public Module CampiUpdateGestioneFattureDocumenti
+
+    Public Property nomecampo As List(Of List(Of String))
+        Get
+            Return _nomecampo
+        End Get
+        Set(value As List(Of List(Of String)))
+            _nomecampo = value
+        End Set
+    End Property
+    Private _nomecampo As New List(Of List(Of String))
+
+    Public Sub init()
+        _nomecampo = New List(Of List(Of String))
+    End Sub
+
+
+End Module

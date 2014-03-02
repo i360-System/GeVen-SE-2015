@@ -42,53 +42,7 @@
     End Sub
 
 
-    ''' <summary>
-    ''' Raccoglie i nomi dei campi e i relativi valori per preparare la select
-    ''' </summary>
-    ''' <param name="frm"></param>
-    ''' <remarks></remarks>
-    Public Function raccogliValori(ByRef frm As Form) As List(Of List(Of String))
-
-        Dim listaRitorno As New List(Of List(Of String))
-
-        For Each gruppobox As Object In frm.Controls 'groupbox
-
-            If TypeOf gruppobox Is GroupBox Then
-
-                For Each controllo As Object In gruppobox.Controls
-
-                    If (TypeOf controllo Is TextBox) Or (TypeOf controllo Is ComboBox) Then
-
-                        If Not Trim(controllo.Text) = "" Then
-                            Dim listaCampoValore As New List(Of String)
-                            listaCampoValore.Add(controllo.Name) 'nomecampo
-                            listaCampoValore.Add(controllo.Text) 'valore del campo
-                            listaRitorno.Add(listaCampoValore)
-                        End If
-
-                    ElseIf (TypeOf controllo Is DataGridView) Then
-
-                        Dim numeroColonne As Byte = controllo.columns.count()
-                        For i = 0 To numeroColonne - 1
-                            If Not Trim(controllo.item(i, 0).value.ToString) = "" Then
-                                Dim listaCampoValore As New List(Of String)
-                                listaCampoValore.Add(controllo.Columns(i).name())
-                                listaCampoValore.Add(Trim(controllo.item(i, 0).value.ToString))
-                                listaRitorno.Add(listaCampoValore)
-                            End If
-                        Next
-
-                    End If
-
-                Next
-
-            End If
-
-        Next
-
-        Return listaRitorno
-
-    End Function
+    
 
     ''' <summary>
     ''' Costruttore di preSelect query, imposta la stringa da dare al server, il quale provvederà
@@ -100,7 +54,7 @@
     ''' <remarks></remarks>
     Public Function costruttoreDiPreSelect(ByVal CampiValori As List(Of List(Of String)), ByVal nomeTabella As String) As String
 
-        Dim queryPreSelect As String = "QUERY|"
+        Dim queryPreSelect As String = ""
 
         queryPreSelect &= comandiInvioClient.sel & comandiInvioClient.sep
 
@@ -116,6 +70,41 @@
             queryPreSelect = Left(queryPreSelect, queryPreSelect.Length - 1)
             queryPreSelect &= "►"
         Next
+
+        Return queryPreSelect
+
+    End Function
+
+
+    Public Function costruttoreDiPreUpdate(ByVal CampiValori As List(Of List(Of String)), ByVal campivaloriSET As List(Of List(Of String)), ByVal nomeTabella As String) As String
+
+        Dim queryPreSelect As String = ""
+
+        queryPreSelect &= comandiInvioClient.upd & comandiInvioClient.sep
+
+        queryPreSelect &= nomeTabella & comandiInvioClient.sep
+
+
+
+        For Each lista As List(Of String) In CampiValori
+            queryPreSelect &= "◄"
+            For Each valore As String In lista
+                queryPreSelect &= valore & "↨"
+            Next
+            queryPreSelect = Left(queryPreSelect, queryPreSelect.Length - 1)
+            queryPreSelect &= "►"
+        Next
+
+        For Each Lis As List(Of String) In campivaloriSET
+
+            queryPreSelect &= "┌"
+            For Each Val As String In Lis
+                queryPreSelect &= Val & "█"
+            Next
+            queryPreSelect = Left(queryPreSelect, queryPreSelect.Length - 1)
+            queryPreSelect &= "┘"
+        Next
+
 
         Return queryPreSelect
 

@@ -22,7 +22,7 @@ Public Class Services
         Dim preTabelle As String = Nothing
         Dim tabella As String = Nothing
         Dim tabelle As New List(Of String)
-        Dim campiValori As New List(Of List(Of String))
+        Dim campiValori, campiValori2 As New List(Of List(Of String))
         Dim campiSET As New List(Of List(Of String))
 
         Dim valori As String = Nothing
@@ -107,7 +107,54 @@ Public Class Services
 
             If stringaAppoggio.Length > 0 Then
 
-                'to do estraiamo i campi set da mofificare
+                Dim numeroDelimitatori As Byte = 0
+                numeroDelimitatori = numOccorrenze(stringaAppoggio, "┘") : Dim lung As Integer = InStr(stringaAppoggio, "┘")
+                lunghezzaIniziale = lung
+                'to do estraiamo i campi set da modificare
+                For n = 1 To numeroDelimitatori
+                    Dim campoValore2 As New List(Of String)
+                    Dim campiValoriPuliti2 As String = Nothing
+
+                    If n = 1 Then
+                        campiValoriPuliti2 = Mid(stringaAppoggio, 2, lunghezzaIniziale - 1)
+                    Else
+                        lung = InStr(stringaAppoggio, "┘")
+                        taglia = lung
+                        campiValoriPuliti2 = Mid(stringaAppoggio, 1, lung)
+                    End If
+
+                    lung = InStr(campiValoriPuliti2, "█")
+                    Dim campo = Mid(campiValoriPuliti2, 2, lung - 2)
+                    'serializzarlo campo
+                    Dim valCampo = serializzatore.ritornacampo(campo)
+
+                    If IsNothing(valCampo) Then Throw New NotImplementedException("Non c'è corrispondenza nel database con i/il campi/o selezionato")
+
+
+                    campoValore2.Add(valCampo) ' aggiungo il campo
+                    valori = Mid(campiValoriPuliti2, lung + 1)
+                    numeroOccorrenze = numOccorrenze(valori, "█")
+
+
+                    For q = 0 To numeroOccorrenze
+                        If q = numeroOccorrenze Then
+                            valore = Left(valori, valori.Length - 1)
+                            'lunghezza = valori.Length
+                        Else
+                            lung = InStr(valori, "█")
+                            valore = Mid(valori, 1, lung)
+                        End If
+                        'taglia += lunghezza
+                        campoValore2.Add(valore)
+                        'valori = Mid(valori, lunghezza)
+                    Next
+
+                    campiValori2.Add(campoValore2)
+                    valore = Nothing
+
+                    stringaAppoggio = Mid(stringaAppoggio, taglia + 1) 'possibile punto di implementazione per gestire i valori set dell'updATE
+                    taglia = 0
+                Next
 
             End If
 
@@ -230,7 +277,6 @@ Public Class Services
                             query &= WhereConditionSelect(campiValori)
 
                     End Select
-
 
                 Case "«insert»"
 
@@ -357,79 +403,79 @@ Public Class Services
                         Case "updateanagrafica"
 
                             query = serializzatore.Query.updateAnagrafica
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatecambiovaluta"
 
                             query = serializzatore.Query.updateCambioValuta
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatecategorieclienti"
 
                             query = serializzatore.Query.updateCategorieClienti
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatedatiaziende"
 
                             query = serializzatore.Query.updateDatiAziende
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatedestinazionemerce"
 
                             query = serializzatore.Query.updateDestinazioneMerce
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updategestioneannuali"
 
                             query = serializzatore.Query.updateGestioneAnnuali
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updateiva"
 
                             query = serializzatore.Query.updateIva
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatemodalitapagamento"
 
                             query = serializzatore.Query.updateModalitaPagamento1 ' add 2
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatesconti"
 
                             query = serializzatore.Query.updateSconti
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatespedizionieri"
 
                             query = serializzatore.Query.updateSpedizionieri
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatetipidocumento"
 
                             query = serializzatore.Query.updateTipiDocumento
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatezonegeografiche"
 
                             query = serializzatore.Query.updateZoneGeografiche
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updatearticoli"
 
                             query = serializzatore.Query.updateArticoli1 ' add 2
-                            query &= SetCondition(campiSET)
+                            'query &= SetCondition(campiSET)
                             query &= WhereConditionSelect(campiValori)
 
                         Case "updateclassiarticolo"
@@ -780,7 +826,15 @@ Public Class Services
 
         Dim res As String = Nothing
 
+        res = " SET "
+        For Each ele In listaSet
 
+            If (ele Is listaSet.Last) Then
+                res &= ele(0) & "=" & ele(1) & " "
+            Else
+                res &= ele(0) & "=" & ele(1) & ", "
+            End If
+        Next
 
         Return res
 
@@ -792,42 +846,42 @@ Public Class Services
     ''' <param name="quer"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function EseguiQuery(ByVal quer As String) As DataSet
-        Dim DatasetDaRestituire As New DataSet
-        Try
-            Dim ServerDB As String = My.Settings.serverDB
-            Dim user As String = My.Settings.user
-            Dim password As String = My.Settings.password
-            Dim DB As String = My.Settings.nomeDB
+    'Public Function EseguiQuery(ByVal quer As String) As DataSet
+    '    Dim DatasetDaRestituire As New DataSet
+    '    Try
+    '        Dim ServerDB As String = My.Settings.serverDB
+    '        Dim user As String = My.Settings.user
+    '        Dim password As String = My.Settings.password
+    '        Dim DB As String = My.Settings.nomeDB
 
 
-            Dim connectionstring As String = "Server=" & ServerDB & ";User Id=" & user & ";Password=" & password & ";Database=" & DB
-            Dim commandtext As String
-            Dim adapter As MySqlDataAdapter
-            Dim table As DataTable
-            commandtext = quer '"select * from account where user=admin"
-            Try
-                adapter = New MySqlDataAdapter(commandtext, connectionstring)
-                table = New DataTable
-                adapter.Fill(table)
+    '        Dim connectionstring As String = "Server=" & ServerDB & ";User Id=" & user & ";Password=" & password & ";Database=" & DB
+    '        Dim commandtext As String
+    '        Dim adapter As MySqlDataAdapter
+    '        Dim table As DataTable
+    '        commandtext = quer '"select * from account where user=admin"
+    '        Try
+    '            adapter = New MySqlDataAdapter(commandtext, connectionstring)
+    '            table = New DataTable
+    '            adapter.Fill(table)
 
-                'incollo dataset
-                adapter.Fill(DatasetDaRestituire)
+    '            'incollo dataset
+    '            adapter.Fill(DatasetDaRestituire)
 
-                'DataGridView1.DataSource = table '##########(but instead of datagrid put the data in a textbox Put the id in the textbox )#######
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            Finally
-                adapter.Dispose()
-            End Try
+    '            'DataGridView1.DataSource = table '##########(but instead of datagrid put the data in a textbox Put the id in the textbox )#######
+    '        Catch ex As Exception
+    '            MsgBox(ex.ToString)
+    '        Finally
+    '            adapter.Dispose()
+    '        End Try
 
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+    '    Catch ex As Exception
+    '        MsgBox(ex.ToString)
+    '    End Try
 
-        Return DatasetDaRestituire
+    '    Return DatasetDaRestituire
 
-    End Function
+    'End Function
 
     ''' <summary>
     ''' Ritorna la stringa con i valori "SET nomecampo = valore" 
