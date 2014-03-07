@@ -1,6 +1,6 @@
 ﻿Module serializzatore
 
-    Public comunica As Boolean = False
+    'Public comunica As Boolean = False
 
     ''' <summary>
     ''' Struttura con relative Query
@@ -111,5 +111,17 @@
     End Function
 
 #End Region
+    Public Structure stampe
+        Shared pèippo = ""
+    End Structure
+    Public Structure Messaggi
+
+        Shared TemplatepercorsononTrovato = "Percorso dei template non impostato."
+        Shared templatenonTrovato = "Template non trovato"
+    End Structure
+    
+
+   
+
 
 End Module

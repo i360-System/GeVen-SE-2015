@@ -1,7 +1,6 @@
 ﻿Public Class GestioneDocumenti
+    Private globalSystemComboBehaviour As Boolean
     Private Shared Ist As GestioneDocumenti = Nothing
-    'Dim modi As Byte = 100 'identifica l'ambito in cui siamo, ricerca,modifica etc etc
-
     Public Shared Function Istanza() As GestioneDocumenti
         If Ist Is Nothing OrElse Ist.IsDisposed = True Then
             Ist = New GestioneDocumenti
@@ -10,6 +9,30 @@
         Return Ist
     End Function
 
+    Private Sub DocumentitestataBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
+        Me.Validate()
+        Me.DocumentitestataBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.FatturazionegevenDataSet)
+
+    End Sub
+
+
+    Private Sub DocumentitestataBindingNavigatorSaveItem_Click_1(sender As Object, e As EventArgs) Handles DocumentitestataBindingNavigatorSaveItem.Click
+        Me.Validate()
+        Me.DocumentitestataBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.FatturazionegevenDataSet)
+        globalSystemComboBehaviour = True
+    End Sub
+
+    Private Sub GestioneDocumenti_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ''TODO: questa riga di codice carica i dati nella tabella 'FatturazionegevenDataSet.documentidettaglio'. È possibile spostarla o rimuoverla se necessario.
+        'Me.DocumentidettaglioTableAdapter.Fill(Me.FatturazionegevenDataSet.documentidettaglio)
+        ''TODO: questa riga di codice carica i dati nella tabella 'FatturazionegevenDataSet.documentitestata'. È possibile spostarla o rimuoverla se necessario.
+        'Me.DocumentitestataTableAdapter.Fill(Me.FatturazionegevenDataSet.documentitestata)
+
+    End Sub
+
     Private Sub New()
 
         MyBase.New()
@@ -17,207 +40,92 @@
         InitializeComponent()
 
         ' Aggiungere le eventuali istruzioni di inizializzazione dopo la chiamata a InitializeComponent().
+        globalSystemComboBehaviour = False
+        InitCombo()
 
     End Sub
 
-    '    Public Function clickMenu(ByVal valoreClick As Integer) As Boolean
-
-    '        Dim res As Boolean = False
-
-
-    '        Select Case valoreClick
-
-    '            Case 0 'inserisci
-
-    '                serializzatore.azzeraTuttiCampi(Me)
-    '                modi = 0
-
-    '            Case 1 'ricerca
-
-    '                modi = 1
-    '                'raccolgo i valori che ho scritto nei campi 
-    '                Dim listaCampiValoriSelect As New List(Of List(Of String))
-    '                Dim c As New Services
-    '                listaCampiValoriSelect = c.raccogliValori(Me)
-
-    '                'chiamo il server e gli passo i valori della query
-    '                Dim preselect As String = serializzatore.costruttoreDiPreSelect(listaCampiValoriSelect, "«" & Me.Name.ToString & "»")
-    '                Dim obj As Object = Me.ParentForm
-
-    '                Try
-    '                    obj.senddata(preselect)
-    '                    'If Not IsNothing(obj._Connection) AndAlso obj._Connection.Client.Connected AndAlso obj._Connection.Stream IsNot Nothing Then
-    '                    '    serializzatore.comunica = True
-    '                    '    obj.IstruzioneDBServer(preselect)
-    '                    serializzatore.comunica = False
-    '                    'End Try
-
-    '                    If serializzatore.comunica Then
-    '                        'if ok then popolo tutti i controlli o un datareader e restituisco true, poi vediamo
-    '                    End If
-
-    '                Catch ex As Exception
-    '                    MsgBox(ex.ToString)
-    '                    res = False
-    '                End Try
-    '                Return res
-
-    '            Case 2 'modifica
-
-    '                modi = 2
-    '                CampiUpdate.init()
-    '                'sblocco caselle?
-    '                'se ne ho procedo, altrimenti avverto il client
-
-
-    '            Case 10 'conferma
-
-    '                Select Case modi
-
-    '                    Case 2 'modifica
-
-    '                        If CampiUpdate.nomecampo.Count > 0 Then
-    '                            Try
-    '                                Dim listaCampiValoriSelect, listaesclusi, listaCampiValoriupdate As New List(Of List(Of String))
-    '                                Dim c As New Services
-
-    '                                listaesclusi = CampiUpdate.nomecampo
-    '                                listaCampiValoriSelect = c.raccogliValori(Me, listaesclusi)
-    '                                Dim preupd As String = serializzatore.costruttoreDiPreUpdate(listaCampiValoriSelect, listaesclusi, "«" & Me.Name.ToString & "»")
-    '                                Dim obj As Object = Me.ParentForm
-    '                                'spara al wcf
-    '                                'iif ok return true
-    '                                'res = true
-    '                            Catch ex As Exception
-    '                                MsgBox(ex.ToString)
-    '                            Finally
-    '                                CampiUpdate.init()
-    '                            End Try
-    '                        Else
-    '                            MsgBox("Non è stato modificato nessun valore.")
-    '                            res = False
-    '                        End If
-
-    '                    Case 0 'inserisci
-
-
-    '                End Select
-
-    '        End Select
-
-    '        'res = serializzatore.comunica
-    '        Return res
-
-    '    End Function
-
-
-    '    ''' <summary>
-    '    ''' autocompletamento su combo/text
-    '    ''' </summary>
-    '    ''' <remarks></remarks>
-    '    Private Sub autoCompletamento()
-    '        Dim arrSource As New AutoCompleteStringCollection
-
-    '        '-2 perchè l'ultima riga è quella vuota
-    '        For i As Integer = 0 To DataGridView1.RowCount - 2
-    '            arrSource.Add(DataGridView1(0, i).Value.ToString)
-    '            ComboBoxAzienda.Items.Add(DataGridView1(0, i).Value.ToString)
-    '        Next
-
-    '        'aggiungo agli items e ricevo anche il suggerimento
-    '        'se non devo ordinare gli items posso impostare il DataSource
-    '        'ComboBox1.DataSource=arrSource
-    '        ComboBoxAzienda.Sorted = True
-    '        ComboBoxAzienda.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-    '        ComboBoxAzienda.AutoCompleteSource = AutoCompleteSource.ListItems
-    '        ComboBoxAzienda.SelectedIndex = -1
-
-    '        'ho solo il suggerimento
-    '        ComboBoxEsercizio.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-    '        ComboBoxEsercizio.AutoCompleteSource = AutoCompleteSource.CustomSource
-    '        ComboBoxEsercizio.AutoCompleteCustomSource = arrSource
-
-    '        'textbox
-    '        TextBoxNumeroDocumento.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-    '        TextBoxNumeroDocumento.AutoCompleteSource = AutoCompleteSource.CustomSource
-    '        TextBoxNumeroDocumento.AutoCompleteCustomSource = arrSource
-    '    End Sub
-
-
-
-    '#Region "captureSetValue"
-
-
-
-    '    Private Function Condizioni() As Boolean
-
-    '        Dim res As Boolean = False
-
-    '        If Navigatore1.modifica.Enabled = True And Navigatore1.ricerca.Enabled = False And Navigatore1.inserisci.Enabled = False And modi = 2 Then
-    '            res = True
-    '        End If
-
-    '        Return res
-
-    '    Private Sub ComboBoxAgente_Validated(sender As Object, e As EventArgs) Handles ComboBoxAgente.Validated
-    '        If Not Condizioni() Then Exit Sub
-    '        Dim p As New List(Of String) : p.AddRange({ComboBoxAgente.Name, ComboBoxAgente.Text.ToString})
-    '        CampiUpdate.nomecampo.Add(p)
-    '    End Sub
-
-    '#End Region
-
-    Private Sub DocumentitestataBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles DocumentitestataBindingNavigatorSaveItem.Click
-        Try
-            Me.Validate()
-            Me.DocumentitestataBindingSource.EndEdit()
-            Me.TableAdapterManager1.UpdateAll(Me.FatturazionegevenDataSet1)
-        Catch ex As Exception
-            MsgBox(ex.ToString())
-        End Try
-
-
-    End Sub
-
-    Private Sub GestioneDocumenti_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-    End Sub
-
-   
+    ''' <summary>
+    ''' Ricerca nel Dataset e filla i risultati ai controlli sul form.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
 
-        Dim servizioApplicazione As New Services
-        Dim where As String = servizioApplicazione.WhereConditionSelect(servizioApplicazione.raccogliValori(Me))
-
-        If Not IsNothing(where) Then
-            Me.DocumentitestataBindingSource.Filter = where
+        'ricerca
+        Dim FlussodiLavoro As New WorkFlow
+        Dim oggettoWhereCondition As New ObjectService : oggettoWhereCondition = FlussodiLavoro.ricerca(Me)
+        If oggettoWhereCondition.VeroFalso Then
+            DocumentitestataBindingSource.Filter = oggettoWhereCondition.WhereCondition
         End If
-        'TODO: questa riga di codice carica i dati nella tabella 'FatturazionegevenDataSet1.documentitestata'. È possibile spostarla o rimuoverla se necessario.
-        Me.DocumentitestataTableAdapter1.Fill(Me.FatturazionegevenDataSet1.documentitestata)
-        'TODO: questa riga di codice carica i dati nella tabella 'FatturazionegevenDataSet1.documentidettaglio'. È possibile spostarla o rimuoverla se necessario.
-        Me.DocumentidettaglioTableAdapter.Fill(Me.FatturazionegevenDataSet1.documentidettaglio)
 
-
+        DocumentitestataTableAdapter.Fill(Me.FatturazionegevenDataSet.documentitestata)
+        DocumentidettaglioTableAdapter.Fill(Me.FatturazionegevenDataSet.documentidettaglio)
+        globalSystemComboBehaviour = True
     End Sub
 
+    ''' <summary>
+    ''' Stampa
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+
+        Dim flussodiLAvoro As New WorkFlow
+        flussodiLAvoro.Print(Me)
+        globalSystemComboBehaviour = True
+    End Sub
+
+    ''' <summary>
+    ''' Inizializa il caricamento delle combobox in determinati stati dell'applicativo,
+    ''' inoltre determina il caricamento delle combobox "figlie"
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub InitCombo()
+        If Not globalSystemComboBehaviour Then
+
+            Dim servizioApplicazione As New Services
+            Dim list1 = servizioApplicazione.ComboDataSource(servizioApplicazione.distinctSelect(AziendeTableAdapter.GetData()).ToList)
+            Dim list2 = servizioApplicazione.ComboDataSource(servizioApplicazione.distinctSelect(AnagraficheTableAdapter1.GetData()).ToList)
+
+            AziendaComboBox.Items.AddRange(list1.ToArray)
+            AnagraficaComboBox.Items.AddRange(list2.ToArray)
+
+        End If
+    End Sub
+
+    Private Sub BindingNavigatorDeleteItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorDeleteItem.Click
+        globalSystemComboBehaviour = True
+    End Sub
+
+    Private Sub BindingNavigatorAddNewItem_Click(sender As Object, e As EventArgs) Handles BindingNavigatorAddNewItem.Click
+        globalSystemComboBehaviour = False
+    End Sub
+
+  
+   
+
+
+    Private Sub AziendaComboBox_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles AziendaComboBox.SelectionChangeCommitted
+        If Not AziendaComboBox.Items(AziendaComboBox.SelectedIndex).ToString = "" Then
+
+            If AziendaComboBox.Items(AziendaComboBox.SelectedIndex).ToString.Length > 4 Then
+                AziendaComboBox.Text = Trim(Mid(AziendaComboBox.Items(AziendaComboBox.SelectedIndex).ToString, 1, 4)).ToString
+                AziendaComboBox.Refresh()
+            End If
+
+        End If
+    End Sub
 End Class
 
-'Public Module CampiUpdate
 
-'    Public Property nomecampo As List(Of List(Of String))
-'        Get
-'            Return _nomecampo
-'        End Get
-'        Set(value As List(Of List(Of String)))
-'            _nomecampo = value
-'        End Set
-'    End Property
-'    Private _nomecampo As New List(Of List(Of String))
+'************commenti*******
+'For Each r In listaSorgente
+'    'p.Add()
+'Next
 
-'    Public Sub init()
-'        _nomecampo = New List(Of List(Of String))
-'    End Sub
-
-
-'End Module
+'p = AziendeTableAdapter.GetData
+'Dim marche = listaSorgente.AsEnumerable().Select(.Field(Of String)("Azienda")).Distinct()
+'IEnumarable<string>

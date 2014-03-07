@@ -112,6 +112,18 @@ Namespace My
                 Me("percorsotemplate") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property percorsoOutput() As String
+            Get
+                Return CType(Me("percorsoOutput"),String)
+            End Get
+            Set
+                Me("percorsoOutput") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
