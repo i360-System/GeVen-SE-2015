@@ -60,6 +60,13 @@ Public Class Services
 
     End Function
 
+    ''' <summary>
+    ''' Raccoglie i nomi dei campi e i relativi valori per preparare la select, escludendo per i campi associati al secondo parametro di ingressso
+    ''' </summary>
+    ''' <param name="frm"></param>
+    ''' <param name="listaesclusi"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function raccoglivalori(ByRef frm As Form, ByVal listaesclusi As List(Of List(Of String))) As List(Of List(Of String))
         Dim listaRitorno As New List(Of List(Of String))
 
@@ -126,24 +133,23 @@ Public Class Services
         Return res
     End Function
 
-    Public Function AggiungoSetValue(ByVal campiSET As List(Of List(Of String))) As String
+    'Public Function AggiungoSetValue(ByVal campiSET As List(Of List(Of String))) As String
 
-        Dim res As String = ""
+    'Dim res As String = ""
 
-        If campiSET.Count > 0 Then
+    '    If campiSET.Count > 0 Then
 
-            For Each elem In campiSET
+    '        For Each elem In campiSET
 
-                res &= "┌" & elem(0) & "█" & elem(1) & "┘"
+    '            res &= "┌" & elem(0) & "█" & elem(1) & "┘"
 
-            Next
+    '        Next
 
-        End If
+    '    End If
 
-        Return res
+    '    Return res
 
-    End Function
-
+    'End Function
 
     ''' <summary>
     ''' ritorna il nomecampo sul database
@@ -202,6 +208,8 @@ Public Class Services
 
     End Function
 
+
+#Region "Print"
     Public Function controlloInizialeStampa() As Boolean
 
         Dim res As Boolean = False
@@ -287,18 +295,13 @@ Public Class Services
 
     End Sub
 
-
-
     '' '' '' '' ''Dim nomecompletotemplate = My.Settings.percorsotemplate & "/" & name 'nome completo del template
-
 
     ' '' '' '' '' ''Dim wrdApp As Object
     ' '' '' '' '' ''Dim wrdDoc As Object
     ' '' '' '' '' ''Dim wrdDataDoc As Object
     ' '' '' '' '' ''Dim iCount As Integer
     '' '' '' '' ''Dim F As New fatturazionegevenDataSet
-
-
 
     '' '' '' '' ''Dim wd As New Word.Application
     '' '' '' '' ''Dim doc As Word.Document
@@ -314,119 +317,6 @@ Public Class Services
     '' '' '' '' ''    searchArea.Find.Text = "@NominativoDestinatario@" 'TESTO DA TROVARE
     '' '' '' '' ''Next
 
-
-
-    '' '' '' '' ''searchArea.Find.Replacement.ClearFormatting()
-    ' '' '' '' '' ''searchArea.Find.Replacement.Text =  'TESTO DA INSERIRE
-    '' '' '' '' ''searchArea.Find.Execute(Replace:=Word.WdReplace.wdReplaceAll)
-
-    '' '' '' '' ''wd.Visible = True
-    'axWord = New Word.Application 'start
-    'axWord.Visible = True
-
-    'Dim axDoc As Word.Document 'create
-    'axDoc = axWord.Documents.Add
-
-    ''Dim axDoc As Word.Document 'open
-    'axDoc = axWord.Documents.Open(My.Settings.percorsotemplate & "/" & "TemplateFatturaBlu.Doc")
-
-
-    'axDoc.Activate()
-    'axDoc.MailMerge.MainDocumentType = Word.WdMailMergeMainDocType.wdFormLetters
-    'axDoc.MailMerge.OpenDataSource(F, axWord.WdOpenFormatAuto, False, False, False, False, , , False, , , , , , False, Word.WdMergeSubType.wdMergeSubTypeOAL)
-    'axDoc.MailMerge.DataSource.FirstRecord = axWord.wdDefaultFirstRecord
-    'axDoc.MailMerge.DataSource.LastRecord = axWord.wdDefaultLastRecord
-    'axDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToNewDocument
-    'axDoc.MailMerge.Execute(False)
-
-    'axDoc.SaveAs(My.Settings.percorsoOutput & "/" & F.documentitestata.DataDocumentoColumn.ToString) 'save
-
-    'Dim oApp As Object
-    'Dim oMainDoc As Object 'Word.Document
-    'Dim oSel As Object 'Word.Selection
-    'Dim sDBPath As String
-
-    'oApp.Application = CreateObject("Word.Application")
-    ''Start a new main document for the mail merge.
-    'oMainDoc.Document = oApp.Application.Documents.Add
-
-    'With oMainDoc.Document.MailMerge
-
-    '    .MainDocumentType = wdFormLetters
-
-    '    'Set up the mail merge data source to Northwind.mdb.
-    '    'sDBPath = "C:\Program Files\Microsoft Office\" & _
-    '    '          "OfficeXP\Samples\Northwind.mdb"
-    '    .OpenDataSource(f.documentitestata)
-    '    '.OpenDataSource(Name:=sDBPath, _
-    '    '   SQLStatement:="SELECT * FROM [Customers]")
-
-    '    'Add the field codes to the document to create the form letter.
-    '    With .Fields
-    '        oSel = oApp.Application.Selection
-    '        .Add(oSel.Range, "@IntestazioneRiga1@")
-    '        oSel.TypeParagraph()
-    '        .Add(oSel.Range, "@DescrizioneDocumento@")
-    '        oSel.TypeParagraph()
-    '        .Add(oSel.Range, "@DataDocumento@")
-    '        ' oSel.TypeText ", "
-    '        .Add(oSel.Range, "@Numero@")
-    '        oSel.TypeParagraph()
-    '        oSel.TypeParagraph()
-    '        'oSel.TypeText "Dear "
-    '        .Add(oSel.Range, "@Anno@")
-    '        'oSel.TypeText ","
-    '        oSel.TypeParagraph()
-    '        oSel.TypeParagraph()
-    '        'oSel.TypeText " This letter is to inform you..."
-    '        'oSel.TypeParagraph()
-    '        'oSel.TypeParagraph()
-    '        'oSel.TypeText "Sincerely, [Your Name Here]"
-    '    End With
-    'End With
-
-    ''Perform the mail merge to a new document.
-    'With oMainDoc.Document
-    '    .MailMerge.Destination = My.Settings.percorsotemplate & "/" & "TemplateFatturaBlu.doc"
-    '    .MailMerge.Execute(Pause:=False)
-    'End With
-
-
-    'Dim wrdSelection As Word.Selection
-    'Dim wrdMailMerge As Word.MailMerge
-    'Dim wrdMergeFields As Word.MailMergeFields
-
-    'Dim StrToAdd As String
-
-    '' Create an instance of Word  and make it visible.
-    'wrdApp = CreateObject("Word.Application")
-    'wrdApp.Visible = True
-
-    '' Add a new document.
-
-    'wrdDoc = wrdApp.Documents.Add()
-    'wrdDoc.Select()
-
-    'wrdSelection = wrdApp.Selection()
-    'wrdMailMerge = wrdDoc.MailMerge()
-
-    '' Create MailMerge Data file.
-    ''CreateMailMergeDataFile()
-
-    '' Create a string and insert it into the document.
-    'StrToAdd = "For additional information regarding the " & _
-    '           "Department of Electrical Engineering, " & _
-    '           "you can visit our Web site at "
-    'wrdSelection.TypeText(StrToAdd)
-    '' Insert a hyperlink to the Web page.
-    'wrdSelection.Hyperlinks.Add(Anchor:=wrdSelection.Range, _
-    '   Address:="http://www.ee.stateu.tld")
-    '' Create a string and insert it in the document.
-    'StrToAdd = ".  Thank you for your interest in the classes " & _
-    '           "offered in the Department of Electrical " & _
-    '           "Engineering.  If you have any other questions, " & _
-    '           "please feel free to give us a call at " & _
-    '           "555-1212." & vbCr & vbCr & _
     '           "Sincerely," & vbCr & vbCr & _
     '           "Kathryn M. Hinsch" & vbCr & _
     '           "Department of Electrical Engineering" & vbCr
@@ -460,8 +350,17 @@ Public Class Services
         End Try
     End Sub
 
+#End Region
 
-    Public Function ComboDataSource(ByVal valore As System.Collections.Generic.List(Of String)) As System.Collections.Generic.List(Of String)
+#Region "Combo add null value"
+
+    ''' <summary>
+    ''' Aggiunge in cima all'elenco un valore vuoto
+    ''' </summary>
+    ''' <param name="valore">valore as list of string</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Overloads Function ComboDataSource(ByVal valore As List(Of String)) As System.Collections.Generic.List(Of String)
 
         Dim res As New System.Collections.Generic.List(Of String)
 
@@ -473,70 +372,350 @@ Public Class Services
     End Function
 
     ''' <summary>
-    ''' Distinct select
+    ''' Aggiunge un valore vuoto in cime all'elenco
     ''' </summary>
     ''' <param name="valore"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Overloads Function comboDataSource(ByVal valore As List(Of Integer)) As System.Collections.Generic.List(Of String)
+
+        Dim res As New System.Collections.Generic.List(Of String)
+
+        valore.Insert(0, vbNull)
+        For Each Valo In valore
+            res.Add(Valo.ToString)
+        Next
+        'res = valore
+
+        Return res
+
+    End Function
+
+    Public Overloads Function ComboDataSource(ByVal valore As List(Of List(Of String))) As List(Of List(Of String))
+
+        Dim res As New List(Of List(Of String))
+
+        For Each valo In valore
+
+            valo.Insert(0, "")
+            res.Add(valo)
+
+        Next
+        'valore.Insert(0, "")
+        'res = valore
+
+        Return res
+
+    End Function
+
+#End Region
+
+#Region "Query LinQ"
+
+    ''' <summary>
+    ''' Funzione per estrarre una rowcollection di stringhe, in relazione al datatable di ingresso
+    ''' </summary>
+    ''' <param name="valore">Valore as Datatable</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
     Public Overloads Function distinctSelect(ByVal valore As DataTable) As EnumerableRowCollection(Of String)
 
         Dim eSeldis As EnumerableRowCollection(Of String) = Nothing
 
+        Try
 
-        Select Case valore.TableName.ToLower
+            Select Case valore.TableName.ToLower
 
-            Case "aziende"
+                Case "aziende"
 
-                eSeldis = From r In valore.AsEnumerable() _
-                                                Select r.Field(Of String)("Azienda") ' + "-" + r.Field(Of String)("Denominazione1")
+                    eSeldis = From r In valore.AsEnumerable() _
+                                                    Select r.Field(Of String)("Azienda") + "-" + r.Field(Of String)("Denominazione1")
+
+                Case "anagrafiche"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                              Select r.Field(Of Integer)("Anagrafica") & "-" & r.Field(Of String)("Denominazione1")
+
+                Case "articoli"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                             Select r.Field(Of String)("Articolo") & "-" & r.Field(Of String)("Denominazione")
+
+                Case "tipidocumento"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                              Select r.Field(Of Integer)("TipoDocumento") & "-" & r.Field(Of String)("Descrizione") & " ■ " & r.Field(Of Integer)("TestDocumento")
+
+                    'Case "agenti"
+
+                    '    eSeldis = From r In valore.AsEnumerable() _
+                    '              Select r.Field(Of Integer)("Anagrafica") & "-" & r.Field(Of String)("Denominazione1")
+
+                Case "parametriiva"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                              Select r.Field(Of String)("SiglaIva") & "-" & r.Field(Of String)("Descrizione")
+
+                Case "pagamentitestata"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                              Select r.Field(Of Integer)("Pagamento") & "-" & r.Field(Of String)("Descrizione")
 
 
-            Case "anagrafiche"
+                Case "causalitrasporto"
 
-                eSeldis = From r In valore.AsEnumerable() _
-                          Select r.Field(Of Integer)("Anagrafica") & "-" & r.Field(Of String)("Denominazione1")
+                    eSeldis = From r In valore.AsEnumerable() _
+                              Select r.Field(Of Integer)("Causale") & "-" & r.Field(Of String)("Denominazione")
 
-            Case "articoli"
+                Case "tipitrasporto"
 
-                eSeldis = From r In valore.AsEnumerable() _
-                         Select r.Field(Of String)("Articolo")
+                    eSeldis = From r In valore.AsEnumerable() _
+                              Select r.Field(Of Integer)("Tipo") & "-" & r.Field(Of String)("Denominazione")
 
-        End Select
+                Case "aspettobeni"
+
+                    eSeldis = From r In valore.AsEnumerable _
+                              Select r.Field(Of Integer)("Tipo") & "-" & r.Field(Of String)("Denominazione")
+
+
+                Case "moditrasporto"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                             Select r.Field(Of Integer)("Modo") & "-" & r.Field(Of String)("Denominazione")
+
+                Case "vettori"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                             Select r.Field(Of Integer)("Anagrafica") & "-" & r.Field(Of String)("Note1")
+
+                Case "divise"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                             Select r.Field(Of String)("SiglaDivisa") & "-" & r.Field(Of Double)("CambioEuro")
+
+                Case "anagraficadestinazioni"
+
+                    eSeldis = From r In valore.AsEnumerable() _
+                             Select r.Field(Of Integer)("Destinazione") & "-" & r.Field(Of String)("Nominativo")
+
+            End Select
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
 
         Return eSeldis
 
     End Function
 
-    Public Function distinctSelectList(ByVal valore As DataTable) As List(Of EnumerableRowCollection(Of String))
+    'Public Overloads Function NumericDistinctSelect(ByVal valore As DataTable) As EnumerableRowCollection(Of Integer)
 
-        Dim eSeldis As EnumerableRowCollection(Of String) = Nothing
-        Dim ListeSeldis As New List(Of EnumerableRowCollection(Of String))
 
-        Select Case valore.TableName.ToLower
+    '    Dim eSeldis As EnumerableRowCollection(Of Integer) = Nothing
 
-            Case "aziende"
+    '    Select Case valore.TableName.ToLower
 
-                eSeldis = From r In valore.AsEnumerable() _
-                                                Select r.Field(Of String)("Azienda") ' + "-" + r.Field(Of String)("Denominazione1")
-                ListeSeldis.Add(eSeldis)
-                eSeldis = Nothing
-                eSeldis = From r In valore.AsEnumerable() _
-                          Select r.Field(Of String)("Denominazione1")
-                ListeSeldis.Add(eSeldis)
 
-            Case "anagrafiche"
 
-                eSeldis = From r In valore.AsEnumerable() _
-                          Select (r.Field(Of Integer)("Anagrafica").ToString) '& "-" & r.Field(Of String)("Denominazione1")
-                ListeSeldis.Add(eSeldis)
-                eSeldis = Nothing
-                eSeldis = From r In valore.AsEnumerable() _
-                          Select r.Field(Of String)("Denominazione1")
+    '    End Select
 
-        End Select
+    '    Return eSeldis
 
-        Return ListeSeldis
+    'End Function
+
+    ''' <summary>
+    ''' Funzione per estrarre una row colection, in relazione al datatable di ingresso e alla where condition
+    ''' </summary>
+    ''' <param name="valore">Valore as Datatable</param>
+    ''' <param name="valore2">Valore2 as String, where condition</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Overloads Function distinctSelect(ByVal valore As DataTable, ByVal valore2 As String) As EnumerableRowCollection(Of String)
+
+        Dim eseldis As EnumerableRowCollection(Of String) = Nothing
+
+        Try
+
+            Select Case valore.TableName.ToLower
+
+                Case "anagraficadestinazioni" 'anagraficadestinazioni
+
+                    eseldis = From r In valore.AsEnumerable _
+                            Where r.Field(Of Integer)("Anagrafica") = valore2 _
+                            Select r.Field(Of Integer)("Destinazione") & "-" & r.Field(Of String)("Nominativo")
+
+                Case "esercizicontabili"
+
+                    eseldis = From r In valore.AsEnumerable _
+                           Where r.Field(Of String)("Azienda") = valore2 _
+                           Order By r.Field(Of String)("Esercizio") Descending _
+                            Select r.Field(Of String)("Esercizio") & "-" & r.Field(Of String)("Descrizione")
+
+                Case "pagamentitestata"
+
+                    eseldis = From r In valore.AsEnumerable() _
+                              Where r.Field(Of Integer)("Pagamento") = valore2 _
+                              Select r.Field(Of Single)("ScontoCassa") & ""
+
+            End Select
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseldis
 
     End Function
 
+    ''' <summary>
+    ''' Ottiene la password relativa all'account
+    ''' </summary>
+    ''' <param name="resLogin"></param>
+    ''' <param name="us"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Overloads Function SelectAccount(ByVal resLogin As DataTable, ByVal us As String) As EnumerableRowCollection(Of String)
+
+        Dim eseldis As EnumerableRowCollection(Of String) = Nothing
+
+        Try
+
+            eseldis = From r In resLogin.AsEnumerable() _
+               Where r.Field(Of String)("user") = us _
+               Select r.Field(Of String)("password")
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseldis
+
+    End Function
+
+    ''' <summary>
+    ''' Ottiene il numero massimo incrementato di uno, dalla tabella DocumentiTestata
+    ''' </summary>
+    ''' <param name="tabella"></param>
+    ''' <param name="az"></param>
+    ''' <param name="eser"></param>
+    ''' <param name="tipDoc"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function GetNumeroDocumento(ByVal tabella As DataTable, ByVal az As String, ByVal eser As String, ByVal tipDoc As Integer) As Integer
+
+        Dim eseldis As Integer = 0
+
+        Try
+
+            eseldis = (From r In tabella.AsEnumerable() _
+                          Where r.Field(Of String)("Azienda") = az _
+                          And r.Field(Of String)("Esercizio") = eser _
+                          And r.Field(Of Integer)("TestDocumento") = tipDoc _
+                          Select r.Field(Of Integer)("Numero")).Max
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseldis
+
+    End Function
+
+    ''' <summary>
+    ''' Ottiene il livello utente dalla tabella account
+    ''' </summary>
+    ''' <param name="resLogin"></param>
+    ''' <param name="us"></param>
+    ''' <param name="ps"></param>
+    ''' <returns>as integer</returns>
+    ''' <remarks></remarks>
+    Public Overloads Function SelectAccount(ByVal resLogin As DataTable, ByVal us As String, ByVal ps As String) As EnumerableRowCollection(Of Integer)
+
+        Dim eseldis As EnumerableRowCollection(Of Integer) = Nothing
+
+        Try
+
+            eseldis = From r In resLogin.AsEnumerable() _
+               Where r.Field(Of String)("user") = us _
+               And r.Field(Of String)("password") = ps _
+               Select r.Field(Of Integer)("userlevel")
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseldis
+
+    End Function
+
+    Public Function AnagraficaClienteLike(ByVal datatbl As DataTable, ByVal valoreLike As String) As EnumerableRowCollection(Of String)
+
+        Dim eseldis As EnumerableRowCollection(Of String) = Nothing
+
+        Try
+
+            eseldis = From r In datatbl.AsEnumerable() _
+                      Where r.Field(Of String)("denominazione1").ToLower.Contains(valoreLike.ToLower) _
+                      Select r.Field(Of Integer)("anagrafica") & "-" & r.Field(Of String)("denominazione1")
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseldis
+
+    End Function
+
+    ''' <summary>
+    ''' Estrae i campi da anagraficadestinazione
+    ''' </summary>
+    ''' <param name="datatbl"></param>
+    ''' <param name="anagrafica"></param>
+    ''' <param name="destinazione"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function distinctSelectDestinazione(ByVal datatbl As DataTable, ByVal anagrafica As Integer, ByVal destinazione As Integer) ' As EnumerableRowCollection(Of CampiDestinazione)
+
+        'Dim eseldis As EnumerableRowCollection(Of String) = Nothing
+        'Dim eseldis As EnumerableRowCollection(Of DataRow) = Nothing
+
+        Dim eseldis = Nothing
+        Try
+
+            eseldis = From r In datatbl.AsEnumerable _
+                  Where r.Field(Of Integer)("Anagrafica") = anagrafica And r.Field(Of Integer)("Destinazione") = destinazione
+            Select New CampiDestinazione With {.Nominativo = r.Field(Of String)("Nominativo"), .Indirizzo = r.Field(Of String)("Indirizzo"), .Cap = r.Field(Of String)("Cap") _
+                                              , .Localita = r.Field(Of String)("Localita"), .Provincia = r.Field(Of String)("Provincia")}
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+
+        Return eseldis
+
+    End Function
+
+    Public Function distinctSelectAnagraficaFatturazione(ByVal datatbl As DataTable, ByVal anagrafica As Integer)
+
+        Dim eseldis = Nothing
+        Try
+
+            eseldis = From r In datatbl.AsEnumerable _
+                  Where r.Field(Of Integer)("Anagrafica") = anagrafica
+            Select New PopolaCampiDaAnagrafica With {.Pagamento = r.Field(Of Integer)("Pagamento"), .Agente = r.Field(Of Integer)("Agente"), .Iva = r.Field(Of String)("Iva") _
+                                              , .Banca = r.Field(Of String)("Banca"), .Agenzia = r.Field(Of String)("Agenzia")}
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+
+        Return eseldis
+
+    End Function
+
+#End Region
+
 End Class
+'select anagrafica, denominazione1 from anagrafiche where denominazione1 like textboxlike.text

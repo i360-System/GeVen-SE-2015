@@ -29,10 +29,10 @@ Public Class campi
         End Get
     End Property
 
-    Private _NumeroDocumento = "numero"
-    Public ReadOnly Property NumeroDocumento As String
+    Private _Numero = "numero"
+    Public ReadOnly Property Numero As String
         Get
-            Return _NumeroDocumento
+            Return _Numero
         End Get
     End Property
     Private _SiglaOperatore = "sigla"
@@ -477,6 +477,22 @@ Public Class campi
             Return _magazzino
         End Get
     End Property
+
+    Public ReadOnly Property zona As String
+        Get
+            Return _zona
+        End Get
+    End Property
+    Private _zona As String = "zona"
+
+    Public ReadOnly Property denominazione As String
+        Get
+            Return _denominazione
+        End Get
+    End Property
+    Private _denominazione As String = "denominazione"
+
+
 
 
 End Class

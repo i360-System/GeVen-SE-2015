@@ -15,7 +15,7 @@
 
             WhereCondition = Me.WhereConditionSelect(Me.raccogliValori(frm)) 'yeah! 'raccolgo eventuale where condition
 
-            If Not IsNothing(WhereCondition) Then
+            If (Not IsNothing(WhereCondition)) Or (Not WhereCondition = String.Empty) Then
 
                 obj.VeroFalso = True
                 obj.WhereCondition = WhereCondition
@@ -30,7 +30,9 @@
         Catch ex As Exception
             MsgBox(ex.ToString)
         Finally
-            obj.VeroFalso = False
+            If Not obj.VeroFalso = True Then
+                obj.VeroFalso = False
+            End If
         End Try
 
         Return obj

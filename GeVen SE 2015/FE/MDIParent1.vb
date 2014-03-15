@@ -418,6 +418,25 @@ Public Class MDIParent1
         NewMDIChild.Show()
     End Sub
 
+    ''' <summary>
+    ''' Apre GestioneAccount
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub GestioneAccountToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GestioneAccountToolStripMenuItem.Click
+        If serializzatore.GlobalObjAccountInfo.livello = 3 Then
+            Dim NewMDIChild As GestioneAccount
+            NewMDIChild = GestioneAccount.Istanza
+            'Set the Parent Form of the Child window.
+            NewMDIChild.MdiParent = Me
+            'Display the new form.
+            NewMDIChild.Show()
+        Else
+            MsgBox(serializzatore.Messaggi.privilegiAccount)
+        End If
+    End Sub
+
 #End Region
 
 #Region "Finestre"
@@ -468,6 +487,7 @@ Public Class MDIParent1
 
 
 #End Region
+
 
 
 End Class

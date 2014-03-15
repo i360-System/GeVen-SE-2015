@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class ZoneGeografiche
+Partial Class GestioneAccount
     Inherits System.Windows.Forms.Form
 
     'Form esegue l'override del metodo Dispose per pulire l'elenco dei componenti.
@@ -23,12 +23,12 @@ Partial Class ZoneGeografiche
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ZoneGeografiche))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestioneAccount))
         Me.FatturazionegevenDataSet = New GeVen_SE_2015.fatturazionegevenDataSet()
-        Me.ZoneBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ZoneTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.zoneTableAdapter()
+        Me.AccountutenteBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.AccountutenteTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.accountutenteTableAdapter()
         Me.TableAdapterManager = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.TableAdapterManager()
-        Me.ZoneBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.AccountutenteBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
@@ -40,17 +40,16 @@ Partial Class ZoneGeografiche
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.ZoneBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.ZoneDataGridView = New System.Windows.Forms.DataGridView()
+        Me.AccountutenteBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.AccountutenteDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.FatturazionegevenDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ZoneBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ZoneBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ZoneBindingNavigator.SuspendLayout()
-        CType(Me.ZoneDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountutenteBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AccountutenteBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.AccountutenteBindingNavigator.SuspendLayout()
+        CType(Me.AccountutenteDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'FatturazionegevenDataSet
@@ -58,18 +57,18 @@ Partial Class ZoneGeografiche
         Me.FatturazionegevenDataSet.DataSetName = "fatturazionegevenDataSet"
         Me.FatturazionegevenDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'ZoneBindingSource
+        'AccountutenteBindingSource
         '
-        Me.ZoneBindingSource.DataMember = "zone"
-        Me.ZoneBindingSource.DataSource = Me.FatturazionegevenDataSet
+        Me.AccountutenteBindingSource.DataMember = "accountutente"
+        Me.AccountutenteBindingSource.DataSource = Me.FatturazionegevenDataSet
         '
-        'ZoneTableAdapter
+        'AccountutenteTableAdapter
         '
-        Me.ZoneTableAdapter.ClearBeforeFill = True
+        Me.AccountutenteTableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager
         '
-        Me.TableAdapterManager.accountutenteTableAdapter = Nothing
+        Me.TableAdapterManager.accountutenteTableAdapter = Me.AccountutenteTableAdapter
         Me.TableAdapterManager.agentiprovvigioniTableAdapter = Nothing
         Me.TableAdapterManager.agentiTableAdapter = Nothing
         Me.TableAdapterManager.anagraficadestinazioniTableAdapter = Nothing
@@ -112,25 +111,25 @@ Partial Class ZoneGeografiche
         Me.TableAdapterManager.tipitrasportoTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.vettoriTableAdapter = Nothing
-        Me.TableAdapterManager.zoneTableAdapter = Me.ZoneTableAdapter
+        Me.TableAdapterManager.zoneTableAdapter = Nothing
         '
-        'ZoneBindingNavigator
+        'AccountutenteBindingNavigator
         '
-        Me.ZoneBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.ZoneBindingNavigator.BindingSource = Me.ZoneBindingSource
-        Me.ZoneBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.ZoneBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.ZoneBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ZoneBindingNavigatorSaveItem, Me.ToolStripButton1, Me.ToolStripButton2})
-        Me.ZoneBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.ZoneBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.ZoneBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.ZoneBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.ZoneBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.ZoneBindingNavigator.Name = "ZoneBindingNavigator"
-        Me.ZoneBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.ZoneBindingNavigator.Size = New System.Drawing.Size(720, 25)
-        Me.ZoneBindingNavigator.TabIndex = 0
-        Me.ZoneBindingNavigator.Text = "BindingNavigator1"
+        Me.AccountutenteBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.AccountutenteBindingNavigator.BindingSource = Me.AccountutenteBindingSource
+        Me.AccountutenteBindingNavigator.CountItem = Me.BindingNavigatorCountItem
+        Me.AccountutenteBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.AccountutenteBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.AccountutenteBindingNavigatorSaveItem})
+        Me.AccountutenteBindingNavigator.Location = New System.Drawing.Point(0, 0)
+        Me.AccountutenteBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+        Me.AccountutenteBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
+        Me.AccountutenteBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
+        Me.AccountutenteBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+        Me.AccountutenteBindingNavigator.Name = "AccountutenteBindingNavigator"
+        Me.AccountutenteBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
+        Me.AccountutenteBindingNavigator.Size = New System.Drawing.Size(563, 25)
+        Me.AccountutenteBindingNavigator.TabIndex = 0
+        Me.AccountutenteBindingNavigator.Text = "BindingNavigator1"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -217,81 +216,70 @@ Partial Class ZoneGeografiche
         Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 20)
         Me.BindingNavigatorDeleteItem.Text = "Elimina"
         '
-        'ZoneBindingNavigatorSaveItem
+        'AccountutenteBindingNavigatorSaveItem
         '
-        Me.ZoneBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ZoneBindingNavigatorSaveItem.Image = CType(resources.GetObject("ZoneBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.ZoneBindingNavigatorSaveItem.Name = "ZoneBindingNavigatorSaveItem"
-        Me.ZoneBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 23)
-        Me.ZoneBindingNavigatorSaveItem.Text = "Salva dati"
+        Me.AccountutenteBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.AccountutenteBindingNavigatorSaveItem.Image = CType(resources.GetObject("AccountutenteBindingNavigatorSaveItem.Image"), System.Drawing.Image)
+        Me.AccountutenteBindingNavigatorSaveItem.Name = "AccountutenteBindingNavigatorSaveItem"
+        Me.AccountutenteBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 23)
+        Me.AccountutenteBindingNavigatorSaveItem.Text = "Salva dati"
         '
-        'ZoneDataGridView
+        'AccountutenteDataGridView
         '
-        Me.ZoneDataGridView.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.AccountutenteDataGridView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ZoneDataGridView.AutoGenerateColumns = False
-        Me.ZoneDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.ZoneDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2})
-        Me.ZoneDataGridView.DataSource = Me.ZoneBindingSource
-        Me.ZoneDataGridView.Location = New System.Drawing.Point(12, 51)
-        Me.ZoneDataGridView.Name = "ZoneDataGridView"
-        Me.ZoneDataGridView.Size = New System.Drawing.Size(696, 220)
-        Me.ZoneDataGridView.TabIndex = 1
+        Me.AccountutenteDataGridView.AutoGenerateColumns = False
+        Me.AccountutenteDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.AccountutenteDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
+        Me.AccountutenteDataGridView.DataSource = Me.AccountutenteBindingSource
+        Me.AccountutenteDataGridView.Location = New System.Drawing.Point(12, 28)
+        Me.AccountutenteDataGridView.Name = "AccountutenteDataGridView"
+        Me.AccountutenteDataGridView.Size = New System.Drawing.Size(539, 212)
+        Me.AccountutenteDataGridView.TabIndex = 1
         '
         'DataGridViewTextBoxColumn1
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "Zona"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Zona"
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "user"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "user"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         '
         'DataGridViewTextBoxColumn2
         '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "Denominazione"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Denominazione"
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "password"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "password"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
         '
-        'ToolStripButton1
+        'DataGridViewTextBoxColumn3
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "userlevel"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "userlevel"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
-        '
-        'ZoneGeografiche
+        'GestioneAccount
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(720, 365)
-        Me.Controls.Add(Me.ZoneDataGridView)
-        Me.Controls.Add(Me.ZoneBindingNavigator)
-        Me.Name = "ZoneGeografiche"
-        Me.Text = "ZoneGeografiche"
+        Me.ClientSize = New System.Drawing.Size(563, 252)
+        Me.Controls.Add(Me.AccountutenteDataGridView)
+        Me.Controls.Add(Me.AccountutenteBindingNavigator)
+        Me.Name = "GestioneAccount"
+        Me.Text = "Gestione dell'Account"
         CType(Me.FatturazionegevenDataSet, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ZoneBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ZoneBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ZoneBindingNavigator.ResumeLayout(False)
-        Me.ZoneBindingNavigator.PerformLayout()
-        CType(Me.ZoneDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountutenteBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AccountutenteBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.AccountutenteBindingNavigator.ResumeLayout(False)
+        Me.AccountutenteBindingNavigator.PerformLayout()
+        CType(Me.AccountutenteDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents FatturazionegevenDataSet As GeVen_SE_2015.fatturazionegevenDataSet
-    Friend WithEvents ZoneBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents ZoneTableAdapter As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.zoneTableAdapter
+    Friend WithEvents AccountutenteBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents AccountutenteTableAdapter As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.accountutenteTableAdapter
     Friend WithEvents TableAdapterManager As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.TableAdapterManager
-    Friend WithEvents ZoneBindingNavigator As System.Windows.Forms.BindingNavigator
+    Friend WithEvents AccountutenteBindingNavigator As System.Windows.Forms.BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
     Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
@@ -303,10 +291,9 @@ Partial Class ZoneGeografiche
     Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents ZoneBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ZoneDataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents AccountutenteBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents AccountutenteDataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

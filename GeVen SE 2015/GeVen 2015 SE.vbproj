@@ -96,6 +96,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fatturazionegevenDataSet.vb">
+      <DependentUpon>fatturazionegevenDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Documenti\SelezioneArticolo.Designer.vb">
+      <DependentUpon>SelezioneArticolo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Documenti\SelezioneArticolo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\GestioneAccount.Designer.vb">
+      <DependentUpon>GestioneAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FE\FE.Strumenti\GestioneAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\BusinesObject\AccountInfo.vb" />
+    <Compile Include="Infrastructure\BusinesObject\Articolo.vb" />
     <Compile Include="Infrastructure\BusinesObject\campi.vb" />
     <Compile Include="fatturazionegevenDataSet.Designer.vb">
       <DependentUpon>fatturazionegevenDataSet.xsd</DependentUpon>
@@ -270,7 +287,10 @@
     <Compile Include="FE\FE.Anagrafiche\ZoneGeografiche.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Infrastructure\BusinesObject\CampiDestinazione.vb" />
+    <Compile Include="Infrastructure\BusinesObject\ObjAziendaEsercizioTipoDocumento.vb" />
     <Compile Include="Infrastructure\BusinesObject\ObjectService.vb" />
+    <Compile Include="Infrastructure\BusinesObject\PopolaCampiDaAnagrafica.vb" />
     <Compile Include="Infrastructure\WorkFlow.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -347,9 +367,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Documenti\GestioneDocumenti.resx">
       <DependentUpon>GestioneDocumenti.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Documenti\GestioneFattureDocumenti.resx">
       <DependentUpon>GestioneFattureDocumenti.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Documenti\SelezioneArticolo.resx">
+      <DependentUpon>SelezioneArticolo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Help\AboutBox1.resx">
       <DependentUpon>AboutBox1.vb</DependentUpon>
@@ -383,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FE\FE.Strumenti\EsportazioneFatture.resx">
       <DependentUpon>EsportazioneFatture.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FE\FE.Strumenti\GestioneAccount.resx">
+      <DependentUpon>GestioneAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FE\LoginForm1.resx">
       <DependentUpon>LoginForm1.vb</DependentUpon>
@@ -457,7 +484,33 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\user-login-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2 ricerca.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\9 stampa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ricerca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stampa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\salva.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inserimento_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancella.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inserimento.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
