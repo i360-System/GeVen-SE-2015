@@ -360,9 +360,10 @@ Public Class GestioneDocumenti
     End Sub
 
     Private Sub DocumentidettaglioDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentidettaglioDataGridView.CellEndEdit
-        If Not Trim(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value) = String.Empty And IsNumeric(Trim(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value)) Then
+        If (Not IsNothing(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value)) And IsNumeric((DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value)) Then
             Dim valore = Trim(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value)
             DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaTextBoxColumn").Value = valore
+
             'verifico che il prezzo è un numero ed è maggiore di 0
             If (IsNumeric(DocumentidettaglioDataGridView.CurrentRow.Cells("PrezzoUnitarioTextBoxcolumn").Value)) And (DocumentidettaglioDataGridView.CurrentRow.Cells("PrezzoUnitarioTextBoxcolumn").Value > 0) Then
                 'eseguo il calcolo del prezzo in funzione della quantita di fatturazione
@@ -381,7 +382,30 @@ Public Class GestioneDocumenti
                     importoRiga = Int(0.5 + (100 * importoRiga) * (100 - DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto3TextBoxColumn").Value) / 100) / 100
                 End If
                 DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value = importoRiga
-
+                If (DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value <> 0) And (Not IsNothing(DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value)) And (IsNumeric(DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value)) Then
+                    If (Not ScontoTextBox.Text = String.Empty) AndAlso (IsNumeric(ScontoTextBox.Text)) Then
+                        Dim servApp As New Services
+                        Dim returnObj = servApp.RicalcolaImportoFinale(DocumentidettaglioDataGridView.Rows, ScontoTextBox.Text, IIf(ImballoTextBox.Text = "", 0, ImballoTextBox.Text), IIf(TrasportoTextBox.Text = "", 0, TrasportoTextBox.Text), ParametriivaTableAdapter1.GetData())
+                        If (Not IsNothing(returnObj)) AndAlso (returnObj.TotDocumento > 0) Then
+                            With returnObj
+                                TotaleMerceTextBox.Text = .TotImporti
+                                ColliTextBox.Text = .TotQuantitaMagazzino
+                                ScontoCassaTextBox.Text = .ScontoCassa
+                                CodiceIva1TextBox.Text = .IvaRif1
+                                CodiceIva2TextBox.Text = .IvaRif2
+                                Imponibile1TextBox.Text = .TotImponibile1
+                                Imponibile2TextBox.Text = .TotImponibile2
+                                ImportoIva1TextBox.Text = .TotIva1
+                                ImportoIva2TextBox.Text = .TotIva2
+                                _Iva1TextBox.Text = .aliquotaIva1
+                                _Iva2TextBox.Text = .aliquotaIva2
+                                TotaleDocumentoTextBox.Text = .TotDocumento
+                            End With
+                        End If
+                    Else
+                        MsgBox("Selezionare le condizioni di pagamento corrette")
+                    End If
+                End If
             End If
         End If
     End Sub
@@ -418,15 +442,23 @@ Public Class GestioneDocumenti
                         DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value = 0
                         DocumentidettaglioDataGridView.CurrentRow.Cells("MovimentoMagazzinoTextBoxColumn").Value = 0
                         ''''sistemare il focus sulla cella
-                        Cursor.Position = DocumentidettaglioDataGridView.PointToScreen(DocumentidettaglioDataGridView.GetCellDisplayRectangle(4, DocumentidettaglioDataGridView.CurrentRow.Index, True).Location) ' DocumentidettaglioDataGridView.PointToScreen(DocumentidettaglioDataGridView.GetCellDisplayRectangle(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").ColumnIndex, DocumentidettaglioDataGridView.CurrentRow.Index, True).Location)
-                        DocumentidettaglioDataGridView.CurrentRow.Cells("ArticoloComboBoxColumn").Selected = False
-                        DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Selected = True
-                        'DocumentidettaglioDataGridView.CurrentCell = DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn")
+                        'Cursor.Position = DocumentidettaglioDataGridView.PointToScreen(DocumentidettaglioDataGridView.GetCellDisplayRectangle(4, DocumentidettaglioDataGridView.CurrentRow.Index, True).Location) ' DocumentidettaglioDataGridView.PointToScreen(DocumentidettaglioDataGridView.GetCellDisplayRectangle(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").ColumnIndex, DocumentidettaglioDataGridView.CurrentRow.Index, True).Location)
+                        'DocumentidettaglioDataGridView.CurrentRow.Cells("ArticoloComboBoxColumn").Selected = False
+                        'DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Selected = True
+                        ''Gestione Iva per fatturazione verso estero, se 0 lascio stare altriment prendo il valore el o riport, significa che fattura TO estero
+                        Dim comboiva As String = IvaComboBox.Text
+                        If (Not comboiva = String.Empty) And (Not comboiva = "0") Then
+                            DocumentidettaglioDataGridView.CurrentRow.Cells("Iva").Value = comboiva
+                        End If
 
                     End If
+
                 End If
+
             End If
+
         End If
+
     End Sub
 
     Private Sub DocumentidettaglioDataGridView_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DocumentidettaglioDataGridView.CellMouseClick

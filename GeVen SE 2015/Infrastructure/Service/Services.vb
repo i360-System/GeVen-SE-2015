@@ -133,6 +133,108 @@ Public Class Services
         Return res
     End Function
 
+    Public Function RicalcolaImportoFinale(ByVal righeGriglia As DataGridViewRowCollection, ByVal sconto As Single, ByVal imballo As Double, ByVal trasporto As Double, ByVal data As DataTable) As ParametriIvaDiRitorno
+        Dim tabella = data
+        Dim quantitamagazzinoTot As Double = 0
+        Dim imponibile1 As Double = 0 : Dim imponibile2 As Double = 0
+        Dim IvadiRiferimento1 As String = Nothing
+        Dim IvadiRiferimento2 As String = Nothing
+        Dim TotImporti As Double = 0
+        Dim scontoCassaImporto As Double = 0
+        Dim spese As Double = 0
+        Dim TotDocumento As Double = 0
+        Try
+
+            For Each riga As DataGridViewRow In righeGriglia
+                If (Not riga.Cells("ArticoloComboBoxColumn").Value = String.Empty) And (Not IsNothing(riga.Cells("ImportoTextBoxColumn").Value)) AndAlso (Not riga.Cells("ImportoTextBoxColumn").Value = 0) Then
+                    If IsNothing(IvadiRiferimento1) Then
+                        IvadiRiferimento1 = riga.Cells("Iva").Value
+                    End If
+                    If (riga.Cells("Iva").Value = IvadiRiferimento1) Then
+                        imponibile1 += riga.Cells("ImportoTextBoxColumn").Value
+                    End If
+                    If IsNothing(IvadiRiferimento2) And (Not IvadiRiferimento1 = riga.Cells("Iva").Value) Then
+                        IvadiRiferimento2 = riga.Cells("Iva").Value
+                    End If
+                    If (IvadiRiferimento2 = riga.Cells("Iva").Value) Then
+                        imponibile2 += riga.Cells("ImportoTextBoxColumn").Value
+                    End If
+
+                    quantitamagazzinoTot += riga.Cells("QuantitaMagazzinoTextBoxColumn").Value
+                    TotImporti += riga.Cells("ImportoTextBoxColumn").Value
+                End If
+
+            Next
+
+            If (sconto <> 0) And (Not IsNothing(sconto)) Then
+
+                If imponibile1 <> 0 Then
+                    imponibile1 = Int(0.5 + (100 * imponibile1) * (100 - sconto) / 100) / 100
+                    scontoCassaImporto += Int(0.5 + (100 * imponibile1 * sconto) / 100) / 100
+                End If
+                If imponibile2 <> 0 Then
+                    imponibile2 = Int(0.5 + (100 * imponibile2) * (100 - sconto) / 100) / 100
+                    scontoCassaImporto += Int(0.5 + (100 * imponibile2 * sconto) / 100) / 100
+                End If
+            End If
+
+            If (Not IsNothing(trasporto)) And (IsNumeric(trasporto)) AndAlso (trasporto <> 0) Then
+                spese += trasporto
+            End If
+            If (Not IsNothing(imballo)) And (IsNumeric(imballo)) AndAlso (imballo <> 0) Then
+                spese += imballo
+            End If
+
+            imponibile1 += spese
+
+            Dim ret1 As EnumerableRowCollection(Of ParametriIva) = Me.distinctSelectParametriIva(data, IvadiRiferimento1)
+            Dim ret2 = Nothing
+            If (Not IsNothing(IvadiRiferimento2)) Then
+                ret2 = Me.distinctSelectParametriIva(data, IvadiRiferimento2)
+            End If
+            Dim ImportoIva1 As Double = 0
+            Dim ImportoIva2 As Double = 0
+
+            If (Not IsNothing(ret1)) AndAlso (ret1.ToList.Count > 0) Then
+                ImportoIva1 = Int(0.9 + (100 * imponibile1 * ret1.ElementAt(0).AliquotaIva) / 100) / 100
+            End If
+            If (Not IsNothing(ret2)) AndAlso (ret2.ToList.Count > 0) Then
+                ImportoIva2 = Int(0.9 + (100 * imponibile2 * ret2.ElementAt(0).AliquotaIva) / 100) / 100
+            End If
+
+            TotDocumento = imponibile1 + ImportoIva1 + imponibile2 + ImportoIva2
+
+            Dim Result As New ParametriIvaDiRitorno
+            With Result
+                .clean()
+                .IvaRif1 = IvadiRiferimento1
+                .IvaRif2 = IvadiRiferimento2
+                .ScontoCassa = scontoCassaImporto
+                .TotImponibile1 = imponibile1
+                .TotImponibile2 = imponibile2
+                .TotIva1 = ImportoIva1
+                .TotIva2 = ImportoIva2
+                .TotQuantitaMagazzino = quantitamagazzinoTot
+                .TotDocumento = TotDocumento
+                .TotImporti = TotImporti
+                If (Not IsNothing(ret1)) Then
+                    .aliquotaIva1 = ret1.ElementAt(0).AliquotaIva
+                End If
+                If (Not IsNothing(ret2)) Then
+                    .aliquotaIva2 = ret2.ElementAt(0).AliquotaIva
+                End If
+            End With
+
+            Return Result
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+
+        End Try
+
+    End Function
+
+
     'Public Function AggiungoSetValue(ByVal campiSET As List(Of List(Of String))) As String
 
     'Dim res As String = ""
@@ -748,6 +850,25 @@ Public Class Services
         End Try
 
         Return eseldis
+
+    End Function
+
+    Public Function distinctSelectParametriIva(ByVal dtb As DataTable, ByVal ivaRif As String)
+
+        Dim eseledis = Nothing
+
+        Try
+
+            eseledis = From r In dtb.AsEnumerable() _
+                       Where r.Field(Of String)("SiglaIva") = ivaRif
+                       Select New ParametriIva With {.AliquotaIva = r.Field(Of Single)("AliquotaIva"), _
+                                                     .Descrizione = r.Field(Of String)("Descrizione")}
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseledis
 
     End Function
 

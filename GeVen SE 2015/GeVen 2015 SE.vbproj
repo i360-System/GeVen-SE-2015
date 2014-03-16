@@ -294,6 +294,8 @@
     <Compile Include="Infrastructure\BusinesObject\ObjAziendaEsercizioTipoDocumento.vb" />
     <Compile Include="Infrastructure\BusinesObject\ObjectService.vb" />
     <Compile Include="Infrastructure\BusinesObject\objFillDataGridRow.vb" />
+    <Compile Include="Infrastructure\BusinesObject\ParametriIva.vb" />
+    <Compile Include="Infrastructure\BusinesObject\ParametriIvaDiRitorno.vb" />
     <Compile Include="Infrastructure\BusinesObject\PopolaCampiDaAnagrafica.vb" />
     <Compile Include="Infrastructure\WorkFlow.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -514,6 +516,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\inserimento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_effects.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Trash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
