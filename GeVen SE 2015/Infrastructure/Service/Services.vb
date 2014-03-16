@@ -715,6 +715,42 @@ Public Class Services
 
     End Function
 
+    Public Function distinctSelectArticoliEmisure(ByVal dttbl As DataTable, ByVal whereCondition As String)
+
+        Dim eseldis = Nothing
+
+        Try
+
+            Select Case dttbl.TableName.ToLower
+
+                Case "articolimisure"
+                    'query su articolimisure
+                    eseldis = From r In dttbl.AsEnumerable() _
+                    Where r.Field(Of String)("Articolo") = whereCondition
+                              Select New ArticoliMisure With {.UnitaMisura = r.Field(Of String)("UnitaMisura"), .PrezzoVendita = _
+                                  r.Field(Of Double)("PrezzoVendita")}
+
+
+                Case "articoli"
+
+                    eseldis = From r In dttbl.AsEnumerable() _
+                              Where r.Field(Of String)("Articolo") = whereCondition
+                              Select New ArticoliStrongType With {.ArticoloAlias = r.Field(Of String)("ArticoloAlias"), _
+                                                                  .ClasseContropartita = r.Field(Of String)("ClasseContropartita"), _
+                                                                  .ClasseMerceologica = r.Field(Of String)("ClasseMerceologica"), _
+                                                                  .Denominazione = r.Field(Of String)("Denominazione"), _
+                                                                  .Iva = r.Field(Of String)("Iva"), .Scorporo = r.Field(Of String)("Scorporo")}
+
+            End Select
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseldis
+
+    End Function
+
 #End Region
 
 End Class

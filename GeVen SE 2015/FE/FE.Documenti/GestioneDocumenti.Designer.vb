@@ -110,6 +110,28 @@ Partial Class GestioneDocumenti
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.DocumentidettaglioDataGridView = New System.Windows.Forms.DataGridView()
+        Me.RigaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticoloComboBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrizioneTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitaMisuraMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QuantitaMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitaMisuraTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QuantitaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrezzoUnitarioTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sconto1TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sconto2TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sconto3TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImportoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ScorporoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClasseMerceologicaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClasseContropartitaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticoloAliasTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovimentoMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Iva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Azienda = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Esercizio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DocumentidettaglioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DocumentitestatadocumentidettaglioBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.IvaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -165,28 +187,7 @@ Partial Class GestioneDocumenti
         Me.NumeroTextBox = New System.Windows.Forms.TextBox()
         Me.SiglaTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.RigaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ArticoloComboBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DescrizioneTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitaMisuraMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QuantitaMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitaMisuraTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QuantitaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrezzoUnitarioTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Sconto1TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Sconto2TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Sconto3TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ImportoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ScorporoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClasseMerceologicaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ClasseContropartitaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ArticoloAliasTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MovimentoMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Iva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AziendaDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EsercizioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoDocumentoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NumeroDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticolimisureTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articolimisureTableAdapter()
         AnagraficaLabel = New System.Windows.Forms.Label()
         DestinazioneLabel = New System.Windows.Forms.Label()
         DataDocumentoLabel = New System.Windows.Forms.Label()
@@ -1041,12 +1042,168 @@ Partial Class GestioneDocumenti
         Me.DocumentidettaglioDataGridView.AutoGenerateColumns = False
         Me.DocumentidettaglioDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.DocumentidettaglioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DocumentidettaglioDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RigaTextBoxColumn, Me.ArticoloComboBoxColumn, Me.DescrizioneTextBoxColumn, Me.UnitaMisuraMagazzinoTextBoxColumn, Me.QuantitaMagazzinoTextBoxColumn, Me.UnitaMisuraTextBoxColumn, Me.QuantitaTextBoxColumn, Me.PrezzoUnitarioTextBoxColumn, Me.Sconto1TextBoxColumn, Me.Sconto2TextBoxColumn, Me.Sconto3TextBoxColumn, Me.ImportoTextBoxColumn, Me.ScorporoTextBoxColumn, Me.ClasseMerceologicaTextBoxColumn, Me.ClasseContropartitaTextBoxColumn, Me.ArticoloAliasTextBoxColumn, Me.MovimentoMagazzinoTextBoxColumn, Me.Iva, Me.AziendaDataGridViewTextBoxColumn, Me.EsercizioDataGridViewTextBoxColumn, Me.TipoDocumentoDataGridViewTextBoxColumn, Me.NumeroDataGridViewTextBoxColumn})
+        Me.DocumentidettaglioDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RigaTextBoxColumn, Me.ArticoloComboBoxColumn, Me.DescrizioneTextBoxColumn, Me.UnitaMisuraMagazzinoTextBoxColumn, Me.QuantitaMagazzinoTextBoxColumn, Me.UnitaMisuraTextBoxColumn, Me.QuantitaTextBoxColumn, Me.PrezzoUnitarioTextBoxColumn, Me.Sconto1TextBoxColumn, Me.Sconto2TextBoxColumn, Me.Sconto3TextBoxColumn, Me.ImportoTextBoxColumn, Me.ScorporoTextBoxColumn, Me.ClasseMerceologicaTextBoxColumn, Me.ClasseContropartitaTextBoxColumn, Me.ArticoloAliasTextBoxColumn, Me.MovimentoMagazzinoTextBoxColumn, Me.Iva, Me.Azienda, Me.Esercizio, Me.TipoDocumento, Me.Numero})
         Me.DocumentidettaglioDataGridView.DataSource = Me.DocumentidettaglioBindingSource
         Me.DocumentidettaglioDataGridView.Location = New System.Drawing.Point(12, 342)
         Me.DocumentidettaglioDataGridView.Name = "DocumentidettaglioDataGridView"
         Me.DocumentidettaglioDataGridView.Size = New System.Drawing.Size(912, 146)
         Me.DocumentidettaglioDataGridView.TabIndex = 4
+        '
+        'RigaTextBoxColumn
+        '
+        Me.RigaTextBoxColumn.DataPropertyName = "Riga"
+        Me.RigaTextBoxColumn.HeaderText = "Riga"
+        Me.RigaTextBoxColumn.Name = "RigaTextBoxColumn"
+        Me.RigaTextBoxColumn.Width = 54
+        '
+        'ArticoloComboBoxColumn
+        '
+        Me.ArticoloComboBoxColumn.DataPropertyName = "Articolo"
+        Me.ArticoloComboBoxColumn.HeaderText = "Articolo"
+        Me.ArticoloComboBoxColumn.Name = "ArticoloComboBoxColumn"
+        Me.ArticoloComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ArticoloComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ArticoloComboBoxColumn.Width = 48
+        '
+        'DescrizioneTextBoxColumn
+        '
+        Me.DescrizioneTextBoxColumn.DataPropertyName = "Descrizione"
+        Me.DescrizioneTextBoxColumn.HeaderText = "Descrizione"
+        Me.DescrizioneTextBoxColumn.Name = "DescrizioneTextBoxColumn"
+        Me.DescrizioneTextBoxColumn.Width = 87
+        '
+        'UnitaMisuraMagazzinoTextBoxColumn
+        '
+        Me.UnitaMisuraMagazzinoTextBoxColumn.DataPropertyName = "UnitaMisuraMagazzino"
+        Me.UnitaMisuraMagazzinoTextBoxColumn.HeaderText = "U.M.M."
+        Me.UnitaMisuraMagazzinoTextBoxColumn.Name = "UnitaMisuraMagazzinoTextBoxColumn"
+        Me.UnitaMisuraMagazzinoTextBoxColumn.Width = 67
+        '
+        'QuantitaMagazzinoTextBoxColumn
+        '
+        Me.QuantitaMagazzinoTextBoxColumn.DataPropertyName = "QuantitaMagazzino"
+        Me.QuantitaMagazzinoTextBoxColumn.HeaderText = "Q.ta Mag."
+        Me.QuantitaMagazzinoTextBoxColumn.Name = "QuantitaMagazzinoTextBoxColumn"
+        Me.QuantitaMagazzinoTextBoxColumn.Width = 79
+        '
+        'UnitaMisuraTextBoxColumn
+        '
+        Me.UnitaMisuraTextBoxColumn.DataPropertyName = "UnitaMisura"
+        Me.UnitaMisuraTextBoxColumn.HeaderText = "U.M.F."
+        Me.UnitaMisuraTextBoxColumn.Name = "UnitaMisuraTextBoxColumn"
+        Me.UnitaMisuraTextBoxColumn.Width = 64
+        '
+        'QuantitaTextBoxColumn
+        '
+        Me.QuantitaTextBoxColumn.DataPropertyName = "Quantita"
+        Me.QuantitaTextBoxColumn.HeaderText = "Quantita"
+        Me.QuantitaTextBoxColumn.Name = "QuantitaTextBoxColumn"
+        Me.QuantitaTextBoxColumn.Width = 72
+        '
+        'PrezzoUnitarioTextBoxColumn
+        '
+        Me.PrezzoUnitarioTextBoxColumn.DataPropertyName = "PrezzoUnitario"
+        Me.PrezzoUnitarioTextBoxColumn.HeaderText = "Prezzo"
+        Me.PrezzoUnitarioTextBoxColumn.Name = "PrezzoUnitarioTextBoxColumn"
+        Me.PrezzoUnitarioTextBoxColumn.Width = 64
+        '
+        'Sconto1TextBoxColumn
+        '
+        Me.Sconto1TextBoxColumn.DataPropertyName = "Sconto1"
+        Me.Sconto1TextBoxColumn.HeaderText = "%1"
+        Me.Sconto1TextBoxColumn.Name = "Sconto1TextBoxColumn"
+        Me.Sconto1TextBoxColumn.Width = 46
+        '
+        'Sconto2TextBoxColumn
+        '
+        Me.Sconto2TextBoxColumn.DataPropertyName = "Sconto2"
+        Me.Sconto2TextBoxColumn.HeaderText = "%2"
+        Me.Sconto2TextBoxColumn.Name = "Sconto2TextBoxColumn"
+        Me.Sconto2TextBoxColumn.Width = 46
+        '
+        'Sconto3TextBoxColumn
+        '
+        Me.Sconto3TextBoxColumn.DataPropertyName = "Sconto3"
+        Me.Sconto3TextBoxColumn.HeaderText = "%3"
+        Me.Sconto3TextBoxColumn.Name = "Sconto3TextBoxColumn"
+        Me.Sconto3TextBoxColumn.Width = 46
+        '
+        'ImportoTextBoxColumn
+        '
+        Me.ImportoTextBoxColumn.DataPropertyName = "Importo"
+        Me.ImportoTextBoxColumn.HeaderText = "Importo"
+        Me.ImportoTextBoxColumn.Name = "ImportoTextBoxColumn"
+        Me.ImportoTextBoxColumn.Width = 67
+        '
+        'ScorporoTextBoxColumn
+        '
+        Me.ScorporoTextBoxColumn.DataPropertyName = "Scorporo"
+        Me.ScorporoTextBoxColumn.HeaderText = "*"
+        Me.ScorporoTextBoxColumn.Name = "ScorporoTextBoxColumn"
+        Me.ScorporoTextBoxColumn.Width = 36
+        '
+        'ClasseMerceologicaTextBoxColumn
+        '
+        Me.ClasseMerceologicaTextBoxColumn.DataPropertyName = "ClasseMerceologica"
+        Me.ClasseMerceologicaTextBoxColumn.HeaderText = "C.M."
+        Me.ClasseMerceologicaTextBoxColumn.Name = "ClasseMerceologicaTextBoxColumn"
+        Me.ClasseMerceologicaTextBoxColumn.Width = 54
+        '
+        'ClasseContropartitaTextBoxColumn
+        '
+        Me.ClasseContropartitaTextBoxColumn.DataPropertyName = "ClasseContropartita"
+        Me.ClasseContropartitaTextBoxColumn.HeaderText = "C.C."
+        Me.ClasseContropartitaTextBoxColumn.Name = "ClasseContropartitaTextBoxColumn"
+        Me.ClasseContropartitaTextBoxColumn.Width = 52
+        '
+        'ArticoloAliasTextBoxColumn
+        '
+        Me.ArticoloAliasTextBoxColumn.DataPropertyName = "ArticoloAlias"
+        Me.ArticoloAliasTextBoxColumn.HeaderText = "ArticoloAlias"
+        Me.ArticoloAliasTextBoxColumn.Name = "ArticoloAliasTextBoxColumn"
+        Me.ArticoloAliasTextBoxColumn.Width = 89
+        '
+        'MovimentoMagazzinoTextBoxColumn
+        '
+        Me.MovimentoMagazzinoTextBoxColumn.DataPropertyName = "MovimentoMagazzino"
+        Me.MovimentoMagazzinoTextBoxColumn.HeaderText = "N° Magazzino"
+        Me.MovimentoMagazzinoTextBoxColumn.Name = "MovimentoMagazzinoTextBoxColumn"
+        Me.MovimentoMagazzinoTextBoxColumn.Width = 98
+        '
+        'Iva
+        '
+        Me.Iva.DataPropertyName = "Iva"
+        Me.Iva.HeaderText = "Iva"
+        Me.Iva.Name = "Iva"
+        Me.Iva.Width = 47
+        '
+        'Azienda
+        '
+        Me.Azienda.DataPropertyName = "Azienda"
+        Me.Azienda.HeaderText = "Azienda"
+        Me.Azienda.Name = "Azienda"
+        Me.Azienda.Width = 70
+        '
+        'Esercizio
+        '
+        Me.Esercizio.DataPropertyName = "Esercizio"
+        Me.Esercizio.HeaderText = "Esercizio"
+        Me.Esercizio.Name = "Esercizio"
+        Me.Esercizio.Width = 74
+        '
+        'TipoDocumento
+        '
+        Me.TipoDocumento.DataPropertyName = "TipoDocumento"
+        Me.TipoDocumento.HeaderText = "TipoDocumento"
+        Me.TipoDocumento.Name = "TipoDocumento"
+        Me.TipoDocumento.Width = 108
+        '
+        'Numero
+        '
+        Me.Numero.DataPropertyName = "Numero"
+        Me.Numero.HeaderText = "Numero"
+        Me.Numero.Name = "Numero"
+        Me.Numero.Width = 69
         '
         'DocumentidettaglioBindingSource
         '
@@ -1492,165 +1649,9 @@ Partial Class GestioneDocumenti
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
-        'RigaTextBoxColumn
+        'ArticolimisureTableAdapter1
         '
-        Me.RigaTextBoxColumn.DataPropertyName = "Riga"
-        Me.RigaTextBoxColumn.HeaderText = "Riga"
-        Me.RigaTextBoxColumn.Name = "RigaTextBoxColumn"
-        Me.RigaTextBoxColumn.Width = 54
-        '
-        'ArticoloComboBoxColumn
-        '
-        Me.ArticoloComboBoxColumn.DataPropertyName = "Articolo"
-        Me.ArticoloComboBoxColumn.HeaderText = "Articolo"
-        Me.ArticoloComboBoxColumn.Name = "ArticoloComboBoxColumn"
-        Me.ArticoloComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.ArticoloComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        Me.ArticoloComboBoxColumn.Width = 48
-        '
-        'DescrizioneTextBoxColumn
-        '
-        Me.DescrizioneTextBoxColumn.DataPropertyName = "Descrizione"
-        Me.DescrizioneTextBoxColumn.HeaderText = "Descrizione"
-        Me.DescrizioneTextBoxColumn.Name = "DescrizioneTextBoxColumn"
-        Me.DescrizioneTextBoxColumn.Width = 87
-        '
-        'UnitaMisuraMagazzinoTextBoxColumn
-        '
-        Me.UnitaMisuraMagazzinoTextBoxColumn.DataPropertyName = "UnitaMisuraMagazzino"
-        Me.UnitaMisuraMagazzinoTextBoxColumn.HeaderText = "U.M.M."
-        Me.UnitaMisuraMagazzinoTextBoxColumn.Name = "UnitaMisuraMagazzinoTextBoxColumn"
-        Me.UnitaMisuraMagazzinoTextBoxColumn.Width = 67
-        '
-        'QuantitaMagazzinoTextBoxColumn
-        '
-        Me.QuantitaMagazzinoTextBoxColumn.DataPropertyName = "QuantitaMagazzino"
-        Me.QuantitaMagazzinoTextBoxColumn.HeaderText = "Q.ta Mag."
-        Me.QuantitaMagazzinoTextBoxColumn.Name = "QuantitaMagazzinoTextBoxColumn"
-        Me.QuantitaMagazzinoTextBoxColumn.Width = 79
-        '
-        'UnitaMisuraTextBoxColumn
-        '
-        Me.UnitaMisuraTextBoxColumn.DataPropertyName = "UnitaMisura"
-        Me.UnitaMisuraTextBoxColumn.HeaderText = "U.M.F."
-        Me.UnitaMisuraTextBoxColumn.Name = "UnitaMisuraTextBoxColumn"
-        Me.UnitaMisuraTextBoxColumn.Width = 64
-        '
-        'QuantitaTextBoxColumn
-        '
-        Me.QuantitaTextBoxColumn.DataPropertyName = "Quantita"
-        Me.QuantitaTextBoxColumn.HeaderText = "Quantita"
-        Me.QuantitaTextBoxColumn.Name = "QuantitaTextBoxColumn"
-        Me.QuantitaTextBoxColumn.Width = 72
-        '
-        'PrezzoUnitarioTextBoxColumn
-        '
-        Me.PrezzoUnitarioTextBoxColumn.DataPropertyName = "PrezzoUnitario"
-        Me.PrezzoUnitarioTextBoxColumn.HeaderText = "Prezzo"
-        Me.PrezzoUnitarioTextBoxColumn.Name = "PrezzoUnitarioTextBoxColumn"
-        Me.PrezzoUnitarioTextBoxColumn.Width = 64
-        '
-        'Sconto1TextBoxColumn
-        '
-        Me.Sconto1TextBoxColumn.DataPropertyName = "Sconto1"
-        Me.Sconto1TextBoxColumn.HeaderText = "%1"
-        Me.Sconto1TextBoxColumn.Name = "Sconto1TextBoxColumn"
-        Me.Sconto1TextBoxColumn.Width = 46
-        '
-        'Sconto2TextBoxColumn
-        '
-        Me.Sconto2TextBoxColumn.DataPropertyName = "Sconto2"
-        Me.Sconto2TextBoxColumn.HeaderText = "%2"
-        Me.Sconto2TextBoxColumn.Name = "Sconto2TextBoxColumn"
-        Me.Sconto2TextBoxColumn.Width = 46
-        '
-        'Sconto3TextBoxColumn
-        '
-        Me.Sconto3TextBoxColumn.DataPropertyName = "Sconto3"
-        Me.Sconto3TextBoxColumn.HeaderText = "%3"
-        Me.Sconto3TextBoxColumn.Name = "Sconto3TextBoxColumn"
-        Me.Sconto3TextBoxColumn.Width = 46
-        '
-        'ImportoTextBoxColumn
-        '
-        Me.ImportoTextBoxColumn.DataPropertyName = "Importo"
-        Me.ImportoTextBoxColumn.HeaderText = "Importo"
-        Me.ImportoTextBoxColumn.Name = "ImportoTextBoxColumn"
-        Me.ImportoTextBoxColumn.Width = 67
-        '
-        'ScorporoTextBoxColumn
-        '
-        Me.ScorporoTextBoxColumn.DataPropertyName = "Scorporo"
-        Me.ScorporoTextBoxColumn.HeaderText = "*"
-        Me.ScorporoTextBoxColumn.Name = "ScorporoTextBoxColumn"
-        Me.ScorporoTextBoxColumn.Width = 36
-        '
-        'ClasseMerceologicaTextBoxColumn
-        '
-        Me.ClasseMerceologicaTextBoxColumn.DataPropertyName = "ClasseMerceologica"
-        Me.ClasseMerceologicaTextBoxColumn.HeaderText = "C.M."
-        Me.ClasseMerceologicaTextBoxColumn.Name = "ClasseMerceologicaTextBoxColumn"
-        Me.ClasseMerceologicaTextBoxColumn.Width = 54
-        '
-        'ClasseContropartitaTextBoxColumn
-        '
-        Me.ClasseContropartitaTextBoxColumn.DataPropertyName = "ClasseContropartita"
-        Me.ClasseContropartitaTextBoxColumn.HeaderText = "C.C."
-        Me.ClasseContropartitaTextBoxColumn.Name = "ClasseContropartitaTextBoxColumn"
-        Me.ClasseContropartitaTextBoxColumn.Width = 52
-        '
-        'ArticoloAliasTextBoxColumn
-        '
-        Me.ArticoloAliasTextBoxColumn.DataPropertyName = "ArticoloAlias"
-        Me.ArticoloAliasTextBoxColumn.HeaderText = "ArticoloAlias"
-        Me.ArticoloAliasTextBoxColumn.Name = "ArticoloAliasTextBoxColumn"
-        Me.ArticoloAliasTextBoxColumn.Width = 89
-        '
-        'MovimentoMagazzinoTextBoxColumn
-        '
-        Me.MovimentoMagazzinoTextBoxColumn.DataPropertyName = "MovimentoMagazzino"
-        Me.MovimentoMagazzinoTextBoxColumn.HeaderText = "N° Magazzino"
-        Me.MovimentoMagazzinoTextBoxColumn.Name = "MovimentoMagazzinoTextBoxColumn"
-        Me.MovimentoMagazzinoTextBoxColumn.Width = 98
-        '
-        'Iva
-        '
-        Me.Iva.DataPropertyName = "Iva"
-        Me.Iva.HeaderText = "Iva"
-        Me.Iva.Name = "Iva"
-        Me.Iva.Width = 47
-        '
-        'AziendaDataGridViewTextBoxColumn
-        '
-        Me.AziendaDataGridViewTextBoxColumn.DataPropertyName = "Azienda"
-        Me.AziendaDataGridViewTextBoxColumn.HeaderText = "Azienda"
-        Me.AziendaDataGridViewTextBoxColumn.Name = "AziendaDataGridViewTextBoxColumn"
-        Me.AziendaDataGridViewTextBoxColumn.Visible = False
-        Me.AziendaDataGridViewTextBoxColumn.Width = 70
-        '
-        'EsercizioDataGridViewTextBoxColumn
-        '
-        Me.EsercizioDataGridViewTextBoxColumn.DataPropertyName = "Esercizio"
-        Me.EsercizioDataGridViewTextBoxColumn.HeaderText = "Esercizio"
-        Me.EsercizioDataGridViewTextBoxColumn.Name = "EsercizioDataGridViewTextBoxColumn"
-        Me.EsercizioDataGridViewTextBoxColumn.Visible = False
-        Me.EsercizioDataGridViewTextBoxColumn.Width = 74
-        '
-        'TipoDocumentoDataGridViewTextBoxColumn
-        '
-        Me.TipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "TipoDocumento"
-        Me.TipoDocumentoDataGridViewTextBoxColumn.HeaderText = "TipoDocumento"
-        Me.TipoDocumentoDataGridViewTextBoxColumn.Name = "TipoDocumentoDataGridViewTextBoxColumn"
-        Me.TipoDocumentoDataGridViewTextBoxColumn.Visible = False
-        Me.TipoDocumentoDataGridViewTextBoxColumn.Width = 108
-        '
-        'NumeroDataGridViewTextBoxColumn
-        '
-        Me.NumeroDataGridViewTextBoxColumn.DataPropertyName = "Numero"
-        Me.NumeroDataGridViewTextBoxColumn.HeaderText = "Numero"
-        Me.NumeroDataGridViewTextBoxColumn.Name = "NumeroDataGridViewTextBoxColumn"
-        Me.NumeroDataGridViewTextBoxColumn.Visible = False
-        Me.NumeroDataGridViewTextBoxColumn.Width = 69
+        Me.ArticolimisureTableAdapter1.ClearBeforeFill = True
         '
         'GestioneDocumenti
         '
@@ -1802,8 +1803,9 @@ Partial Class GestioneDocumenti
     Friend WithEvents ArticoloAliasTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents MovimentoMagazzinoTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Iva As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents AziendaDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents EsercizioDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents TipoDocumentoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents NumeroDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Azienda As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Esercizio As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TipoDocumento As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Numero As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ArticolimisureTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articolimisureTableAdapter
 End Class

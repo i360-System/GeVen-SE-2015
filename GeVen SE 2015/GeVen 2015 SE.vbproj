@@ -112,6 +112,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Infrastructure\BusinesObject\AccountInfo.vb" />
+    <Compile Include="Infrastructure\BusinesObject\ArticoliMisure.vb" />
+    <Compile Include="Infrastructure\BusinesObject\ArticoliStrongType.vb" />
     <Compile Include="Infrastructure\BusinesObject\Articolo.vb" />
     <Compile Include="Infrastructure\BusinesObject\campi.vb" />
     <Compile Include="fatturazionegevenDataSet.Designer.vb">
@@ -288,8 +290,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Infrastructure\BusinesObject\CampiDestinazione.vb" />
+    <Compile Include="Infrastructure\BusinesObject\ListaArticolidaCaricare.vb" />
     <Compile Include="Infrastructure\BusinesObject\ObjAziendaEsercizioTipoDocumento.vb" />
     <Compile Include="Infrastructure\BusinesObject\ObjectService.vb" />
+    <Compile Include="Infrastructure\BusinesObject\objFillDataGridRow.vb" />
     <Compile Include="Infrastructure\BusinesObject\PopolaCampiDaAnagrafica.vb" />
     <Compile Include="Infrastructure\WorkFlow.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

@@ -9058,8 +9058,8 @@ Partial Public Class fatturazionegevenDataSet
             Me.columnUnitaMisura.MaxLength = 5
             Me.columnIva.MaxLength = 4
             Me.columnScorporo.MaxLength = 1
-            Me.columnClasseMerceologica.MaxLength = 2
-            Me.columnClasseContropartita.MaxLength = 2
+            Me.columnClasseMerceologica.MaxLength = 20
+            Me.columnClasseContropartita.MaxLength = 20
             Me.columnArticoloAlias.MaxLength = 20
         End Sub
         

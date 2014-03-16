@@ -24,10 +24,15 @@ Public Class GestioneDocumenti
 
 
     Private Sub DocumentitestataBindingNavigatorSaveItem_Click_1(sender As Object, e As EventArgs) Handles DocumentitestataBindingNavigatorSaveItem.Click
-        Me.Validate()
-        Me.DocumentitestataBindingSource.EndEdit()
-        'Me.DocumentitestataTableAdapter.Update(Me.FatturazionegevenDataSet.documentitestata)
-        Me.TableAdapterManager.UpdateAll(Me.FatturazionegevenDataSet)
+        Try
+            Me.Validate()
+            Me.DocumentitestataBindingSource.EndEdit()
+            ' Me.DocumentidettaglioBindingSource.EndEdit()
+            'Me.DocumentitestataTableAdapter.Update(Me.FatturazionegevenDataSet.documentitestata)
+            Me.TableAdapterManager.UpdateAll(Me.FatturazionegevenDataSet)
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
         globalSystemComboBehaviour = True
     End Sub
 
@@ -45,6 +50,7 @@ Public Class GestioneDocumenti
         'carichiamo gli articoli
         Dim i As New Services
         listaArticoli = i.distinctSelect(ArticoliTableAdapter1.GetData()).ToList()
+        serializzatore.CaricaArticoli(listaArticoli)
 
     End Sub
 
@@ -233,7 +239,7 @@ Public Class GestioneDocumenti
                     'call query
                     Dim i As New Services
                     NumeroTextBox.Text = i.GetNumeroDocumento(DocumentitestataTableAdapter.GetData(), .azienda, .esercizio, .testDocumento) + 1
-
+                    TestDocumentoTextBox.Text = .testDocumento
                 End If
 
             End With
@@ -296,7 +302,7 @@ Public Class GestioneDocumenti
         If (Not Trim(DestinazioneComboBox.Text) = String.Empty) And (Not Trim(AnagraficaComboBox.Text) = String.Empty) Then
             Dim ana As String = Trim(AnagraficaComboBox.Text) : Dim des As String = Trim(DestinazioneComboBox.Text)
             'call metodo popola campi
-            
+
             serializzatore.PopolaCampiDaDestinazione(ListaControllidaRiempire, AnagraficadestinazioniTableAdapter1.GetData(), ana, des)
         End If
 
@@ -341,6 +347,10 @@ Public Class GestioneDocumenti
 
 #End Region
 
+    Private Sub DocumentidettaglioDataGridView_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles DocumentidettaglioDataGridView.CellBeginEdit
+
+    End Sub
+
     Private Sub DocumentidettaglioDataGridView_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentidettaglioDataGridView.CellClick
         'viene chiamato al click del mouse dopo cell enter
     End Sub
@@ -350,23 +360,97 @@ Public Class GestioneDocumenti
     End Sub
 
     Private Sub DocumentidettaglioDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentidettaglioDataGridView.CellEndEdit
+        If Not Trim(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value) = String.Empty And IsNumeric(Trim(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value)) Then
+            Dim valore = Trim(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value)
+            DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaTextBoxColumn").Value = valore
+            'verifico che il prezzo è un numero ed è maggiore di 0
+            If (IsNumeric(DocumentidettaglioDataGridView.CurrentRow.Cells("PrezzoUnitarioTextBoxcolumn").Value)) And (DocumentidettaglioDataGridView.CurrentRow.Cells("PrezzoUnitarioTextBoxcolumn").Value > 0) Then
+                'eseguo il calcolo del prezzo in funzione della quantita di fatturazione
+                Dim quantita As Double = DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaTextBoxColumn").Value
+                Dim prezzoUnit As Double = DocumentidettaglioDataGridView.CurrentRow.Cells("PrezzoUnitarioTextBoxcolumn").Value
+                Dim importoRiga = Int(0.5 + 100 * (quantita * prezzoUnit)) / 100
 
+                'primo sconto
+                If (DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto1TextBoxColumn").Value <> 0) And (IsNumeric(DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto1TextBoxColumn").Value)) Then
+                    importoRiga = Int(0.5 + (100 * importoRiga) * (100 - DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto1TextBoxColumn").Value) / 100) / 100
+                End If
+                If (DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto2TextBoxColumn").Value <> 0) And (IsNumeric(DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto2TextBoxColumn").Value)) Then
+                    importoRiga = Int(0.5 + (100 * importoRiga) * (100 - DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto2TextBoxColumn").Value) / 100) / 100
+                End If
+                If (DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto3TextBoxColumn").Value <> 0) And (IsNumeric(DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto3TextBoxColumn").Value)) Then
+                    importoRiga = Int(0.5 + (100 * importoRiga) * (100 - DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto3TextBoxColumn").Value) / 100) / 100
+                End If
+                DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value = importoRiga
+
+            End If
+        End If
     End Sub
+    'importoRiga = Int(0.4 + 100 * ((importoRiga * (100 - DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto1TextBoxColumn").Value)) * 0.01) * 0.01)
 
     Private Sub DocumentidettaglioDataGridView_CellEnter(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentidettaglioDataGridView.CellEnter
         'viene chiamata ogniqualvolta si seleziona una cella con qualsiasi metodo o tastiera o mouse
         If DocumentidettaglioDataGridView.CurrentCell.ColumnIndex() = 1 Then
-            SelezioneArticolo.listaDaCaricare.Clear() : SelezioneArticolo.listaDaCaricare = listaArticoli
+
             SelezioneArticolo.ShowDialog()
             If Not serializzatore.globalArticolo.Articolo = String.Empty Then
+                Dim strVlue As String = serializzatore.globalArticolo.Articolo
                 DocumentidettaglioDataGridView.CurrentCell.Value = serializzatore.globalArticolo.Articolo.ToString
+                'eseguire query
+                serializzatore.CaptureDataGridRow(ArticoliTableAdapter1.GetData(), ArticolimisureTableAdapter1.GetData(), strVlue)
                 'a questo punto carico tutta la riga
+                If Not IsNothing(serializzatore.globalObjFillDataGridRow) Then
+                    If (Not serializzatore.globalObjFillDataGridRow.Iva = String.Empty) And (Not serializzatore.globalObjFillDataGridRow.Scorporo = String.Empty) Then 'daverificare la condizione
+
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("DescrizioneTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.Denominazione 'descrizione articolo
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("UnitaMisuraMagazzinoTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.UnitaMisuraMagazzino 'unita misura magazzino
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("UnitaMisuraTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.UnitaMisura 'unita misura fatturazione
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("PrezzoUnitarioTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.Prezzo 'prezzo
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("ScorporoTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.Scorporo 'scorporo
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("ClasseMerceologicaTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.ClasseMerceologica 'classe merceologica
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("ClasseContropartitaTextBoxcolumn").Value = serializzatore.globalObjFillDataGridRow.ClasseContropartita 'classe contropartita
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("ArticoloAliasTextBoxColumn").Value = serializzatore.globalObjFillDataGridRow.ArticoloAlias 'articoloalias
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("Iva").Value = serializzatore.globalObjFillDataGridRow.Iva 'iva
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Value = 0 'metto a 0 i campi
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaTextBoxColumn").Value = 0
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto1TextBoxColumn").Value = 0
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto2TextBoxColumn").Value = 0
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("Sconto3TextBoxColumn").Value = 0
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("ImportoTextBoxColumn").Value = 0
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("MovimentoMagazzinoTextBoxColumn").Value = 0
+                        ''''sistemare il focus sulla cella
+                        Cursor.Position = DocumentidettaglioDataGridView.PointToScreen(DocumentidettaglioDataGridView.GetCellDisplayRectangle(4, DocumentidettaglioDataGridView.CurrentRow.Index, True).Location) ' DocumentidettaglioDataGridView.PointToScreen(DocumentidettaglioDataGridView.GetCellDisplayRectangle(DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").ColumnIndex, DocumentidettaglioDataGridView.CurrentRow.Index, True).Location)
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("ArticoloComboBoxColumn").Selected = False
+                        DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn").Selected = True
+                        'DocumentidettaglioDataGridView.CurrentCell = DocumentidettaglioDataGridView.CurrentRow.Cells("QuantitaMagazzinoTextBoxColumn")
+
+                    End If
+                End If
             End If
         End If
     End Sub
 
     Private Sub DocumentidettaglioDataGridView_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DocumentidettaglioDataGridView.CellMouseClick
         'viene chiamata dopo cell click
+    End Sub
+
+    Private Sub DocumentidettaglioDataGridView_CellValidated(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentidettaglioDataGridView.CellValidated
+
+    End Sub
+
+    Private Sub DocumentidettaglioDataGridView_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles DocumentidettaglioDataGridView.CellValidating
+
+    End Sub
+
+    Private Sub DocumentidettaglioDataGridView_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DocumentidettaglioDataGridView.CellValueChanged
+
+    End Sub
+
+    Private Sub DocumentidettaglioDataGridView_CellValueNeeded(sender As Object, e As DataGridViewCellValueEventArgs) Handles DocumentidettaglioDataGridView.CellValueNeeded
+
+    End Sub
+
+    Private Sub DocumentidettaglioDataGridView_CellValuePushed(sender As Object, e As DataGridViewCellValueEventArgs) Handles DocumentidettaglioDataGridView.CellValuePushed
+
     End Sub
 
   
@@ -438,56 +522,56 @@ Namespace WpfCombo
     '/// <summary>
     '/// Interaction logic for MainWindow.xaml
     '/// </summary>
-    Partial Public Class Parziale
+    'Partial Public Class Parziale
 
 
-        Private cities As New ObservableCollection(Of AziendaDenominazione)
-        'cities = new ObservableCollection
+    '    Private cities As New ObservableCollection(Of AziendaDenominazione)
+    '    'cities = new ObservableCollection
 
-        Public Sub Elab(ByRef cbo As ComboBox, ByVal objData1 As List(Of String), ByVal ObjData2 As List(Of String))
+    '    Public Sub Elab(ByRef cbo As ComboBox, ByVal objData1 As List(Of String), ByVal ObjData2 As List(Of String))
 
-            If (objData1.Count = ObjData2.Count) And (objData1.Count > 0) Then
+    '        If (objData1.Count = ObjData2.Count) And (objData1.Count > 0) Then
 
-                Dim numero = objData1.Count
+    '            Dim numero = objData1.Count
 
-                For i = 1 To numero
+    '            For i = 1 To numero
 
-                    cities.Add(New AziendaDenominazione() With {.azienda = objData1.Item(i - 1).ToString, .denominazione1 = ObjData2.Item(i - 1).ToString})
-                    cbo.Items.Add(cities.Item(i - 1))
+    '                cities.Add(New AziendaDenominazione() With {.azienda = objData1.Item(i - 1).ToString, .denominazione1 = ObjData2.Item(i - 1).ToString})
+    '                cbo.Items.Add(cities.Item(i - 1))
 
-                Next
+    '            Next
 
-            End If
+    '        End If
 
-        End Sub
+    '    End Sub
 
-    End Class
-
-
-    Public Class AziendaDenominazione
-
-        Public Property azienda As String
-            Get
-                Return _azienda
-            End Get
-            Set(value As String)
-                _azienda = value
-            End Set
-        End Property
-        Private _azienda As String
+    'End Class
 
 
-        Public Property denominazione1 As String
-            Get
-                Return _denominazione1
-            End Get
-            Set(value As String)
-                _denominazione1 = value
-            End Set
-        End Property
-        Private _denominazione1 As String
+    'Public Class AziendaDenominazione
 
-    End Class
+    '    Public Property azienda As String
+    '        Get
+    '            Return _azienda
+    '        End Get
+    '        Set(value As String)
+    '            _azienda = value
+    '        End Set
+    '    End Property
+    '    Private _azienda As String
+
+
+    '    Public Property denominazione1 As String
+    '        Get
+    '            Return _denominazione1
+    '        End Get
+    '        Set(value As String)
+    '            _denominazione1 = value
+    '        End Set
+    '    End Property
+    '    Private _denominazione1 As String
+
+    'End Class
 
 
 

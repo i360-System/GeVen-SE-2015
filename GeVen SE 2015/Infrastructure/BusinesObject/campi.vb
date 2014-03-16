@@ -22,10 +22,10 @@ Public Class campi
         End Get
     End Property
 
-    Private _TipiDocumento = "tipodocumento"
-    Public ReadOnly Property TipiDocumento As String
+    Private _TipoDocumento = "tipodocumento"
+    Public ReadOnly Property TipoDocumento As String
         Get
-            Return _TipiDocumento
+            Return _TipoDocumento
         End Get
     End Property
 

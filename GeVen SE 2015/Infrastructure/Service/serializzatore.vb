@@ -4,6 +4,8 @@ Module serializzatore
     Public GlobalObjAccountInfo As AccountInfo = Nothing
     Public globalObjAziendaEsercizioDocumento As New ObjAziendaEsercizioTipoDocumento
     Public globalArticolo As New Articolo
+    Public globalObjFillDataGridRow As New objFillDataGridRow
+    Public globalListaArticoliDaCaricare As New ListaArticolidaCaricare
     Dim listaComboGestioneDocumenti As New List(Of String)
     Dim listaTextGestioneDocumenti As New List(Of String)
 
@@ -383,6 +385,40 @@ Module serializzatore
 
         Return ret
     End Function
+
+    Public Sub CaptureDataGridRow(ByVal tabella1 As DataTable, ByVal tabella2 As DataTable, ByVal whereCondition As String)
+
+        globalObjFillDataGridRow.Clean()
+        Dim servApp As New Services
+        Dim ret1 As EnumerableRowCollection(Of ArticoliStrongType) = Nothing
+        Dim ret2 As EnumerableRowCollection(Of ArticoliMisure) = Nothing
+        ret1 = servApp.distinctSelectArticoliEmisure(tabella1, whereCondition)
+        ret2 = servApp.distinctSelectArticoliEmisure(tabella2, whereCondition)
+
+        If (Not IsNothing(ret1)) And (Not IsNothing(ret2)) Then
+            If (ret1.ToList.Count > 0) And (ret2.ToList.Count > 0) Then
+                globalObjFillDataGridRow.ArticoloAlias = ret1.ElementAt(0).ArticoloAlias
+                globalObjFillDataGridRow.ClasseContropartita = ret1.ElementAt(0).ClasseContropartita
+                globalObjFillDataGridRow.ClasseMerceologica = ret1.ElementAt(0).ClasseMerceologica
+                globalObjFillDataGridRow.Denominazione = ret1.ElementAt(0).Denominazione
+                globalObjFillDataGridRow.Iva = ret1.ElementAt(0).Iva
+                globalObjFillDataGridRow.Prezzo = ret2.ElementAt(0).PrezzoVendita
+                globalObjFillDataGridRow.Scorporo = ret1.ElementAt(0).Scorporo
+                globalObjFillDataGridRow.UnitaMisura = ret2.ElementAt(0).UnitaMisura
+                globalObjFillDataGridRow.UnitaMisuraMagazzino = ret2.ElementAt(0).UnitaMisura
+            End If
+        End If
+
+    End Sub
+
+
+    Public Sub CaricaArticoli(ByVal listaArticoli As List(Of String))
+
+        globalListaArticoliDaCaricare.pulisceLaLista()
+        globalListaArticoliDaCaricare.listaDaCaricare = listaArticoli
+
+    End Sub
+
 
 #End Region
 
