@@ -1,6 +1,14 @@
 ﻿Imports MySql.Data.MySqlClient
 Public Class Services
     'Dim mydb As New MySqlDbType
+    Dim listaCampiDocumentiDettaglio As New List(Of String)(New String() {"riga", "articolo", "descrizione", _
+                                                                          "unitamisuramnagazzino", "quantitamagazzino", _
+                                                                          "unitamisura", "quantita", _
+                                                                          "prezzounitario", "sconto1", "sconto2", "sconto3", _
+                                                                          "importo", "iva", "scorporo", "classemerceologica", _
+                                                                         "classecontropartita", "percentoprovvigioni", _
+                                                                          "articoloalias", "movimentomagazzino"})
+    '
     ''' <summary>
     '''Costruisce la Query e la restituisce 
     ''' </summary>
@@ -14,220 +22,627 @@ Public Class Services
         Dim preTabelle As String = Nothing
         Dim tabella As String = Nothing
         Dim tabelle As New List(Of String)
-        Dim campiValori As New List(Of List(Of String))
-        Dim campoValore As New List(Of String)
+        Dim campiValori, campiValori2 As New List(Of List(Of String))
+        Dim campiSET As New List(Of List(Of String))
+
         Dim valori As String = Nothing
         Dim valore As String = Nothing
         Dim stringaAppoggio As String = Nothing
         Dim lunghezza As Integer = 0
         Dim numeroOccorrenze As Integer = 0
         Dim totalelunghezzaperCampiValori As Integer = 0
+        Try
+            lunghezza = InStr(preQuery, ",") 'controllo la prima virgola e ne ricavo l'indice
+            totalelunghezzaperCampiValori += lunghezza 'sommo l'indice
+            istruzioni = Mid(preQuery, 1, lunghezza - 1) ' recupero il tipo di query select, insert ect
+            stringaAppoggio = Mid(preQuery, lunghezza + 1) 'taglio
+            lunghezza = InStr(stringaAppoggio, ",") 'ricavo la seconda virgola
+            totalelunghezzaperCampiValori += lunghezza 'sommo l'indice
+            preTabelle = Mid(stringaAppoggio, 1, lunghezza - 1) 'ricavo eventuali tabelle
+            numeroOccorrenze = numOccorrenze(preTabelle, "»", False)
+            stringaAppoggio = Nothing
+            stringaAppoggio = Mid(preQuery, totalelunghezzaperCampiValori)
 
-        lunghezza = InStr(preQuery, ",")
-        totalelunghezzaperCampiValori += lunghezza
-        istruzioni = Mid(preQuery, 1, lunghezza - 1) ' recupero il tipo di query select, insert ect
-        stringaAppoggio = Mid(preQuery, lunghezza + 1)
-        lunghezza = InStr(stringaAppoggio, ",")
-        totalelunghezzaperCampiValori += lunghezza
-        preTabelle = Mid(stringaAppoggio, 1, lunghezza - 1)
-        numeroOccorrenze = numOccorrenze(preTabelle, "»", False)
-        stringaAppoggio = Nothing
-        stringaAppoggio = Mid(preQuery, totalelunghezzaperCampiValori)
+            For i = 1 To numeroOccorrenze 'recupero le tabelle
 
-        For i = 1 To numeroOccorrenze 'recupero le tabelle
+                lunghezza = InStr(preTabelle, "»")
+                tabella = Mid(preTabelle, 2, (lunghezza - 2))
+                ' tabelle.Add(tabella)
+                If numeroOccorrenze - i = 0 Then Exit For
+                preTabelle = Mid(preTabelle, lunghezza)
 
-            lunghezza = InStr(preTabelle, "»")
-            tabella = Mid(preTabelle, 2, (lunghezza - 2))
-            tabelle.Add(tabella)
-            If numeroOccorrenze - i = 0 Then Exit For
-            preTabelle = Mid(preTabelle, lunghezza)
+            Next
 
-        Next
+            'recupero i campi e i valori
+            numeroOccorrenze = numOccorrenze(stringaAppoggio, "►")
+            lunghezza = InStr(stringaAppoggio, "►")
+            Dim lunghezzaIniziale = lunghezza
+            Dim taglia As Integer = 0
+            taglia = lunghezza
+            For i = 1 To numeroOccorrenze
+                Dim campoValore As New List(Of String)
+                Dim campiValoriPuliti As String = Nothing
 
-        'recupero i campi e i valori
-        numeroOccorrenze = numOccorrenze(stringaAppoggio, "►")
-        lunghezza = InStr(stringaAppoggio, "►")
-        Dim lunghezzaIniziale = lunghezza
-        Dim taglia As Integer = 0
-        taglia = lunghezza
-        For i = 1 To numeroOccorrenze
-            Dim campiValoriPuliti As String = Nothing
+                If i = 1 Then
+                    campiValoriPuliti = Mid(stringaAppoggio, 2, lunghezzaIniziale - 1)
+                Else
+                    lunghezza = InStr(stringaAppoggio, "►")
+                    taglia = lunghezza
+                    campiValoriPuliti = Mid(stringaAppoggio, 1, lunghezza)
+                End If
 
-            If i = 1 Then
-                campiValoriPuliti = Mid(stringaAppoggio, 2, lunghezzaIniziale - 1)
-            Else
-                lunghezza = InStr(stringaAppoggio, "►")
-                taglia = lunghezza
-                campiValoriPuliti = Mid(stringaAppoggio, 1, lunghezza)
+                lunghezza = InStr(campiValoriPuliti, "↨")
+                Dim campo = Mid(campiValoriPuliti, 2, lunghezza - 2)
+                'serializzarlo campo
+                Dim valCampo = serializzatore.ritornacampo(campo)
+
+
+                If IsNothing(valCampo) Then Throw New NotImplementedException("Non c'è corrispondenza nel database con i/il campi/o selezionato")
+
+
+                campoValore.Add(valCampo) ' aggiungo il campo
+                valori = Mid(campiValoriPuliti, lunghezza + 1)
+                numeroOccorrenze = numOccorrenze(valori, "↨")
+
+                For q = 0 To numeroOccorrenze
+                    If q = numeroOccorrenze Then
+                        valore = Left(valori, valori.Length - 1)
+                        'lunghezza = valori.Length
+                    Else
+                        lunghezza = InStr(valori, "↨")
+                        valore = Mid(valori, 1, lunghezza)
+                    End If
+                    'taglia += lunghezza
+                    campoValore.Add(valore)
+                    'valori = Mid(valori, lunghezza)
+                Next
+
+                campiValori.Add(campoValore)
+                valore = Nothing
+
+                stringaAppoggio = Mid(stringaAppoggio, taglia + 1) 'possibile punto di implementazione per gestire i valori set dell'updATE
+                taglia = 0
+            Next
+            ''''''''''''''''''''''''''''''''''''''''''''''''''''raccolto i valori costruisco la query''''''''''
+
+            If stringaAppoggio.Length > 0 Then
+
+                Dim numeroDelimitatori As Byte = 0
+                numeroDelimitatori = numOccorrenze(stringaAppoggio, "┘") : Dim lung As Integer = InStr(stringaAppoggio, "┘")
+                lunghezzaIniziale = lung
+                'to do estraiamo i campi set da modificare
+                For n = 1 To numeroDelimitatori
+                    Dim campoValore2 As New List(Of String)
+                    Dim campiValoriPuliti2 As String = Nothing
+
+                    If n = 1 Then
+                        campiValoriPuliti2 = Mid(stringaAppoggio, 2, lunghezzaIniziale - 1)
+                    Else
+                        lung = InStr(stringaAppoggio, "┘")
+                        taglia = lung
+                        campiValoriPuliti2 = Mid(stringaAppoggio, 1, lung)
+                    End If
+
+                    lung = InStr(campiValoriPuliti2, "█")
+                    Dim campo = Mid(campiValoriPuliti2, 2, lung - 2)
+                    'serializzarlo campo
+                    Dim valCampo = serializzatore.ritornacampo(campo)
+
+                    If IsNothing(valCampo) Then Throw New NotImplementedException("Non c'è corrispondenza nel database con i/il campi/o selezionato")
+
+
+                    campoValore2.Add(valCampo) ' aggiungo il campo
+                    valori = Mid(campiValoriPuliti2, lung + 1)
+                    numeroOccorrenze = numOccorrenze(valori, "█")
+
+
+                    For q = 0 To numeroOccorrenze
+                        If q = numeroOccorrenze Then
+                            valore = Left(valori, valori.Length - 1)
+                            'lunghezza = valori.Length
+                        Else
+                            lung = InStr(valori, "█")
+                            valore = Mid(valori, 1, lung)
+                        End If
+                        'taglia += lunghezza
+                        campoValore2.Add(valore)
+                        'valori = Mid(valori, lunghezza)
+                    Next
+
+                    campiValori2.Add(campoValore2)
+                    valore = Nothing
+
+                    stringaAppoggio = Mid(stringaAppoggio, taglia + 1) 'possibile punto di implementazione per gestire i valori set dell'updATE
+                    taglia = 0
+                Next
+
             End If
 
-            lunghezza = InStr(campiValoriPuliti, "↨")
-            Dim campo = Mid(campiValoriPuliti, 2, lunghezza - 2)
-            campoValore.Add(campo) ' aggiungo il campo
-            valori = Mid(campiValoriPuliti, lunghezza + 1)
-            numeroOccorrenze = numOccorrenze(valori, "↨")
 
-            For q = 0 To numeroOccorrenze
-                If q = numeroOccorrenze Then
-                    valore = Left(valori, valori.Length - 1)
-                    'lunghezza = valori.Length
-                Else
-                    lunghezza = InStr(valori, "↨")
-                    valore = Mid(valori, 1, lunghezza)
-                End If
-                'taglia += lunghezza
-                campoValore.Add(valore)
-                'valori = Mid(valori, lunghezza)
-            Next
-            campiValori.Add(campoValore)
-            stringaAppoggio = Mid(stringaAppoggio, taglia + 1)
-            taglia = 0
-        Next
-        ''''''''''''''''''''''''''''''''''''''''''''''''''''raccolto i valori costruisco la query''''''''''
+            Select Case istruzioni.ToLower
 
-        Select Case istruzioni.ToLower
+                Case "«select»"
 
-            Case "«select»"
+                    Select Case tabella.ToLower
 
-                Select Case tabella.ToLower
+                        Case "gestionedocumenti"
 
-                    Case "gestionedocumenti"
+                            query = serializzatore.Query.selectGestioneDocumenti
+                            query &= WhereConditionSelect(campiValori, "gestionedocumenti")
+                            'eseguo query
 
-                        query = serializzatore.Query.selectGestioneDocumenti
-                        query &= WhereConditionSelect(campiValori)
-                        'eseguo query
+                        Case "agentirappresentati"
 
-                    Case "agentirappresentati"
+                            query = serializzatore.Query.selectAgentiRappresentanti
+                            query &= WhereConditionSelect(campiValori, "agentirappresentati")
 
-                        query = serializzatore.Query.selectAgentiRappresentanti
-                        query &= WhereConditionSelect(campiValori)
+                        Case "anagrafica"
 
-                    Case "selectanagrafica"
+                            query = serializzatore.Query.selectAnagrafica
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectAnagrafica
-                        query &= WhereConditionSelect(campiValori)
+                        Case "cambiovaluta"
 
-                    Case "selectcambiovaluta"
+                            query = serializzatore.Query.selectCambioValuta
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectCambioValuta
-                        query &= WhereConditionSelect(campiValori)
+                        Case "categorieclienti"
 
-                    Case "selectcategorieclienti"
+                            query = serializzatore.Query.selectCategorieClienti
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectCategorieClienti
-                        query &= WhereConditionSelect(campiValori)
+                        Case "datiaziende"
 
-                    Case "selectdatiaziende"
+                            query = serializzatore.Query.selectDatiAziende
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectDatiAziende
-                        query &= WhereConditionSelect(campiValori)
+                        Case "destinazionemerce"
 
-                    Case "selectdestinazionemerce"
+                            query = serializzatore.Query.selectDestinazioneMerce
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectDestinazioneMerce
-                        query &= WhereConditionSelect(campiValori)
+                        Case "gestioneannuali"
 
-                    Case "selectgestioneannuali"
+                            query = serializzatore.Query.selectGestioneAnnuali
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectGestioneAnnuali
-                        query &= WhereConditionSelect(campiValori)
+                        Case "iva"
 
-                    Case "selectiva"
+                            query = serializzatore.Query.selectIva
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectIva
-                        query &= WhereConditionSelect(campiValori)
+                        Case "modalitapagamento"
 
-                    Case "selectmodalitapagamento"
+                            query = serializzatore.Query.selectModalitaPagamento
+                            query &= WhereConditionSelect(campiValori, "modalitapagamento")
 
-                        query = serializzatore.Query.selectModalitaPagamento
-                        query &= WhereConditionSelect(campiValori)
+                        Case "sconti"
 
-                    Case "selectsconti"
+                            query = serializzatore.Query.selectSconti
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectSconti
-                        query &= WhereConditionSelect(campiValori)
+                        Case "spedizionieri"
 
-                    Case "selectspedizionieri"
+                            query = serializzatore.Query.selectSpedizionieri
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectSpedizionieri
-                        query &= WhereConditionSelect(campiValori)
+                        Case "tipidocumento"
 
-                    Case "selecttipidocumento"
+                            query = serializzatore.Query.selectTipiDocumento
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectTipiDocumento
-                        query &= WhereConditionSelect(campiValori)
+                        Case "zonegeografiche"
 
-                    Case "selectzonegeografiche"
+                            query = serializzatore.Query.selectZoneGeografiche
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectZoneGeografiche
-                        query &= WhereConditionSelect(campiValori)
+                            'Case "selectgestionefatturedocumenti"
 
-                    Case "selectgestionefatturedocumenti"
+                            '    query = serializzatore.Query.selectGestioneFattureDocumenti
+                            '    query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectGestioneFattureDocumenti
-                        query &= WhereConditionSelect(campiValori)
+                        Case "articoli"
 
-                    Case "selectarticoli"
+                            query = serializzatore.Query.selectArticoli
+                            query &= WhereConditionSelect(campiValori, "articoli")
 
-                        query = serializzatore.Query.selectArticoli
-                        query &= WhereConditionSelect(campiValori)
+                        Case "classiarticolo"
 
-                    Case "selectclassiarticolo"
+                            query = serializzatore.Query.selectClassiArticolo
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectClassiArticolo
-                        query &= WhereConditionSelect(campiValori)
+                            'Case "selectgenerazioneinventario"
 
-                    Case "selectgenerazioneinventario"
+                            '    query = serializzatore.Query.selectGenerazioneInventario
+                            '    query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectGenerazioneInventario
-                        query &= WhereConditionSelect(campiValori)
+                        Case "listinoarticoli"
 
-                    Case "selectlistinoarticoli"
+                            query = serializzatore.Query.selectListinoArticoli
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectListinoArticoli
-                        query &= WhereConditionSelect(campiValori)
+                        Case "magazzini"
 
-                    Case "selectmagazzini"
+                            query = serializzatore.Query.selectMagazzini
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectMagazzini
-                        query &= WhereConditionSelect(campiValori)
+                        Case "movimenti"
 
-                    Case "selectmovimenti"
+                            query = serializzatore.Query.selectMovimentiMagazzino
+                            query &= WhereConditionSelect(campiValori, "movimenti")
 
-                        query = serializzatore.Query.selectMovimenti
-                        query &= WhereConditionSelect(campiValori)
+                        Case "prezziacquisto"
 
-                    Case "selectprezziacquisto"
+                            query = serializzatore.Query.selectPrezziAcquisto
+                            query &= WhereConditionSelect(campiValori)
 
-                        query = serializzatore.Query.selectPrezziAcquisto
-                        query &= WhereConditionSelect(campiValori)
+                    End Select
 
-                End Select
+                Case "«insert»"
 
+                    Select Case tabella.ToLower
 
-            Case "«insert»"
+                        Case "documenti"
 
-                Select Case tabella.ToLower
+                            query = serializzatore.Query.insertGestioneDocumenti1 'add gestdocu2
+                            query &= InsertFieldValues(campiValori)
 
-                End Select
+                        Case "rappresentanti"
 
-            Case "«update»"
+                            query = serializzatore.Query.insertAgentiRappresentanti1 'add agerap2
+                            query &= InsertFieldValues(campiValori)
 
-                Select Case tabella.ToLower
+                        Case "anagrafica"
 
-                End Select
+                            query = serializzatore.Query.insertAnagrafica
+                            query &= InsertFieldValues(campiValori)
 
-            Case "«delete»"
+                        Case "cambiovaluta"
 
-                Select Case tabella.ToLower
+                            query = serializzatore.Query.insertCambioValuta
+                            query &= InsertFieldValues(campiValori)
 
-                End Select
+                        Case "categorieclienti"
 
-            Case "«print»"
+                            query = serializzatore.Query.insertCategorieClienti
+                            query &= InsertFieldValues(campiValori)
 
-                'todo
+                        Case "datiaziende"
 
-        End Select
+                            query = serializzatore.Query.insertDatiAziende
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "destinazionemerce"
+
+                            query = serializzatore.Query.insertDestinazioneMerce
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "gestioneannuali"
+
+                            query = serializzatore.Query.insertGestioneAnnuali
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "iva"
+
+                            query = serializzatore.Query.insertIva
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "modalitapagamento"
+
+                            query = serializzatore.Query.insertModalitaPagamento1 'add 2
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "sconti"
+
+                            query = serializzatore.Query.insertSconti
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "spedizionieri"
+
+                            query = serializzatore.Query.insertSpedizionieri
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "tipidocumento"
+
+                            query = serializzatore.Query.insertTipiDocumento
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "zonegeografiche"
+
+                            query = serializzatore.Query.insertZoneGeografiche
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "articoli"
+
+                            query = serializzatore.Query.insertArticoli1 'add 2
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "classiarticolo"
+
+                            query = serializzatore.Query.insertClassiArticolo
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "listinoarticoli"
+
+                            query = serializzatore.Query.insertListinoArticoli
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "magazzini"
+
+                            query = serializzatore.Query.insertMagazzini
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "movimenti"
+
+                            query = serializzatore.Query.insertMovimentiMagazzino1 'add 2
+                            query &= InsertFieldValues(campiValori)
+
+                        Case "prezziacquisto"
+
+                            query = serializzatore.Query.insertPrezziAcquisto
+                            query &= InsertFieldValues(campiValori)
+
+                    End Select
+
+                Case "«update»"
+
+                    Select Case tabella.ToLower
+
+                        Case "updatedocumenti"
+
+                            query = serializzatore.Query.updateGestioneDocumenti1 'add 2
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updaterappresentanti"
+
+                            query = serializzatore.Query.updateAgentiRappresentanti1 ' add 2
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updateanagrafica"
+
+                            query = serializzatore.Query.updateAnagrafica
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatecambiovaluta"
+
+                            query = serializzatore.Query.updateCambioValuta
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatecategorieclienti"
+
+                            query = serializzatore.Query.updateCategorieClienti
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatedatiaziende"
+
+                            query = serializzatore.Query.updateDatiAziende
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatedestinazionemerce"
+
+                            query = serializzatore.Query.updateDestinazioneMerce
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updategestioneannuali"
+
+                            query = serializzatore.Query.updateGestioneAnnuali
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updateiva"
+
+                            query = serializzatore.Query.updateIva
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatemodalitapagamento"
+
+                            query = serializzatore.Query.updateModalitaPagamento1 ' add 2
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatesconti"
+
+                            query = serializzatore.Query.updateSconti
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatespedizionieri"
+
+                            query = serializzatore.Query.updateSpedizionieri
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatetipidocumento"
+
+                            query = serializzatore.Query.updateTipiDocumento
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatezonegeografiche"
+
+                            query = serializzatore.Query.updateZoneGeografiche
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatearticoli"
+
+                            query = serializzatore.Query.updateArticoli1 ' add 2
+                            'query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updateclassiarticolo"
+
+                            query = serializzatore.Query.updateClassiArticolo
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatelistinoarticoli"
+
+                            query = serializzatore.Query.updateListinoArticoli
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatemagazzini"
+
+                            query = serializzatore.Query.updateMagazzini
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updatemovimenti"
+
+                            query = serializzatore.Query.updateMovimentiMagazzino1 ' add 2
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "updateprezziacquisto"
+
+                            query = serializzatore.Query.updatePrezziAcquisto
+                            query &= SetCondition(campiSET)
+                            query &= WhereConditionSelect(campiValori)
+
+                    End Select
+
+                Case "«delete»"
+
+                    Select Case tabella.ToLower
+
+                        Case "documenti"
+
+                            query = serializzatore.Query.deleteGestioneDocumenti1 ' add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                            query = serializzatore.Query.deleteGestioneDocumenti2 ' add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "rappresentanti"
+
+                            query = serializzatore.Query.deleteAgentiRappresentanti1 ' add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                            query = serializzatore.Query.deleteAgentiRappresentanti2 ' add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "anagrafica"
+
+                            query = serializzatore.Query.deleteAnagrafica
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "cambiovaluta"
+
+                            query = serializzatore.Query.deleteCambioValuta
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "categorieclienti"
+
+                            query = serializzatore.Query.deleteCategorieClienti
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "datiaziende"
+
+                            query = serializzatore.Query.deleteDatiAziende
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "destinazionemerce"
+
+                            query = serializzatore.Query.deleteDestinazioneMerce
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "gestioneannuali"
+
+                            query = serializzatore.Query.deleteGestioneAnnuali
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "iva"
+
+                            query = serializzatore.Query.deleteIva
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "modalitapagamento"
+
+                            query = serializzatore.Query.deleteModalitaPagamento1 'add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                            query = serializzatore.Query.deleteModalitaPagamento2 'add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "sconti"
+
+                            query = serializzatore.Query.deleteSconti
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "spedizionieri"
+
+                            query = serializzatore.Query.deleteSpedizionieri
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "tipidocumento"
+
+                            query = serializzatore.Query.deleteTipiDocumento
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "zonegeografiche"
+
+                            query = serializzatore.Query.deleteZoneGeografiche
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "articoli"
+
+                            query = serializzatore.Query.deleteArticoli1 'add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                            query = serializzatore.Query.deleteArticoli2 'add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "classiarticolo"
+
+                            query = serializzatore.Query.deleteClassiArticolo
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "listinoarticoli"
+
+                            query = serializzatore.Query.deleteListinoArticoli
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "magazzini"
+
+                            query = serializzatore.Query.deleteMagazzini
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "movimenti"
+
+                            query = serializzatore.Query.deleteMovimentiMagazzino1 'add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                            query = serializzatore.Query.deleteMovimentiMagazzino2 'add 2
+                            query &= WhereConditionSelect(campiValori)
+
+                        Case "prezziacquisto"
+
+                            query = serializzatore.Query.deletePrezziAcquisto
+                            query &= WhereConditionSelect(campiValori)
+
+                    End Select
+
+                Case "«print»"
+                Case ""
+                Case ""
+                Case ""
+                Case ""
+
+            End Select
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+            query = Nothing
+        End Try
 
         Return query
 
@@ -258,7 +673,7 @@ Public Class Services
     ''' <param name="valore"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Private Function WhereConditionSelect(ByVal valore As List(Of List(Of String)))
+    Private Overloads Function WhereConditionSelect(ByVal valore As List(Of List(Of String)))
         Dim res As String = Nothing
         If valore.Count > 0 Then 'gestiamo l'eventuale where condition
             res &= "where "
@@ -273,35 +688,237 @@ Public Class Services
         Return res
     End Function
 
-    Public Function EseguiQuery(ByVal quer As String) As DataSet
-        Dim DatasetDaRestituire As New DataSet
-        Try
-            Dim ServerDB As String = My.Settings.serverDB
-            Dim user As String = My.Settings.user
-            Dim password As String = My.Settings.password
-            Dim DB As String = My.Settings.nomeDB
+    ''' <summary>
+    ''' Restituisce la Where condition comprensiva del prefisso alias delle tabelle davanti ai nomi dei campi.
+    ''' </summary>
+    ''' <param name="valore"></param>
+    ''' <param name="nomeForm"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Overloads Function WhereConditionSelect(ByVal valore As List(Of List(Of String)), ByVal nomeForm As String)
 
-            Dim connectionstring As String = "Server=" & ServerDB & ";User Id=" & user & ";Password=" & password & ";Database=data"
-            Dim commandtext As String
-            Dim adapter As MySqlDataAdapter
-            Dim table As DataTable
-            commandtext = quer '"select * from account where user=admin"
-            Try
-                adapter = New MySqlDataAdapter(commandtext, connectionstring)
-                table = New DataTable
-                adapter.Fill(table)
+        Dim res As String = Nothing
 
-                'incollo dataset
-                adapter.Fill(DatasetDaRestituire)
+        If valore.Count > 0 Then 'gestiamo l'eventuale where condition
 
-                'DataGridView1.DataSource = table '##########(but instead of datagrid put the data in a textbox Put the id in the textbox )#######
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
+            Select Case nomeForm.ToLower
 
-        Catch ex As Exception
+                Case "gestionedocumenti"
 
-        End Try
+                    res &= "where "
+
+                    Dim qp As Integer = 0
+                    For Each campoevalore In valore
+                        qp += 1
+                        If listaCampiDocumentiDettaglio.Contains(campoevalore(0).ToString) Then ' se incontro campi text e combo
+
+                            res &= "dl." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        Else ' se incontro i campi grid
+
+                            res &= "dt." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        End If
+
+                        If valore.Count = qp Then Exit For
+                        res &= " and "
+                    Next
+
+                Case "agentirappresentanti"
+
+                    res &= "where "
+
+                    Dim qp As Integer = 0
+                    For Each campoevalore In valore
+                        qp += 1
+                        '    If listaCampiDocumentiDettaglio.Contains(campoevalore(0).ToString) Then ' se incontro campi text e combo
+
+                        '        res &= "ag." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    Else ' se incontro i campi grid
+
+                        '        res &= "ap." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    End If
+
+                        If valore.Count = qp Then Exit For
+                        res &= " and "
+                    Next
+
+                Case "modalitapagamento"
+
+                    res &= "where "
+
+                    Dim qp As Integer = 0
+                    For Each campoevalore In valore
+                        qp += 1
+                        '    If listaCampiDocumentiDettaglio.Contains(campoevalore(0).ToString) Then ' se incontro campi text e combo
+
+                        '        res &= "ag." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    Else ' se incontro i campi grid
+
+                        '        res &= "ap." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    End If
+
+                        If valore.Count = qp Then Exit For
+                        res &= " and "
+                    Next
+
+                Case "movimenti"
+
+                    res &= "where "
+
+                    Dim qp As Integer = 0
+                    For Each campoevalore In valore
+                        qp += 1
+                        '    If listaCampiDocumentiDettaglio.Contains(campoevalore(0).ToString) Then ' se incontro campi text e combo
+
+                        '        res &= "ag." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    Else ' se incontro i campi grid
+
+                        '        res &= "ap." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    End If
+
+                        If valore.Count = qp Then Exit For
+                        res &= " and "
+                    Next
+
+                Case "articoli"
+
+                    res &= "where "
+
+                    Dim qp As Integer = 0
+                    For Each campoevalore In valore
+                        qp += 1
+                        '    If listaCampiDocumentiDettaglio.Contains(campoevalore(0).ToString) Then ' se incontro campi text e combo
+
+                        '        res &= "ag." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    Else ' se incontro i campi grid
+
+                        '        res &= "ap." & campoevalore(0).ToString & " = " & campoevalore(1).ToString
+
+                        '    End If
+
+                        If valore.Count = qp Then Exit For
+                        res &= " and "
+                    Next
+
+
+            End Select
+
+        End If
+
+        Return res
+
+    End Function
+
+    ''' <summary>
+    ''' ritorna la stringa con i SET per la query update
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function SetCondition(ByVal listaSet As List(Of List(Of String))) As String
+
+        Dim res As String = Nothing
+
+        res = " SET "
+        For Each ele In listaSet
+
+            If (ele Is listaSet.Last) Then
+                res &= ele(0) & "=" & ele(1) & " "
+            Else
+                res &= ele(0) & "=" & ele(1) & ", "
+            End If
+        Next
+
+        Return res
+
+    End Function
+
+    ''' <summary>
+    ''' Esegue la query Select
+    ''' </summary>
+    ''' <param name="quer"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    'Public Function EseguiQuery(ByVal quer As String) As DataSet
+    '    Dim DatasetDaRestituire As New DataSet
+    '    Try
+    '        Dim ServerDB As String = My.Settings.serverDB
+    '        Dim user As String = My.Settings.user
+    '        Dim password As String = My.Settings.password
+    '        Dim DB As String = My.Settings.nomeDB
+
+
+    '        Dim connectionstring As String = "Server=" & ServerDB & ";User Id=" & user & ";Password=" & password & ";Database=" & DB
+    '        Dim commandtext As String
+    '        Dim adapter As MySqlDataAdapter
+    '        Dim table As DataTable
+    '        commandtext = quer '"select * from account where user=admin"
+    '        Try
+    '            adapter = New MySqlDataAdapter(commandtext, connectionstring)
+    '            table = New DataTable
+    '            adapter.Fill(table)
+
+    '            'incollo dataset
+    '            adapter.Fill(DatasetDaRestituire)
+
+    '            'DataGridView1.DataSource = table '##########(but instead of datagrid put the data in a textbox Put the id in the textbox )#######
+    '        Catch ex As Exception
+    '            MsgBox(ex.ToString)
+    '        Finally
+    '            adapter.Dispose()
+    '        End Try
+
+    '    Catch ex As Exception
+    '        MsgBox(ex.ToString)
+    '    End Try
+
+    '    Return DatasetDaRestituire
+
+    'End Function
+
+    ''' <summary>
+    ''' Ritorna la stringa con i valori "SET nomecampo = valore" 
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function InsertFieldValues(ByVal valore As List(Of List(Of String))) As String
+
+        Dim res As String = Nothing
+        If valore.Count > 0 Then 'gestiamo l'eventuale where condition
+            res &= "("
+            Dim qp As Integer = 0
+            For Each campoevalore In valore
+                qp += 1
+                res &= campoevalore(0).ToString  ' " = " & campoevalore(1).ToString
+                If valore.Count = qp Then
+                    res &= ") "
+                    Exit For
+                End If
+                res &= " , "
+            Next
+
+            res &= "VALUES ("
+            qp = 0
+            For Each campoevalore In valore
+                qp += 1
+                res &= campoevalore(1).ToString  ' " = " & campoevalore(1).ToString
+                If valore.Count = qp Then
+                    res &= ")"
+                    Exit For
+                End If
+                res &= " , "
+            Next
+
+        End If
+
+        Return res
 
     End Function
 

@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("GeVen SE 2015")> 
 <Assembly: AssemblyDescription("GeVen Standard Edition 2015")> 
-<Assembly: AssemblyCompany("I360-sYSTEM")> 
+<Assembly: AssemblyCompany("i360-System")> 
 <Assembly: AssemblyProduct("GeVen SE 2015")> 
 <Assembly: AssemblyCopyright("Copyright ©  2014")> 
 <Assembly: AssemblyTrademark("")> 

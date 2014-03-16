@@ -89,6 +89,41 @@ Namespace My
                 Me("porta") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=freedom3;database=fatturazionegeven;persis"& _ 
+            "tsecurityinfo=True")>  _
+        Public ReadOnly Property fatturazionegevenConnectionString() As String
+            Get
+                Return CType(Me("fatturazionegevenConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property percorsotemplate() As String
+            Get
+                Return CType(Me("percorsotemplate"),String)
+            End Get
+            Set
+                Me("percorsotemplate") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property percorsoOutput() As String
+            Get
+                Return CType(Me("percorsoOutput"),String)
+            End Get
+            Set
+                Me("percorsoOutput") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

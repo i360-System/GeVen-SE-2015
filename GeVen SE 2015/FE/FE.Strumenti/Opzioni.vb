@@ -71,6 +71,8 @@
             .controlloSecondi = Trim(TextBoxControlloSecondi.Text) * 1000
             .ServerIP = Trim(TextBoxServerIP.Text)
             .porta = Trim(TextBoxPorta.Text)
+            .percorsotemplate = Trim(TextBoxtemplate.Text)
+            .percorsoOutput = Trim(TextBoxOutput.Text)
             .Save()
         End With
 
@@ -86,9 +88,28 @@
         TextBoxControlloSecondi.Text = My.Settings.controlloSecondi / 1000
         TextBoxServerIP.Text = My.Settings.ServerIP
         TextBoxPorta.Text = My.Settings.porta
+        TextBoxtemplate.Text = My.Settings.percorsotemplate
+        TextBoxOutput.Text = My.Settings.percorsoOutput
     End Sub
+
 
 #End Region
 
     
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        finestratemplate.SelectedPath = TextBoxtemplate.Text
+        finestratemplate.ShowNewFolderButton = True
+        finestratemplate.ShowDialog()
+        TextBoxtemplate.Text = finestratemplate.SelectedPath
+    End Sub
+
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        finestraOutput.SelectedPath = TextBoxOutput.Text
+        finestraOutput.ShowNewFolderButton = True
+        finestraOutput.ShowDialog()
+        TextBoxOutput.Text = finestraOutput.SelectedPath
+    End Sub
+
 End Class
+

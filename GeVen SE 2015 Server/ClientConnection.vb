@@ -53,4 +53,11 @@ Public Class ConnectedClient
         sw.WriteLine(message) 'write the message to the stream
         sw.Flush()
     End Sub
+
+    'Sub sendObj(ByVal message As Object) 'this is used to deal with sending out messages
+    '    Dim nw As New NetworkStream(cli.Client.SocketType)
+    '    Dim sw As New StreamWriter(cli.GetStream) 'declare a new streamwrite to write to the stream between the client and the server
+    '    sw.WriteLine(message) 'write the message to the stream
+    '    sw.Flush()
+    'End Sub
 End Class

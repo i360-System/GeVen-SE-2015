@@ -39,12 +39,25 @@ Partial Class Opzioni
         Me.TextBoxControlloSecondi = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.TextBoxOutput = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.TextBoxtemplate = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.finestratemplate = New System.Windows.Forms.FolderBrowserDialog()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.finestraOutput = New System.Windows.Forms.FolderBrowserDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -72,6 +85,7 @@ Partial Class Opzioni
         '
         'GroupBox1
         '
+        Me.GroupBox1.Enabled = False
         Me.GroupBox1.Location = New System.Drawing.Point(6, 6)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(850, 183)
@@ -92,6 +106,7 @@ Partial Class Opzioni
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.TextBoxControlloSecondi)
+        Me.GroupBox2.Enabled = False
         Me.GroupBox2.Location = New System.Drawing.Point(6, 195)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(850, 230)
@@ -209,13 +224,80 @@ Partial Class Opzioni
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.GroupBox3)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage3.Size = New System.Drawing.Size(868, 431)
         Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Strumenti"
+        Me.TabPage3.Text = "Stampe"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label11)
+        Me.GroupBox3.Controls.Add(Me.Button5)
+        Me.GroupBox3.Controls.Add(Me.TextBoxOutput)
+        Me.GroupBox3.Controls.Add(Me.Label10)
+        Me.GroupBox3.Controls.Add(Me.ListBox1)
+        Me.GroupBox3.Controls.Add(Me.Label9)
+        Me.GroupBox3.Controls.Add(Me.Button4)
+        Me.GroupBox3.Controls.Add(Me.TextBoxtemplate)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 6)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(856, 213)
+        Me.GroupBox3.TabIndex = 0
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Template"
+        '
+        'TextBoxOutput
+        '
+        Me.TextBoxOutput.Location = New System.Drawing.Point(110, 71)
+        Me.TextBoxOutput.Name = "TextBoxOutput"
+        Me.TextBoxOutput.Size = New System.Drawing.Size(323, 20)
+        Me.TextBoxOutput.TabIndex = 5
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(614, 16)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(91, 13)
+        Me.Label10.TabIndex = 4
+        Me.Label10.Text = "Template caricati:"
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(617, 32)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(233, 173)
+        Me.ListBox1.TabIndex = 3
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(8, 37)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(99, 13)
+        Me.Label9.TabIndex = 2
+        Me.Label9.Text = "Percorso Template:"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(439, 34)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(40, 23)
+        Me.Button4.TabIndex = 1
+        Me.Button4.Text = "..."
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'TextBoxtemplate
+        '
+        Me.TextBoxtemplate.Location = New System.Drawing.Point(110, 34)
+        Me.TextBoxtemplate.Name = "TextBoxtemplate"
+        Me.TextBoxtemplate.Size = New System.Drawing.Size(323, 20)
+        Me.TextBoxtemplate.TabIndex = 0
         '
         'Button1
         '
@@ -244,6 +326,24 @@ Partial Class Opzioni
         Me.Button3.Text = "Esci"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(440, 71)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(39, 23)
+        Me.Button5.TabIndex = 6
+        Me.Button5.Text = "..."
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(8, 74)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(87, 13)
+        Me.Label11.TabIndex = 7
+        Me.Label11.Text = "Percorso Output:"
+        '
         'Opzioni
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -259,6 +359,9 @@ Partial Class Opzioni
         Me.TabPage1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -282,4 +385,15 @@ Partial Class Opzioni
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents TextBoxPorta As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents TextBoxtemplate As System.Windows.Forms.TextBox
+    Friend WithEvents finestratemplate As System.Windows.Forms.FolderBrowserDialog
+    Friend WithEvents TextBoxOutput As System.Windows.Forms.TextBox
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents finestraOutput As System.Windows.Forms.FolderBrowserDialog
 End Class

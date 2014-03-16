@@ -22,1249 +22,1790 @@ Partial Class GestioneDocumenti
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBoxAzienda = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxEsercizio = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxTipiDocumento = New System.Windows.Forms.ComboBox()
-        Me.TextBoxNumeroDocumento = New System.Windows.Forms.TextBox()
-        Me.TextBoxSiglaOperatore = New System.Windows.Forms.TextBox()
-        Me.ComboBoxCliente = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxDestinazione = New System.Windows.Forms.ComboBox()
-        Me.TextBoxRiferimento = New System.Windows.Forms.TextBox()
-        Me.TextBoxDataDocumento = New System.Windows.Forms.TextBox()
-        Me.ComboBoxAgente = New System.Windows.Forms.ComboBox()
-        Me.TextBoxDestinazione2 = New System.Windows.Forms.TextBox()
-        Me.ComboBoxIva = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxPagamento = New System.Windows.Forms.ComboBox()
-        Me.TextBoxBanca = New System.Windows.Forms.TextBox()
-        Me.TextBoxSconto = New System.Windows.Forms.TextBox()
-        Me.TextBoxCAP = New System.Windows.Forms.TextBox()
-        Me.TextBoxDestinazione3 = New System.Windows.Forms.TextBox()
-        Me.TextBoxLocalita = New System.Windows.Forms.TextBox()
-        Me.TextBoxProvincia = New System.Windows.Forms.TextBox()
-        Me.TextBoxAgenzia = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.riga = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.articolo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.descrizione = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.unitamisuramagazzino = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.quantitamagazzino = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.unitamisurafatturazione = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.quantitafatturazione = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.prezzo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.percentuale = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.percentuale2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.percentuale3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.importo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.iva = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.scorporo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.classemerceologica = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.contropartita = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.percentualeprovigioni = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.aliax = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.magazzino = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TextBoxImballo = New System.Windows.Forms.TextBox()
-        Me.TextBoxTrasporto = New System.Windows.Forms.TextBox()
-        Me.ComboBoxPorto = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxCausaleTrasporto = New System.Windows.Forms.ComboBox()
-        Me.TextBoxData = New System.Windows.Forms.TextBox()
-        Me.TextBoxPeso = New System.Windows.Forms.TextBox()
-        Me.TextBoxColli = New System.Windows.Forms.TextBox()
-        Me.TextBoxOraTrasporto = New System.Windows.Forms.TextBox()
-        Me.TextBoxPercSconto = New System.Windows.Forms.TextBox()
-        Me.TextBoxTotMerce = New System.Windows.Forms.TextBox()
-        Me.ComboBoxCorriere = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxTrasportoMezzo = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxAspettoBeni = New System.Windows.Forms.ComboBox()
-        Me.ComboBoxCodiceIva = New System.Windows.Forms.ComboBox()
-        Me.TextBoxTotDocumento = New System.Windows.Forms.TextBox()
-        Me.TextBoxImportoIva = New System.Windows.Forms.TextBox()
-        Me.TextBoxPercIva = New System.Windows.Forms.TextBox()
-        Me.TextBoxImponibile = New System.Windows.Forms.TextBox()
-        Me.ComboBoxDivisa = New System.Windows.Forms.ComboBox()
-        Me.TextBoxTotProvvigioni = New System.Windows.Forms.TextBox()
-        Me.TextBoxImportoIva2 = New System.Windows.Forms.TextBox()
-        Me.TextBoxPercIva2 = New System.Windows.Forms.TextBox()
-        Me.TextBoxImponibile2 = New System.Windows.Forms.TextBox()
-        Me.ComboBoxCodiceIva2 = New System.Windows.Forms.ComboBox()
-        Me.TextBoxS3 = New System.Windows.Forms.TextBox()
-        Me.TextBoxS2 = New System.Windows.Forms.TextBox()
-        Me.TextBoxS1 = New System.Windows.Forms.TextBox()
-        Me.LabelAzienda = New System.Windows.Forms.Label()
-        Me.LabelEsercizio = New System.Windows.Forms.Label()
-        Me.LabelTipoDocumento = New System.Windows.Forms.Label()
-        Me.LabelNumeroDocumento = New System.Windows.Forms.Label()
-        Me.LabelSiglaOperatore = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.components = New System.ComponentModel.Container()
+        Dim AnagraficaLabel As System.Windows.Forms.Label
+        Dim DestinazioneLabel As System.Windows.Forms.Label
+        Dim DataDocumentoLabel As System.Windows.Forms.Label
+        Dim RiferimentoLabel As System.Windows.Forms.Label
+        Dim AgenteLabel As System.Windows.Forms.Label
+        Dim IvaLabel As System.Windows.Forms.Label
+        Dim PagamentoLabel As System.Windows.Forms.Label
+        Dim ScontoLabel As System.Windows.Forms.Label
+        Dim NominativoDestinatarioLabel As System.Windows.Forms.Label
+        Dim IndirizzoDestinatarioLabel As System.Windows.Forms.Label
+        Dim CapDestinatarioLabel As System.Windows.Forms.Label
+        Dim LocalitaDestinatarioLabel As System.Windows.Forms.Label
+        Dim ProvinciaDestinatarioLabel As System.Windows.Forms.Label
+        Dim BancaLabel As System.Windows.Forms.Label
+        Dim AgenziaLabel As System.Windows.Forms.Label
+        Dim TotaleMerceLabel As System.Windows.Forms.Label
+        Dim ScontoCassaLabel As System.Windows.Forms.Label
+        Dim TrasportoLabel As System.Windows.Forms.Label
+        Dim ImballoLabel As System.Windows.Forms.Label
+        Dim CausaleTrasportoLabel As System.Windows.Forms.Label
+        Dim PortoLabel As System.Windows.Forms.Label
+        Dim ColliLabel As System.Windows.Forms.Label
+        Dim PesoLabel As System.Windows.Forms.Label
+        Dim DataTrasportoLabel As System.Windows.Forms.Label
+        Dim OraTrasportoLabel As System.Windows.Forms.Label
+        Dim AspettoBeniLabel As System.Windows.Forms.Label
+        Dim TrasportoMezzoLabel As System.Windows.Forms.Label
+        Dim VettoreLabel As System.Windows.Forms.Label
+        Dim CodiceIva1Label As System.Windows.Forms.Label
+        Dim Imponibile1Label As System.Windows.Forms.Label
+        Dim _Iva1Label As System.Windows.Forms.Label
+        Dim ImportoIva1Label As System.Windows.Forms.Label
+        Dim CodiceIva2Label As System.Windows.Forms.Label
+        Dim Imponibile2Label As System.Windows.Forms.Label
+        Dim _Iva2Label As System.Windows.Forms.Label
+        Dim ImportoIva2Label As System.Windows.Forms.Label
+        Dim TotaleDocumentoLabel As System.Windows.Forms.Label
+        Dim DivisaLabel As System.Windows.Forms.Label
+        Dim TestDocumentoLabel As System.Windows.Forms.Label
+        Dim TestProceduraLabel As System.Windows.Forms.Label
+        Dim MovimentoContabileLabel As System.Windows.Forms.Label
+        Dim AziendaLabel As System.Windows.Forms.Label
+        Dim EsercizioLabel As System.Windows.Forms.Label
+        Dim TipoDocumentoLabel As System.Windows.Forms.Label
+        Dim NumeroLabel As System.Windows.Forms.Label
+        Dim SiglaLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestioneDocumenti))
+        Me.DocumentitestataBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.FatturazionegevenDataSet = New GeVen_SE_2015.fatturazionegevenDataSet()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.LabelPagamento = New System.Windows.Forms.Label()
-        Me.LabelIva = New System.Windows.Forms.Label()
-        Me.LabelSconto = New System.Windows.Forms.Label()
-        Me.LabelRiferimento = New System.Windows.Forms.Label()
-        Me.LabelDataDocumento = New System.Windows.Forms.Label()
-        Me.LabelAgente = New System.Windows.Forms.Label()
-        Me.LabelCliente = New System.Windows.Forms.Label()
-        Me.LabelBanca = New System.Windows.Forms.Label()
+        Me.TextBoxLike = New System.Windows.Forms.TextBox()
+        Me.ScontoTextBox = New System.Windows.Forms.TextBox()
+        Me.PagamentoComboBox = New System.Windows.Forms.ComboBox()
+        Me.IvaComboBox = New System.Windows.Forms.ComboBox()
+        Me.AgenteComboBox = New System.Windows.Forms.ComboBox()
+        Me.RiferimentoTextBox = New System.Windows.Forms.TextBox()
+        Me.DataDocumentoDateTimePicker = New System.Windows.Forms.DateTimePicker()
+        Me.AnagraficaComboBox = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.LabelDestinazione = New System.Windows.Forms.Label()
+        Me.ProvinciaDestinatarioTextBox = New System.Windows.Forms.TextBox()
+        Me.LocalitaDestinatarioTextBox = New System.Windows.Forms.TextBox()
+        Me.CapDestinatarioTextBox = New System.Windows.Forms.TextBox()
+        Me.IndirizzoDestinatarioTextBox = New System.Windows.Forms.TextBox()
+        Me.NominativoDestinatarioTextBox = New System.Windows.Forms.TextBox()
+        Me.DestinazioneComboBox = New System.Windows.Forms.ComboBox()
+        Me.DocumentitestataTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.documentitestataTableAdapter()
+        Me.TableAdapterManager = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.TableAdapterManager()
+        Me.AziendeTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.aziendeTableAdapter()
+        Me.DocumentidettaglioTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.documentidettaglioTableAdapter()
+        Me.DocumentitestataBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
+        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DocumentidettaglioDataGridView = New System.Windows.Forms.DataGridView()
+        Me.RigaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticoloComboBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DescrizioneTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitaMisuraMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QuantitaMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitaMisuraTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.QuantitaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrezzoUnitarioTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sconto1TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sconto2TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Sconto3TextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ImportoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ScorporoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClasseMerceologicaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ClasseContropartitaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ArticoloAliasTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MovimentoMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Iva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IvaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.LabelAgenzia = New System.Windows.Forms.Label()
+        Me.AgenziaTextBox = New System.Windows.Forms.TextBox()
+        Me.BancaTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.LabelCorriere = New System.Windows.Forms.Label()
-        Me.LabelTrasportoMezzo = New System.Windows.Forms.Label()
-        Me.LabelAspettoBeni = New System.Windows.Forms.Label()
-        Me.LabelOraTrasporto = New System.Windows.Forms.Label()
-        Me.LabelData = New System.Windows.Forms.Label()
-        Me.LabelPeso = New System.Windows.Forms.Label()
-        Me.LabelColli = New System.Windows.Forms.Label()
-        Me.LabelPorto = New System.Windows.Forms.Label()
-        Me.LabelCausaleTrasporto = New System.Windows.Forms.Label()
-        Me.LabelImballo = New System.Windows.Forms.Label()
-        Me.LabelTrasporto = New System.Windows.Forms.Label()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.LabelS3 = New System.Windows.Forms.Label()
-        Me.LabelS2 = New System.Windows.Forms.Label()
-        Me.LabelS1 = New System.Windows.Forms.Label()
-        Me.LabelTotaleProvvigioni = New System.Windows.Forms.Label()
-        Me.LabelDivisa = New System.Windows.Forms.Label()
-        Me.LabelTotaleDocumento = New System.Windows.Forms.Label()
-        Me.LabelImportoIva2 = New System.Windows.Forms.Label()
-        Me.LabelpercentualeIva2 = New System.Windows.Forms.Label()
-        Me.LabelImponibile2 = New System.Windows.Forms.Label()
-        Me.LabelCodiceIva2 = New System.Windows.Forms.Label()
-        Me.LabelImportoIva = New System.Windows.Forms.Label()
-        Me.LabelpercentualeIva = New System.Windows.Forms.Label()
-        Me.LabelImponibile = New System.Windows.Forms.Label()
-        Me.LabelCodiceIva = New System.Windows.Forms.Label()
-        Me.Labelpercentualesconto = New System.Windows.Forms.Label()
-        Me.LabelTotaleMerce = New System.Windows.Forms.Label()
-        Me.Navigatore1 = New GeVen_SE_2015.Navigatore()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.MovimentoContabileTextBox = New System.Windows.Forms.TextBox()
+        Me.TestProceduraTextBox = New System.Windows.Forms.TextBox()
+        Me.TestDocumentoTextBox = New System.Windows.Forms.TextBox()
+        Me.DivisaComboBox = New System.Windows.Forms.ComboBox()
+        Me.TotaleDocumentoTextBox = New System.Windows.Forms.TextBox()
+        Me.ImportoIva2TextBox = New System.Windows.Forms.TextBox()
+        Me._Iva2TextBox = New System.Windows.Forms.TextBox()
+        Me.Imponibile2TextBox = New System.Windows.Forms.TextBox()
+        Me.CodiceIva2TextBox = New System.Windows.Forms.TextBox()
+        Me.ImportoIva1TextBox = New System.Windows.Forms.TextBox()
+        Me._Iva1TextBox = New System.Windows.Forms.TextBox()
+        Me.Imponibile1TextBox = New System.Windows.Forms.TextBox()
+        Me.CodiceIva1TextBox = New System.Windows.Forms.TextBox()
+        Me.VettoreComboBox = New System.Windows.Forms.ComboBox()
+        Me.TrasportoMezzoComboBox = New System.Windows.Forms.ComboBox()
+        Me.AspettoBeniComboBox = New System.Windows.Forms.ComboBox()
+        Me.OraTrasportoTextBox = New System.Windows.Forms.TextBox()
+        Me.DataTrasportoTextBox = New System.Windows.Forms.TextBox()
+        Me.PesoTextBox = New System.Windows.Forms.TextBox()
+        Me.ColliTextBox = New System.Windows.Forms.TextBox()
+        Me.PortoComboBox = New System.Windows.Forms.ComboBox()
+        Me.CausaleTrasportoComboBox = New System.Windows.Forms.ComboBox()
+        Me.ImballoTextBox = New System.Windows.Forms.TextBox()
+        Me.TrasportoTextBox = New System.Windows.Forms.TextBox()
+        Me.ScontoCassaTextBox = New System.Windows.Forms.TextBox()
+        Me.TotaleMerceTextBox = New System.Windows.Forms.TextBox()
+        Me.AnagraficheTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.anagraficheTableAdapter()
+        Me.ArticoliTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articoliTableAdapter()
+        Me.TipidocumentoTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.tipidocumentoTableAdapter()
+        Me.ParametriivaTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.parametriivaTableAdapter()
+        Me.AgentiTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.agentiTableAdapter()
+        Me.PagamentitestataTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.pagamentitestataTableAdapter()
+        Me.TipitrasportoTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.tipitrasportoTableAdapter()
+        Me.AspettobeniTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.aspettobeniTableAdapter()
+        Me.CausalitrasportoTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.causalitrasportoTableAdapter()
+        Me.ModitrasportoTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.moditrasportoTableAdapter()
+        Me.VettoriTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.vettoriTableAdapter()
+        Me.DiviseTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.diviseTableAdapter()
+        Me.AnagraficadestinazioniTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.anagraficadestinazioniTableAdapter()
+        Me.EsercizicontabiliTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.esercizicontabiliTableAdapter()
+        Me.AnagraficafatturazioneTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.anagraficafatturazioneTableAdapter()
+        Me.AziendaComboBox = New System.Windows.Forms.ComboBox()
+        Me.EsercizioComboBox = New System.Windows.Forms.ComboBox()
+        Me.TipoDocumentoComboBox = New System.Windows.Forms.ComboBox()
+        Me.NumeroTextBox = New System.Windows.Forms.TextBox()
+        Me.SiglaTextBox = New System.Windows.Forms.TextBox()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ArticolimisureTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articolimisureTableAdapter()
+        Me.Azienda = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Esercizio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DocumentidettaglioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
+        Me.DocumentitestataBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.DocumentitestatadocumentidettaglioBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DocumentitestatadocumentidettaglioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        AnagraficaLabel = New System.Windows.Forms.Label()
+        DestinazioneLabel = New System.Windows.Forms.Label()
+        DataDocumentoLabel = New System.Windows.Forms.Label()
+        RiferimentoLabel = New System.Windows.Forms.Label()
+        AgenteLabel = New System.Windows.Forms.Label()
+        IvaLabel = New System.Windows.Forms.Label()
+        PagamentoLabel = New System.Windows.Forms.Label()
+        ScontoLabel = New System.Windows.Forms.Label()
+        NominativoDestinatarioLabel = New System.Windows.Forms.Label()
+        IndirizzoDestinatarioLabel = New System.Windows.Forms.Label()
+        CapDestinatarioLabel = New System.Windows.Forms.Label()
+        LocalitaDestinatarioLabel = New System.Windows.Forms.Label()
+        ProvinciaDestinatarioLabel = New System.Windows.Forms.Label()
+        BancaLabel = New System.Windows.Forms.Label()
+        AgenziaLabel = New System.Windows.Forms.Label()
+        TotaleMerceLabel = New System.Windows.Forms.Label()
+        ScontoCassaLabel = New System.Windows.Forms.Label()
+        TrasportoLabel = New System.Windows.Forms.Label()
+        ImballoLabel = New System.Windows.Forms.Label()
+        CausaleTrasportoLabel = New System.Windows.Forms.Label()
+        PortoLabel = New System.Windows.Forms.Label()
+        ColliLabel = New System.Windows.Forms.Label()
+        PesoLabel = New System.Windows.Forms.Label()
+        DataTrasportoLabel = New System.Windows.Forms.Label()
+        OraTrasportoLabel = New System.Windows.Forms.Label()
+        AspettoBeniLabel = New System.Windows.Forms.Label()
+        TrasportoMezzoLabel = New System.Windows.Forms.Label()
+        VettoreLabel = New System.Windows.Forms.Label()
+        CodiceIva1Label = New System.Windows.Forms.Label()
+        Imponibile1Label = New System.Windows.Forms.Label()
+        _Iva1Label = New System.Windows.Forms.Label()
+        ImportoIva1Label = New System.Windows.Forms.Label()
+        CodiceIva2Label = New System.Windows.Forms.Label()
+        Imponibile2Label = New System.Windows.Forms.Label()
+        _Iva2Label = New System.Windows.Forms.Label()
+        ImportoIva2Label = New System.Windows.Forms.Label()
+        TotaleDocumentoLabel = New System.Windows.Forms.Label()
+        DivisaLabel = New System.Windows.Forms.Label()
+        TestDocumentoLabel = New System.Windows.Forms.Label()
+        TestProceduraLabel = New System.Windows.Forms.Label()
+        MovimentoContabileLabel = New System.Windows.Forms.Label()
+        AziendaLabel = New System.Windows.Forms.Label()
+        EsercizioLabel = New System.Windows.Forms.Label()
+        TipoDocumentoLabel = New System.Windows.Forms.Label()
+        NumeroLabel = New System.Windows.Forms.Label()
+        SiglaLabel = New System.Windows.Forms.Label()
+        CType(Me.DocumentitestataBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FatturazionegevenDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.DocumentitestataBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DocumentitestataBindingNavigator.SuspendLayout()
+        CType(Me.DocumentidettaglioDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
+        CType(Me.DocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DocumentitestatadocumentidettaglioBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DocumentitestatadocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'ComboBoxAzienda
-        '
-        Me.ComboBoxAzienda.FormattingEnabled = True
-        Me.ComboBoxAzienda.Location = New System.Drawing.Point(6, 36)
-        Me.ComboBoxAzienda.Name = "ComboBoxAzienda"
-        Me.ComboBoxAzienda.Size = New System.Drawing.Size(213, 21)
-        Me.ComboBoxAzienda.TabIndex = 0
-        '
-        'ComboBoxEsercizio
-        '
-        Me.ComboBoxEsercizio.FormattingEnabled = True
-        Me.ComboBoxEsercizio.Location = New System.Drawing.Point(235, 36)
-        Me.ComboBoxEsercizio.Name = "ComboBoxEsercizio"
-        Me.ComboBoxEsercizio.Size = New System.Drawing.Size(180, 21)
-        Me.ComboBoxEsercizio.TabIndex = 1
-        '
-        'ComboBoxTipiDocumento
-        '
-        Me.ComboBoxTipiDocumento.FormattingEnabled = True
-        Me.ComboBoxTipiDocumento.Location = New System.Drawing.Point(428, 35)
-        Me.ComboBoxTipiDocumento.Name = "ComboBoxTipiDocumento"
-        Me.ComboBoxTipiDocumento.Size = New System.Drawing.Size(221, 21)
-        Me.ComboBoxTipiDocumento.TabIndex = 2
-        '
-        'TextBoxNumeroDocumento
-        '
-        Me.TextBoxNumeroDocumento.Location = New System.Drawing.Point(670, 36)
-        Me.TextBoxNumeroDocumento.Name = "TextBoxNumeroDocumento"
-        Me.TextBoxNumeroDocumento.Size = New System.Drawing.Size(112, 20)
-        Me.TextBoxNumeroDocumento.TabIndex = 3
-        '
-        'TextBoxSiglaOperatore
-        '
-        Me.TextBoxSiglaOperatore.Location = New System.Drawing.Point(796, 38)
-        Me.TextBoxSiglaOperatore.Name = "TextBoxSiglaOperatore"
-        Me.TextBoxSiglaOperatore.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxSiglaOperatore.TabIndex = 4
-        '
-        'ComboBoxCliente
-        '
-        Me.ComboBoxCliente.FormattingEnabled = True
-        Me.ComboBoxCliente.Location = New System.Drawing.Point(6, 34)
-        Me.ComboBoxCliente.Name = "ComboBoxCliente"
-        Me.ComboBoxCliente.Size = New System.Drawing.Size(409, 21)
-        Me.ComboBoxCliente.TabIndex = 5
-        '
-        'ComboBoxDestinazione
-        '
-        Me.ComboBoxDestinazione.FormattingEnabled = True
-        Me.ComboBoxDestinazione.Location = New System.Drawing.Point(7, 34)
-        Me.ComboBoxDestinazione.Name = "ComboBoxDestinazione"
-        Me.ComboBoxDestinazione.Size = New System.Drawing.Size(453, 21)
-        Me.ComboBoxDestinazione.TabIndex = 12
-        '
-        'TextBoxRiferimento
-        '
-        Me.TextBoxRiferimento.Location = New System.Drawing.Point(106, 78)
-        Me.TextBoxRiferimento.Name = "TextBoxRiferimento"
-        Me.TextBoxRiferimento.Size = New System.Drawing.Size(113, 20)
-        Me.TextBoxRiferimento.TabIndex = 7
-        '
-        'TextBoxDataDocumento
-        '
-        Me.TextBoxDataDocumento.Location = New System.Drawing.Point(6, 78)
-        Me.TextBoxDataDocumento.Name = "TextBoxDataDocumento"
-        Me.TextBoxDataDocumento.Size = New System.Drawing.Size(85, 20)
-        Me.TextBoxDataDocumento.TabIndex = 6
-        '
-        'ComboBoxAgente
-        '
-        Me.ComboBoxAgente.FormattingEnabled = True
-        Me.ComboBoxAgente.Location = New System.Drawing.Point(235, 77)
-        Me.ComboBoxAgente.Name = "ComboBoxAgente"
-        Me.ComboBoxAgente.Size = New System.Drawing.Size(180, 21)
-        Me.ComboBoxAgente.TabIndex = 8
-        '
-        'TextBoxDestinazione2
-        '
-        Me.TextBoxDestinazione2.Location = New System.Drawing.Point(7, 78)
-        Me.TextBoxDestinazione2.Name = "TextBoxDestinazione2"
-        Me.TextBoxDestinazione2.Size = New System.Drawing.Size(453, 20)
-        Me.TextBoxDestinazione2.TabIndex = 13
-        '
-        'ComboBoxIva
-        '
-        Me.ComboBoxIva.FormattingEnabled = True
-        Me.ComboBoxIva.Location = New System.Drawing.Point(6, 125)
-        Me.ComboBoxIva.Name = "ComboBoxIva"
-        Me.ComboBoxIva.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBoxIva.TabIndex = 9
-        '
-        'ComboBoxPagamento
-        '
-        Me.ComboBoxPagamento.FormattingEnabled = True
-        Me.ComboBoxPagamento.Location = New System.Drawing.Point(144, 125)
-        Me.ComboBoxPagamento.Name = "ComboBoxPagamento"
-        Me.ComboBoxPagamento.Size = New System.Drawing.Size(193, 21)
-        Me.ComboBoxPagamento.TabIndex = 10
-        '
-        'TextBoxBanca
-        '
-        Me.TextBoxBanca.Location = New System.Drawing.Point(6, 34)
-        Me.TextBoxBanca.Name = "TextBoxBanca"
-        Me.TextBoxBanca.Size = New System.Drawing.Size(409, 20)
-        Me.TextBoxBanca.TabIndex = 18
-        '
-        'TextBoxSconto
-        '
-        Me.TextBoxSconto.Location = New System.Drawing.Point(356, 126)
-        Me.TextBoxSconto.Name = "TextBoxSconto"
-        Me.TextBoxSconto.Size = New System.Drawing.Size(59, 20)
-        Me.TextBoxSconto.TabIndex = 11
-        '
-        'TextBoxCAP
-        '
-        Me.TextBoxCAP.Location = New System.Drawing.Point(7, 128)
-        Me.TextBoxCAP.Name = "TextBoxCAP"
-        Me.TextBoxCAP.Size = New System.Drawing.Size(94, 20)
-        Me.TextBoxCAP.TabIndex = 15
-        '
-        'TextBoxDestinazione3
-        '
-        Me.TextBoxDestinazione3.Location = New System.Drawing.Point(7, 102)
-        Me.TextBoxDestinazione3.Name = "TextBoxDestinazione3"
-        Me.TextBoxDestinazione3.Size = New System.Drawing.Size(453, 20)
-        Me.TextBoxDestinazione3.TabIndex = 14
-        '
-        'TextBoxLocalita
-        '
-        Me.TextBoxLocalita.Location = New System.Drawing.Point(107, 128)
-        Me.TextBoxLocalita.Name = "TextBoxLocalita"
-        Me.TextBoxLocalita.Size = New System.Drawing.Size(291, 20)
-        Me.TextBoxLocalita.TabIndex = 16
-        '
-        'TextBoxProvincia
-        '
-        Me.TextBoxProvincia.Location = New System.Drawing.Point(404, 128)
-        Me.TextBoxProvincia.Name = "TextBoxProvincia"
-        Me.TextBoxProvincia.Size = New System.Drawing.Size(56, 20)
-        Me.TextBoxProvincia.TabIndex = 17
-        '
-        'TextBoxAgenzia
-        '
-        Me.TextBoxAgenzia.Location = New System.Drawing.Point(445, 34)
-        Me.TextBoxAgenzia.Name = "TextBoxAgenzia"
-        Me.TextBoxAgenzia.Size = New System.Drawing.Size(451, 20)
-        Me.TextBoxAgenzia.TabIndex = 19
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.riga, Me.articolo, Me.descrizione, Me.unitamisuramagazzino, Me.quantitamagazzino, Me.unitamisurafatturazione, Me.quantitafatturazione, Me.prezzo, Me.percentuale, Me.percentuale2, Me.percentuale3, Me.importo, Me.iva, Me.scorporo, Me.classemerceologica, Me.contropartita, Me.percentualeprovigioni, Me.aliax, Me.magazzino})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 334)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(901, 150)
-        Me.DataGridView1.TabIndex = 20
-        '
-        'riga
-        '
-        Me.riga.HeaderText = "Riga"
-        Me.riga.Name = "riga"
-        '
-        'articolo
-        '
-        Me.articolo.HeaderText = "Articolo"
-        Me.articolo.Name = "articolo"
-        '
-        'descrizione
-        '
-        Me.descrizione.HeaderText = "Descrizione"
-        Me.descrizione.Name = "descrizione"
-        '
-        'unitamisuramagazzino
-        '
-        Me.unitamisuramagazzino.HeaderText = "U.M. Magazzino"
-        Me.unitamisuramagazzino.Name = "unitamisuramagazzino"
-        '
-        'quantitamagazzino
-        '
-        Me.quantitamagazzino.HeaderText = "Q.tà Magazzino"
-        Me.quantitamagazzino.Name = "quantitamagazzino"
-        '
-        'unitamisurafatturazione
-        '
-        Me.unitamisurafatturazione.HeaderText = "U.M. Fatturazione"
-        Me.unitamisurafatturazione.Name = "unitamisurafatturazione"
-        '
-        'quantitafatturazione
-        '
-        Me.quantitafatturazione.HeaderText = "Q.tà Fatturazione"
-        Me.quantitafatturazione.Name = "quantitafatturazione"
-        '
-        'prezzo
-        '
-        Me.prezzo.HeaderText = "Prezzo"
-        Me.prezzo.Name = "prezzo"
-        '
-        'percentuale
-        '
-        Me.percentuale.HeaderText = "%"
-        Me.percentuale.Name = "percentuale"
-        '
-        'percentuale2
-        '
-        Me.percentuale2.HeaderText = "%"
-        Me.percentuale2.Name = "percentuale2"
-        '
-        'percentuale3
-        '
-        Me.percentuale3.HeaderText = "%"
-        Me.percentuale3.Name = "percentuale3"
-        '
-        'importo
-        '
-        Me.importo.HeaderText = "Importo"
-        Me.importo.Name = "importo"
-        '
-        'iva
-        '
-        Me.iva.HeaderText = "Iva"
-        Me.iva.Name = "iva"
-        '
-        'scorporo
-        '
-        Me.scorporo.HeaderText = "Scorporo"
-        Me.scorporo.Name = "scorporo"
-        '
-        'classemerceologica
-        '
-        Me.classemerceologica.HeaderText = "Classe Merceologica"
-        Me.classemerceologica.Name = "classemerceologica"
-        '
-        'contropartita
-        '
-        Me.contropartita.HeaderText = "Contro Partita"
-        Me.contropartita.Name = "contropartita"
-        '
-        'percentualeprovigioni
-        '
-        Me.percentualeprovigioni.HeaderText = "% Provigioni"
-        Me.percentualeprovigioni.Name = "percentualeprovigioni"
-        '
-        'aliax
-        '
-        Me.aliax.HeaderText = "Alias"
-        Me.aliax.Name = "aliax"
-        '
-        'magazzino
-        '
-        Me.magazzino.HeaderText = "Magazzino"
-        Me.magazzino.Name = "magazzino"
-        '
-        'TextBoxImballo
-        '
-        Me.TextBoxImballo.Location = New System.Drawing.Point(119, 35)
-        Me.TextBoxImballo.Name = "TextBoxImballo"
-        Me.TextBoxImballo.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxImballo.TabIndex = 22
-        '
-        'TextBoxTrasporto
-        '
-        Me.TextBoxTrasporto.Location = New System.Drawing.Point(6, 36)
-        Me.TextBoxTrasporto.Name = "TextBoxTrasporto"
-        Me.TextBoxTrasporto.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxTrasporto.TabIndex = 21
-        '
-        'ComboBoxPorto
-        '
-        Me.ComboBoxPorto.FormattingEnabled = True
-        Me.ComboBoxPorto.Location = New System.Drawing.Point(370, 34)
-        Me.ComboBoxPorto.Name = "ComboBoxPorto"
-        Me.ComboBoxPorto.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBoxPorto.TabIndex = 24
-        '
-        'ComboBoxCausaleTrasporto
-        '
-        Me.ComboBoxCausaleTrasporto.FormattingEnabled = True
-        Me.ComboBoxCausaleTrasporto.Location = New System.Drawing.Point(235, 34)
-        Me.ComboBoxCausaleTrasporto.Name = "ComboBoxCausaleTrasporto"
-        Me.ComboBoxCausaleTrasporto.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBoxCausaleTrasporto.TabIndex = 23
-        '
-        'TextBoxData
-        '
-        Me.TextBoxData.Location = New System.Drawing.Point(703, 36)
-        Me.TextBoxData.Name = "TextBoxData"
-        Me.TextBoxData.Size = New System.Drawing.Size(88, 20)
-        Me.TextBoxData.TabIndex = 27
-        '
-        'TextBoxPeso
-        '
-        Me.TextBoxPeso.Location = New System.Drawing.Point(597, 36)
-        Me.TextBoxPeso.Name = "TextBoxPeso"
-        Me.TextBoxPeso.Size = New System.Drawing.Size(89, 20)
-        Me.TextBoxPeso.TabIndex = 26
-        '
-        'TextBoxColli
-        '
-        Me.TextBoxColli.Location = New System.Drawing.Point(513, 36)
-        Me.TextBoxColli.Name = "TextBoxColli"
-        Me.TextBoxColli.Size = New System.Drawing.Size(68, 20)
-        Me.TextBoxColli.TabIndex = 25
-        '
-        'TextBoxOraTrasporto
-        '
-        Me.TextBoxOraTrasporto.Location = New System.Drawing.Point(808, 36)
-        Me.TextBoxOraTrasporto.Name = "TextBoxOraTrasporto"
-        Me.TextBoxOraTrasporto.Size = New System.Drawing.Size(65, 20)
-        Me.TextBoxOraTrasporto.TabIndex = 28
-        '
-        'TextBoxPercSconto
-        '
-        Me.TextBoxPercSconto.Location = New System.Drawing.Point(794, 29)
-        Me.TextBoxPercSconto.Name = "TextBoxPercSconto"
-        Me.TextBoxPercSconto.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxPercSconto.TabIndex = 41
-        '
-        'TextBoxTotMerce
-        '
-        Me.TextBoxTotMerce.Location = New System.Drawing.Point(676, 29)
-        Me.TextBoxTotMerce.Name = "TextBoxTotMerce"
-        Me.TextBoxTotMerce.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxTotMerce.TabIndex = 40
-        '
-        'ComboBoxCorriere
-        '
-        Me.ComboBoxCorriere.FormattingEnabled = True
-        Me.ComboBoxCorriere.Location = New System.Drawing.Point(453, 79)
-        Me.ComboBoxCorriere.Name = "ComboBoxCorriere"
-        Me.ComboBoxCorriere.Size = New System.Drawing.Size(285, 21)
-        Me.ComboBoxCorriere.TabIndex = 31
-        '
-        'ComboBoxTrasportoMezzo
-        '
-        Me.ComboBoxTrasportoMezzo.FormattingEnabled = True
-        Me.ComboBoxTrasportoMezzo.Location = New System.Drawing.Point(235, 79)
-        Me.ComboBoxTrasportoMezzo.Name = "ComboBoxTrasportoMezzo"
-        Me.ComboBoxTrasportoMezzo.Size = New System.Drawing.Size(204, 21)
-        Me.ComboBoxTrasportoMezzo.TabIndex = 30
-        '
-        'ComboBoxAspettoBeni
-        '
-        Me.ComboBoxAspettoBeni.FormattingEnabled = True
-        Me.ComboBoxAspettoBeni.Location = New System.Drawing.Point(6, 79)
-        Me.ComboBoxAspettoBeni.Name = "ComboBoxAspettoBeni"
-        Me.ComboBoxAspettoBeni.Size = New System.Drawing.Size(213, 21)
-        Me.ComboBoxAspettoBeni.TabIndex = 29
-        '
-        'ComboBoxCodiceIva
-        '
-        Me.ComboBoxCodiceIva.FormattingEnabled = True
-        Me.ComboBoxCodiceIva.Location = New System.Drawing.Point(9, 28)
-        Me.ComboBoxCodiceIva.Name = "ComboBoxCodiceIva"
-        Me.ComboBoxCodiceIva.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBoxCodiceIva.TabIndex = 32
-        '
-        'TextBoxTotDocumento
-        '
-        Me.TextBoxTotDocumento.Location = New System.Drawing.Point(676, 71)
-        Me.TextBoxTotDocumento.Name = "TextBoxTotDocumento"
-        Me.TextBoxTotDocumento.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxTotDocumento.TabIndex = 42
-        '
-        'TextBoxImportoIva
-        '
-        Me.TextBoxImportoIva.Location = New System.Drawing.Point(365, 28)
-        Me.TextBoxImportoIva.Name = "TextBoxImportoIva"
-        Me.TextBoxImportoIva.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxImportoIva.TabIndex = 35
-        '
-        'TextBoxPercIva
-        '
-        Me.TextBoxPercIva.Location = New System.Drawing.Point(259, 28)
-        Me.TextBoxPercIva.Name = "TextBoxPercIva"
-        Me.TextBoxPercIva.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxPercIva.TabIndex = 34
-        '
-        'TextBoxImponibile
-        '
-        Me.TextBoxImponibile.Location = New System.Drawing.Point(153, 28)
-        Me.TextBoxImponibile.Name = "TextBoxImponibile"
-        Me.TextBoxImponibile.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxImponibile.TabIndex = 33
-        '
-        'ComboBoxDivisa
-        '
-        Me.ComboBoxDivisa.FormattingEnabled = True
-        Me.ComboBoxDivisa.Location = New System.Drawing.Point(796, 71)
-        Me.ComboBoxDivisa.Name = "ComboBoxDivisa"
-        Me.ComboBoxDivisa.Size = New System.Drawing.Size(98, 21)
-        Me.ComboBoxDivisa.TabIndex = 43
-        '
-        'TextBoxTotProvvigioni
-        '
-        Me.TextBoxTotProvvigioni.Location = New System.Drawing.Point(471, 71)
-        Me.TextBoxTotProvvigioni.Name = "TextBoxTotProvvigioni"
-        Me.TextBoxTotProvvigioni.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxTotProvvigioni.TabIndex = 44
-        '
-        'TextBoxImportoIva2
-        '
-        Me.TextBoxImportoIva2.Location = New System.Drawing.Point(365, 72)
-        Me.TextBoxImportoIva2.Name = "TextBoxImportoIva2"
-        Me.TextBoxImportoIva2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxImportoIva2.TabIndex = 39
-        '
-        'TextBoxPercIva2
-        '
-        Me.TextBoxPercIva2.Location = New System.Drawing.Point(259, 72)
-        Me.TextBoxPercIva2.Name = "TextBoxPercIva2"
-        Me.TextBoxPercIva2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxPercIva2.TabIndex = 38
-        '
-        'TextBoxImponibile2
-        '
-        Me.TextBoxImponibile2.Location = New System.Drawing.Point(153, 72)
-        Me.TextBoxImponibile2.Name = "TextBoxImponibile2"
-        Me.TextBoxImponibile2.Size = New System.Drawing.Size(100, 20)
-        Me.TextBoxImponibile2.TabIndex = 37
-        '
-        'ComboBoxCodiceIva2
-        '
-        Me.ComboBoxCodiceIva2.FormattingEnabled = True
-        Me.ComboBoxCodiceIva2.Location = New System.Drawing.Point(9, 71)
-        Me.ComboBoxCodiceIva2.Name = "ComboBoxCodiceIva2"
-        Me.ComboBoxCodiceIva2.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBoxCodiceIva2.TabIndex = 36
-        '
-        'TextBoxS3
-        '
-        Me.TextBoxS3.Location = New System.Drawing.Point(624, 71)
-        Me.TextBoxS3.Name = "TextBoxS3"
-        Me.TextBoxS3.Size = New System.Drawing.Size(19, 20)
-        Me.TextBoxS3.TabIndex = 47
-        '
-        'TextBoxS2
-        '
-        Me.TextBoxS2.Location = New System.Drawing.Point(600, 71)
-        Me.TextBoxS2.Name = "TextBoxS2"
-        Me.TextBoxS2.Size = New System.Drawing.Size(17, 20)
-        Me.TextBoxS2.TabIndex = 46
-        '
-        'TextBoxS1
-        '
-        Me.TextBoxS1.Location = New System.Drawing.Point(577, 71)
-        Me.TextBoxS1.Name = "TextBoxS1"
-        Me.TextBoxS1.Size = New System.Drawing.Size(17, 20)
-        Me.TextBoxS1.TabIndex = 45
-        '
-        'LabelAzienda
-        '
-        Me.LabelAzienda.AutoSize = True
-        Me.LabelAzienda.Location = New System.Drawing.Point(6, 20)
-        Me.LabelAzienda.Name = "LabelAzienda"
-        Me.LabelAzienda.Size = New System.Drawing.Size(45, 13)
-        Me.LabelAzienda.TabIndex = 48
-        Me.LabelAzienda.Text = "Azienda"
-        '
-        'LabelEsercizio
-        '
-        Me.LabelEsercizio.AutoSize = True
-        Me.LabelEsercizio.Location = New System.Drawing.Point(232, 19)
-        Me.LabelEsercizio.Name = "LabelEsercizio"
-        Me.LabelEsercizio.Size = New System.Drawing.Size(49, 13)
-        Me.LabelEsercizio.TabIndex = 49
-        Me.LabelEsercizio.Text = "Esercizio"
-        '
-        'LabelTipoDocumento
-        '
-        Me.LabelTipoDocumento.AutoSize = True
-        Me.LabelTipoDocumento.Location = New System.Drawing.Point(425, 18)
-        Me.LabelTipoDocumento.Name = "LabelTipoDocumento"
-        Me.LabelTipoDocumento.Size = New System.Drawing.Size(97, 13)
-        Me.LabelTipoDocumento.TabIndex = 50
-        Me.LabelTipoDocumento.Text = "Tipo di Documento"
-        '
-        'LabelNumeroDocumento
-        '
-        Me.LabelNumeroDocumento.AutoSize = True
-        Me.LabelNumeroDocumento.Location = New System.Drawing.Point(667, 19)
-        Me.LabelNumeroDocumento.Name = "LabelNumeroDocumento"
-        Me.LabelNumeroDocumento.Size = New System.Drawing.Size(113, 13)
-        Me.LabelNumeroDocumento.TabIndex = 51
-        Me.LabelNumeroDocumento.Text = "Numero di Documento"
-        '
-        'LabelSiglaOperatore
-        '
-        Me.LabelSiglaOperatore.AutoSize = True
-        Me.LabelSiglaOperatore.Location = New System.Drawing.Point(793, 21)
-        Me.LabelSiglaOperatore.Name = "LabelSiglaOperatore"
-        Me.LabelSiglaOperatore.Size = New System.Drawing.Size(80, 13)
-        Me.LabelSiglaOperatore.TabIndex = 52
-        Me.LabelSiglaOperatore.Text = "Sigla Operatore"
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.ComboBoxAzienda)
-        Me.GroupBox1.Controls.Add(Me.LabelSiglaOperatore)
-        Me.GroupBox1.Controls.Add(Me.ComboBoxEsercizio)
-        Me.GroupBox1.Controls.Add(Me.LabelNumeroDocumento)
-        Me.GroupBox1.Controls.Add(Me.ComboBoxTipiDocumento)
-        Me.GroupBox1.Controls.Add(Me.LabelTipoDocumento)
-        Me.GroupBox1.Controls.Add(Me.TextBoxNumeroDocumento)
-        Me.GroupBox1.Controls.Add(Me.LabelEsercizio)
-        Me.GroupBox1.Controls.Add(Me.TextBoxSiglaOperatore)
-        Me.GroupBox1.Controls.Add(Me.LabelAzienda)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 31)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(901, 69)
-        Me.GroupBox1.TabIndex = 53
-        Me.GroupBox1.TabStop = False
+        'AnagraficaLabel
+        '
+        AnagraficaLabel.AutoSize = True
+        AnagraficaLabel.Location = New System.Drawing.Point(3, 12)
+        AnagraficaLabel.Name = "AnagraficaLabel"
+        AnagraficaLabel.Size = New System.Drawing.Size(61, 13)
+        AnagraficaLabel.TabIndex = 0
+        AnagraficaLabel.Text = "Anagrafica:"
+        '
+        'DestinazioneLabel
+        '
+        DestinazioneLabel.AutoSize = True
+        DestinazioneLabel.Location = New System.Drawing.Point(3, 13)
+        DestinazioneLabel.Name = "DestinazioneLabel"
+        DestinazioneLabel.Size = New System.Drawing.Size(71, 13)
+        DestinazioneLabel.TabIndex = 0
+        DestinazioneLabel.Text = "Destinazione:"
+        '
+        'DataDocumentoLabel
+        '
+        DataDocumentoLabel.AutoSize = True
+        DataDocumentoLabel.Location = New System.Drawing.Point(3, 51)
+        DataDocumentoLabel.Name = "DataDocumentoLabel"
+        DataDocumentoLabel.Size = New System.Drawing.Size(91, 13)
+        DataDocumentoLabel.TabIndex = 2
+        DataDocumentoLabel.Text = "Data Documento:"
+        '
+        'RiferimentoLabel
+        '
+        RiferimentoLabel.AutoSize = True
+        RiferimentoLabel.Location = New System.Drawing.Point(169, 51)
+        RiferimentoLabel.Name = "RiferimentoLabel"
+        RiferimentoLabel.Size = New System.Drawing.Size(63, 13)
+        RiferimentoLabel.TabIndex = 4
+        RiferimentoLabel.Text = "Riferimento:"
+        '
+        'AgenteLabel
+        '
+        AgenteLabel.AutoSize = True
+        AgenteLabel.Location = New System.Drawing.Point(6, 90)
+        AgenteLabel.Name = "AgenteLabel"
+        AgenteLabel.Size = New System.Drawing.Size(44, 13)
+        AgenteLabel.TabIndex = 6
+        AgenteLabel.Text = "Agente:"
+        '
+        'IvaLabel
+        '
+        IvaLabel.AutoSize = True
+        IvaLabel.Location = New System.Drawing.Point(270, 90)
+        IvaLabel.Name = "IvaLabel"
+        IvaLabel.Size = New System.Drawing.Size(25, 13)
+        IvaLabel.TabIndex = 8
+        IvaLabel.Text = "Iva:"
+        '
+        'PagamentoLabel
+        '
+        PagamentoLabel.AutoSize = True
+        PagamentoLabel.Location = New System.Drawing.Point(3, 130)
+        PagamentoLabel.Name = "PagamentoLabel"
+        PagamentoLabel.Size = New System.Drawing.Size(64, 13)
+        PagamentoLabel.TabIndex = 10
+        PagamentoLabel.Text = "Pagamento:"
+        '
+        'ScontoLabel
+        '
+        ScontoLabel.AutoSize = True
+        ScontoLabel.Location = New System.Drawing.Point(297, 130)
+        ScontoLabel.Name = "ScontoLabel"
+        ScontoLabel.Size = New System.Drawing.Size(44, 13)
+        ScontoLabel.TabIndex = 12
+        ScontoLabel.Text = "Sconto:"
+        '
+        'NominativoDestinatarioLabel
+        '
+        NominativoDestinatarioLabel.AutoSize = True
+        NominativoDestinatarioLabel.Location = New System.Drawing.Point(3, 52)
+        NominativoDestinatarioLabel.Name = "NominativoDestinatarioLabel"
+        NominativoDestinatarioLabel.Size = New System.Drawing.Size(122, 13)
+        NominativoDestinatarioLabel.TabIndex = 2
+        NominativoDestinatarioLabel.Text = "Nominativo Destinatario:"
+        '
+        'IndirizzoDestinatarioLabel
+        '
+        IndirizzoDestinatarioLabel.AutoSize = True
+        IndirizzoDestinatarioLabel.Location = New System.Drawing.Point(3, 91)
+        IndirizzoDestinatarioLabel.Name = "IndirizzoDestinatarioLabel"
+        IndirizzoDestinatarioLabel.Size = New System.Drawing.Size(107, 13)
+        IndirizzoDestinatarioLabel.TabIndex = 4
+        IndirizzoDestinatarioLabel.Text = "Indirizzo Destinatario:"
+        '
+        'CapDestinatarioLabel
+        '
+        CapDestinatarioLabel.AutoSize = True
+        CapDestinatarioLabel.Location = New System.Drawing.Point(3, 131)
+        CapDestinatarioLabel.Name = "CapDestinatarioLabel"
+        CapDestinatarioLabel.Size = New System.Drawing.Size(88, 13)
+        CapDestinatarioLabel.TabIndex = 6
+        CapDestinatarioLabel.Text = "Cap Destinatario:"
+        '
+        'LocalitaDestinatarioLabel
+        '
+        LocalitaDestinatarioLabel.AutoSize = True
+        LocalitaDestinatarioLabel.Location = New System.Drawing.Point(109, 131)
+        LocalitaDestinatarioLabel.Name = "LocalitaDestinatarioLabel"
+        LocalitaDestinatarioLabel.Size = New System.Drawing.Size(106, 13)
+        LocalitaDestinatarioLabel.TabIndex = 8
+        LocalitaDestinatarioLabel.Text = "Localita Destinatario:"
+        '
+        'ProvinciaDestinatarioLabel
+        '
+        ProvinciaDestinatarioLabel.AutoSize = True
+        ProvinciaDestinatarioLabel.Location = New System.Drawing.Point(387, 132)
+        ProvinciaDestinatarioLabel.Name = "ProvinciaDestinatarioLabel"
+        ProvinciaDestinatarioLabel.Size = New System.Drawing.Size(113, 13)
+        ProvinciaDestinatarioLabel.TabIndex = 10
+        ProvinciaDestinatarioLabel.Text = "Provincia Destinatario:"
+        '
+        'BancaLabel
+        '
+        BancaLabel.AutoSize = True
+        BancaLabel.Location = New System.Drawing.Point(6, 19)
+        BancaLabel.Name = "BancaLabel"
+        BancaLabel.Size = New System.Drawing.Size(41, 13)
+        BancaLabel.TabIndex = 0
+        BancaLabel.Text = "Banca:"
+        '
+        'AgenziaLabel
+        '
+        AgenziaLabel.AutoSize = True
+        AgenziaLabel.Location = New System.Drawing.Point(408, 19)
+        AgenziaLabel.Name = "AgenziaLabel"
+        AgenziaLabel.Size = New System.Drawing.Size(48, 13)
+        AgenziaLabel.TabIndex = 2
+        AgenziaLabel.Text = "Agenzia:"
+        '
+        'TotaleMerceLabel
+        '
+        TotaleMerceLabel.AutoSize = True
+        TotaleMerceLabel.Location = New System.Drawing.Point(3, 18)
+        TotaleMerceLabel.Name = "TotaleMerceLabel"
+        TotaleMerceLabel.Size = New System.Drawing.Size(73, 13)
+        TotaleMerceLabel.TabIndex = 0
+        TotaleMerceLabel.Text = "Totale Merce:"
+        '
+        'ScontoCassaLabel
+        '
+        ScontoCassaLabel.AutoSize = True
+        ScontoCassaLabel.Location = New System.Drawing.Point(109, 17)
+        ScontoCassaLabel.Name = "ScontoCassaLabel"
+        ScontoCassaLabel.Size = New System.Drawing.Size(76, 13)
+        ScontoCassaLabel.TabIndex = 2
+        ScontoCassaLabel.Text = "Sconto Cassa:"
+        '
+        'TrasportoLabel
+        '
+        TrasportoLabel.AutoSize = True
+        TrasportoLabel.Location = New System.Drawing.Point(188, 18)
+        TrasportoLabel.Name = "TrasportoLabel"
+        TrasportoLabel.Size = New System.Drawing.Size(55, 13)
+        TrasportoLabel.TabIndex = 4
+        TrasportoLabel.Text = "Trasporto:"
+        '
+        'ImballoLabel
+        '
+        ImballoLabel.AutoSize = True
+        ImballoLabel.Location = New System.Drawing.Point(284, 18)
+        ImballoLabel.Name = "ImballoLabel"
+        ImballoLabel.Size = New System.Drawing.Size(43, 13)
+        ImballoLabel.TabIndex = 6
+        ImballoLabel.Text = "Imballo:"
+        '
+        'CausaleTrasportoLabel
+        '
+        CausaleTrasportoLabel.AutoSize = True
+        CausaleTrasportoLabel.Location = New System.Drawing.Point(380, 17)
+        CausaleTrasportoLabel.Name = "CausaleTrasportoLabel"
+        CausaleTrasportoLabel.Size = New System.Drawing.Size(96, 13)
+        CausaleTrasportoLabel.TabIndex = 8
+        CausaleTrasportoLabel.Text = "Causale Trasporto:"
+        '
+        'PortoLabel
+        '
+        PortoLabel.AutoSize = True
+        PortoLabel.Location = New System.Drawing.Point(507, 17)
+        PortoLabel.Name = "PortoLabel"
+        PortoLabel.Size = New System.Drawing.Size(35, 13)
+        PortoLabel.TabIndex = 10
+        PortoLabel.Text = "Porto:"
+        '
+        'ColliLabel
+        '
+        ColliLabel.AutoSize = True
+        ColliLabel.Location = New System.Drawing.Point(634, 18)
+        ColliLabel.Name = "ColliLabel"
+        ColliLabel.Size = New System.Drawing.Size(29, 13)
+        ColliLabel.TabIndex = 12
+        ColliLabel.Text = "Colli:"
+        '
+        'PesoLabel
+        '
+        PesoLabel.AutoSize = True
+        PesoLabel.Location = New System.Drawing.Point(694, 17)
+        PesoLabel.Name = "PesoLabel"
+        PesoLabel.Size = New System.Drawing.Size(34, 13)
+        PesoLabel.TabIndex = 14
+        PesoLabel.Text = "Peso:"
+        '
+        'DataTrasportoLabel
+        '
+        DataTrasportoLabel.AutoSize = True
+        DataTrasportoLabel.Location = New System.Drawing.Point(770, 17)
+        DataTrasportoLabel.Name = "DataTrasportoLabel"
+        DataTrasportoLabel.Size = New System.Drawing.Size(81, 13)
+        DataTrasportoLabel.TabIndex = 16
+        DataTrasportoLabel.Text = "Data Trasporto:"
+        '
+        'OraTrasportoLabel
+        '
+        OraTrasportoLabel.AutoSize = True
+        OraTrasportoLabel.Location = New System.Drawing.Point(770, 61)
+        OraTrasportoLabel.Name = "OraTrasportoLabel"
+        OraTrasportoLabel.Size = New System.Drawing.Size(75, 13)
+        OraTrasportoLabel.TabIndex = 18
+        OraTrasportoLabel.Text = "Ora Trasporto:"
+        '
+        'AspettoBeniLabel
+        '
+        AspettoBeniLabel.AutoSize = True
+        AspettoBeniLabel.Location = New System.Drawing.Point(3, 61)
+        AspettoBeniLabel.Name = "AspettoBeniLabel"
+        AspettoBeniLabel.Size = New System.Drawing.Size(70, 13)
+        AspettoBeniLabel.TabIndex = 20
+        AspettoBeniLabel.Text = "Aspetto Beni:"
+        '
+        'TrasportoMezzoLabel
+        '
+        TrasportoMezzoLabel.AutoSize = True
+        TrasportoMezzoLabel.Location = New System.Drawing.Point(130, 61)
+        TrasportoMezzoLabel.Name = "TrasportoMezzoLabel"
+        TrasportoMezzoLabel.Size = New System.Drawing.Size(89, 13)
+        TrasportoMezzoLabel.TabIndex = 22
+        TrasportoMezzoLabel.Text = "Trasporto Mezzo:"
+        '
+        'VettoreLabel
+        '
+        VettoreLabel.AutoSize = True
+        VettoreLabel.Location = New System.Drawing.Point(257, 61)
+        VettoreLabel.Name = "VettoreLabel"
+        VettoreLabel.Size = New System.Drawing.Size(44, 13)
+        VettoreLabel.TabIndex = 24
+        VettoreLabel.Text = "Vettore:"
+        '
+        'CodiceIva1Label
+        '
+        CodiceIva1Label.AutoSize = True
+        CodiceIva1Label.Location = New System.Drawing.Point(3, 103)
+        CodiceIva1Label.Name = "CodiceIva1Label"
+        CodiceIva1Label.Size = New System.Drawing.Size(67, 13)
+        CodiceIva1Label.TabIndex = 26
+        CodiceIva1Label.Text = "Codice Iva1:"
+        '
+        'Imponibile1Label
+        '
+        Imponibile1Label.AutoSize = True
+        Imponibile1Label.Location = New System.Drawing.Point(73, 103)
+        Imponibile1Label.Name = "Imponibile1Label"
+        Imponibile1Label.Size = New System.Drawing.Size(63, 13)
+        Imponibile1Label.TabIndex = 28
+        Imponibile1Label.Text = "Imponibile1:"
+        '
+        '_Iva1Label
+        '
+        _Iva1Label.AutoSize = True
+        _Iva1Label.Location = New System.Drawing.Point(179, 103)
+        _Iva1Label.Name = "_Iva1Label"
+        _Iva1Label.Size = New System.Drawing.Size(39, 13)
+        _Iva1Label.TabIndex = 30
+        _Iva1Label.Text = "%Iva1:"
+        '
+        'ImportoIva1Label
+        '
+        ImportoIva1Label.AutoSize = True
+        ImportoIva1Label.Location = New System.Drawing.Point(257, 103)
+        ImportoIva1Label.Name = "ImportoIva1Label"
+        ImportoIva1Label.Size = New System.Drawing.Size(69, 13)
+        ImportoIva1Label.TabIndex = 32
+        ImportoIva1Label.Text = "Importo Iva1:"
+        '
+        'CodiceIva2Label
+        '
+        CodiceIva2Label.AutoSize = True
+        CodiceIva2Label.Location = New System.Drawing.Point(3, 143)
+        CodiceIva2Label.Name = "CodiceIva2Label"
+        CodiceIva2Label.Size = New System.Drawing.Size(67, 13)
+        CodiceIva2Label.TabIndex = 34
+        CodiceIva2Label.Text = "Codice Iva2:"
+        '
+        'Imponibile2Label
+        '
+        Imponibile2Label.AutoSize = True
+        Imponibile2Label.Location = New System.Drawing.Point(73, 143)
+        Imponibile2Label.Name = "Imponibile2Label"
+        Imponibile2Label.Size = New System.Drawing.Size(63, 13)
+        Imponibile2Label.TabIndex = 36
+        Imponibile2Label.Text = "Imponibile2:"
+        '
+        '_Iva2Label
+        '
+        _Iva2Label.AutoSize = True
+        _Iva2Label.Location = New System.Drawing.Point(179, 143)
+        _Iva2Label.Name = "_Iva2Label"
+        _Iva2Label.Size = New System.Drawing.Size(39, 13)
+        _Iva2Label.TabIndex = 38
+        _Iva2Label.Text = "%Iva2:"
+        '
+        'ImportoIva2Label
+        '
+        ImportoIva2Label.AutoSize = True
+        ImportoIva2Label.Location = New System.Drawing.Point(257, 143)
+        ImportoIva2Label.Name = "ImportoIva2Label"
+        ImportoIva2Label.Size = New System.Drawing.Size(69, 13)
+        ImportoIva2Label.TabIndex = 40
+        ImportoIva2Label.Text = "Importo Iva2:"
+        '
+        'TotaleDocumentoLabel
+        '
+        TotaleDocumentoLabel.AutoSize = True
+        TotaleDocumentoLabel.Location = New System.Drawing.Point(770, 142)
+        TotaleDocumentoLabel.Name = "TotaleDocumentoLabel"
+        TotaleDocumentoLabel.Size = New System.Drawing.Size(98, 13)
+        TotaleDocumentoLabel.TabIndex = 42
+        TotaleDocumentoLabel.Text = "Totale Documento:"
+        '
+        'DivisaLabel
+        '
+        DivisaLabel.AutoSize = True
+        DivisaLabel.Location = New System.Drawing.Point(694, 143)
+        DivisaLabel.Name = "DivisaLabel"
+        DivisaLabel.Size = New System.Drawing.Size(39, 13)
+        DivisaLabel.TabIndex = 44
+        DivisaLabel.Text = "Divisa:"
+        '
+        'TestDocumentoLabel
+        '
+        TestDocumentoLabel.AutoSize = True
+        TestDocumentoLabel.Location = New System.Drawing.Point(544, 62)
+        TestDocumentoLabel.Name = "TestDocumentoLabel"
+        TestDocumentoLabel.Size = New System.Drawing.Size(89, 13)
+        TestDocumentoLabel.TabIndex = 46
+        TestDocumentoLabel.Text = "Test Documento:"
+        '
+        'TestProceduraLabel
+        '
+        TestProceduraLabel.AutoSize = True
+        TestProceduraLabel.Location = New System.Drawing.Point(544, 101)
+        TestProceduraLabel.Name = "TestProceduraLabel"
+        TestProceduraLabel.Size = New System.Drawing.Size(83, 13)
+        TestProceduraLabel.TabIndex = 48
+        TestProceduraLabel.Text = "Test Procedura:"
+        '
+        'MovimentoContabileLabel
+        '
+        MovimentoContabileLabel.AutoSize = True
+        MovimentoContabileLabel.Location = New System.Drawing.Point(544, 140)
+        MovimentoContabileLabel.Name = "MovimentoContabileLabel"
+        MovimentoContabileLabel.Size = New System.Drawing.Size(109, 13)
+        MovimentoContabileLabel.TabIndex = 50
+        MovimentoContabileLabel.Text = "Movimento Contabile:"
+        '
+        'AziendaLabel
+        '
+        AziendaLabel.AutoSize = True
+        AziendaLabel.Location = New System.Drawing.Point(3, 14)
+        AziendaLabel.Name = "AziendaLabel"
+        AziendaLabel.Size = New System.Drawing.Size(48, 13)
+        AziendaLabel.TabIndex = 0
+        AziendaLabel.Text = "Azienda:"
+        '
+        'EsercizioLabel
+        '
+        EsercizioLabel.AutoSize = True
+        EsercizioLabel.Location = New System.Drawing.Point(188, 14)
+        EsercizioLabel.Name = "EsercizioLabel"
+        EsercizioLabel.Size = New System.Drawing.Size(52, 13)
+        EsercizioLabel.TabIndex = 2
+        EsercizioLabel.Text = "Esercizio:"
+        '
+        'TipoDocumentoLabel
+        '
+        TipoDocumentoLabel.AutoSize = True
+        TipoDocumentoLabel.Location = New System.Drawing.Point(373, 16)
+        TipoDocumentoLabel.Name = "TipoDocumentoLabel"
+        TipoDocumentoLabel.Size = New System.Drawing.Size(89, 13)
+        TipoDocumentoLabel.TabIndex = 4
+        TipoDocumentoLabel.Text = "Tipo Documento:"
+        '
+        'NumeroLabel
+        '
+        NumeroLabel.AutoSize = True
+        NumeroLabel.Location = New System.Drawing.Point(558, 15)
+        NumeroLabel.Name = "NumeroLabel"
+        NumeroLabel.Size = New System.Drawing.Size(47, 13)
+        NumeroLabel.TabIndex = 6
+        NumeroLabel.Text = "Numero:"
+        '
+        'SiglaLabel
+        '
+        SiglaLabel.AutoSize = True
+        SiglaLabel.Location = New System.Drawing.Point(664, 16)
+        SiglaLabel.Name = "SiglaLabel"
+        SiglaLabel.Size = New System.Drawing.Size(33, 13)
+        SiglaLabel.TabIndex = 8
+        SiglaLabel.Text = "Sigla:"
+        '
+        'DocumentitestataBindingSource
+        '
+        Me.DocumentitestataBindingSource.DataMember = "documentitestata"
+        Me.DocumentitestataBindingSource.DataSource = Me.FatturazionegevenDataSet
+        '
+        'FatturazionegevenDataSet
+        '
+        Me.FatturazionegevenDataSet.DataSetName = "fatturazionegevenDataSet"
+        Me.FatturazionegevenDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.LabelPagamento)
-        Me.GroupBox2.Controls.Add(Me.LabelIva)
-        Me.GroupBox2.Controls.Add(Me.LabelSconto)
-        Me.GroupBox2.Controls.Add(Me.LabelRiferimento)
-        Me.GroupBox2.Controls.Add(Me.LabelDataDocumento)
-        Me.GroupBox2.Controls.Add(Me.LabelAgente)
-        Me.GroupBox2.Controls.Add(Me.LabelCliente)
-        Me.GroupBox2.Controls.Add(Me.ComboBoxCliente)
-        Me.GroupBox2.Controls.Add(Me.TextBoxDataDocumento)
-        Me.GroupBox2.Controls.Add(Me.TextBoxRiferimento)
-        Me.GroupBox2.Controls.Add(Me.ComboBoxAgente)
-        Me.GroupBox2.Controls.Add(Me.ComboBoxIva)
-        Me.GroupBox2.Controls.Add(Me.ComboBoxPagamento)
-        Me.GroupBox2.Controls.Add(Me.TextBoxSconto)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 100)
+        Me.GroupBox2.Controls.Add(Me.TextBoxLike)
+        Me.GroupBox2.Controls.Add(Me.Button1)
+        Me.GroupBox2.Controls.Add(ScontoLabel)
+        Me.GroupBox2.Controls.Add(Me.ScontoTextBox)
+        Me.GroupBox2.Controls.Add(PagamentoLabel)
+        Me.GroupBox2.Controls.Add(Me.PagamentoComboBox)
+        Me.GroupBox2.Controls.Add(IvaLabel)
+        Me.GroupBox2.Controls.Add(Me.IvaComboBox)
+        Me.GroupBox2.Controls.Add(AgenteLabel)
+        Me.GroupBox2.Controls.Add(Me.AgenteComboBox)
+        Me.GroupBox2.Controls.Add(RiferimentoLabel)
+        Me.GroupBox2.Controls.Add(Me.RiferimentoTextBox)
+        Me.GroupBox2.Controls.Add(DataDocumentoLabel)
+        Me.GroupBox2.Controls.Add(Me.DataDocumentoDateTimePicker)
+        Me.GroupBox2.Controls.Add(AnagraficaLabel)
+        Me.GroupBox2.Controls.Add(Me.AnagraficaComboBox)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 111)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(430, 158)
-        Me.GroupBox2.TabIndex = 54
+        Me.GroupBox2.Size = New System.Drawing.Size(403, 180)
+        Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         '
-        'LabelPagamento
+        'TextBoxLike
         '
-        Me.LabelPagamento.AutoSize = True
-        Me.LabelPagamento.Location = New System.Drawing.Point(141, 109)
-        Me.LabelPagamento.Name = "LabelPagamento"
-        Me.LabelPagamento.Size = New System.Drawing.Size(61, 13)
-        Me.LabelPagamento.TabIndex = 59
-        Me.LabelPagamento.Text = "Pagamento"
+        Me.TextBoxLike.Location = New System.Drawing.Point(273, 28)
+        Me.TextBoxLike.Name = "TextBoxLike"
+        Me.TextBoxLike.Size = New System.Drawing.Size(93, 20)
+        Me.TextBoxLike.TabIndex = 15
         '
-        'LabelIva
+        'ScontoTextBox
         '
-        Me.LabelIva.AutoSize = True
-        Me.LabelIva.Location = New System.Drawing.Point(6, 109)
-        Me.LabelIva.Name = "LabelIva"
-        Me.LabelIva.Size = New System.Drawing.Size(22, 13)
-        Me.LabelIva.TabIndex = 58
-        Me.LabelIva.Text = "Iva"
+        Me.ScontoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Sconto", True))
+        Me.ScontoTextBox.Location = New System.Drawing.Point(300, 146)
+        Me.ScontoTextBox.Name = "ScontoTextBox"
+        Me.ScontoTextBox.Size = New System.Drawing.Size(94, 20)
+        Me.ScontoTextBox.TabIndex = 13
         '
-        'LabelSconto
+        'PagamentoComboBox
         '
-        Me.LabelSconto.AutoSize = True
-        Me.LabelSconto.Location = New System.Drawing.Point(353, 109)
-        Me.LabelSconto.Name = "LabelSconto"
-        Me.LabelSconto.Size = New System.Drawing.Size(41, 13)
-        Me.LabelSconto.TabIndex = 57
-        Me.LabelSconto.Text = "Sconto"
+        Me.PagamentoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Pagamento", True))
+        Me.PagamentoComboBox.FormattingEnabled = True
+        Me.PagamentoComboBox.Location = New System.Drawing.Point(6, 146)
+        Me.PagamentoComboBox.Name = "PagamentoComboBox"
+        Me.PagamentoComboBox.Size = New System.Drawing.Size(287, 21)
+        Me.PagamentoComboBox.TabIndex = 11
         '
-        'LabelRiferimento
+        'IvaComboBox
         '
-        Me.LabelRiferimento.AutoSize = True
-        Me.LabelRiferimento.Location = New System.Drawing.Point(103, 62)
-        Me.LabelRiferimento.Name = "LabelRiferimento"
-        Me.LabelRiferimento.Size = New System.Drawing.Size(60, 13)
-        Me.LabelRiferimento.TabIndex = 56
-        Me.LabelRiferimento.Text = "Riferimento"
+        Me.IvaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Iva", True))
+        Me.IvaComboBox.FormattingEnabled = True
+        Me.IvaComboBox.Location = New System.Drawing.Point(273, 106)
+        Me.IvaComboBox.Name = "IvaComboBox"
+        Me.IvaComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.IvaComboBox.TabIndex = 9
         '
-        'LabelDataDocumento
+        'AgenteComboBox
         '
-        Me.LabelDataDocumento.AutoSize = True
-        Me.LabelDataDocumento.Location = New System.Drawing.Point(3, 62)
-        Me.LabelDataDocumento.Name = "LabelDataDocumento"
-        Me.LabelDataDocumento.Size = New System.Drawing.Size(88, 13)
-        Me.LabelDataDocumento.TabIndex = 55
-        Me.LabelDataDocumento.Text = "Data Documento"
+        Me.AgenteComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Agente", True))
+        Me.AgenteComboBox.FormattingEnabled = True
+        Me.AgenteComboBox.Location = New System.Drawing.Point(9, 106)
+        Me.AgenteComboBox.Name = "AgenteComboBox"
+        Me.AgenteComboBox.Size = New System.Drawing.Size(258, 21)
+        Me.AgenteComboBox.TabIndex = 7
         '
-        'LabelAgente
+        'RiferimentoTextBox
         '
-        Me.LabelAgente.AutoSize = True
-        Me.LabelAgente.Location = New System.Drawing.Point(232, 61)
-        Me.LabelAgente.Name = "LabelAgente"
-        Me.LabelAgente.Size = New System.Drawing.Size(41, 13)
-        Me.LabelAgente.TabIndex = 54
-        Me.LabelAgente.Text = "Agente"
+        Me.RiferimentoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Riferimento", True))
+        Me.RiferimentoTextBox.Location = New System.Drawing.Point(172, 67)
+        Me.RiferimentoTextBox.Name = "RiferimentoTextBox"
+        Me.RiferimentoTextBox.Size = New System.Drawing.Size(222, 20)
+        Me.RiferimentoTextBox.TabIndex = 5
         '
-        'LabelCliente
+        'DataDocumentoDateTimePicker
         '
-        Me.LabelCliente.AutoSize = True
-        Me.LabelCliente.Location = New System.Drawing.Point(6, 18)
-        Me.LabelCliente.Name = "LabelCliente"
-        Me.LabelCliente.Size = New System.Drawing.Size(39, 13)
-        Me.LabelCliente.TabIndex = 53
-        Me.LabelCliente.Text = "Cliente"
+        Me.DataDocumentoDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.DocumentitestataBindingSource, "DataDocumento", True))
+        Me.DataDocumentoDateTimePicker.Location = New System.Drawing.Point(6, 67)
+        Me.DataDocumentoDateTimePicker.Name = "DataDocumentoDateTimePicker"
+        Me.DataDocumentoDateTimePicker.Size = New System.Drawing.Size(160, 20)
+        Me.DataDocumentoDateTimePicker.TabIndex = 3
         '
-        'LabelBanca
+        'AnagraficaComboBox
         '
-        Me.LabelBanca.AutoSize = True
-        Me.LabelBanca.Location = New System.Drawing.Point(5, 18)
-        Me.LabelBanca.Name = "LabelBanca"
-        Me.LabelBanca.Size = New System.Drawing.Size(38, 13)
-        Me.LabelBanca.TabIndex = 60
-        Me.LabelBanca.Text = "Banca"
+        Me.AnagraficaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Anagrafica", True))
+        Me.AnagraficaComboBox.FormattingEnabled = True
+        Me.AnagraficaComboBox.Location = New System.Drawing.Point(6, 28)
+        Me.AnagraficaComboBox.Name = "AnagraficaComboBox"
+        Me.AnagraficaComboBox.Size = New System.Drawing.Size(261, 21)
+        Me.AnagraficaComboBox.TabIndex = 1
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.LabelDestinazione)
-        Me.GroupBox3.Controls.Add(Me.ComboBoxDestinazione)
-        Me.GroupBox3.Controls.Add(Me.TextBoxDestinazione2)
-        Me.GroupBox3.Controls.Add(Me.TextBoxDestinazione3)
-        Me.GroupBox3.Controls.Add(Me.TextBoxCAP)
-        Me.GroupBox3.Controls.Add(Me.TextBoxLocalita)
-        Me.GroupBox3.Controls.Add(Me.TextBoxProvincia)
-        Me.GroupBox3.Location = New System.Drawing.Point(448, 100)
+        Me.GroupBox3.Controls.Add(ProvinciaDestinatarioLabel)
+        Me.GroupBox3.Controls.Add(Me.ProvinciaDestinatarioTextBox)
+        Me.GroupBox3.Controls.Add(LocalitaDestinatarioLabel)
+        Me.GroupBox3.Controls.Add(Me.LocalitaDestinatarioTextBox)
+        Me.GroupBox3.Controls.Add(CapDestinatarioLabel)
+        Me.GroupBox3.Controls.Add(Me.CapDestinatarioTextBox)
+        Me.GroupBox3.Controls.Add(IndirizzoDestinatarioLabel)
+        Me.GroupBox3.Controls.Add(Me.IndirizzoDestinatarioTextBox)
+        Me.GroupBox3.Controls.Add(NominativoDestinatarioLabel)
+        Me.GroupBox3.Controls.Add(Me.NominativoDestinatarioTextBox)
+        Me.GroupBox3.Controls.Add(DestinazioneLabel)
+        Me.GroupBox3.Controls.Add(Me.DestinazioneComboBox)
+        Me.GroupBox3.Location = New System.Drawing.Point(418, 111)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(465, 158)
-        Me.GroupBox3.TabIndex = 55
+        Me.GroupBox3.Size = New System.Drawing.Size(506, 180)
+        Me.GroupBox3.TabIndex = 1
         Me.GroupBox3.TabStop = False
         '
-        'LabelDestinazione
+        'ProvinciaDestinatarioTextBox
         '
-        Me.LabelDestinazione.AutoSize = True
-        Me.LabelDestinazione.Location = New System.Drawing.Point(6, 18)
-        Me.LabelDestinazione.Name = "LabelDestinazione"
-        Me.LabelDestinazione.Size = New System.Drawing.Size(68, 13)
-        Me.LabelDestinazione.TabIndex = 54
-        Me.LabelDestinazione.Text = "Destinazione"
+        Me.ProvinciaDestinatarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "ProvinciaDestinatario", True))
+        Me.ProvinciaDestinatarioTextBox.Location = New System.Drawing.Point(390, 148)
+        Me.ProvinciaDestinatarioTextBox.Name = "ProvinciaDestinatarioTextBox"
+        Me.ProvinciaDestinatarioTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ProvinciaDestinatarioTextBox.TabIndex = 11
+        '
+        'LocalitaDestinatarioTextBox
+        '
+        Me.LocalitaDestinatarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "LocalitaDestinatario", True))
+        Me.LocalitaDestinatarioTextBox.Location = New System.Drawing.Point(112, 147)
+        Me.LocalitaDestinatarioTextBox.Name = "LocalitaDestinatarioTextBox"
+        Me.LocalitaDestinatarioTextBox.Size = New System.Drawing.Size(272, 20)
+        Me.LocalitaDestinatarioTextBox.TabIndex = 9
+        '
+        'CapDestinatarioTextBox
+        '
+        Me.CapDestinatarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "CapDestinatario", True))
+        Me.CapDestinatarioTextBox.Location = New System.Drawing.Point(6, 147)
+        Me.CapDestinatarioTextBox.Name = "CapDestinatarioTextBox"
+        Me.CapDestinatarioTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.CapDestinatarioTextBox.TabIndex = 7
+        '
+        'IndirizzoDestinatarioTextBox
+        '
+        Me.IndirizzoDestinatarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "IndirizzoDestinatario", True))
+        Me.IndirizzoDestinatarioTextBox.Location = New System.Drawing.Point(6, 107)
+        Me.IndirizzoDestinatarioTextBox.Name = "IndirizzoDestinatarioTextBox"
+        Me.IndirizzoDestinatarioTextBox.Size = New System.Drawing.Size(484, 20)
+        Me.IndirizzoDestinatarioTextBox.TabIndex = 5
+        '
+        'NominativoDestinatarioTextBox
+        '
+        Me.NominativoDestinatarioTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "NominativoDestinatario", True))
+        Me.NominativoDestinatarioTextBox.Location = New System.Drawing.Point(6, 68)
+        Me.NominativoDestinatarioTextBox.Name = "NominativoDestinatarioTextBox"
+        Me.NominativoDestinatarioTextBox.Size = New System.Drawing.Size(484, 20)
+        Me.NominativoDestinatarioTextBox.TabIndex = 3
+        '
+        'DestinazioneComboBox
+        '
+        Me.DestinazioneComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Destinazione", True))
+        Me.DestinazioneComboBox.FormattingEnabled = True
+        Me.DestinazioneComboBox.Location = New System.Drawing.Point(6, 29)
+        Me.DestinazioneComboBox.Name = "DestinazioneComboBox"
+        Me.DestinazioneComboBox.Size = New System.Drawing.Size(484, 21)
+        Me.DestinazioneComboBox.TabIndex = 1
+        '
+        'DocumentitestataTableAdapter
+        '
+        Me.DocumentitestataTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.accountutenteTableAdapter = Nothing
+        Me.TableAdapterManager.agentiprovvigioniTableAdapter = Nothing
+        Me.TableAdapterManager.agentiTableAdapter = Nothing
+        Me.TableAdapterManager.anagraficadestinazioniTableAdapter = Nothing
+        Me.TableAdapterManager.anagraficafatturazioneTableAdapter = Nothing
+        Me.TableAdapterManager.anagraficascontiTableAdapter = Nothing
+        Me.TableAdapterManager.anagraficheTableAdapter = Nothing
+        Me.TableAdapterManager.articolilistinoTableAdapter = Nothing
+        Me.TableAdapterManager.articolimisureTableAdapter = Nothing
+        Me.TableAdapterManager.articoliprezziacquistoTableAdapter = Nothing
+        Me.TableAdapterManager.articoliTableAdapter = Nothing
+        Me.TableAdapterManager.aspettobeniTableAdapter = Nothing
+        Me.TableAdapterManager.aziendacostantiTableAdapter = Nothing
+        Me.TableAdapterManager.aziendaintestazionemodulisticaTableAdapter = Nothing
+        Me.TableAdapterManager.aziendeTableAdapter = Me.AziendeTableAdapter
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.categoriemerceologicheTableAdapter = Nothing
+        Me.TableAdapterManager.categorieTableAdapter = Nothing
+        Me.TableAdapterManager.causalitrasportoTableAdapter = Nothing
+        Me.TableAdapterManager.classiarticoloTableAdapter = Nothing
+        Me.TableAdapterManager.contiTableAdapter = Nothing
+        Me.TableAdapterManager.diviseTableAdapter = Nothing
+        Me.TableAdapterManager.documentidettaglioTableAdapter = Me.DocumentidettaglioTableAdapter
+        Me.TableAdapterManager.documentiscadenzeTableAdapter = Nothing
+        Me.TableAdapterManager.documentitestataTableAdapter = Me.DocumentitestataTableAdapter
+        Me.TableAdapterManager.esercizicontabiliTableAdapter = Nothing
+        Me.TableAdapterManager.magazzinodenominazioneTableAdapter = Nothing
+        Me.TableAdapterManager.magazzinomovimentidettaglioTableAdapter = Nothing
+        Me.TableAdapterManager.magazzinomovimentitestataTableAdapter = Nothing
+        Me.TableAdapterManager.magazzinotipimovimentodettaglioTableAdapter = Nothing
+        Me.TableAdapterManager.magazzinotipimovimentoTableAdapter = Nothing
+        Me.TableAdapterManager.moditrasportoTableAdapter = Nothing
+        Me.TableAdapterManager.operazionidettaglioTableAdapter = Nothing
+        Me.TableAdapterManager.operazioniTableAdapter = Nothing
+        Me.TableAdapterManager.pagamentidettaglioTableAdapter = Nothing
+        Me.TableAdapterManager.pagamentitestataTableAdapter = Nothing
+        Me.TableAdapterManager.parametriivaTableAdapter = Nothing
+        Me.TableAdapterManager.portafoglioeffettiTableAdapter = Nothing
+        Me.TableAdapterManager.scontifornitoreTableAdapter = Nothing
+        Me.TableAdapterManager.tipidocumentoTableAdapter = Nothing
+        Me.TableAdapterManager.tipitrasportoTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.vettoriTableAdapter = Nothing
+        Me.TableAdapterManager.zoneTableAdapter = Nothing
+        '
+        'AziendeTableAdapter
+        '
+        Me.AziendeTableAdapter.ClearBeforeFill = True
+        '
+        'DocumentidettaglioTableAdapter
+        '
+        Me.DocumentidettaglioTableAdapter.ClearBeforeFill = True
+        '
+        'DocumentitestataBindingNavigator
+        '
+        Me.DocumentitestataBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.DocumentitestataBindingNavigator.BindingSource = Me.DocumentitestataBindingSource
+        Me.DocumentitestataBindingNavigator.CountItem = Me.BindingNavigatorCountItem
+        Me.DocumentitestataBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.DocumentitestataBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.DocumentitestataBindingNavigatorSaveItem, Me.ToolStripButton1, Me.ToolStripSeparator1, Me.ToolStripButton2})
+        Me.DocumentitestataBindingNavigator.Location = New System.Drawing.Point(0, 0)
+        Me.DocumentitestataBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
+        Me.DocumentitestataBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
+        Me.DocumentitestataBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
+        Me.DocumentitestataBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
+        Me.DocumentitestataBindingNavigator.Name = "DocumentitestataBindingNavigator"
+        Me.DocumentitestataBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
+        Me.DocumentitestataBindingNavigator.Size = New System.Drawing.Size(933, 38)
+        Me.DocumentitestataBindingNavigator.TabIndex = 2
+        Me.DocumentitestataBindingNavigator.Text = "BindingNavigator1"
+        '
+        'BindingNavigatorCountItem
+        '
+        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(34, 35)
+        Me.BindingNavigatorCountItem.Text = "di {0}"
+        Me.BindingNavigatorCountItem.ToolTipText = "Numero totale di elementi"
+        '
+        'BindingNavigatorSeparator
+        '
+        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 38)
+        '
+        'BindingNavigatorPositionItem
+        '
+        Me.BindingNavigatorPositionItem.AccessibleName = "Posizione"
+        Me.BindingNavigatorPositionItem.AutoSize = False
+        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
+        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
+        Me.BindingNavigatorPositionItem.Text = "0"
+        Me.BindingNavigatorPositionItem.ToolTipText = "Posizione corrente"
+        '
+        'BindingNavigatorSeparator1
+        '
+        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
+        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 38)
+        '
+        'BindingNavigatorSeparator2
+        '
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
+        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 38)
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 38)
+        '
+        'DocumentidettaglioDataGridView
+        '
+        Me.DocumentidettaglioDataGridView.AutoGenerateColumns = False
+        Me.DocumentidettaglioDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
+        Me.DocumentidettaglioDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DocumentidettaglioDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.RigaTextBoxColumn, Me.ArticoloComboBoxColumn, Me.DescrizioneTextBoxColumn, Me.UnitaMisuraMagazzinoTextBoxColumn, Me.QuantitaMagazzinoTextBoxColumn, Me.UnitaMisuraTextBoxColumn, Me.QuantitaTextBoxColumn, Me.PrezzoUnitarioTextBoxColumn, Me.Sconto1TextBoxColumn, Me.Sconto2TextBoxColumn, Me.Sconto3TextBoxColumn, Me.ImportoTextBoxColumn, Me.ScorporoTextBoxColumn, Me.ClasseMerceologicaTextBoxColumn, Me.ClasseContropartitaTextBoxColumn, Me.ArticoloAliasTextBoxColumn, Me.MovimentoMagazzinoTextBoxColumn, Me.Iva, Me.Azienda, Me.Esercizio, Me.TipoDocumento, Me.Numero})
+        Me.DocumentidettaglioDataGridView.DataSource = Me.DocumentidettaglioBindingSource
+        Me.DocumentidettaglioDataGridView.Location = New System.Drawing.Point(12, 342)
+        Me.DocumentidettaglioDataGridView.Name = "DocumentidettaglioDataGridView"
+        Me.DocumentidettaglioDataGridView.Size = New System.Drawing.Size(912, 146)
+        Me.DocumentidettaglioDataGridView.TabIndex = 4
+        '
+        'RigaTextBoxColumn
+        '
+        Me.RigaTextBoxColumn.DataPropertyName = "Riga"
+        Me.RigaTextBoxColumn.HeaderText = "Riga"
+        Me.RigaTextBoxColumn.Name = "RigaTextBoxColumn"
+        Me.RigaTextBoxColumn.Width = 54
+        '
+        'ArticoloComboBoxColumn
+        '
+        Me.ArticoloComboBoxColumn.DataPropertyName = "Articolo"
+        Me.ArticoloComboBoxColumn.HeaderText = "Articolo"
+        Me.ArticoloComboBoxColumn.Name = "ArticoloComboBoxColumn"
+        Me.ArticoloComboBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.ArticoloComboBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.ArticoloComboBoxColumn.Width = 48
+        '
+        'DescrizioneTextBoxColumn
+        '
+        Me.DescrizioneTextBoxColumn.DataPropertyName = "Descrizione"
+        Me.DescrizioneTextBoxColumn.HeaderText = "Descrizione"
+        Me.DescrizioneTextBoxColumn.Name = "DescrizioneTextBoxColumn"
+        Me.DescrizioneTextBoxColumn.Width = 87
+        '
+        'UnitaMisuraMagazzinoTextBoxColumn
+        '
+        Me.UnitaMisuraMagazzinoTextBoxColumn.DataPropertyName = "UnitaMisuraMagazzino"
+        Me.UnitaMisuraMagazzinoTextBoxColumn.HeaderText = "U.M.M."
+        Me.UnitaMisuraMagazzinoTextBoxColumn.Name = "UnitaMisuraMagazzinoTextBoxColumn"
+        Me.UnitaMisuraMagazzinoTextBoxColumn.Width = 67
+        '
+        'QuantitaMagazzinoTextBoxColumn
+        '
+        Me.QuantitaMagazzinoTextBoxColumn.DataPropertyName = "QuantitaMagazzino"
+        Me.QuantitaMagazzinoTextBoxColumn.HeaderText = "Q.ta Mag."
+        Me.QuantitaMagazzinoTextBoxColumn.Name = "QuantitaMagazzinoTextBoxColumn"
+        Me.QuantitaMagazzinoTextBoxColumn.Width = 79
+        '
+        'UnitaMisuraTextBoxColumn
+        '
+        Me.UnitaMisuraTextBoxColumn.DataPropertyName = "UnitaMisura"
+        Me.UnitaMisuraTextBoxColumn.HeaderText = "U.M.F."
+        Me.UnitaMisuraTextBoxColumn.Name = "UnitaMisuraTextBoxColumn"
+        Me.UnitaMisuraTextBoxColumn.Width = 64
+        '
+        'QuantitaTextBoxColumn
+        '
+        Me.QuantitaTextBoxColumn.DataPropertyName = "Quantita"
+        Me.QuantitaTextBoxColumn.HeaderText = "Quantita"
+        Me.QuantitaTextBoxColumn.Name = "QuantitaTextBoxColumn"
+        Me.QuantitaTextBoxColumn.Width = 72
+        '
+        'PrezzoUnitarioTextBoxColumn
+        '
+        Me.PrezzoUnitarioTextBoxColumn.DataPropertyName = "PrezzoUnitario"
+        Me.PrezzoUnitarioTextBoxColumn.HeaderText = "Prezzo"
+        Me.PrezzoUnitarioTextBoxColumn.Name = "PrezzoUnitarioTextBoxColumn"
+        Me.PrezzoUnitarioTextBoxColumn.Width = 64
+        '
+        'Sconto1TextBoxColumn
+        '
+        Me.Sconto1TextBoxColumn.DataPropertyName = "Sconto1"
+        Me.Sconto1TextBoxColumn.HeaderText = "%1"
+        Me.Sconto1TextBoxColumn.Name = "Sconto1TextBoxColumn"
+        Me.Sconto1TextBoxColumn.Width = 46
+        '
+        'Sconto2TextBoxColumn
+        '
+        Me.Sconto2TextBoxColumn.DataPropertyName = "Sconto2"
+        Me.Sconto2TextBoxColumn.HeaderText = "%2"
+        Me.Sconto2TextBoxColumn.Name = "Sconto2TextBoxColumn"
+        Me.Sconto2TextBoxColumn.Width = 46
+        '
+        'Sconto3TextBoxColumn
+        '
+        Me.Sconto3TextBoxColumn.DataPropertyName = "Sconto3"
+        Me.Sconto3TextBoxColumn.HeaderText = "%3"
+        Me.Sconto3TextBoxColumn.Name = "Sconto3TextBoxColumn"
+        Me.Sconto3TextBoxColumn.Width = 46
+        '
+        'ImportoTextBoxColumn
+        '
+        Me.ImportoTextBoxColumn.DataPropertyName = "Importo"
+        Me.ImportoTextBoxColumn.HeaderText = "Importo"
+        Me.ImportoTextBoxColumn.Name = "ImportoTextBoxColumn"
+        Me.ImportoTextBoxColumn.Width = 67
+        '
+        'ScorporoTextBoxColumn
+        '
+        Me.ScorporoTextBoxColumn.DataPropertyName = "Scorporo"
+        Me.ScorporoTextBoxColumn.HeaderText = "*"
+        Me.ScorporoTextBoxColumn.Name = "ScorporoTextBoxColumn"
+        Me.ScorporoTextBoxColumn.Width = 36
+        '
+        'ClasseMerceologicaTextBoxColumn
+        '
+        Me.ClasseMerceologicaTextBoxColumn.DataPropertyName = "ClasseMerceologica"
+        Me.ClasseMerceologicaTextBoxColumn.HeaderText = "C.M."
+        Me.ClasseMerceologicaTextBoxColumn.Name = "ClasseMerceologicaTextBoxColumn"
+        Me.ClasseMerceologicaTextBoxColumn.Width = 54
+        '
+        'ClasseContropartitaTextBoxColumn
+        '
+        Me.ClasseContropartitaTextBoxColumn.DataPropertyName = "ClasseContropartita"
+        Me.ClasseContropartitaTextBoxColumn.HeaderText = "C.C."
+        Me.ClasseContropartitaTextBoxColumn.Name = "ClasseContropartitaTextBoxColumn"
+        Me.ClasseContropartitaTextBoxColumn.Width = 52
+        '
+        'ArticoloAliasTextBoxColumn
+        '
+        Me.ArticoloAliasTextBoxColumn.DataPropertyName = "ArticoloAlias"
+        Me.ArticoloAliasTextBoxColumn.HeaderText = "ArticoloAlias"
+        Me.ArticoloAliasTextBoxColumn.Name = "ArticoloAliasTextBoxColumn"
+        Me.ArticoloAliasTextBoxColumn.Width = 89
+        '
+        'MovimentoMagazzinoTextBoxColumn
+        '
+        Me.MovimentoMagazzinoTextBoxColumn.DataPropertyName = "MovimentoMagazzino"
+        Me.MovimentoMagazzinoTextBoxColumn.HeaderText = "N° Magazzino"
+        Me.MovimentoMagazzinoTextBoxColumn.Name = "MovimentoMagazzinoTextBoxColumn"
+        Me.MovimentoMagazzinoTextBoxColumn.Width = 98
+        '
+        'Iva
+        '
+        Me.Iva.DataPropertyName = "Iva"
+        Me.Iva.HeaderText = "Iva"
+        Me.Iva.Name = "Iva"
+        Me.Iva.Width = 47
+        '
+        'IvaTextBoxColumn
+        '
+        Me.IvaTextBoxColumn.DataPropertyName = "Iva"
+        Me.IvaTextBoxColumn.HeaderText = "Iva"
+        Me.IvaTextBoxColumn.Name = "IvaTextBoxColumn"
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.LabelAgenzia)
-        Me.GroupBox4.Controls.Add(Me.TextBoxBanca)
-        Me.GroupBox4.Controls.Add(Me.LabelBanca)
-        Me.GroupBox4.Controls.Add(Me.TextBoxAgenzia)
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 264)
+        Me.GroupBox4.Controls.Add(AgenziaLabel)
+        Me.GroupBox4.Controls.Add(Me.AgenziaTextBox)
+        Me.GroupBox4.Controls.Add(BancaLabel)
+        Me.GroupBox4.Controls.Add(Me.BancaTextBox)
+        Me.GroupBox4.Location = New System.Drawing.Point(12, 292)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(901, 64)
-        Me.GroupBox4.TabIndex = 61
+        Me.GroupBox4.Size = New System.Drawing.Size(911, 43)
+        Me.GroupBox4.TabIndex = 5
         Me.GroupBox4.TabStop = False
         '
-        'LabelAgenzia
+        'AgenziaTextBox
         '
-        Me.LabelAgenzia.AutoSize = True
-        Me.LabelAgenzia.Location = New System.Drawing.Point(442, 18)
-        Me.LabelAgenzia.Name = "LabelAgenzia"
-        Me.LabelAgenzia.Size = New System.Drawing.Size(45, 13)
-        Me.LabelAgenzia.TabIndex = 61
-        Me.LabelAgenzia.Text = "Agenzia"
+        Me.AgenziaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Agenzia", True))
+        Me.AgenziaTextBox.Location = New System.Drawing.Point(462, 16)
+        Me.AgenziaTextBox.Name = "AgenziaTextBox"
+        Me.AgenziaTextBox.Size = New System.Drawing.Size(433, 20)
+        Me.AgenziaTextBox.TabIndex = 3
+        '
+        'BancaTextBox
+        '
+        Me.BancaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Banca", True))
+        Me.BancaTextBox.Location = New System.Drawing.Point(53, 16)
+        Me.BancaTextBox.Name = "BancaTextBox"
+        Me.BancaTextBox.Size = New System.Drawing.Size(349, 20)
+        Me.BancaTextBox.TabIndex = 1
         '
         'GroupBox5
         '
-        Me.GroupBox5.Controls.Add(Me.LabelCorriere)
-        Me.GroupBox5.Controls.Add(Me.LabelTrasportoMezzo)
-        Me.GroupBox5.Controls.Add(Me.LabelAspettoBeni)
-        Me.GroupBox5.Controls.Add(Me.LabelOraTrasporto)
-        Me.GroupBox5.Controls.Add(Me.LabelData)
-        Me.GroupBox5.Controls.Add(Me.LabelPeso)
-        Me.GroupBox5.Controls.Add(Me.LabelColli)
-        Me.GroupBox5.Controls.Add(Me.LabelPorto)
-        Me.GroupBox5.Controls.Add(Me.LabelCausaleTrasporto)
-        Me.GroupBox5.Controls.Add(Me.LabelImballo)
-        Me.GroupBox5.Controls.Add(Me.LabelTrasporto)
-        Me.GroupBox5.Controls.Add(Me.TextBoxTrasporto)
-        Me.GroupBox5.Controls.Add(Me.TextBoxImballo)
-        Me.GroupBox5.Controls.Add(Me.ComboBoxCausaleTrasporto)
-        Me.GroupBox5.Controls.Add(Me.ComboBoxPorto)
-        Me.GroupBox5.Controls.Add(Me.TextBoxColli)
-        Me.GroupBox5.Controls.Add(Me.TextBoxPeso)
-        Me.GroupBox5.Controls.Add(Me.TextBoxData)
-        Me.GroupBox5.Controls.Add(Me.TextBoxOraTrasporto)
-        Me.GroupBox5.Controls.Add(Me.ComboBoxAspettoBeni)
-        Me.GroupBox5.Controls.Add(Me.ComboBoxTrasportoMezzo)
-        Me.GroupBox5.Controls.Add(Me.ComboBoxCorriere)
-        Me.GroupBox5.Location = New System.Drawing.Point(12, 490)
+        Me.GroupBox5.Controls.Add(MovimentoContabileLabel)
+        Me.GroupBox5.Controls.Add(Me.MovimentoContabileTextBox)
+        Me.GroupBox5.Controls.Add(TestProceduraLabel)
+        Me.GroupBox5.Controls.Add(Me.TestProceduraTextBox)
+        Me.GroupBox5.Controls.Add(TestDocumentoLabel)
+        Me.GroupBox5.Controls.Add(Me.TestDocumentoTextBox)
+        Me.GroupBox5.Controls.Add(DivisaLabel)
+        Me.GroupBox5.Controls.Add(Me.DivisaComboBox)
+        Me.GroupBox5.Controls.Add(TotaleDocumentoLabel)
+        Me.GroupBox5.Controls.Add(Me.TotaleDocumentoTextBox)
+        Me.GroupBox5.Controls.Add(ImportoIva2Label)
+        Me.GroupBox5.Controls.Add(Me.ImportoIva2TextBox)
+        Me.GroupBox5.Controls.Add(_Iva2Label)
+        Me.GroupBox5.Controls.Add(Me._Iva2TextBox)
+        Me.GroupBox5.Controls.Add(Imponibile2Label)
+        Me.GroupBox5.Controls.Add(Me.Imponibile2TextBox)
+        Me.GroupBox5.Controls.Add(CodiceIva2Label)
+        Me.GroupBox5.Controls.Add(Me.CodiceIva2TextBox)
+        Me.GroupBox5.Controls.Add(ImportoIva1Label)
+        Me.GroupBox5.Controls.Add(Me.ImportoIva1TextBox)
+        Me.GroupBox5.Controls.Add(_Iva1Label)
+        Me.GroupBox5.Controls.Add(Me._Iva1TextBox)
+        Me.GroupBox5.Controls.Add(Imponibile1Label)
+        Me.GroupBox5.Controls.Add(Me.Imponibile1TextBox)
+        Me.GroupBox5.Controls.Add(CodiceIva1Label)
+        Me.GroupBox5.Controls.Add(Me.CodiceIva1TextBox)
+        Me.GroupBox5.Controls.Add(VettoreLabel)
+        Me.GroupBox5.Controls.Add(Me.VettoreComboBox)
+        Me.GroupBox5.Controls.Add(TrasportoMezzoLabel)
+        Me.GroupBox5.Controls.Add(Me.TrasportoMezzoComboBox)
+        Me.GroupBox5.Controls.Add(AspettoBeniLabel)
+        Me.GroupBox5.Controls.Add(Me.AspettoBeniComboBox)
+        Me.GroupBox5.Controls.Add(OraTrasportoLabel)
+        Me.GroupBox5.Controls.Add(Me.OraTrasportoTextBox)
+        Me.GroupBox5.Controls.Add(DataTrasportoLabel)
+        Me.GroupBox5.Controls.Add(Me.DataTrasportoTextBox)
+        Me.GroupBox5.Controls.Add(PesoLabel)
+        Me.GroupBox5.Controls.Add(Me.PesoTextBox)
+        Me.GroupBox5.Controls.Add(ColliLabel)
+        Me.GroupBox5.Controls.Add(Me.ColliTextBox)
+        Me.GroupBox5.Controls.Add(PortoLabel)
+        Me.GroupBox5.Controls.Add(Me.PortoComboBox)
+        Me.GroupBox5.Controls.Add(CausaleTrasportoLabel)
+        Me.GroupBox5.Controls.Add(Me.CausaleTrasportoComboBox)
+        Me.GroupBox5.Controls.Add(ImballoLabel)
+        Me.GroupBox5.Controls.Add(Me.ImballoTextBox)
+        Me.GroupBox5.Controls.Add(TrasportoLabel)
+        Me.GroupBox5.Controls.Add(Me.TrasportoTextBox)
+        Me.GroupBox5.Controls.Add(ScontoCassaLabel)
+        Me.GroupBox5.Controls.Add(Me.ScontoCassaTextBox)
+        Me.GroupBox5.Controls.Add(TotaleMerceLabel)
+        Me.GroupBox5.Controls.Add(Me.TotaleMerceTextBox)
+        Me.GroupBox5.Location = New System.Drawing.Point(12, 484)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(901, 111)
-        Me.GroupBox5.TabIndex = 62
+        Me.GroupBox5.Size = New System.Drawing.Size(912, 183)
+        Me.GroupBox5.TabIndex = 6
         Me.GroupBox5.TabStop = False
         '
-        'LabelCorriere
+        'MovimentoContabileTextBox
         '
-        Me.LabelCorriere.AutoSize = True
-        Me.LabelCorriere.Location = New System.Drawing.Point(450, 63)
-        Me.LabelCorriere.Name = "LabelCorriere"
-        Me.LabelCorriere.Size = New System.Drawing.Size(43, 13)
-        Me.LabelCorriere.TabIndex = 72
-        Me.LabelCorriere.Text = "Corriere"
+        Me.MovimentoContabileTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "MovimentoContabile", True))
+        Me.MovimentoContabileTextBox.Location = New System.Drawing.Point(547, 156)
+        Me.MovimentoContabileTextBox.Name = "MovimentoContabileTextBox"
+        Me.MovimentoContabileTextBox.Size = New System.Drawing.Size(56, 20)
+        Me.MovimentoContabileTextBox.TabIndex = 51
         '
-        'LabelTrasportoMezzo
+        'TestProceduraTextBox
         '
-        Me.LabelTrasportoMezzo.AutoSize = True
-        Me.LabelTrasportoMezzo.Location = New System.Drawing.Point(232, 63)
-        Me.LabelTrasportoMezzo.Name = "LabelTrasportoMezzo"
-        Me.LabelTrasportoMezzo.Size = New System.Drawing.Size(97, 13)
-        Me.LabelTrasportoMezzo.TabIndex = 71
-        Me.LabelTrasportoMezzo.Text = "Trasporto al Mezzo"
+        Me.TestProceduraTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "TestProcedura", True))
+        Me.TestProceduraTextBox.Location = New System.Drawing.Point(547, 117)
+        Me.TestProceduraTextBox.Name = "TestProceduraTextBox"
+        Me.TestProceduraTextBox.Size = New System.Drawing.Size(56, 20)
+        Me.TestProceduraTextBox.TabIndex = 49
         '
-        'LabelAspettoBeni
+        'TestDocumentoTextBox
         '
-        Me.LabelAspettoBeni.AutoSize = True
-        Me.LabelAspettoBeni.Location = New System.Drawing.Point(6, 63)
-        Me.LabelAspettoBeni.Name = "LabelAspettoBeni"
-        Me.LabelAspettoBeni.Size = New System.Drawing.Size(84, 13)
-        Me.LabelAspettoBeni.TabIndex = 70
-        Me.LabelAspettoBeni.Text = "Aspetto dei Beni"
+        Me.TestDocumentoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "TestDocumento", True))
+        Me.TestDocumentoTextBox.Location = New System.Drawing.Point(547, 78)
+        Me.TestDocumentoTextBox.Name = "TestDocumentoTextBox"
+        Me.TestDocumentoTextBox.Size = New System.Drawing.Size(58, 20)
+        Me.TestDocumentoTextBox.TabIndex = 47
         '
-        'LabelOraTrasporto
+        'DivisaComboBox
         '
-        Me.LabelOraTrasporto.AutoSize = True
-        Me.LabelOraTrasporto.Location = New System.Drawing.Point(805, 20)
-        Me.LabelOraTrasporto.Name = "LabelOraTrasporto"
-        Me.LabelOraTrasporto.Size = New System.Drawing.Size(89, 13)
-        Me.LabelOraTrasporto.TabIndex = 69
-        Me.LabelOraTrasporto.Text = "Ora del Trasporto"
+        Me.DivisaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Divisa", True))
+        Me.DivisaComboBox.FormattingEnabled = True
+        Me.DivisaComboBox.Location = New System.Drawing.Point(697, 159)
+        Me.DivisaComboBox.Name = "DivisaComboBox"
+        Me.DivisaComboBox.Size = New System.Drawing.Size(70, 21)
+        Me.DivisaComboBox.TabIndex = 45
         '
-        'LabelData
+        'TotaleDocumentoTextBox
         '
-        Me.LabelData.AutoSize = True
-        Me.LabelData.Location = New System.Drawing.Point(700, 20)
-        Me.LabelData.Name = "LabelData"
-        Me.LabelData.Size = New System.Drawing.Size(30, 13)
-        Me.LabelData.TabIndex = 68
-        Me.LabelData.Text = "Data"
+        Me.TotaleDocumentoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "TotaleDocumento", True))
+        Me.TotaleDocumentoTextBox.Location = New System.Drawing.Point(773, 159)
+        Me.TotaleDocumentoTextBox.Name = "TotaleDocumentoTextBox"
+        Me.TotaleDocumentoTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.TotaleDocumentoTextBox.TabIndex = 43
         '
-        'LabelPeso
+        'ImportoIva2TextBox
         '
-        Me.LabelPeso.AutoSize = True
-        Me.LabelPeso.Location = New System.Drawing.Point(594, 20)
-        Me.LabelPeso.Name = "LabelPeso"
-        Me.LabelPeso.Size = New System.Drawing.Size(31, 13)
-        Me.LabelPeso.TabIndex = 67
-        Me.LabelPeso.Text = "Peso"
+        Me.ImportoIva2TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "ImportoIva2", True))
+        Me.ImportoIva2TextBox.Location = New System.Drawing.Point(260, 159)
+        Me.ImportoIva2TextBox.Name = "ImportoIva2TextBox"
+        Me.ImportoIva2TextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ImportoIva2TextBox.TabIndex = 41
         '
-        'LabelColli
+        '_Iva2TextBox
         '
-        Me.LabelColli.AutoSize = True
-        Me.LabelColli.Location = New System.Drawing.Point(510, 20)
-        Me.LabelColli.Name = "LabelColli"
-        Me.LabelColli.Size = New System.Drawing.Size(26, 13)
-        Me.LabelColli.TabIndex = 66
-        Me.LabelColli.Text = "Colli"
+        Me._Iva2TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "%Iva2", True))
+        Me._Iva2TextBox.Location = New System.Drawing.Point(182, 159)
+        Me._Iva2TextBox.Name = "_Iva2TextBox"
+        Me._Iva2TextBox.Size = New System.Drawing.Size(72, 20)
+        Me._Iva2TextBox.TabIndex = 39
         '
-        'LabelPorto
+        'Imponibile2TextBox
         '
-        Me.LabelPorto.AutoSize = True
-        Me.LabelPorto.Location = New System.Drawing.Point(367, 19)
-        Me.LabelPorto.Name = "LabelPorto"
-        Me.LabelPorto.Size = New System.Drawing.Size(32, 13)
-        Me.LabelPorto.TabIndex = 65
-        Me.LabelPorto.Text = "Porto"
+        Me.Imponibile2TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Imponibile2", True))
+        Me.Imponibile2TextBox.Location = New System.Drawing.Point(76, 159)
+        Me.Imponibile2TextBox.Name = "Imponibile2TextBox"
+        Me.Imponibile2TextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Imponibile2TextBox.TabIndex = 37
         '
-        'LabelCausaleTrasporto
+        'CodiceIva2TextBox
         '
-        Me.LabelCausaleTrasporto.AutoSize = True
-        Me.LabelCausaleTrasporto.Location = New System.Drawing.Point(232, 19)
-        Me.LabelCausaleTrasporto.Name = "LabelCausaleTrasporto"
-        Me.LabelCausaleTrasporto.Size = New System.Drawing.Size(93, 13)
-        Me.LabelCausaleTrasporto.TabIndex = 64
-        Me.LabelCausaleTrasporto.Text = "Causale Trasporto"
+        Me.CodiceIva2TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "CodiceIva2", True))
+        Me.CodiceIva2TextBox.Location = New System.Drawing.Point(6, 159)
+        Me.CodiceIva2TextBox.Name = "CodiceIva2TextBox"
+        Me.CodiceIva2TextBox.Size = New System.Drawing.Size(64, 20)
+        Me.CodiceIva2TextBox.TabIndex = 35
         '
-        'LabelImballo
+        'ImportoIva1TextBox
         '
-        Me.LabelImballo.AutoSize = True
-        Me.LabelImballo.Location = New System.Drawing.Point(120, 19)
-        Me.LabelImballo.Name = "LabelImballo"
-        Me.LabelImballo.Size = New System.Drawing.Size(40, 13)
-        Me.LabelImballo.TabIndex = 63
-        Me.LabelImballo.Text = "Imballo"
+        Me.ImportoIva1TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "ImportoIva1", True))
+        Me.ImportoIva1TextBox.Location = New System.Drawing.Point(260, 119)
+        Me.ImportoIva1TextBox.Name = "ImportoIva1TextBox"
+        Me.ImportoIva1TextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ImportoIva1TextBox.TabIndex = 33
         '
-        'LabelTrasporto
+        '_Iva1TextBox
         '
-        Me.LabelTrasporto.AutoSize = True
-        Me.LabelTrasporto.Location = New System.Drawing.Point(3, 20)
-        Me.LabelTrasporto.Name = "LabelTrasporto"
-        Me.LabelTrasporto.Size = New System.Drawing.Size(52, 13)
-        Me.LabelTrasporto.TabIndex = 62
-        Me.LabelTrasporto.Text = "Trasporto"
+        Me._Iva1TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "%Iva1", True))
+        Me._Iva1TextBox.Location = New System.Drawing.Point(182, 119)
+        Me._Iva1TextBox.Name = "_Iva1TextBox"
+        Me._Iva1TextBox.Size = New System.Drawing.Size(72, 20)
+        Me._Iva1TextBox.TabIndex = 31
         '
-        'GroupBox6
+        'Imponibile1TextBox
         '
-        Me.GroupBox6.Controls.Add(Me.LabelS3)
-        Me.GroupBox6.Controls.Add(Me.LabelS2)
-        Me.GroupBox6.Controls.Add(Me.LabelS1)
-        Me.GroupBox6.Controls.Add(Me.LabelTotaleProvvigioni)
-        Me.GroupBox6.Controls.Add(Me.LabelDivisa)
-        Me.GroupBox6.Controls.Add(Me.LabelTotaleDocumento)
-        Me.GroupBox6.Controls.Add(Me.LabelImportoIva2)
-        Me.GroupBox6.Controls.Add(Me.LabelpercentualeIva2)
-        Me.GroupBox6.Controls.Add(Me.LabelImponibile2)
-        Me.GroupBox6.Controls.Add(Me.LabelCodiceIva2)
-        Me.GroupBox6.Controls.Add(Me.LabelImportoIva)
-        Me.GroupBox6.Controls.Add(Me.LabelpercentualeIva)
-        Me.GroupBox6.Controls.Add(Me.LabelImponibile)
-        Me.GroupBox6.Controls.Add(Me.LabelCodiceIva)
-        Me.GroupBox6.Controls.Add(Me.Labelpercentualesconto)
-        Me.GroupBox6.Controls.Add(Me.LabelTotaleMerce)
-        Me.GroupBox6.Controls.Add(Me.TextBoxS3)
-        Me.GroupBox6.Controls.Add(Me.TextBoxTotMerce)
-        Me.GroupBox6.Controls.Add(Me.TextBoxS2)
-        Me.GroupBox6.Controls.Add(Me.TextBoxPercSconto)
-        Me.GroupBox6.Controls.Add(Me.TextBoxS1)
-        Me.GroupBox6.Controls.Add(Me.ComboBoxCodiceIva)
-        Me.GroupBox6.Controls.Add(Me.TextBoxTotProvvigioni)
-        Me.GroupBox6.Controls.Add(Me.TextBoxImponibile)
-        Me.GroupBox6.Controls.Add(Me.ComboBoxDivisa)
-        Me.GroupBox6.Controls.Add(Me.TextBoxImportoIva2)
-        Me.GroupBox6.Controls.Add(Me.TextBoxTotDocumento)
-        Me.GroupBox6.Controls.Add(Me.TextBoxPercIva)
-        Me.GroupBox6.Controls.Add(Me.TextBoxPercIva2)
-        Me.GroupBox6.Controls.Add(Me.TextBoxImportoIva)
-        Me.GroupBox6.Controls.Add(Me.TextBoxImponibile2)
-        Me.GroupBox6.Controls.Add(Me.ComboBoxCodiceIva2)
-        Me.GroupBox6.Location = New System.Drawing.Point(12, 607)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(901, 108)
-        Me.GroupBox6.TabIndex = 63
-        Me.GroupBox6.TabStop = False
+        Me.Imponibile1TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Imponibile1", True))
+        Me.Imponibile1TextBox.Location = New System.Drawing.Point(76, 119)
+        Me.Imponibile1TextBox.Name = "Imponibile1TextBox"
+        Me.Imponibile1TextBox.Size = New System.Drawing.Size(100, 20)
+        Me.Imponibile1TextBox.TabIndex = 29
         '
-        'LabelS3
+        'CodiceIva1TextBox
         '
-        Me.LabelS3.AutoSize = True
-        Me.LabelS3.Location = New System.Drawing.Point(623, 54)
-        Me.LabelS3.Name = "LabelS3"
-        Me.LabelS3.Size = New System.Drawing.Size(20, 13)
-        Me.LabelS3.TabIndex = 88
-        Me.LabelS3.Text = "S3"
+        Me.CodiceIva1TextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "CodiceIva1", True))
+        Me.CodiceIva1TextBox.Location = New System.Drawing.Point(6, 119)
+        Me.CodiceIva1TextBox.Name = "CodiceIva1TextBox"
+        Me.CodiceIva1TextBox.Size = New System.Drawing.Size(64, 20)
+        Me.CodiceIva1TextBox.TabIndex = 27
         '
-        'LabelS2
+        'VettoreComboBox
         '
-        Me.LabelS2.AutoSize = True
-        Me.LabelS2.Location = New System.Drawing.Point(599, 54)
-        Me.LabelS2.Name = "LabelS2"
-        Me.LabelS2.Size = New System.Drawing.Size(20, 13)
-        Me.LabelS2.TabIndex = 87
-        Me.LabelS2.Text = "S2"
+        Me.VettoreComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Vettore", True))
+        Me.VettoreComboBox.FormattingEnabled = True
+        Me.VettoreComboBox.Location = New System.Drawing.Point(260, 77)
+        Me.VettoreComboBox.Name = "VettoreComboBox"
+        Me.VettoreComboBox.Size = New System.Drawing.Size(244, 21)
+        Me.VettoreComboBox.TabIndex = 25
         '
-        'LabelS1
+        'TrasportoMezzoComboBox
         '
-        Me.LabelS1.AutoSize = True
-        Me.LabelS1.Location = New System.Drawing.Point(574, 55)
-        Me.LabelS1.Name = "LabelS1"
-        Me.LabelS1.Size = New System.Drawing.Size(20, 13)
-        Me.LabelS1.TabIndex = 86
-        Me.LabelS1.Text = "S1"
+        Me.TrasportoMezzoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "TrasportoMezzo", True))
+        Me.TrasportoMezzoComboBox.FormattingEnabled = True
+        Me.TrasportoMezzoComboBox.Location = New System.Drawing.Point(133, 77)
+        Me.TrasportoMezzoComboBox.Name = "TrasportoMezzoComboBox"
+        Me.TrasportoMezzoComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.TrasportoMezzoComboBox.TabIndex = 23
         '
-        'LabelTotaleProvvigioni
+        'AspettoBeniComboBox
         '
-        Me.LabelTotaleProvvigioni.AutoSize = True
-        Me.LabelTotaleProvvigioni.Location = New System.Drawing.Point(468, 55)
-        Me.LabelTotaleProvvigioni.Name = "LabelTotaleProvvigioni"
-        Me.LabelTotaleProvvigioni.Size = New System.Drawing.Size(92, 13)
-        Me.LabelTotaleProvvigioni.TabIndex = 85
-        Me.LabelTotaleProvvigioni.Text = "Totale Provvigioni"
+        Me.AspettoBeniComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "AspettoBeni", True))
+        Me.AspettoBeniComboBox.FormattingEnabled = True
+        Me.AspettoBeniComboBox.Location = New System.Drawing.Point(6, 77)
+        Me.AspettoBeniComboBox.Name = "AspettoBeniComboBox"
+        Me.AspettoBeniComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.AspettoBeniComboBox.TabIndex = 21
         '
-        'LabelDivisa
+        'OraTrasportoTextBox
         '
-        Me.LabelDivisa.AutoSize = True
-        Me.LabelDivisa.Location = New System.Drawing.Point(793, 55)
-        Me.LabelDivisa.Name = "LabelDivisa"
-        Me.LabelDivisa.Size = New System.Drawing.Size(36, 13)
-        Me.LabelDivisa.TabIndex = 84
-        Me.LabelDivisa.Text = "Divisa"
+        Me.OraTrasportoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "OraTrasporto", True))
+        Me.OraTrasportoTextBox.Location = New System.Drawing.Point(773, 77)
+        Me.OraTrasportoTextBox.Name = "OraTrasportoTextBox"
+        Me.OraTrasportoTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.OraTrasportoTextBox.TabIndex = 19
         '
-        'LabelTotaleDocumento
+        'DataTrasportoTextBox
         '
-        Me.LabelTotaleDocumento.AutoSize = True
-        Me.LabelTotaleDocumento.Location = New System.Drawing.Point(673, 55)
-        Me.LabelTotaleDocumento.Name = "LabelTotaleDocumento"
-        Me.LabelTotaleDocumento.Size = New System.Drawing.Size(95, 13)
-        Me.LabelTotaleDocumento.TabIndex = 83
-        Me.LabelTotaleDocumento.Text = "Totale Documento"
+        Me.DataTrasportoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "DataTrasporto", True))
+        Me.DataTrasportoTextBox.Location = New System.Drawing.Point(773, 33)
+        Me.DataTrasportoTextBox.Name = "DataTrasportoTextBox"
+        Me.DataTrasportoTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.DataTrasportoTextBox.TabIndex = 17
         '
-        'LabelImportoIva2
+        'PesoTextBox
         '
-        Me.LabelImportoIva2.AutoSize = True
-        Me.LabelImportoIva2.Location = New System.Drawing.Point(362, 54)
-        Me.LabelImportoIva2.Name = "LabelImportoIva2"
-        Me.LabelImportoIva2.Size = New System.Drawing.Size(60, 13)
-        Me.LabelImportoIva2.TabIndex = 82
-        Me.LabelImportoIva2.Text = "Importo Iva"
+        Me.PesoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Peso", True))
+        Me.PesoTextBox.Location = New System.Drawing.Point(697, 33)
+        Me.PesoTextBox.Name = "PesoTextBox"
+        Me.PesoTextBox.Size = New System.Drawing.Size(70, 20)
+        Me.PesoTextBox.TabIndex = 15
         '
-        'LabelpercentualeIva2
+        'ColliTextBox
         '
-        Me.LabelpercentualeIva2.AutoSize = True
-        Me.LabelpercentualeIva2.Location = New System.Drawing.Point(256, 55)
-        Me.LabelpercentualeIva2.Name = "LabelpercentualeIva2"
-        Me.LabelpercentualeIva2.Size = New System.Drawing.Size(33, 13)
-        Me.LabelpercentualeIva2.TabIndex = 81
-        Me.LabelpercentualeIva2.Text = "% Iva"
+        Me.ColliTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Colli", True))
+        Me.ColliTextBox.Location = New System.Drawing.Point(637, 34)
+        Me.ColliTextBox.Name = "ColliTextBox"
+        Me.ColliTextBox.Size = New System.Drawing.Size(54, 20)
+        Me.ColliTextBox.TabIndex = 13
         '
-        'LabelImponibile2
+        'PortoComboBox
         '
-        Me.LabelImponibile2.AutoSize = True
-        Me.LabelImponibile2.Location = New System.Drawing.Point(150, 55)
-        Me.LabelImponibile2.Name = "LabelImponibile2"
-        Me.LabelImponibile2.Size = New System.Drawing.Size(54, 13)
-        Me.LabelImponibile2.TabIndex = 80
-        Me.LabelImponibile2.Text = "Imponibile"
+        Me.PortoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Porto", True))
+        Me.PortoComboBox.FormattingEnabled = True
+        Me.PortoComboBox.Location = New System.Drawing.Point(510, 33)
+        Me.PortoComboBox.Name = "PortoComboBox"
+        Me.PortoComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.PortoComboBox.TabIndex = 11
         '
-        'LabelCodiceIva2
+        'CausaleTrasportoComboBox
         '
-        Me.LabelCodiceIva2.AutoSize = True
-        Me.LabelCodiceIva2.Location = New System.Drawing.Point(6, 55)
-        Me.LabelCodiceIva2.Name = "LabelCodiceIva2"
-        Me.LabelCodiceIva2.Size = New System.Drawing.Size(58, 13)
-        Me.LabelCodiceIva2.TabIndex = 79
-        Me.LabelCodiceIva2.Text = "Codice Iva"
+        Me.CausaleTrasportoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "CausaleTrasporto", True))
+        Me.CausaleTrasportoComboBox.FormattingEnabled = True
+        Me.CausaleTrasportoComboBox.Location = New System.Drawing.Point(383, 33)
+        Me.CausaleTrasportoComboBox.Name = "CausaleTrasportoComboBox"
+        Me.CausaleTrasportoComboBox.Size = New System.Drawing.Size(121, 21)
+        Me.CausaleTrasportoComboBox.TabIndex = 9
         '
-        'LabelImportoIva
+        'ImballoTextBox
         '
-        Me.LabelImportoIva.AutoSize = True
-        Me.LabelImportoIva.Location = New System.Drawing.Point(362, 12)
-        Me.LabelImportoIva.Name = "LabelImportoIva"
-        Me.LabelImportoIva.Size = New System.Drawing.Size(60, 13)
-        Me.LabelImportoIva.TabIndex = 78
-        Me.LabelImportoIva.Text = "Importo Iva"
+        Me.ImballoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Imballo", True))
+        Me.ImballoTextBox.Location = New System.Drawing.Point(287, 34)
+        Me.ImballoTextBox.Name = "ImballoTextBox"
+        Me.ImballoTextBox.Size = New System.Drawing.Size(90, 20)
+        Me.ImballoTextBox.TabIndex = 7
         '
-        'LabelpercentualeIva
+        'TrasportoTextBox
         '
-        Me.LabelpercentualeIva.AutoSize = True
-        Me.LabelpercentualeIva.Location = New System.Drawing.Point(256, 13)
-        Me.LabelpercentualeIva.Name = "LabelpercentualeIva"
-        Me.LabelpercentualeIva.Size = New System.Drawing.Size(33, 13)
-        Me.LabelpercentualeIva.TabIndex = 77
-        Me.LabelpercentualeIva.Text = "% Iva"
+        Me.TrasportoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Trasporto", True))
+        Me.TrasportoTextBox.Location = New System.Drawing.Point(191, 34)
+        Me.TrasportoTextBox.Name = "TrasportoTextBox"
+        Me.TrasportoTextBox.Size = New System.Drawing.Size(90, 20)
+        Me.TrasportoTextBox.TabIndex = 5
         '
-        'LabelImponibile
+        'ScontoCassaTextBox
         '
-        Me.LabelImponibile.AutoSize = True
-        Me.LabelImponibile.Location = New System.Drawing.Point(150, 13)
-        Me.LabelImponibile.Name = "LabelImponibile"
-        Me.LabelImponibile.Size = New System.Drawing.Size(54, 13)
-        Me.LabelImponibile.TabIndex = 76
-        Me.LabelImponibile.Text = "Imponibile"
+        Me.ScontoCassaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "ScontoCassa", True))
+        Me.ScontoCassaTextBox.Location = New System.Drawing.Point(112, 34)
+        Me.ScontoCassaTextBox.Name = "ScontoCassaTextBox"
+        Me.ScontoCassaTextBox.Size = New System.Drawing.Size(73, 20)
+        Me.ScontoCassaTextBox.TabIndex = 3
         '
-        'LabelCodiceIva
+        'TotaleMerceTextBox
         '
-        Me.LabelCodiceIva.AutoSize = True
-        Me.LabelCodiceIva.Location = New System.Drawing.Point(6, 13)
-        Me.LabelCodiceIva.Name = "LabelCodiceIva"
-        Me.LabelCodiceIva.Size = New System.Drawing.Size(58, 13)
-        Me.LabelCodiceIva.TabIndex = 75
-        Me.LabelCodiceIva.Text = "Codice Iva"
+        Me.TotaleMerceTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "TotaleMerce", True))
+        Me.TotaleMerceTextBox.Location = New System.Drawing.Point(6, 34)
+        Me.TotaleMerceTextBox.Name = "TotaleMerceTextBox"
+        Me.TotaleMerceTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.TotaleMerceTextBox.TabIndex = 1
         '
-        'Labelpercentualesconto
+        'AnagraficheTableAdapter1
         '
-        Me.Labelpercentualesconto.AutoSize = True
-        Me.Labelpercentualesconto.Location = New System.Drawing.Point(791, 13)
-        Me.Labelpercentualesconto.Name = "Labelpercentualesconto"
-        Me.Labelpercentualesconto.Size = New System.Drawing.Size(52, 13)
-        Me.Labelpercentualesconto.TabIndex = 74
-        Me.Labelpercentualesconto.Text = "% Sconto"
+        Me.AnagraficheTableAdapter1.ClearBeforeFill = True
         '
-        'LabelTotaleMerce
+        'ArticoliTableAdapter1
         '
-        Me.LabelTotaleMerce.AutoSize = True
-        Me.LabelTotaleMerce.Location = New System.Drawing.Point(673, 13)
-        Me.LabelTotaleMerce.Name = "LabelTotaleMerce"
-        Me.LabelTotaleMerce.Size = New System.Drawing.Size(70, 13)
-        Me.LabelTotaleMerce.TabIndex = 73
-        Me.LabelTotaleMerce.Text = "Totale Merce"
+        Me.ArticoliTableAdapter1.ClearBeforeFill = True
         '
-        'Navigatore1
+        'TipidocumentoTableAdapter1
         '
-        Me.Navigatore1.BackColor = System.Drawing.Color.Transparent
-        Me.Navigatore1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Navigatore1.Location = New System.Drawing.Point(0, 0)
-        Me.Navigatore1.Name = "Navigatore1"
-        Me.Navigatore1.Size = New System.Drawing.Size(925, 36)
-        Me.Navigatore1.TabIndex = 64
+        Me.TipidocumentoTableAdapter1.ClearBeforeFill = True
+        '
+        'ParametriivaTableAdapter1
+        '
+        Me.ParametriivaTableAdapter1.ClearBeforeFill = True
+        '
+        'AgentiTableAdapter1
+        '
+        Me.AgentiTableAdapter1.ClearBeforeFill = True
+        '
+        'PagamentitestataTableAdapter1
+        '
+        Me.PagamentitestataTableAdapter1.ClearBeforeFill = True
+        '
+        'TipitrasportoTableAdapter1
+        '
+        Me.TipitrasportoTableAdapter1.ClearBeforeFill = True
+        '
+        'AspettobeniTableAdapter1
+        '
+        Me.AspettobeniTableAdapter1.ClearBeforeFill = True
+        '
+        'CausalitrasportoTableAdapter1
+        '
+        Me.CausalitrasportoTableAdapter1.ClearBeforeFill = True
+        '
+        'ModitrasportoTableAdapter1
+        '
+        Me.ModitrasportoTableAdapter1.ClearBeforeFill = True
+        '
+        'VettoriTableAdapter1
+        '
+        Me.VettoriTableAdapter1.ClearBeforeFill = True
+        '
+        'DiviseTableAdapter1
+        '
+        Me.DiviseTableAdapter1.ClearBeforeFill = True
+        '
+        'AnagraficadestinazioniTableAdapter1
+        '
+        Me.AnagraficadestinazioniTableAdapter1.ClearBeforeFill = True
+        '
+        'EsercizicontabiliTableAdapter1
+        '
+        Me.EsercizicontabiliTableAdapter1.ClearBeforeFill = True
+        '
+        'AnagraficafatturazioneTableAdapter1
+        '
+        Me.AnagraficafatturazioneTableAdapter1.ClearBeforeFill = True
+        '
+        'AziendaComboBox
+        '
+        Me.AziendaComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Azienda", True))
+        Me.AziendaComboBox.FormattingEnabled = True
+        Me.AziendaComboBox.Location = New System.Drawing.Point(6, 30)
+        Me.AziendaComboBox.Name = "AziendaComboBox"
+        Me.AziendaComboBox.Size = New System.Drawing.Size(179, 21)
+        Me.AziendaComboBox.TabIndex = 1
+        '
+        'EsercizioComboBox
+        '
+        Me.EsercizioComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Esercizio", True))
+        Me.EsercizioComboBox.FormattingEnabled = True
+        Me.EsercizioComboBox.Location = New System.Drawing.Point(191, 30)
+        Me.EsercizioComboBox.Name = "EsercizioComboBox"
+        Me.EsercizioComboBox.Size = New System.Drawing.Size(179, 21)
+        Me.EsercizioComboBox.TabIndex = 3
+        '
+        'TipoDocumentoComboBox
+        '
+        Me.TipoDocumentoComboBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "TipoDocumento", True))
+        Me.TipoDocumentoComboBox.FormattingEnabled = True
+        Me.TipoDocumentoComboBox.Location = New System.Drawing.Point(376, 30)
+        Me.TipoDocumentoComboBox.Name = "TipoDocumentoComboBox"
+        Me.TipoDocumentoComboBox.Size = New System.Drawing.Size(179, 21)
+        Me.TipoDocumentoComboBox.TabIndex = 5
+        '
+        'NumeroTextBox
+        '
+        Me.NumeroTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Numero", True))
+        Me.NumeroTextBox.Location = New System.Drawing.Point(561, 30)
+        Me.NumeroTextBox.Name = "NumeroTextBox"
+        Me.NumeroTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.NumeroTextBox.TabIndex = 7
+        '
+        'SiglaTextBox
+        '
+        Me.SiglaTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Sigla", True))
+        Me.SiglaTextBox.Location = New System.Drawing.Point(667, 30)
+        Me.SiglaTextBox.Name = "SiglaTextBox"
+        Me.SiglaTextBox.Size = New System.Drawing.Size(44, 20)
+        Me.SiglaTextBox.TabIndex = 9
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(SiglaLabel)
+        Me.GroupBox1.Controls.Add(Me.SiglaTextBox)
+        Me.GroupBox1.Controls.Add(NumeroLabel)
+        Me.GroupBox1.Controls.Add(Me.NumeroTextBox)
+        Me.GroupBox1.Controls.Add(TipoDocumentoLabel)
+        Me.GroupBox1.Controls.Add(Me.TipoDocumentoComboBox)
+        Me.GroupBox1.Controls.Add(EsercizioLabel)
+        Me.GroupBox1.Controls.Add(Me.EsercizioComboBox)
+        Me.GroupBox1.Controls.Add(AziendaLabel)
+        Me.GroupBox1.Controls.Add(Me.AziendaComboBox)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 41)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(906, 64)
+        Me.GroupBox1.TabIndex = 0
+        Me.GroupBox1.TabStop = False
+        '
+        'ArticolimisureTableAdapter1
+        '
+        Me.ArticolimisureTableAdapter1.ClearBeforeFill = True
+        '
+        'Azienda
+        '
+        Me.Azienda.DataPropertyName = "Azienda"
+        Me.Azienda.HeaderText = "Azienda"
+        Me.Azienda.Name = "Azienda"
+        Me.Azienda.Width = 70
+        '
+        'Esercizio
+        '
+        Me.Esercizio.DataPropertyName = "Esercizio"
+        Me.Esercizio.HeaderText = "Esercizio"
+        Me.Esercizio.Name = "Esercizio"
+        Me.Esercizio.Width = 74
+        '
+        'TipoDocumento
+        '
+        Me.TipoDocumento.DataPropertyName = "TipoDocumento"
+        Me.TipoDocumento.HeaderText = "TipoDocumento"
+        Me.TipoDocumento.Name = "TipoDocumento"
+        Me.TipoDocumento.Width = 108
+        '
+        'Numero
+        '
+        Me.Numero.DataPropertyName = "Numero"
+        Me.Numero.HeaderText = "Numero"
+        Me.Numero.Name = "Numero"
+        Me.Numero.Width = 69
+        '
+        'DocumentidettaglioBindingSource
+        '
+        Me.DocumentidettaglioBindingSource.DataMember = "documentitestata_documentidettaglio"
+        Me.DocumentidettaglioBindingSource.DataSource = Me.DocumentitestataBindingSource
+        '
+        'BindingNavigatorAddNewItem
+        '
+        Me.BindingNavigatorAddNewItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.inserimento
+        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
+        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(47, 35)
+        Me.BindingNavigatorAddNewItem.Text = "&Nuovo"
+        Me.BindingNavigatorAddNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'BindingNavigatorDeleteItem
+        '
+        Me.BindingNavigatorDeleteItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.Trash
+        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
+        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(50, 35)
+        Me.BindingNavigatorDeleteItem.Text = "&Elimina"
+        Me.BindingNavigatorDeleteItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'BindingNavigatorMoveFirstItem
+        '
+        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
+        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMoveFirstItem.Text = "Sposta in prima posizione"
+        '
+        'BindingNavigatorMovePreviousItem
+        '
+        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
+        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMovePreviousItem.Text = "Sposta indietro"
+        '
+        'BindingNavigatorMoveNextItem
+        '
+        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
+        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMoveNextItem.Text = "Sposta avanti"
+        '
+        'BindingNavigatorMoveLastItem
+        '
+        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
+        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMoveLastItem.Text = "Sposta in ultima posizione"
+        '
+        'DocumentitestataBindingNavigatorSaveItem
+        '
+        Me.DocumentitestataBindingNavigatorSaveItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.salva
+        Me.DocumentitestataBindingNavigatorSaveItem.Name = "DocumentitestataBindingNavigatorSaveItem"
+        Me.DocumentitestataBindingNavigatorSaveItem.Size = New System.Drawing.Size(38, 35)
+        Me.DocumentitestataBindingNavigatorSaveItem.Text = "&Salva"
+        Me.DocumentitestataBindingNavigatorSaveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.AutoSize = False
+        Me.ToolStripButton1.Image = Global.GeVen_SE_2015.My.Resources.Resources.ricerca
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(49, 35)
+        Me.ToolStripButton1.Text = "&Ricerca"
+        Me.ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.Image = Global.GeVen_SE_2015.My.Resources.Resources.stampa
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(51, 35)
+        Me.ToolStripButton2.Text = "&Stampa"
+        Me.ToolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = Global.GeVen_SE_2015.My.Resources.Resources.text_effects
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.Location = New System.Drawing.Point(372, 28)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(22, 20)
+        Me.Button1.TabIndex = 14
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'DocumentitestatadocumentidettaglioBindingSource1
+        '
+        Me.DocumentitestatadocumentidettaglioBindingSource1.DataMember = "documentitestata_documentidettaglio"
+        Me.DocumentitestatadocumentidettaglioBindingSource1.DataSource = Me.DocumentitestataBindingSource
+        '
+        'DocumentitestatadocumentidettaglioBindingSource
+        '
+        Me.DocumentitestatadocumentidettaglioBindingSource.DataMember = "documentitestata_documentidettaglio"
+        Me.DocumentitestatadocumentidettaglioBindingSource.DataSource = Me.DocumentitestataBindingSource
         '
         'GestioneDocumenti
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(925, 764)
-        Me.Controls.Add(Me.Navigatore1)
-        Me.Controls.Add(Me.GroupBox6)
+        Me.ClientSize = New System.Drawing.Size(933, 673)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox4)
+        Me.Controls.Add(Me.DocumentidettaglioDataGridView)
+        Me.Controls.Add(Me.DocumentitestataBindingNavigator)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.DataGridView1)
         Me.Name = "GestioneDocumenti"
-        Me.Text = "Gestione dei Documenti"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.Text = "GestioneDocumenti"
+        CType(Me.DocumentitestataBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FatturazionegevenDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.DocumentitestataBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.DocumentitestataBindingNavigator.ResumeLayout(False)
+        Me.DocumentitestataBindingNavigator.PerformLayout()
+        CType(Me.DocumentidettaglioDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
+        CType(Me.DocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentitestatadocumentidettaglioBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentitestatadocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ComboBoxAzienda As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxEsercizio As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxTipiDocumento As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxNumeroDocumento As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxSiglaOperatore As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxCliente As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxDestinazione As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxRiferimento As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxDataDocumento As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxAgente As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxDestinazione2 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxIva As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxPagamento As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxBanca As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxSconto As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxCAP As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxDestinazione3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxLocalita As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxProvincia As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxAgenzia As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents TextBoxImballo As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxTrasporto As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxPorto As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxCausaleTrasporto As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxData As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxPeso As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxColli As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxOraTrasporto As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxPercSconto As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxTotMerce As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxCorriere As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxTrasportoMezzo As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxAspettoBeni As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBoxCodiceIva As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxTotDocumento As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxImportoIva As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxPercIva As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxImponibile As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxDivisa As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxTotProvvigioni As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxImportoIva2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxPercIva2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxImponibile2 As System.Windows.Forms.TextBox
-    Friend WithEvents ComboBoxCodiceIva2 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBoxS3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxS2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBoxS1 As System.Windows.Forms.TextBox
-    Friend WithEvents LabelAzienda As System.Windows.Forms.Label
-    Friend WithEvents LabelEsercizio As System.Windows.Forms.Label
-    Friend WithEvents LabelTipoDocumento As System.Windows.Forms.Label
-    Friend WithEvents LabelNumeroDocumento As System.Windows.Forms.Label
-    Friend WithEvents LabelSiglaOperatore As System.Windows.Forms.Label
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents LabelRiferimento As System.Windows.Forms.Label
-    Friend WithEvents LabelDataDocumento As System.Windows.Forms.Label
-    Friend WithEvents LabelAgente As System.Windows.Forms.Label
-    Friend WithEvents LabelCliente As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents LabelDestinazione As System.Windows.Forms.Label
-    Friend WithEvents LabelPagamento As System.Windows.Forms.Label
-    Friend WithEvents LabelIva As System.Windows.Forms.Label
-    Friend WithEvents LabelSconto As System.Windows.Forms.Label
-    Friend WithEvents LabelBanca As System.Windows.Forms.Label
+    Friend WithEvents FatturazionegevenDataSet As GeVen_SE_2015.fatturazionegevenDataSet
+    Friend WithEvents DocumentitestataBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents DocumentitestataTableAdapter As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.documentitestataTableAdapter
+    Friend WithEvents TableAdapterManager As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.TableAdapterManager
+    Friend WithEvents DocumentitestataBindingNavigator As System.Windows.Forms.BindingNavigator
+    Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents BindingNavigatorPositionItem As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents BindingNavigatorSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents DocumentitestataBindingNavigatorSaveItem As System.Windows.Forms.ToolStripButton
+    Friend WithEvents DocumentidettaglioTableAdapter As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.documentidettaglioTableAdapter
+    Friend WithEvents DocumentidettaglioBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents DocumentidettaglioDataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents AziendeTableAdapter As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.aziendeTableAdapter
+    Friend WithEvents AnagraficaComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents DestinazioneComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents AgenteComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents RiferimentoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents DataDocumentoDateTimePicker As System.Windows.Forms.DateTimePicker
+    Friend WithEvents IvaComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents ScontoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents PagamentoComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents ProvinciaDestinatarioTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents LocalitaDestinatarioTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents CapDestinatarioTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents IndirizzoDestinatarioTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents NominativoDestinatarioTextBox As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents riga As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents articolo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents descrizione As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents unitamisuramagazzino As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents quantitamagazzino As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents unitamisurafatturazione As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents quantitafatturazione As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents prezzo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents percentuale As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents percentuale2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents percentuale3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents importo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents iva As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents scorporo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents classemerceologica As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents contropartita As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents percentualeprovigioni As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents aliax As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents magazzino As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents LabelAgenzia As System.Windows.Forms.Label
+    Friend WithEvents AgenziaTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents BancaTextBox As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents LabelCorriere As System.Windows.Forms.Label
-    Friend WithEvents LabelTrasportoMezzo As System.Windows.Forms.Label
-    Friend WithEvents LabelAspettoBeni As System.Windows.Forms.Label
-    Friend WithEvents LabelOraTrasporto As System.Windows.Forms.Label
-    Friend WithEvents LabelData As System.Windows.Forms.Label
-    Friend WithEvents LabelPeso As System.Windows.Forms.Label
-    Friend WithEvents LabelColli As System.Windows.Forms.Label
-    Friend WithEvents LabelPorto As System.Windows.Forms.Label
-    Friend WithEvents LabelCausaleTrasporto As System.Windows.Forms.Label
-    Friend WithEvents LabelImballo As System.Windows.Forms.Label
-    Friend WithEvents LabelTrasporto As System.Windows.Forms.Label
-    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents LabelS3 As System.Windows.Forms.Label
-    Friend WithEvents LabelS2 As System.Windows.Forms.Label
-    Friend WithEvents LabelS1 As System.Windows.Forms.Label
-    Friend WithEvents LabelTotaleProvvigioni As System.Windows.Forms.Label
-    Friend WithEvents LabelDivisa As System.Windows.Forms.Label
-    Friend WithEvents LabelTotaleDocumento As System.Windows.Forms.Label
-    Friend WithEvents LabelImportoIva2 As System.Windows.Forms.Label
-    Friend WithEvents LabelpercentualeIva2 As System.Windows.Forms.Label
-    Friend WithEvents LabelImponibile2 As System.Windows.Forms.Label
-    Friend WithEvents LabelCodiceIva2 As System.Windows.Forms.Label
-    Friend WithEvents LabelImportoIva As System.Windows.Forms.Label
-    Friend WithEvents LabelpercentualeIva As System.Windows.Forms.Label
-    Friend WithEvents LabelImponibile As System.Windows.Forms.Label
-    Friend WithEvents LabelCodiceIva As System.Windows.Forms.Label
-    Friend WithEvents Labelpercentualesconto As System.Windows.Forms.Label
-    Friend WithEvents LabelTotaleMerce As System.Windows.Forms.Label
-    Friend WithEvents Navigatore1 As GeVen_SE_2015.Navigatore
+    Friend WithEvents PortoComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents CausaleTrasportoComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents ImballoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents TrasportoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents ScontoCassaTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents TotaleMerceTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents ColliTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents PesoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents DataTrasportoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents VettoreComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents TrasportoMezzoComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents AspettoBeniComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents OraTrasportoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents CodiceIva1TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents _Iva1TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Imponibile1TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents ImportoIva2TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents _Iva2TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents Imponibile2TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents CodiceIva2TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents ImportoIva1TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents DivisaComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents TotaleDocumentoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents TestDocumentoTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents MovimentoContabileTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents TestProceduraTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents AnagraficheTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.anagraficheTableAdapter
+    Friend WithEvents ArticoliTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articoliTableAdapter
+    Friend WithEvents IvaTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DocumentitestatadocumentidettaglioBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents TipidocumentoTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.tipidocumentoTableAdapter
+    Friend WithEvents ParametriivaTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.parametriivaTableAdapter
+    Friend WithEvents AgentiTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.agentiTableAdapter
+    Friend WithEvents PagamentitestataTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.pagamentitestataTableAdapter
+    Friend WithEvents TipitrasportoTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.tipitrasportoTableAdapter
+    Friend WithEvents AspettobeniTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.aspettobeniTableAdapter
+    Friend WithEvents CausalitrasportoTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.causalitrasportoTableAdapter
+    Friend WithEvents ModitrasportoTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.moditrasportoTableAdapter
+    Friend WithEvents VettoriTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.vettoriTableAdapter
+    Friend WithEvents DiviseTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.diviseTableAdapter
+    Friend WithEvents AnagraficadestinazioniTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.anagraficadestinazioniTableAdapter
+    Friend WithEvents EsercizicontabiliTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.esercizicontabiliTableAdapter
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents TextBoxLike As System.Windows.Forms.TextBox
+    Friend WithEvents AnagraficafatturazioneTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.anagraficafatturazioneTableAdapter
+    Friend WithEvents AziendaComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents EsercizioComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents TipoDocumentoComboBox As System.Windows.Forms.ComboBox
+    Friend WithEvents NumeroTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents SiglaTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents DocumentitestatadocumentidettaglioBindingSource1 As System.Windows.Forms.BindingSource
+    Friend WithEvents RigaTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ArticoloComboBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DescrizioneTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UnitaMisuraMagazzinoTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents QuantitaMagazzinoTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UnitaMisuraTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents QuantitaTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PrezzoUnitarioTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Sconto1TextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Sconto2TextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Sconto3TextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ImportoTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ScorporoTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClasseMerceologicaTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ClasseContropartitaTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ArticoloAliasTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MovimentoMagazzinoTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Iva As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Azienda As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Esercizio As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents TipoDocumento As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Numero As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ArticolimisureTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articolimisureTableAdapter
 End Class

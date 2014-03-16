@@ -19,4 +19,16 @@
         Return Ist
     End Function
 
+    Private Sub AziendeBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles AziendeBindingNavigatorSaveItem.Click
+        Me.Validate()
+        Me.AziendeBindingSource.EndEdit()
+        Me.TableAdapterManager.UpdateAll(Me.FatturazionegevenDataSet)
+
+    End Sub
+
+    Private Sub DatiAziende_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: questa riga di codice carica i dati nella tabella 'FatturazionegevenDataSet.aziende'. È possibile spostarla o rimuoverla se necessario.
+        Me.AziendeTableAdapter.Fill(Me.FatturazionegevenDataSet.aziende)
+
+    End Sub
 End Class
