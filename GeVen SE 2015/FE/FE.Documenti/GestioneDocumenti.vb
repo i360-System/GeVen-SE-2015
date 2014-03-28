@@ -99,12 +99,79 @@ Public Class GestioneDocumenti
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+
         globalSystemComboBehaviour = False ' da vedere cosa fare
-        Dim flussodiLAvoro As New WorkFlow
-        flussodiLAvoro.Print(Me)
 
+        Dim listaDataset As New List(Of DataTable) : Dim flussodiLAvoro As New WorkFlow
+        If True Then
+            If CInt(BindingNavigatorPositionItem.Text) > 1 Then
+                Dim docTestata, docDettaglio As DataTable : Dim i As New Services
+                docTestata = Me.FatturazionegevenDataSet.documentitestata
+                docDettaglio = Me.FatturazionegevenDataSet.documentidettaglio
+
+                For Each rigaTestata As DataRow In docTestata.Rows
+
+                    'per ogni riga in doc testata facciamo un doc
+                    Dim tblTestata As New DataTable
+                    Dim tblDettaglio As New DataTable
+
+                    tblTestata.Rows.Add(rigaTestata)
+                    Dim azien = rigaTestata.Item("Azienda").ToString()
+                    Dim eser = rigaTestata.Item("Esercizio").ToString()
+                    Dim tipdoc = rigaTestata.Item("TipoDocumento")
+                    Dim nume = rigaTestata.Item("Numero")
+                    tblDettaglio = i.selectDettaglio(docDettaglio, azien, eser, tipdoc, nume)
+
+                    listaDataset.AddRange({docTestata, docDettaglio})
+                    i.ElaboraStampe(listaDataset, "TemplateFatturaBlu.Doc")
+
+                Next
+
+
+                'PrintDocument1.PrinterSettings.PrintFileName
+                PrintDialog1.Document = PrintDocument1
+                PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
+                PrintDialog1.AllowSomePages = True
+                If PrintDialog1.ShowDialog = DialogResult.OK Then
+                    PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
+                    PrintDocument1.Print()
+                End If
+                'PrintDialog1.ShowDialog()
+
+                flussodiLAvoro.Print(listaDataset)
+
+            ElseIf CInt(BindingNavigatorPositionItem.Text) = 1 Then
+                PrintDialog1.ShowDialog()
+                Dim aziendaS, esercizioS, tipodocumentoS, numeroS As String
+                aziendaS = Me.AziendaComboBox.Text
+                esercizioS = Me.EsercizioComboBox.Text
+                tipodocumentoS = Me.TipoDocumentoComboBox.Text
+                numeroS = Me.NumeroTextBox.Text
+
+                'filtro in funzione del documento che ho a video
+                Dim whereConditionS = "where azienda=" & aziendaS & " and esercizio=" & esercizioS & _
+                    " and tipodocumento=" & tipodocumentoS & " and numero=" & numeroS
+                DocumentitestataBindingSource.RemoveFilter()
+                DocumentitestataBindingSource.Filter = whereConditionS
+
+                'ricavo le tabelle con la where condition
+                Dim tbl1 = DocumentitestataTableAdapter.GetData()
+                Dim tbl2 = DocumentidettaglioTableAdapter.GetData()
+                DocumentitestataBindingSource.RemoveFilter()
+                listaDataset.AddRange({tbl1, tbl2})
+
+                'le passo al metodo che elabora la stampa
+                flussodiLAvoro.Print(listaDataset)
+
+            Else
+
+                MsgBox("Non sono caricati documenti da poter stampare.")
+                Exit Sub
+
+            End If
+        End If
     End Sub
-
+   
     ''' <summary>
     ''' Inizializa il caricamento delle combobox in determinati stati dell'applicativo,
     ''' inoltre determina il caricamento delle combobox "figlie"

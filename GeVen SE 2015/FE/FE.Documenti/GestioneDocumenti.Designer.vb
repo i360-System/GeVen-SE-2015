@@ -74,6 +74,7 @@ Partial Class GestioneDocumenti
         Me.FatturazionegevenDataSet = New GeVen_SE_2015.fatturazionegevenDataSet()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TextBoxLike = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ScontoTextBox = New System.Windows.Forms.TextBox()
         Me.PagamentoComboBox = New System.Windows.Forms.ComboBox()
         Me.IvaComboBox = New System.Windows.Forms.ComboBox()
@@ -93,12 +94,21 @@ Partial Class GestioneDocumenti
         Me.AziendeTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.aziendeTableAdapter()
         Me.DocumentidettaglioTableAdapter = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.documentidettaglioTableAdapter()
         Me.DocumentitestataBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
         Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DocumentitestataBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.DocumentidettaglioDataGridView = New System.Windows.Forms.DataGridView()
         Me.RigaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ArticoloComboBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -118,6 +128,11 @@ Partial Class GestioneDocumenti
         Me.ArticoloAliasTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MovimentoMagazzinoTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Iva = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Azienda = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Esercizio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DocumentidettaglioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.IvaTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.AgenziaTextBox = New System.Windows.Forms.TextBox()
@@ -171,23 +186,10 @@ Partial Class GestioneDocumenti
         Me.SiglaTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ArticolimisureTableAdapter1 = New GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articolimisureTableAdapter()
-        Me.Azienda = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Esercizio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoDocumento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Numero = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DocumentidettaglioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.DocumentitestataBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.DocumentitestatadocumentidettaglioBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.DocumentitestatadocumentidettaglioBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         AnagraficaLabel = New System.Windows.Forms.Label()
         DestinazioneLabel = New System.Windows.Forms.Label()
         DataDocumentoLabel = New System.Windows.Forms.Label()
@@ -241,10 +243,10 @@ Partial Class GestioneDocumenti
         CType(Me.DocumentitestataBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.DocumentitestataBindingNavigator.SuspendLayout()
         CType(Me.DocumentidettaglioDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DocumentitestatadocumentidettaglioBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DocumentitestatadocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -704,6 +706,16 @@ Partial Class GestioneDocumenti
         Me.TextBoxLike.Size = New System.Drawing.Size(93, 20)
         Me.TextBoxLike.TabIndex = 15
         '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = Global.GeVen_SE_2015.My.Resources.Resources.text_effects
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.Location = New System.Drawing.Point(372, 28)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(22, 20)
+        Me.Button1.TabIndex = 14
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'ScontoTextBox
         '
         Me.ScontoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DocumentitestataBindingSource, "Sconto", True))
@@ -910,12 +922,48 @@ Partial Class GestioneDocumenti
         Me.DocumentitestataBindingNavigator.TabIndex = 2
         Me.DocumentitestataBindingNavigator.Text = "BindingNavigator1"
         '
+        'BindingNavigatorAddNewItem
+        '
+        Me.BindingNavigatorAddNewItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.inserimento
+        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
+        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(47, 35)
+        Me.BindingNavigatorAddNewItem.Text = "&Nuovo"
+        Me.BindingNavigatorAddNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'BindingNavigatorCountItem
         '
         Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
         Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(34, 35)
         Me.BindingNavigatorCountItem.Text = "di {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Numero totale di elementi"
+        '
+        'BindingNavigatorDeleteItem
+        '
+        Me.BindingNavigatorDeleteItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.Trash
+        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
+        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(50, 35)
+        Me.BindingNavigatorDeleteItem.Text = "&Elimina"
+        Me.BindingNavigatorDeleteItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'BindingNavigatorMoveFirstItem
+        '
+        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
+        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMoveFirstItem.Text = "Sposta in prima posizione"
+        '
+        'BindingNavigatorMovePreviousItem
+        '
+        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
+        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMovePreviousItem.Text = "Sposta indietro"
         '
         'BindingNavigatorSeparator
         '
@@ -936,15 +984,60 @@ Partial Class GestioneDocumenti
         Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
         Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 38)
         '
+        'BindingNavigatorMoveNextItem
+        '
+        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
+        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMoveNextItem.Text = "Sposta avanti"
+        '
+        'BindingNavigatorMoveLastItem
+        '
+        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
+        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 35)
+        Me.BindingNavigatorMoveLastItem.Text = "Sposta in ultima posizione"
+        '
         'BindingNavigatorSeparator2
         '
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 38)
         '
+        'DocumentitestataBindingNavigatorSaveItem
+        '
+        Me.DocumentitestataBindingNavigatorSaveItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.salva
+        Me.DocumentitestataBindingNavigatorSaveItem.Name = "DocumentitestataBindingNavigatorSaveItem"
+        Me.DocumentitestataBindingNavigatorSaveItem.Size = New System.Drawing.Size(38, 35)
+        Me.DocumentitestataBindingNavigatorSaveItem.Text = "&Salva"
+        Me.DocumentitestataBindingNavigatorSaveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.AutoSize = False
+        Me.ToolStripButton1.Image = Global.GeVen_SE_2015.My.Resources.Resources.ricerca
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(49, 35)
+        Me.ToolStripButton1.Text = "&Ricerca"
+        Me.ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 38)
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.Image = Global.GeVen_SE_2015.My.Resources.Resources.stampa
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(51, 35)
+        Me.ToolStripButton2.Text = "&Stampa"
+        Me.ToolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'DocumentidettaglioDataGridView
         '
@@ -1085,6 +1178,39 @@ Partial Class GestioneDocumenti
         Me.Iva.HeaderText = "Iva"
         Me.Iva.Name = "Iva"
         Me.Iva.Width = 47
+        '
+        'Azienda
+        '
+        Me.Azienda.DataPropertyName = "Azienda"
+        Me.Azienda.HeaderText = "Azienda"
+        Me.Azienda.Name = "Azienda"
+        Me.Azienda.Width = 70
+        '
+        'Esercizio
+        '
+        Me.Esercizio.DataPropertyName = "Esercizio"
+        Me.Esercizio.HeaderText = "Esercizio"
+        Me.Esercizio.Name = "Esercizio"
+        Me.Esercizio.Width = 74
+        '
+        'TipoDocumento
+        '
+        Me.TipoDocumento.DataPropertyName = "TipoDocumento"
+        Me.TipoDocumento.HeaderText = "TipoDocumento"
+        Me.TipoDocumento.Name = "TipoDocumento"
+        Me.TipoDocumento.Width = 108
+        '
+        'Numero
+        '
+        Me.Numero.DataPropertyName = "Numero"
+        Me.Numero.HeaderText = "Numero"
+        Me.Numero.Name = "Numero"
+        Me.Numero.Width = 69
+        '
+        'DocumentidettaglioBindingSource
+        '
+        Me.DocumentidettaglioBindingSource.DataMember = "documentitestata_documentidettaglio"
+        Me.DocumentidettaglioBindingSource.DataSource = Me.DocumentitestataBindingSource
         '
         'IvaTextBoxColumn
         '
@@ -1519,130 +1645,6 @@ Partial Class GestioneDocumenti
         '
         Me.ArticolimisureTableAdapter1.ClearBeforeFill = True
         '
-        'Azienda
-        '
-        Me.Azienda.DataPropertyName = "Azienda"
-        Me.Azienda.HeaderText = "Azienda"
-        Me.Azienda.Name = "Azienda"
-        Me.Azienda.Width = 70
-        '
-        'Esercizio
-        '
-        Me.Esercizio.DataPropertyName = "Esercizio"
-        Me.Esercizio.HeaderText = "Esercizio"
-        Me.Esercizio.Name = "Esercizio"
-        Me.Esercizio.Width = 74
-        '
-        'TipoDocumento
-        '
-        Me.TipoDocumento.DataPropertyName = "TipoDocumento"
-        Me.TipoDocumento.HeaderText = "TipoDocumento"
-        Me.TipoDocumento.Name = "TipoDocumento"
-        Me.TipoDocumento.Width = 108
-        '
-        'Numero
-        '
-        Me.Numero.DataPropertyName = "Numero"
-        Me.Numero.HeaderText = "Numero"
-        Me.Numero.Name = "Numero"
-        Me.Numero.Width = 69
-        '
-        'DocumentidettaglioBindingSource
-        '
-        Me.DocumentidettaglioBindingSource.DataMember = "documentitestata_documentidettaglio"
-        Me.DocumentidettaglioBindingSource.DataSource = Me.DocumentitestataBindingSource
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.inserimento
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(47, 35)
-        Me.BindingNavigatorAddNewItem.Text = "&Nuovo"
-        Me.BindingNavigatorAddNewItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.Trash
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(50, 35)
-        Me.BindingNavigatorDeleteItem.Text = "&Elimina"
-        Me.BindingNavigatorDeleteItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 35)
-        Me.BindingNavigatorMoveFirstItem.Text = "Sposta in prima posizione"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 35)
-        Me.BindingNavigatorMovePreviousItem.Text = "Sposta indietro"
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 35)
-        Me.BindingNavigatorMoveNextItem.Text = "Sposta avanti"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 35)
-        Me.BindingNavigatorMoveLastItem.Text = "Sposta in ultima posizione"
-        '
-        'DocumentitestataBindingNavigatorSaveItem
-        '
-        Me.DocumentitestataBindingNavigatorSaveItem.Image = Global.GeVen_SE_2015.My.Resources.Resources.salva
-        Me.DocumentitestataBindingNavigatorSaveItem.Name = "DocumentitestataBindingNavigatorSaveItem"
-        Me.DocumentitestataBindingNavigatorSaveItem.Size = New System.Drawing.Size(38, 35)
-        Me.DocumentitestataBindingNavigatorSaveItem.Text = "&Salva"
-        Me.DocumentitestataBindingNavigatorSaveItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.AutoSize = False
-        Me.ToolStripButton1.Image = Global.GeVen_SE_2015.My.Resources.Resources.ricerca
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(49, 35)
-        Me.ToolStripButton1.Text = "&Ricerca"
-        Me.ToolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStripButton2
-        '
-        Me.ToolStripButton2.Image = Global.GeVen_SE_2015.My.Resources.Resources.stampa
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(51, 35)
-        Me.ToolStripButton2.Text = "&Stampa"
-        Me.ToolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'Button1
-        '
-        Me.Button1.BackgroundImage = Global.GeVen_SE_2015.My.Resources.Resources.text_effects
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.Location = New System.Drawing.Point(372, 28)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(22, 20)
-        Me.Button1.TabIndex = 14
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'DocumentitestatadocumentidettaglioBindingSource1
         '
         Me.DocumentitestatadocumentidettaglioBindingSource1.DataMember = "documentitestata_documentidettaglio"
@@ -1652,6 +1654,10 @@ Partial Class GestioneDocumenti
         '
         Me.DocumentitestatadocumentidettaglioBindingSource.DataMember = "documentitestata_documentidettaglio"
         Me.DocumentitestatadocumentidettaglioBindingSource.DataSource = Me.DocumentitestataBindingSource
+        '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
         '
         'GestioneDocumenti
         '
@@ -1677,13 +1683,13 @@ Partial Class GestioneDocumenti
         Me.DocumentitestataBindingNavigator.ResumeLayout(False)
         Me.DocumentitestataBindingNavigator.PerformLayout()
         CType(Me.DocumentidettaglioDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DocumentitestatadocumentidettaglioBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DocumentitestatadocumentidettaglioBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1808,4 +1814,6 @@ Partial Class GestioneDocumenti
     Friend WithEvents TipoDocumento As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Numero As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents ArticolimisureTableAdapter1 As GeVen_SE_2015.fatturazionegevenDataSetTableAdapters.articolimisureTableAdapter
+    Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
+    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
 End Class

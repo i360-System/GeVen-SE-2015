@@ -6,6 +6,8 @@ Module serializzatore
     Public globalArticolo As New Articolo
     Public globalObjFillDataGridRow As New objFillDataGridRow
     Public globalListaArticoliDaCaricare As New ListaArticolidaCaricare
+
+    Public globalObjApplication As New AppObjModel
     Dim listaComboGestioneDocumenti As New List(Of String)
     Dim listaTextGestioneDocumenti As New List(Of String)
 
@@ -355,7 +357,13 @@ Module serializzatore
     End Sub
 
 
-
+    ''' <summary>
+    ''' Popola la text relativa allo sconto
+    ''' </summary>
+    ''' <param name="scontoText"></param>
+    ''' <param name="tabella"></param>
+    ''' <param name="whereValue"></param>
+    ''' <remarks></remarks>
     Public Sub PopolaScontoCassa(ByRef scontoText As Control, ByVal tabella As DataTable, ByVal whereValue As Integer)
         Dim servApp As New Services
         Dim ret = servApp.distinctSelect(tabella, whereValue)
@@ -368,6 +376,11 @@ Module serializzatore
 
     End Sub
 
+    ''' <summary>
+    ''' Cattura l'articolo selezionato
+    ''' </summary>
+    ''' <param name="str"></param>
+    ''' <remarks></remarks>
     Public Sub CaptureArticolo(ByVal str As String)
 
         globalArticolo.clean()
@@ -411,13 +424,54 @@ Module serializzatore
 
     End Sub
 
-
+    ''' <summary>
+    ''' Carica gli articoli
+    ''' </summary>
+    ''' <param name="listaArticoli"></param>
+    ''' <remarks></remarks>
     Public Sub CaricaArticoli(ByVal listaArticoli As List(Of String))
 
         globalListaArticoliDaCaricare.pulisceLaLista()
         globalListaArticoliDaCaricare.listaDaCaricare = listaArticoli
 
     End Sub
+
+
+    Public Sub MakeConnectionString(ByVal settaCon As Boolean)
+
+        Dim server As String = Nothing
+        Dim user As String = Nothing
+        Dim password As String = Nothing
+        Dim database As String = Nothing
+        Dim tipodb As String = My.Settings.tipodb
+        Dim cn As String = Nothing
+
+        Select Case tipodb.ToLower
+            Case "mysql"
+                server = My.Settings.server
+                user = My.Settings.user
+                password = My.Settings.pass
+                database = My.Settings.Database
+                'tipodb = My.Settings.tipodb
+                cn = "server=" & server & ";" & _
+                    "user id=" & user & ";" & _
+                    "password=" & password & ";" & _
+                    "database=" & database & ";" & _
+                    "persistsecurityinfo=True"
+
+                globalObjApplication.CurrentConnectionString = cn
+
+                If settaCon Then
+                    My.MySettings.Default.Item("fatturazioneGevenConnectionString") = globalObjApplication.CurrentConnectionString
+                    My.MySettings.Default.Save()
+                End If
+
+
+        End Select
+
+    End Sub
+
+
 
 
 #End Region

@@ -43,8 +43,10 @@
     ''' Elabora le stampe
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub Print(ByRef frm As Object)
+    Public Sub Print(ByRef listaTabelle As List(Of DataTable))
 
+        Dim i As New Services
+        'i.ElaboraStampe()
 
 
     End Sub

@@ -322,46 +322,101 @@ Public Class Services
 
     End Function
 
-    Public Sub ElaboraStampe(ByRef fatGevenDataset As fatturazionegevenDataSet, ByVal name As String)
+    Public Sub ElaboraStampe(ByVal listaTab As List(Of DataTable), ByVal name As String)
 
-        Dim NomeFile As String
+        Dim numeroTabelle As Byte = listaTab.Count
 
-        oWord = New Word.Application
-        oWord.Visible = True
+        Select Case numeroTabelle
 
-        NomeFile = My.Settings.percorsotemplate & "/" & name
-        oDoc = oWord.Documents.Open(NomeFile)
+            Case 1
 
-        oDoc.MailMerge.MainDocumentType = Word.WdMailMergeMainDocType.wdFormLetters
-        'nuovo documento
-        oDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToNewDocument
-        'stampante
-        'oDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToPrinter
+            Case 2 'gestionedocumenti
 
-        CreateMailMergeDataFile(fatGevenDataset, NomeFile)
-        oDoc.MailMerge.Execute(False)
+                Dim NomeFile As String
 
-        ' Close the original form document.
-        oDoc.Saved = True
-        oDoc.Close(False)
+                oWord = New Word.Application
+                oWord.Visible = True
 
-        '' Release References.
+                NomeFile = My.Settings.percorsotemplate & "/" & name
+                oDoc = oWord.Documents.Open(NomeFile)
 
-        oDoc = Nothing
-        oWord = Nothing
+                oDoc.MailMerge.MainDocumentType = Word.WdMailMergeMainDocType.wdFormLetters
+                'nuovo documento
+                oDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToNewDocument
+                'stampante
+                'oDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToPrinter
+                Dim tabPadre As DataTable = listaTab.Item(0)
+                Dim tabFiglia As DataTable = listaTab.Item(1)
+
+                'CreateMailMergeDataFile(listaTab, NomeFile)
+                'oDoc.MailMerge.Execute(False)
+                InserisciVariabileWord("@Anagrafica@", tabPadre.Rows.Item(0).Field(Of Integer)("Anagrafica").ToString, oDoc)
+                'InserisciVariabileWord("@Articolo@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+                'InserisciVariabileWord("@Anagrafica@", "prova", oDoc)
+
+                ' Close the original form document.
+                oDoc.Saved = True
+                oDoc.Close(False)
+
+                '' Release References.
+
+                oDoc = Nothing
+                oWord = Nothing
+
+        End Select
+
+        'Dim NomeFile As String
+
+        'oWord = New Word.Application
+        'oWord.Visible = True
+
+        'NomeFile = My.Settings.percorsotemplate & "/" & name
+        'oDoc = oWord.Documents.Open(NomeFile)
+
+        'oDoc.MailMerge.MainDocumentType = Word.WdMailMergeMainDocType.wdFormLetters
+        ''nuovo documento
+        'oDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToNewDocument
+        ''stampante
+        ''oDoc.MailMerge.Destination = Word.WdMailMergeDestination.wdSendToPrinter
+
+        'CreateMailMergeDataFile(fatGevenDataset, NomeFile)
+        'oDoc.MailMerge.Execute(False)
+
+        '' Close the original form document.
+        'oDoc.Saved = True
+        'oDoc.Close(False)
+
+        ' '' Release References.
+
+        'oDoc = Nothing
+        'oWord = Nothing
 
         ' Clean up temp file.
         'System.IO.File.Delete("C:\DataDoc.doc")
 
 
     End Sub
-    Private Sub CreateMailMergeDataFile(ByVal fatGevenDataset As fatturazionegevenDataSet, ByVal NomeFile As String)
+    Private Sub CreateMailMergeDataFile(ByVal listaTab As List(Of DataTable), ByVal NomeFile As String)
         Dim wrdDataDoc As New Word.Document
         Dim iCount As Integer
 
         ' Create a data source at C:\DataDoc.doc containing the field data.
-        oDoc.MailMerge.CreateDataSource(Name:=fatGevenDataset, _
-            HeaderRecord:="Cognome;Nome;Indirizzo;Città;Provincia;CodicePostale")
+        'oDoc.MailMerge.CreateDataSource(Name:=fatGevenDataset, _
+        '    HeaderRecord:="Cognome;Nome;Indirizzo;Città;Provincia;CodicePostale")
 
         'oDoc.MailMerge.CreateDataSource(Name:="C:\DataDoc.doc")
         'Se non si specificano gli headerRecord vengono inseriti i seguenti campi
@@ -396,7 +451,30 @@ Public Class Services
     ByVal Ind As String, ByVal Cit As String, ByVal Prov As String, ByVal CodP As String)
 
     End Sub
+    Private Sub InserisciVariabileWord(sVariabile As String, sValore As Object, objWord As Word.Application)
+        '   On Error Resume Next
+        Try
+            objWord.Selection.Find.ClearFormatting()
+            objWord.Selection.Find.Replacement.ClearFormatting()
+            With objWord.Selection.Find
+                .Text = sVariabile
+                .Replacement.Text = sValore
+                .Forward = True
+                '.Wrap = 
+                .Format = False
+                .MatchCase = False
+                .MatchWholeWord = False
+                .MatchWildcards = False
+                .MatchSoundsLike = False
+                .MatchAllWordForms = False
+            End With
+            objWord.Selection.Find.Execute(Replace:=WdReplace.wdReplaceAll)
+            Exit Sub
 
+        Catch ex As Exception
+            MsgBox(ex.ToString() & "-" & Err.Description & " Funzione:" & sVariabile & " Valore:" & sValore & ".", vbCritical)
+        End Try
+    End Sub
     '' '' '' '' ''Dim nomecompletotemplate = My.Settings.percorsotemplate & "/" & name 'nome completo del template
 
     ' '' '' '' '' ''Dim wrdApp As Object
@@ -871,6 +949,38 @@ Public Class Services
         Return eseledis
 
     End Function
+
+    ''' <summary>
+    ''' Restituisce un collezione di righe di documentidettaglio
+    ''' </summary>
+    ''' <param name="dtb"></param>
+    ''' <param name="azien"></param>
+    ''' <param name="eser"></param>
+    ''' <param name="tpdoc"></param>
+    ''' <param name="numer"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Function selectDettaglio(ByVal dtb As DataTable, ByVal azien As String, ByVal eser As String, ByVal tpdoc As Integer, ByVal numer As Integer)
+
+        Dim eseledis = Nothing
+
+        Try
+
+            eseledis = From r In dtb.AsEnumerable() _
+                       Where r.Field(Of String)("Azienda") = azien _
+                       And r.Field(Of String)("Esercizio") = eser _
+                       And r.Field(Of Integer)("TipoDocumento") = tpdoc _
+                       And r.Field(Of Integer)("Numero") = numer _
+                                   Select r
+
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+
+        Return eseledis
+
+    End Function
+
 
 #End Region
 
